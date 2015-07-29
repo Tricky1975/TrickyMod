@@ -8,7 +8,7 @@ Rem
 	http://mozilla.org/MPL/2.0/.
 
 
-Version: 15.04.29
+Version: 15.07.12
 
 End Rem
 Strict
@@ -17,7 +17,7 @@ Import brl.map
 Import brl.max2d
 Import tricky_units.MKL_Version
 
-MKL_Version "Kthura Map Editor - Mods/Kthura_Draw.bmx","15.04.29"
+MKL_Version "Kthura Map Editor - Mods/Kthura_Draw.bmx","15.07.12"
 MKL_Lic     "Kthura Map Editor - Mods/Kthura_Draw.bmx","Mozilla Public License 2.0"
 
 Rem

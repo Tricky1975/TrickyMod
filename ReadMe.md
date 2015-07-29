@@ -7,6 +7,7 @@ Please note, this repository is updated real-time as soon as the tiniest update 
 
 
 If reporting a bug or any other issue, keep the next stuff in mind.
+
 1. Make sure I'm not working on the module in question. If a module is updated less than 24h ago I might still be working on the specific module.
 2. NEVER forget WHICH specific module contains the bug or any other kind of issue. It makes my life a lot easier if I don't have to check all modules to find out what you are talking about.
 
