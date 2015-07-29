@@ -1,0 +1,6 @@
+This file contains a driver to make GALE operate from a GUI environment.
+<p>
+Please note that not all of Gale's sub modules will operate properly from this environment.
+<p>
+NEVER import this module together with GALE.M2D or your project will cause conflicts which will lead to very terrible results in the worst case even system crashes.
+

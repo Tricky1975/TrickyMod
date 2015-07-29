@@ -1,0 +1,19 @@
+<html><head><title>Module TUI_PolledInput by Tricky reference</title>
+<link rel=stylesheet Type=text/css href='../../../../doc/bmxstyle.css'>
+</head><body>
+<table width=100% cellspacing=0><tr align=center><td class=small>&nbsp;</td>
+<td class=small width=1%><b>Tricky_UI.TUI_PolledInput:</b></td>
+<td class=small width=1%><a href=#modinfo class=small>Modinfo</a></td>
+<td class=small width=1%><a href='../../../../mod/tricky_ui.mod/tui_polledinput.mod/tui_polledinput.bmx' class=small>Source</a></td>
+<td class=small>&nbsp;</td></tr></table>
+<h1>Module TUI_PolledInput by Tricky</h1>
+Importing this module will make Tricky's User Interface respond to the polled input module used by Max2D. Once this module is imported, Tricky's UI will take up all the input from there automatically requiring no further instructions. The core module will then automatically be imported as well, so you don't need to import that seperately, however if you still do it nothing dangerous should happen XD
+Please one note, it is not recommendable to use the Polled Input routines such as KeyHit() and MouseHIi() (KeyDown() and MouseDown() are safe) and others while you are using Tricky's UI with this driver. Some conflicts may surely pop up. In stead you can read out TUI_CID.Keyhit[] or TUI_CID.MouseHit[] AFTER you ran the gadget cycle.
+<h2 id=modinfo>Module Information</h2>
+<table width=100%>
+<tr><th width=1%>NameModule</th><td>Tricky's Units - TUI_PolledInput</td></tr>
+<tr><th width=1%>Author</th><td>Jeroen Broks aka Tricky</td></tr>
+<tr><th width=1%>Copyright</th><td>&copy; Jeroen Petrus Broks</td></tr>
+<tr><th width=1%>License</th><td>Mozilla Public License 2.0</td></tr>
+<tr><th width=1%>Last update</th><td>06 Feb 2015</td></tr>
+</body></html>

@@ -1,0 +1,8 @@
+<center><img src='TUI.png' Alt='Tricky's User InterFace'><br><img src='Gale.png' Alt='GALE'></center>
+<p>
+This module will create a Lua object named "TUI" in Lua for use in the GALE Lua engine.
+It basically creates a VM to which a screen object and a Lua script are bound together. The BlitzMax engine should basically call this VM over and over and Lua will automatically be called on a "Call-Back" base.
+Every gadget should have a unique codename (which is a string). Whenever an 'action' is created the Lua function with the same codename prefixed with "TUI_ACTION_" (all in uppercase including the tag) will be called with the next parameters (idx,x,y). Though these parameters only contain nummeric values they will (unfortunately) be sent as strings as the underlying GALE engine is only able to send data in this manner (being it based on a modified version of MaxLua).
+<p>
+The best cause of action is to define all gadgets in the GALE_OnLoad() function which is automatically executed when a script is loaded. When you have any important unloading stuff to do you can best use TUI_UnLoad() in stead of GALE_UnLoad(), as in the latter function the gadgets may already be unloaded.
+

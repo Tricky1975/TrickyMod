@@ -1,0 +1,39 @@
+<html><head><title> reference</title>
+<link rel=stylesheet Type=text/css href='../../../../doc/bmxstyle.css'>
+</head><body>
+<table width=100% cellspacing=0><tr align=center><td class=small>&nbsp;</td>
+<td class=small width=1%><b>GALE.Image:</b></td>
+<td class=small width=1%><a href=#globals class=small>Globals</a></td>
+<td class=small width=1%><a href=#modinfo class=small>Modinfo</a></td>
+<td class=small width=1%><a href='../../../../mod/gale.mod/image.mod/image.bmx' class=small>Source</a></td>
+<td class=small>&nbsp;</td></tr></table>
+<h1></h1>
+<h2><a name=globals></a>Globals Summary</h2><table class=doc width=100%><tr><td colspan=2>
+<a href=#JCR_Lua_Image_PatchMap>JCR_Lua_Image_PatchMap</a>
+, 
+<a href=#OJBC_Lua_Image>OJBC_Lua_Image</a>
+</table>
+<h2
+ id=globalsdet>Globals
+</h2>
+<table class=doc width=100% cellspacing=3 id=JCR_Lua_Image_PatchMap>
+<tr><td class=doctop colspan=2>Global JCR_Lua_Image_PatchMap:TJCRDir</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>In order to work you need a JCR TMap containing your images and copy this map into this variable.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=OJBC_Lua_Image>
+<tr><td class=doctop colspan=2>Global OJBC_Lua_Image:TJBC_Lua_Image</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This global allows you to to call the functions this module adds to Lua directly from BlitzMax.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Important to note that these functions are specifically designed to be called from Lua and using them in BlitzMax is mostly highly inefficient. The feature was implemented as Lua has not full access to BMax data (and therefore uses the special reference system I set up for it here). By giving BMax access directly you can make Lua send in Lua Image references to other APIs enabling them to use those. I hope that was clear as I suck in explanations like these :P.</td></tr>
+</table>
+<br>
+<h2 id=modinfo>Module Information</h2>
+<table width=100%>
+<tr><th width=1%>Name</th><td>image.mod</td></tr>
+<tr><th width=1%>Creator</th><td>Tricky (Jeroen P. Broks)</td></tr>
+<tr><th width=1%>Copyright</th><td>Jeroen P. Broks</td></tr>
+<tr><th width=1%>License</th><td>Mozilla Public License 2.0</td></tr>
+<tr><th width=1%>Version</th><td>15.07</td></tr>
+<tr><th width=1%>Last update</th><td>Tue 28 July 2015; 00:19:49</td></tr>
+<tr><th width=1%>Module History</th><td>Please check the file GALE_Image.bmx for more detailed information on that!</td></tr>
+</body></html>

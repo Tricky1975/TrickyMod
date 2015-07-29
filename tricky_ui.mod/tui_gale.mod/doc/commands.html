@@ -1,0 +1,89 @@
+<html><head><title>Module TUI_GALE by Tricky reference</title>
+<link rel=stylesheet Type=text/css href='../../../../doc/bmxstyle.css'>
+</head><body>
+<table width=100% cellspacing=0><tr align=center><td class=small>&nbsp;</td>
+<td class=small width=1%><b>Tricky_UI.TUI_GALE:</b></td>
+<td class=small width=1%><a href=#globals class=small>Globals</a></td>
+<td class=small width=1%><a href=#functions class=small>Functions</a></td>
+<td class=small width=1%><a href=#types class=small>Types</a></td>
+<td class=small width=1%><a href=#modinfo class=small>Modinfo</a></td>
+<td class=small width=1%><a href='../../../../mod/tricky_ui.mod/tui_gale.mod/tui_gale.bmx' class=small>Source</a></td>
+<td class=small>&nbsp;</td></tr></table>
+<h1>Module TUI_GALE by Tricky</h1>
+<center><img src='TUI.png' Alt='Tricky's User InterFace'><br><img src='Gale.png' Alt='GALE'></center>
+<p>
+This module will create a Lua object named "TUI" in Lua for use in the GALE Lua engine.
+It basically creates a VM to which a screen object and a Lua script are bound together. The BlitzMax engine should basically call this VM over and over and Lua will automatically be called on a "Call-Back" base.
+Every gadget should have a unique codename (which is a string). Whenever an 'action' is created the Lua function with the same codename prefixed with "TUI_ACTION_" (all in uppercase including the tag) will be called with the next parameters (idx,x,y). Though these parameters only contain nummeric values they will (unfortunately) be sent as strings as the underlying GALE engine is only able to send data in this manner (being it based on a modified version of MaxLua).
+<p>
+The best cause of action is to define all gadgets in the GALE_OnLoad() function which is automatically executed when a script is loaded. When you have any important unloading stuff to do you can best use TUI_UnLoad() in stead of GALE_UnLoad(), as in the latter function the gadgets may already be unloaded.
+<h2><a name=globals></a>Globals Summary</h2><table class=doc width=100%><tr><td colspan=2>
+<a href=#TUIG_JCR>TUIG_JCR</a>
+</td></tr>
+</table>
+<h2><a name=functions></a>Functions Summary</h2><table class=doc width=100%>
+<tr><td class=docleft width=1%><a href=#TUI_GALE_Free>TUI_GALE_Free</a></td><td class=docright>
+Executes TUI_UnLoad() in the TUI_GALE object before releasing the object itself in order to be called by the garbage collector.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TUI_GALE_Gadget>TUI_GALE_Gadget</a></td><td class=docright>
+Returns the gadget tied to a script set. If "kid" is set the child gadget will be returned, if not set the screen gadget is returned.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TUI_GALE_Load>TUI_GALE_Load</a></td><td class=docright>
+Loads a Lua Script and ties the gadgets to it. In the MultiScripter you can find this one also back with the used tag prefixed by "TUI_". The object is also returned, however I'm not quite sure if you actually NEED that object.
+</td></tr>
+</table>
+<h2><a name=types></a>Types Summary</h2><table class=doc width=100%>
+<tr><td class=docleft width=1%><a href=#TUI_GALE>TUI_GALE</a></td><td class=docright>
+work type.
+</td></tr>
+</table>
+<h2
+ id=globalsdet>Globals
+</h2>
+<table class=doc width=100% cellspacing=3 id=TUIG_JCR>
+<tr><td class=doctop colspan=2>Global TUIG_JCR:TJCRDir</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This variable should contain the JCR dir list if the API is to load scripts.</td></tr>
+</table>
+<br>
+<h2
+ id=functionsdet>Functions
+</h2>
+<table class=doc width=100% cellspacing=3 id=TUI_GALE_Free>
+<tr><td class=doctop colspan=2>Function TUI_GALE_Free(Tag$) 'TUIG:TUI_Gale Var)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Executes TUI_UnLoad() in the TUI_GALE object before releasing the object itself in order to be called by the garbage collector.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Please make sure that the Lua script tied to this object is not running at the time this feature is called.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TUI_GALE_Gadget>
+<tr><td class=doctop colspan=2>Function TUI_GALE_Gadget:TUI_Gadget(STag$,kid$="")</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Returns the gadget tied to a script set. If "kid" is set the child gadget will be returned, if not set the screen gadget is returned.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TUI_GALE_Load>
+<tr><td class=doctop colspan=2>Function TUI_GALE_Load:TUI_GALE(Tag$,JCR:TJCRDir,Script$)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Loads a Lua Script and ties the gadgets to it. In the MultiScripter you can find this one also back with the used tag prefixed by "TUI_". The object is also returned, however I'm not quite sure if you actually NEED that object.</td></tr>
+</table>
+<br>
+<h2
+ id=typesdet>Types
+</h2>
+<table class=doc width=100% cellspacing=3 id=TUI_GALE>
+<tr><td class=doctop colspan=2>Type TUI_GALE</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>work type.</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TUI_GALE_fields></a>Fields Summary</th></tr><tr><td colspan=2>
+<a href=#Screen>Screen</a>
+</table>
+<table class=doc width=100% cellspacing=3 id=Screen>
+<tr><td class=doctop colspan=2>Field Screen:TUI_Gadget = TUI_CreateScreen()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>The Screen gadget.</td></tr>
+</table>
+<br>
+<h2 id=modinfo>Module Information</h2>
+<table width=100%>
+<tr><th width=1%>NameModule</th><td>Tricky's Units - TUI_GALE</td></tr>
+<tr><th width=1%>Author</th><td>Jeroen Broks aka Tricky</td></tr>
+<tr><th width=1%>Copyright</th><td>&copy; Jeroen Petrus Broks</td></tr>
+<tr><th width=1%>License</th><td>Mozilla Public License 2.0</td></tr>
+<tr><th width=1%>Last update</th><td>16 Feb 2015</td></tr>
+</body></html>

@@ -1,0 +1,16 @@
+Import brl.map
+
+Rem
+bbdoc: A map extended solely for string-string usage.
+End Rem
+Type StringMap Extends TMap
+	
+	Rem
+	bbdoc: returns a string value in the map. Only works if both the key and the value are strings
+	End Rem
+	Method value$(key$)
+	Return String(MapValueForKey(Self,key))
+	End Method
+	
+	End Type
+

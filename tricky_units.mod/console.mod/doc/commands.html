@@ -1,0 +1,121 @@
+<html><head><title>Module Console by Tricky reference</title>
+<link rel=stylesheet Type=text/css href='../../../../doc/bmxstyle.css'>
+</head><body>
+<table width=100% cellspacing=0><tr align=center><td class=small>&nbsp;</td>
+<td class=small width=1%><b>Tricky_Units.Console:</b></td>
+<td class=small width=1%><a href=#globals class=small>Globals</a></td>
+<td class=small width=1%><a href=#functions class=small>Functions</a></td>
+<td class=small width=1%><a href=#modinfo class=small>Modinfo</a></td>
+<td class=small width=1%><a href='../../../../mod/tricky_units.mod/console.mod/console.bmx' class=small>Source</a></td>
+<td class=small>&nbsp;</td></tr></table>
+<h1>Module Console by Tricky</h1>
+<h2><a name=globals></a>Globals Summary</h2><table class=doc width=100%><tr><td colspan=2>
+<a href=#ConsoleBackGroundPicture>ConsoleBackGroundPicture</a>
+, 
+<a href=#ConsoleCommand>ConsoleCommand</a>
+</td></tr>
+</table>
+<h2><a name=functions></a>Functions Summary</h2><table class=doc width=100%>
+<tr><td class=docleft width=1%><a href=#ConsoleCloseLogFile>ConsoleCloseLogFile</a></td><td class=docright>
+Will close the Console Log file.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ConsoleDoublePrint>ConsoleDoublePrint</a></td><td class=docright>
+Puts first text at the start and the second text halfaway the screen. Handy for some upsummings.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ConsoleDoublePrint2>ConsoleDoublePrint2</a></td><td class=docright>
+Same as <a href=#ConsoleDoublePrint>ConsoleDoublePrint</a> but the offset allows you the define X coordinate on where to start the second collumn.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ConsoleFont>ConsoleFont</a></td><td class=docright>
+Contains the font that the console uses.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ConsoleModify>ConsoleModify</a></td><td class=docright>
+Allows you to modify a line present on the console.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ConsolePrint>ConsolePrint</a></td><td class=docright>
+Puts text into a new console line.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ConsoleShow>ConsoleShow</a></td><td class=docright>
+Show the contents of the console onto the screen.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ConsoleWrite>ConsoleWrite</a></td><td class=docright>
+Alias for <a href=#ConsolePrint>ConsolePrint</a>()
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ConsoleWriteLogFile>ConsoleWriteLogFile</a></td><td class=docright>
+Will start a log file that logs all stuff that is put onto the console. The output is in HTML code.
+</td></tr>
+</table>
+<h2
+ id=globalsdet>Globals
+</h2>
+<table class=doc width=100% cellspacing=3 id=ConsoleBackGroundPicture>
+<tr><td class=doctop colspan=2>Global ConsoleBackGroundPicture:TImage</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Contains the image used for the background of the console.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Just assign and image to it and the console will tile it onto the background. Animation not yet supported, maybe in future versions!</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=ConsoleCommand>
+<tr><td class=doctop colspan=2>Global ConsoleCommand$</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>When the user types a command into the console, the result will be stored into this variable.</td></tr>
+</table>
+<br>
+<h2
+ id=functionsdet>Functions
+</h2>
+<table class=doc width=100% cellspacing=3 id=ConsoleCloseLogFile>
+<tr><td class=doctop colspan=2>Function ConsoleCloseLogFile()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Will close the Console Log file.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>For proper usage it's always advisable to do this before ending your program.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=ConsoleDoublePrint>
+<tr><td class=doctop colspan=2>Function ConsoleDoublePrint(T1$,T2$,R1=255,G1=255,B1=255,R2=255,G2=255,B2=255)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Puts first text at the start and the second text halfaway the screen. Handy for some upsummings.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=ConsoleDoublePrint2>
+<tr><td class=doctop colspan=2>Function ConsoleDoublePrint2(T1$,T2$,Offset,R1=255,G1=255,B1=255,R2=255,G2=255,B2=255)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Same as <a href=#ConsoleDoublePrint>ConsoleDoublePrint</a> but the offset allows you the define X coordinate on where to start the second collumn.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=ConsoleFont>
+<tr><td class=doctop colspan=2>Function ConsoleFont:TImageFont()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Contains the font that the console uses.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>You can also load it by reading it from 'incbin:unispace.ttf', but be warned... You never know if I ever pick a different font for this so using this function is a safer route.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=ConsoleModify>
+<tr><td class=doctop colspan=2>Function ConsoleModify(AConsoleLine:Object,Txt$,R=-1,G=-1,B=-1)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Allows you to modify a line present on the console.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>In order to modify you must have stored the return value of ConsolePrint into a variable. Next make sure the line you want to modify is still on the screen or else nothing will happen.<p>Another note... When you created a log file it will not be altered by this routine!</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=ConsolePrint>
+<tr><td class=doctop colspan=2>Function ConsolePrint:ConsoleLine(Txt$,R=255,G=255,B=255)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Puts text into a new console line.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=ConsoleShow>
+<tr><td class=doctop colspan=2>Function ConsoleShow()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Show the contents of the console onto the screen.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Of course you need to use the Flip command before you can actually see it ;)</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=ConsoleWrite>
+<tr><td class=doctop colspan=2>Function ConsoleWrite:ConsoleLine(Txt$,R=255,G=255,B=255)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Alias for <a href=#ConsolePrint>ConsolePrint</a>()</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=ConsoleWriteLogFile>
+<tr><td class=doctop colspan=2>Function ConsoleWriteLogFile(LogFile$,BGCOLOR$="#000000")</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Will start a log file that logs all stuff that is put onto the console. The output is in HTML code.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Though the result of this file should be readable by any browser I only tested this out in Firefox and Apple Safari. If there are issues with Opera and Chrome I'm willing to look into that but I will under NO CONDITION work this out in IE (because a. that browser was screwed from it's very first release, and b. since my main system is not Windows, it's too much trouble to test this properly).</td></tr>
+</table>
+<br>
+<h2 id=modinfo>Module Information</h2>
+<table width=100%>
+<tr><th width=1%>NameModule</th><td>Tricky's Units - Console</td></tr>
+<tr><th width=1%>Author</th><td>Jeroen Broks aka Tricky</td></tr>
+<tr><th width=1%>Copyright</th><td>&copy; Jeroen Petrus Broks</td></tr>
+<tr><th width=1%>License</th><td>zLib license</td></tr>
+<tr><th width=1%>Last update</th><td>27 Jul 2015</td></tr>
+</body></html>

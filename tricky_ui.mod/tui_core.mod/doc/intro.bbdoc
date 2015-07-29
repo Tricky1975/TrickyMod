@@ -1,0 +1,14 @@
+<center><img src='Logo.png' Alt="Tricky's User Interface"></center>
+<p>
+Hello. 
+This is a collection of modules that I use to make a simple User Interface in Max2D.
+I hope it's useful to you.
+<p>
+Please don't load this module directly. Use one of the mods providing the "Input Drivers" in stead and this module will automatically load, as well.<br>
+Tricky_UI.TUI_PolledInput is for use in Max2D<br>
+Tricky_UI.TUI_EventInput is for use inside a canvas of MaxGUI<br>
+<p>
+NOTE!<br>
+If you are reading this, it will most likely mean you got a version which is 
+still in development and which should not be used right now until this notice
+has been removed from the documentation.<br>Apologies for any inconvenience.<p>-- Tricky

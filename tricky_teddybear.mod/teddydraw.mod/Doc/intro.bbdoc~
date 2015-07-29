@@ -1,0 +1,28 @@
+<img src='Teddy.png' style='float:left'><h1>Teddy Bear</h1>
+
+Teddybear is a simple 2D map tile engine. It comes in two modules TeddyBear and TeddyBear_CoreOnly.
+Teddybear is the full engine with loader and renderer, TeddyBear_CoreOnly only contains the core routines and the loader and not the drawing routines.
+This may be handy if you need to render your maps differently than just in standard 2D.
+<p>
+<!--
+<span style='color:red; font-size:20pt'><blink>IMPORTANT NOTE</blink></span>
+NEVER import BOTH modules. Always either one or the other, otherwise you can (and most likely will) get system conflicts.
+--><!-- This issue has been fixed -->
+
+<p>Then to answer the question how Teddybear got its name, it's basically
+a pun to TEd.
+The TEd level editor has been used to design the levels for many famous
+games, most notably the Commander Keen series,
+Wolfenstein 3D and Rise of the Triad, but there are more games
+designed with it.
+<p>
+Requirements to compile:
+<ol type=i>
+<li>Module MOD_MKL_Version (you can do without it by putting a REM before the lines Import Tricky.MOD_MKL_VERSION and the Lines starting with MKL_Version and MKL_Lic.
+<li>JCR5, downloadable at http://jcr5.sourceforge.net
+</ol>
+
+
+
+
+
