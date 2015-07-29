@@ -119,6 +119,10 @@ Type TeddyBear ' BLD_: Object Teddybear\nCannot be called directly but some proj
 	Field TexResize:Byte = False
 	Field SizeX = 50
 	Field SizeY = 50
+	Rem
+	bbdoc: An array containing all files names requested for textures.
+	about: These are not loaded by default unless you use the default drawing module.
+	End Rem
 	Field Texture$[256]
 	Field TextureImg:TImage[256]
 	Field Layers:TMap = New TMap
@@ -126,6 +130,7 @@ Type TeddyBear ' BLD_: Object Teddybear\nCannot be called directly but some proj
 	Field Objects:TList[,] = New TList[SizeX+1,SizeY+1]
 	Field OW=SizeX,OH=SizeY ' NEVER ASSIGN DATA TO OW OR OH YOURSELF OR CRASHES MAY BE INEVITABLE.
 	Field DataMap:TMap = New TMap
+	
 	
 	Method NewLayer(ID$,W=0,H=0,T=0,Hot$="TL")
 		Local TW = W; If Not TW TW=SizeX
