@@ -82,6 +82,10 @@ about:Any errors that occur during loading are stored in the variable TeddyLoadE
 <tr><td class=doctop colspan=2>Type TeddyBear ' BLD_: Object Teddybear\nCannot be called directly but some project using GALE (like the LAURA engine for example) have subobject to call this object. It contains all kinds of data about a Teddybear map.</td></tr>
 <tr><td class=docleft width=1%>Description</td><td class=docright>This object type is used to store your TeddyBear map information.</td></tr>
 </table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TeddyBear_fields></a>Fields Summary</th></tr><tr><td colspan=2>
+<a href=#Texture>Texture</a>
+</td></tr>
+</table>
 <table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TeddyBear_methods></a>Methods Summary</th></tr>
 <tr><td class=docleft width=1%><a href=#Data>Data</a></td><td class=docright>
 Returns or defines a 'data' field of the map.
@@ -104,6 +108,11 @@ This function will resize the size of the object field. (Default is 50x50)
 <tr><td class=docleft width=1%><a href=#ZName>ZName</a></td><td class=docright>
 Returns an array with zone names for a zone layer.
 </td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Texture>
+<tr><td class=doctop colspan=2>Field Texture$[256]</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>An array containing all files names requested for textures.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>These are not loaded by default unless you use the default drawing module.</td></tr>
 </table>
 <table class=doc width=100% cellspacing=3 id=Data>
 <tr><td class=doctop colspan=2>Method Data:String(Fld$,D$="*** DO NOT DEFINE ***")</td></tr>
@@ -186,7 +195,7 @@ True if a field exists, otherwise false.
 <table width=100%>
 <tr><th width=1%>Module</th><td>Tricky_Teddybear.TeddyCore</td></tr>
 <tr><th width=1%>Written by</th><td>Jeroen Petrus Broks</td></tr>
-<tr><th width=1%>Version</th><td>15.02.03</td></tr>
+<tr><th width=1%>Version</th><td>15.07.29</td></tr>
 <tr><th width=1%>Copyright</th><td>(c) Copyright Jeroen Petrus Broks, 2012-2015</td></tr>
 <tr><th width=1%>License</th><td>Mozilla Public License</td></tr>
 </body></html>
