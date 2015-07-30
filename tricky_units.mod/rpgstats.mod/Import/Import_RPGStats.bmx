@@ -49,7 +49,7 @@ Global RPGID$
 Global RPGEngine$
 
 Type RPGPoints
-	Field Have,Maximum
+	Field Have,Maximum,Minimum
 	Field MaxCopy$
 	
 	Method Inc(a) Have:+a End Method
@@ -449,6 +449,8 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 		p.maximum = stat(char,p.maxcopy)
 		EndIf
 	If p.have>p.maximum p.have=p.maximum
+	If p.have<p.minimum p.have=p.minimum
+	If p.minimum>p.maximum Then GALE_Error("Points minumum bigger than maximum! How come?",["Char,"+char,"Points,"+points,"Minumum,"+p.minumum,"Maximum,"+p.maximum])
 	Return p
 	End Method
 	
