@@ -21,6 +21,7 @@ Rem
 15.07.27 - Added "New" support to StrData and Stat
 15.07.28 - Deprecated Stat.Me and TMe
          - Added StatExists() method to RPGStat
+15.07.30 - Added Minimum support for Points
 End Rem
 
 Strict
@@ -209,7 +210,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Local ch:RPGCharacter = grabchar(char)
 	Local csr$
 	Local lua$ = ".lua"
-	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.Stat","char,"+char])
+	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.Stat","char,"+char,"Stat,"+stat])
 	Local ST:RPGStat = ch.stat(stat)
 	If Not st GALE_Error("Stat doesn't exist",["F,RPGChar.Stat","char,"+char,"Stat,"+stat])
 	If st.scriptfile And st.callfunction
@@ -227,7 +228,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	
 	Method DefStat(char$,Stat$,value=0,OnlyIfNotExist=0) ' BLD: Defines a value. Please note that if a stat is scripted the scripts it refers to will always use this feature itself to define the value. If "OnlyIfNotExist" is checked to 1 or any higher number than that, the definition only takes place of the stat doesn't exist yet. This was a safety precaution if you want to add stats later without destroying the old data if it exists, but to create it if you added a stat which was (logically) not yet stored in older savegames.
 	Local ch:RPGCharacter = grabchar(char)
-	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.Stat","char,"+char])
+	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.DefStat","char,"+char,"Stat,"+stat,"Value,"+value])
 	Local ST:RPGStat = ch.stat(stat)
 	If Not St
 		St = New RPGStat
