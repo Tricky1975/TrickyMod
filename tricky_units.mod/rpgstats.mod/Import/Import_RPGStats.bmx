@@ -359,6 +359,10 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	MapRemove rpgchars,char	
 	End Method
 	
+	Method DelChar(char$) ' BLD: Alias for DelCharacter. Some people (like me) are just lazy.
+	delcharacter char
+	End method
+	
 	Method CreateList(char$,List$) ' BLD: Create a list, but don't add any items yet
 	AddList char,list,"POEP"
 	ClearList char,list
