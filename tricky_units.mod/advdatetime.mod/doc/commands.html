@@ -1,0 +1,145 @@
+<html><head><title>Module advdatetime by Tricky reference</title>
+<link rel=stylesheet Type=text/css href='../../../../doc/bmxstyle.css'>
+</head><body>
+<table width=100% cellspacing=0><tr align=center><td class=small>&nbsp;</td>
+<td class=small width=1%><b>Tricky_Units.advdatetime:</b></td>
+<td class=small width=1%><a href=#functions class=small>Functions</a></td>
+<td class=small width=1%><a href=#types class=small>Types</a></td>
+<td class=small width=1%><a href=#modinfo class=small>Modinfo</a></td>
+<td class=small width=1%><a href='../../../../mod/tricky_units.mod/advdatetime.mod/advdatetime.bmx' class=small>Source</a></td>
+<td class=small>&nbsp;</td></tr></table>
+<h1>Module advdatetime by Tricky</h1>
+<h2><a name=functions></a>Functions Summary</h2><table class=doc width=100%>
+<tr><td class=docleft width=1%><a href=#Date>Date</a></td><td class=docright>
+Current Date into readable code.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Day>Day</a></td><td class=docright>
+Day of the month.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Hour>Hour</a></td><td class=docright>
+How many hours have past since midnight?
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Leap>Leap</a></td><td class=docright>
+Leap year?
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Minute>Minute</a></td><td class=docright>
+How many minutes have past since this hour began?
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Month>Month</a></td><td class=docright>
+Current month number.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#MonthName>MonthName</a></td><td class=docright>
+Returns a month name. See for supported languages the MonthNames function.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#MonthNames>MonthNames</a></td><td class=docright>
+Returns a string array containing the month names by number.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Now>Now</a></td><td class=docright>
+Current time in code form.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#PNow>PNow</a></td><td class=docright>
+Current date and time displayed as "Mon 1 Jan 1980; 13:45:56"
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Second>Second</a></td><td class=docright>
+How many seconds have past since this minute began?
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Time>Time</a></td><td class=docright>
+retuns the number of seconds past since midnight Jan 1st, 1981.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Year>Year</a></td><td class=docright>
+Current year.
+</td></tr>
+</table>
+<h2><a name=types></a>Types Summary</h2><table class=doc width=100%>
+<tr><td class=docleft width=1%><a href=#TNow>TNow</a></td><td class=docright>
+Used to store the time in by Now(), and other functions can use it to produce readable results.
+</td></tr>
+</table>
+<h2
+ id=functionsdet>Functions
+</h2>
+<table class=doc width=100% cellspacing=3 id=Date>
+<tr><td class=doctop colspan=2>Function Date$(Format$,N:TNow = Null)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Current Date into readable code.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>A full list of all codes you can use to make readable dates, may be included in a future version.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=Day>
+<tr><td class=doctop colspan=2>Function Day(N:TNow=Null)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Day of the month.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=Hour>
+<tr><td class=doctop colspan=2>Function Hour()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>How many hours have past since midnight?</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Please note, (you could already make that one out from the explanation above) that the 24h clock is used here.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=Leap>
+<tr><td class=doctop colspan=2>Function Leap(N:TNow=Null)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Leap year?</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=Minute>
+<tr><td class=doctop colspan=2>Function Minute()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>How many minutes have past since this hour began?</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=Month>
+<tr><td class=doctop colspan=2>Function Month(N:TNow=Null)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Current month number.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=MonthName>
+<tr><td class=doctop colspan=2>Function MonthName$(MonthNum,Language$="English")</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Returns a month name. See for supported languages the MonthNames function.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=MonthNames>
+<tr><td class=doctop colspan=2>Function MonthNames:String[](Language$="English")</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Returns a string array containing the month names by number.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>By default the supported languages are English, Dutch, French and German, more languages may be included in future versions.<br>Also note that for full compatibility with all fonts and text display features and all text encoding algorithms, special signs like umlauts or accent marks have been removed.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=Now>
+<tr><td class=doctop colspan=2>Function Now:TNow()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Current time in code form.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Useless on it's own, but you can use it with nearly all functions to get readable results from it. Handy if you need to store the current time for later usage.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=PNow>
+<tr><td class=doctop colspan=2>Function PNow$(N:TNow=Null)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Current date and time displayed as "Mon 1 Jan 1980; 13:45:56"</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=Second>
+<tr><td class=doctop colspan=2>Function Second()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>How many seconds have past since this minute began?</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=Time>
+<tr><td class=doctop colspan=2>Function Time:Long(N:TNow=Null)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>retuns the number of seconds past since midnight Jan 1st, 1981.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=Year>
+<tr><td class=doctop colspan=2>Function Year(N:TNow=Null)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Current year.</td></tr>
+</table>
+<br>
+<h2
+ id=typesdet>Types
+</h2>
+<table class=doc width=100% cellspacing=3 id=TNow>
+<tr><td class=doctop colspan=2>Type TNow</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Used to store the time in by Now(), and other functions can use it to produce readable results.</td></tr>
+</table>
+<br>
+<h2 id=modinfo>Module Information</h2>
+<table width=100%>
+<tr><th width=1%>NameModule</th><td>Tricky's Units - advdatetime</td></tr>
+<tr><th width=1%>Author</th><td>Jeroen Broks aka Tricky</td></tr>
+<tr><th width=1%>Copyright</th><td>&copy; Jeroen Petrus Broks</td></tr>
+<tr><th width=1%>License</th><td>zlib license</td></tr>
+<tr><th width=1%>Last update</th><td>22 Jan 2015</td></tr>
+</body></html>

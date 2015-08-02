@@ -1,0 +1,31 @@
+<html><head><title>Module SpecialLoadImage by Tricky reference</title>
+<link rel=stylesheet Type=text/css href='../../../../doc/bmxstyle.css'>
+</head><body>
+<table width=100% cellspacing=0><tr align=center><td class=small>&nbsp;</td>
+<td class=small width=1%><b>Tricky_Units.SpecialLoadImage:</b></td>
+<td class=small width=1%><a href=#functions class=small>Functions</a></td>
+<td class=small width=1%><a href=#modinfo class=small>Modinfo</a></td>
+<td class=small width=1%><a href='../../../../mod/tricky_units.mod/specialloadimage.mod/specialloadimage.bmx' class=small>Source</a></td>
+<td class=small>&nbsp;</td></tr></table>
+<h1>Module SpecialLoadImage by Tricky</h1>
+<h2><a name=functions></a>Functions Summary</h2><table class=doc width=100%>
+<tr><td class=docleft width=1%><a href=#AdvLoadImage>AdvLoadImage</a></td><td class=docright>
+This will load a TImage from a JCR Map, but that is not all. If a file called "<mypicfile>.Frames" (original extention of the image removed) exists, it will automatically read this file and turn the TImage into an animation TImage according to the settings in the file. You can just set the values width, height, start and frames into this file in this order separated by either enters or commas. (only use one of these, not both). When a file called "<myimage>.HOT" exists inside the JCR it will set the 'hotspot' or 'image handle' as BMax calls it to this file. X and Y in that order and separated by commas or enters. If a .HOT file is not present you can set the hotflag to HOT_CENTER or HOT_BOTTOMCENTER for automated HotSpot settings.
+</td></tr>
+</table>
+<h2
+ id=functionsdet>Functions
+</h2>
+<table class=doc width=100% cellspacing=3 id=AdvLoadImage>
+<tr><td class=doctop colspan=2>Function AdvLoadImage:TImage(JCR:TJCRDir,Imagefile$,hotflag=0)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This will load a TImage from a JCR Map, but that is not all. If a file called "<mypicfile>.Frames" (original extention of the image removed) exists, it will automatically read this file and turn the TImage into an animation TImage according to the settings in the file. You can just set the values width, height, start and frames into this file in this order separated by either enters or commas. (only use one of these, not both). When a file called "<myimage>.HOT" exists inside the JCR it will set the 'hotspot' or 'image handle' as BMax calls it to this file. X and Y in that order and separated by commas or enters. If a .HOT file is not present you can set the hotflag to HOT_CENTER or HOT_BOTTOMCENTER for automated HotSpot settings.</td></tr>
+</table>
+<br>
+<h2 id=modinfo>Module Information</h2>
+<table width=100%>
+<tr><th width=1%>NameModule</th><td>Tricky's Units - SpecialLoadImage</td></tr>
+<tr><th width=1%>Author</th><td>Jeroen Broks aka Tricky</td></tr>
+<tr><th width=1%>Copyright</th><td>&copy; Jeroen Petrus Broks</td></tr>
+<tr><th width=1%>License</th><td>zLib license</td></tr>
+<tr><th width=1%>Last update</th><td>30 Jun 2015</td></tr>
+</body></html>

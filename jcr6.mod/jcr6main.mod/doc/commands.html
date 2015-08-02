@@ -1,0 +1,397 @@
+<html><head><title>Module jcr6.jcr6main reference</title>
+<link rel=stylesheet Type=text/css href='../../../../doc/bmxstyle.css'>
+</head><body>
+<table width=100% cellspacing=0><tr align=center><td class=small>&nbsp;</td>
+<td class=small width=1%><b>jcr6.jcr6main:</b></td>
+<td class=small width=1%><a href=#globals class=small>Globals</a></td>
+<td class=small width=1%><a href=#functions class=small>Functions</a></td>
+<td class=small width=1%><a href=#types class=small>Types</a></td>
+<td class=small width=1%><a href=#modinfo class=small>Modinfo</a></td>
+<td class=small width=1%><a href='../../../../mod/jcr6.mod/jcr6main.mod/jcr6main.bmx' class=small>Source</a></td>
+<td class=small>&nbsp;</td></tr></table>
+<h1>Module jcr6.jcr6main</h1>
+Main Routines.
+<img src='JCR.png' style='float:right' alt='JCR'>
+This module will be the main module for JCR6
+<!-- Please note that when you are reading this, this module is still in development and should therefore not be used in your actual projects until it's completed. -->
+<p>
+JCR6 is the 6th installment of the "Jeroen's Collected Resource" system. It packs all files into a great .JCR file making your games easier to distribute.<br>
+By default JCR6 can only read it's own JCR6 format without any compression, however, by adding the drivers that come with this module you can for example add zlib compression, and if you have an algorithm of your own, you can add it here as well.<p>JCR6 does support (like its predecessors) patching making your game easily customizable fans without them destroying the original game.<P>Sort out your possibilities here!
+<h2><a name=globals></a>Globals Summary</h2><table class=doc width=100%><tr><td colspan=2>
+<a href=#JCR6CrashError>JCR6CrashError</a>
+, 
+<a href=#JCR6DumpError>JCR6DumpError</a>
+, 
+<a href=#JCR_EDir>JCR_EDir</a>
+, 
+<a href=#JCR_Error>JCR_Error</a>
+</td></tr>
+</table>
+<h2><a name=functions></a>Functions Summary</h2><table class=doc width=100%>
+<tr><td class=docleft width=1%><a href=#EntryList>EntryList</a></td><td class=docright>
+Lists all entries.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#JCR_AddPatch>JCR_AddPatch</a></td><td class=docright>
+Patch a JCR file. The patch will be added to the "MainJCR".
+</td></tr>
+<tr><td class=docleft width=1%><a href=#JCR_B>JCR_B</a></td><td class=docright>
+Reads the contents of a JCR entry into a bank.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#JCR_Create>JCR_Create</a></td><td class=docright>
+This function will start the creation of a JCR file.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#JCR_Dir>JCR_Dir</a></td><td class=docright>
+Reads the directory contents of a JCR file.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#JCR_DirDrivers>JCR_DirDrivers</a></td><td class=docright>
+Returns a string with all loaded drivers separated by commas.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#JCR_E>JCR_E</a></td><td class=docright>
+Extracts a file to a temp folder and returns the name of the file where the data was extracted to.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#JCR_E_Clear>JCR_E_Clear</a></td><td class=docright>
+Deletes all files previously created by <a href=#JCR_E>JCR_E</a>.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#JCR_Exists>JCR_Exists</a></td><td class=docright>
+True if a JCR file contains a certain entry. False if it doesn't.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#JCR_Extract>JCR_Extract</a></td><td class=docright>
+Extracts a JCR File to the given location.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#JCR_ListFile>JCR_ListFile</a></td><td class=docright>
+Lists a text file within a JCR6 file in a TList, and with for eachin you can read out all the lines.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#JCR_LoadMap>JCR_LoadMap</a></td><td class=docright>
+Loads a stringmap / tmap stored in a JCR file.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#JCR_LoadString>JCR_LoadString</a></td><td class=docright>
+Loads a string from a JCR6 file.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#JCR_ReadFile>JCR_ReadFile</a></td><td class=docright>
+Reads a JCR entry as a TStream. All TStream commands which can read out TStreams should be useable on this.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ListCompDrivers>ListCompDrivers</a></td><td class=docright>
+Returns all the names of the currently registered drivers in an array.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#RegisterCompDriver>RegisterCompDriver</a></td><td class=docright>
+If you made a driver, you need this function to register it.
+</td></tr>
+</table>
+<h2><a name=types></a>Types Summary</h2><table class=doc width=100%>
+<tr><td class=docleft width=1%><a href=#DRV_Compression>DRV_Compression</a></td><td class=docright>
+This type can be used to create your own compression driver. Just extend it.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#DRV_JCRDIR>DRV_JCRDIR</a></td><td class=docright>
+Driver type.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#JCR_JAMERR_Driver>JCR_JAMERR_Driver</a></td><td class=docright>
+This type can be used to extend in order to make JCR respond with your own error messaging! If you chain this to multiple ones, then they will ALL be executed (in the order in which they were added during running), so use this feature with care!
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TJCRCreate>TJCRCreate</a></td><td class=docright>
+This type is needed to create a JCR file.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TJCRCreateStream>TJCRCreateStream</a></td><td class=docright>
+This is an extended stream you need for writing data directly into a JCR6 entry. Use the Stream variable inside it for the stream commands.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TJCRDir>TJCRDir</a></td><td class=docright>
+This type is used by JCR_Dir() to store all information in.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TJCREntry>TJCREntry</a></td><td class=docright>
+This type contains all entry data.
+</td></tr>
+</table>
+<h2
+ id=globalsdet>Globals
+</h2>
+<table class=doc width=100% cellspacing=3 id=JCR6CrashError>
+<tr><td class=doctop colspan=2>Global JCR6CrashError</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>When set to true, JCR6 will crash out on an error, and (if possible) put on a comment box containing the error. If set to true, it will also dump on std out, like JCR6DumpError does. Cut short, if this is set the JCR6DumpError state doesn't matter any more :)</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=JCR6DumpError>
+<tr><td class=doctop colspan=2>Global JCR6DumpError</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>When set to true, JCR6 will dump any errors that occur to stdout.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=JCR_EDir>
+<tr><td class=doctop colspan=2>Global JCR_EDir$</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This variable should contain the directory path of where to store the files created by JCR_E. Please always pick a folder in which files can be safely removed without doing any damage to your users.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=JCR_Error>
+<tr><td class=doctop colspan=2>Global JCR_Error:TJCR_Error</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This variable will be set to Null when no error occurred in the last JCR operation. Otherwise it will contain an object with the field ErrorMessage containing the error message, the field File with the JCR file you were trying to access and Entry with the entry (if one is asked for). The variable function contains the name of the function in which the error was caused.</td></tr>
+</table>
+<br>
+<h2
+ id=functionsdet>Functions
+</h2>
+<table class=doc width=100% cellspacing=3 id=EntryList>
+<tr><td class=doctop colspan=2>Function EntryList:TMapEnumerator(JCR:TJCRDir)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Lists all entries.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>These are only string values containing file names. In case insensitive files they are all in UPPERCASE!<br>This function should be useable with EachIn.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=JCR_AddPatch>
+<tr><td class=doctop colspan=2>Function JCR_AddPatch(MainJCR:TJCRDir,Patch:Object,requiresignature$="")</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Patch a JCR file. The patch will be added to the "MainJCR".</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>You can either call for a new file or an existing TJCRDir.<br>Important to note is that the config of the patch file is ignored, so the settings of the main file are dominant.<p>It does not matter if the original or the patch are true JCR6 files. As long as the filetype is supported by JCR6 by default or any included drivers, the patcher will work all the same.<p>If the 'requiresignature' parameter is set, then the patched file MUST have the same signature as requested or the patch will fail. If the parameter is not set, any signature or even no signature at all will all be fine.<p>Returns True when the patch is succesful and False if it failed.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=JCR_B>
+<tr><td class=doctop colspan=2>Function JCR_B:TBank(JCR:Object,Entry$)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Reads the contents of a JCR entry into a bank.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Some functions within BlitzMax allow you to load data from this. LoadImage for example. LoadImage(JCR_B("MyJCR.JCR","MyImage.png")) works.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=JCR_Create>
+<tr><td class=doctop colspan=2>Function JCR_Create:TJCRCreate(JCRFile$,Config:configmap=Null)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This function will start the creation of a JCR file.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=JCR_Dir>
+<tr><td class=doctop colspan=2>Function JCR_Dir:TJCRDir(JCRFile$)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Reads the directory contents of a JCR file.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Though you can request to access the JCR file directy, using this function is preferred (as the feature you request will do it otherwise, anyway). Having a pre-read directory also allows you to use the patching possibilities. The file types that can be read this way are defined by the drivers you loaded. When the file was not found or no drivers were present that recognize this file, this function will return Null.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=JCR_DirDrivers>
+<tr><td class=doctop colspan=2>Function JCR_DirDrivers$()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Returns a string with all loaded drivers separated by commas.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=JCR_E>
+<tr><td class=doctop colspan=2>Function JCR_E$(JCR:Object,Entry$,Prefix$="")</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Extracts a file to a temp folder and returns the name of the file where the data was extracted to.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Frankly, this one has only been added for cases in which you really cannot use <a href=#JCR_B>JCR_B</a> for any reason. But if JCR_B works, then you best not use this one, but that's my humble opinion.
+Before using this function, you really shouldset the variable JCR_EDir$ first, in which you store the full path of your swap dir. Please note, I cannot guarantee the safety of any files stored in that folder. In other words, you should use a folder for this that is explicitly set up for this purpose.
+JCR creates a log of all files JCR_E creates, and when you use the <a href=#JCR_E_Clear>JCR_E_Clear</a> function, all these files will be deleted.
+about: When you set the <i>Prefix</i> parameter this function will place that prefix in. This can prevent nasty effects from caching when doing this with two entries with the same bare filename (which is only an issue if JCR_E_Clear was used between loading the two).</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=JCR_E_Clear>
+<tr><td class=doctop colspan=2>Function JCR_E_Clear()   ' Delete all files created by JCR_E()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Deletes all files previously created by <a href=#JCR_E>JCR_E</a>.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Important Note!<br>Please note that when your program ends all data <a href=#JCR_E>JCR_E</a> creates for JCR_E_Clear is lost, meaning that JCR_E_Clear won't see this files any more and leave them alone. If left untended they'll remain there eating diskspace forever. Therefore I really recommand to use JCR_E_Clear immediately after nearly every time you've been loading stuff from a file created with JCR_E.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=JCR_Exists>
+<tr><td class=doctop colspan=2>Function JCR_Exists(JCR:Object,Entry$)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>True if a JCR file contains a certain entry. False if it doesn't.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=JCR_Extract>
+<tr><td class=doctop colspan=2>Function JCR_Extract(JCR:Object,Entry:String,Dest$="",DirectDest=False)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Extracts a JCR File to the given location.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Please note that Dest$ will normally be considered a folder in which the extract the file to, however when 'DirectDest' is set to 'True' it will be a direct file to write to.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=JCR_ListFile>
+<tr><td class=doctop colspan=2>Function JCR_ListFile:TList(MainFile:Object,file$)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Lists a text file within a JCR6 file in a TList, and with for eachin you can read out all the lines.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=JCR_LoadMap>
+<tr><td class=doctop colspan=2>Function JCR_LoadMap:StringMap(JCR:Object,Entry$)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Loads a stringmap / tmap stored in a JCR file.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>This only works for StringMaps or TMaps on which the keys and values are both strings. Though the result is returned as a StringMap, you can assign the data into a TMap as well.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=JCR_LoadString>
+<tr><td class=doctop colspan=2>Function JCR_LoadString$(JCR:Object,Entry$)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Loads a string from a JCR6 file.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=JCR_ReadFile>
+<tr><td class=doctop colspan=2>Function JCR_ReadFile:TStream(JCR:Object,Entry$)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Reads a JCR entry as a TStream. All TStream commands which can read out TStreams should be useable on this.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>This is just a quick shortcut for ReadFile(JCR_B("MyJCR.JCR","MyEntry")), so you may use that in stead, but this shortcut is easier, I think :P.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=ListCompDrivers>
+<tr><td class=doctop colspan=2>Function ListCompDrivers:String[]()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Returns all the names of the currently registered drivers in an array.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=RegisterCompDriver>
+<tr><td class=doctop colspan=2>Function RegisterCompDriver(Name$,Driver:Object)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>If you made a driver, you need this function to register it.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>For example if you made a driver for lzma in a type named 'JCR_LZMA' then type: RegisterCompDriver("lzma",New JCR_LZMA).<br>As this function acts case sensitive it's recommended to only use LOWER CASE for driver names.</td></tr>
+</table>
+<br>
+<h2
+ id=typesdet>Types
+</h2>
+<table class=doc width=100% cellspacing=3 id=DRV_Compression>
+<tr><td class=doctop colspan=2>Type DRV_Compression</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This type can be used to create your own compression driver. Just extend it.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>When you just leave it to the drivers JCR6 has by default, then ignore the existance of this type!</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=DRV_Compression_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#compress>compress</a></td><td class=docright>
+This function must tell the driver how to compress a file. The B parameters must contain the bank to be compressed, and it should return the compressed data into a bank.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Expand>Expand</a></td><td class=docright>
+This Function must tell the driver how To decompress (Or expand) a file. The B parameter must contain the bank To be decompressed, And it should Return the decompressed data into a bank.
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=compress>
+<tr><td class=doctop colspan=2>Method compress:TBank(B:TBank) Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This function must tell the driver how to compress a file. The B parameters must contain the bank to be compressed, and it should return the compressed data into a bank.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Expand>
+<tr><td class=doctop colspan=2>Method Expand:TBank(B:TBank,realsize) Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This Function must tell the driver how To decompress (Or expand) a file. The B parameter must contain the bank To be decompressed, And it should Return the decompressed data into a bank.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=DRV_JCRDIR>
+<tr><td class=doctop colspan=2>Type DRV_JCRDIR</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Driver type.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>This type can be used to add your own file formats to JCR6. It must contain three methods. Called Recognize(fil$) which returns true if a file is recognized as readable by your driver, and Dir(fil$) which returns the data into a TJCRDir object. Both methods will only take the filename for a parameter. The third method is Name$() which should just return the name of the file type.<p>When you just use JCR6 the way it is, you won't need this type :)</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=DRV_JCRDIR_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#Dir>Dir</a></td><td class=docright>
+When writing a driver, this method must be present in order to tell JCR6 how to read a directory. I recommend a thorough analysis of the BlitzMax source code of JCR6 for this!
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Name>Name</a></td><td class=docright>
+This function should return the name of your driver as a string. Nothing more.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Recognize>Recognize</a></td><td class=docright>
+When writing a driver, this method must be present in order to tell JCR6 how to recognize a file.
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Dir>
+<tr><td class=doctop colspan=2>Method Dir:TJCRDir(fil$) Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>When writing a driver, this method must be present in order to tell JCR6 how to read a directory. I recommend a thorough analysis of the BlitzMax source code of JCR6 for this!</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Name>
+<tr><td class=doctop colspan=2>Method Name$() Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This function should return the name of your driver as a string. Nothing more.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Recognize>
+<tr><td class=doctop colspan=2>Method Recognize(fil$) Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>When writing a driver, this method must be present in order to tell JCR6 how to recognize a file.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=JCR_JAMERR_Driver>
+<tr><td class=doctop colspan=2>Type JCR_JAMERR_Driver</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This type can be used to extend in order to make JCR respond with your own error messaging! If you chain this to multiple ones, then they will ALL be executed (in the order in which they were added during running), so use this feature with care!</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=JCR_JAMERR_Driver_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#DumpError>DumpError</a></td><td class=docright>
+This function will be called in order to give your own error messaging.
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=DumpError>
+<tr><td class=doctop colspan=2>Method DumpError(Dump$,ERR:TJCR_Error) Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This function will be called in order to give your own error messaging.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>The dump$ stat will contain the full error as a (multi-line) string, the ERR will contain the actual object var in which all error data is stored. What is best to you?</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TJCRCreate>
+<tr><td class=doctop colspan=2>Type TJCRCreate Extends TJCRDir</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This type is needed to create a JCR file.</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TJCRCreate_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#AddEntry>AddEntry</a></td><td class=docright>
+Adds a files as an entry into a JCR6 file.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#AddImport>AddImport</a></td><td class=docright>
+Adds an optional dependency to a JCR6.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#AddRequire>AddRequire</a></td><td class=docright>
+adds an require dependency to a JCR6.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#AddString>AddString</a></td><td class=docright>
+Saves a string into a JCR6 file as an entry.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Close>Close</a></td><td class=docright>
+Closes a JCR file.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#CreateEntry>CreateEntry</a></td><td class=docright>
+Creates an entry on the fly for directly writing data to it. You can use all streaming commands that write-only streams support. In stead of closefile() or closestream(), you should use the CloseEntry() method in the returned value.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#SaveMap>SaveMap</a></td><td class=docright>
+Saves a TMap or StringMap (which is nothing more but an extended TMap) into a JCR file. Only maps in which all keys and values are strings and only strings work here.
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=AddEntry>
+<tr><td class=doctop colspan=2>Method AddEntry:TJCREntry(Original:Object,Entry$="",Algorithm$="Store",Author$="",Notes$="")</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Adds a files as an entry into a JCR6 file.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=AddImport>
+<tr><td class=doctop colspan=2>Method AddImport(A$,sig$="")</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Adds an optional dependency to a JCR6.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=AddRequire>
+<tr><td class=doctop colspan=2>Method AddRequire(A$,sig$="")</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>adds an require dependency to a JCR6.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=AddString>
+<tr><td class=doctop colspan=2>Method AddString(OriString$,Entry$,Algorithm$="Store",Author$="",Notes$="")</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Saves a string into a JCR6 file as an entry.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Close>
+<tr><td class=doctop colspan=2>Method Close(algorithm$="Store")</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Closes a JCR file.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=CreateEntry>
+<tr><td class=doctop colspan=2>Method CreateEntry:TJCRCreateStream(EntryName$,Algorithm$="Store",Author$="",Notes$="")</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Creates an entry on the fly for directly writing data to it. You can use all streaming commands that write-only streams support. In stead of closefile() or closestream(), you should use the CloseEntry() method in the returned value.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=SaveMap>
+<tr><td class=doctop colspan=2>Method SaveMap(Map:TMap,Entry$,Algorithm$="Store",Author$="",Notes$="")</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Saves a TMap or StringMap (which is nothing more but an extended TMap) into a JCR file. Only maps in which all keys and values are strings and only strings work here.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TJCRCreateStream>
+<tr><td class=doctop colspan=2>Type TJCRCreateStream</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This is an extended stream you need for writing data directly into a JCR6 entry. Use the Stream variable inside it for the stream commands.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>If you want a JCR entry in which you can write directly, use the CreateEntry() method from the TJCRCreate type and a value this type will be returned. You can use all regular streaming comments on it you can use in a 'writeonly' file. Closure however should not be done with CloseFile/Closestream, but with the Close() method of this type. Only this way will the file be correctly added to the JCR6 file!</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TJCRCreateStream_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#CloseEntry>CloseEntry</a></td><td class=docright>
+Closes an entry inside a JCR file.
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=CloseEntry>
+<tr><td class=doctop colspan=2>Method CloseEntry()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Closes an entry inside a JCR file.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Use this in stead of CloseFile() or CloseStream()<p>When you close the JCR as a whole all open entries should automatically be closed, however it's better you close them yourself before closing the JCR file as a whole to prevent any bad stuff.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TJCRDir>
+<tr><td class=doctop colspan=2>Type TJCRDir</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This type is used by JCR_Dir() to store all information in.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TJCREntry>
+<tr><td class=doctop colspan=2>Type TJCREntry</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This type contains all entry data.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>For those who went into the deep of JCR5, this type REPLACES TRFATEntry!<p>NEVER assign any data to this yourself or JCR6 will malfunction (only exception is of course when you are writing a new file format driver for JCR6).</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TJCREntry_fields></a>Fields Summary</th></tr><tr><td colspan=2>
+<a href=#Size>Size</a>
+</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TJCREntry_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#VNotes>VNotes</a></td><td class=docright>
+Shows the notes with all variables substituted.
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Size>
+<tr><td class=doctop colspan=2>Field Size:Int</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Contains the size of an entry (the REAL size, not the compressed size)</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=VNotes>
+<tr><td class=doctop colspan=2>Method VNotes$()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Shows the notes with all variables substituted.</td></tr>
+</table>
+<br>
+<h2 id=modinfo>Module Information</h2>
+<table width=100%>
+<tr><th width=1%>Name</th><td>jcr6.jcr6main</td></tr>
+<tr><th width=1%>Author</th><td>Jeroen P. Broks</td></tr>
+<tr><th width=1%>License</th><td>Mozilla Public License 2.0</td></tr>
+<tr><th width=1%>Last mod build</th><td>29/7/2015</td></tr>
+</body></html>

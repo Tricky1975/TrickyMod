@@ -1,0 +1,81 @@
+<html><head><title>Tricky_Teddybear.TeddyDraw reference</title>
+<link rel=stylesheet Type=text/css href='../../../../doc/bmxstyle.css'>
+</head><body>
+<table width=100% cellspacing=0><tr align=center><td class=small>&nbsp;</td>
+<td class=small width=1%><b>Tricky_Teddybear.TeddyDraw:</b></td>
+<td class=small width=1%><a href=#functions class=small>Functions</a></td>
+<td class=small width=1%><a href=#modinfo class=small>Modinfo</a></td>
+<td class=small width=1%><a href='../../../../mod/tricky_teddybear.mod/teddydraw.mod/teddydraw.bmx' class=small>Source</a></td>
+<td class=small>&nbsp;</td></tr></table>
+<h1>Tricky_Teddybear.TeddyDraw</h1>
+<img src='Teddy.png' style='float:left'><h1>Teddy Bear</h1>
+<p>
+Teddybear is a simple 2D map tile engine. It comes in Three Modules. TeddyCore, TeddyDraw and TeddySave.
+TeddyCore only contains the core and loader of TeddyBear, this module is handy when you don't need the drawer and saver, for example for when your game has it's own drawing routines.
+TeddyDraw can draw all maps out. When importing this module, you don't need to import the core any more as this will happen automatically, however, it's no problem when you still do so ;)
+TeddySave is for saving your levels. You only need this routine when you want to create your own level editor for teddybear.
+<p>
+The "official" TeddyBear editor utility has been licensed under the GNU General Public License. The three modules for BlitzMax have been licensed under the Mozilla Public License.
+<p>
+In short that means that only the editor may only be edited and distributed, blah-blah-blah under the terms of the GPL. The modules may be used in your own programs even in close-sourced commercial programs as long as the source of the modules themselves remain Open-Source. So your own code files don't have to be, only the TeddyBear files :)
+<p>
+<p>
+<!--
+<span style='color:red; font-size:20pt'><blink>IMPORTANT NOTE</blink></span>
+NEVER import BOTH modules. Always either one or the other, otherwise you can (and most likely will) get system conflicts.
+--><!-- This issue has been fixed -->
+<p>
+<p>Then to answer the question how Teddybear got its name, it's basically a pun to TEd.
+The TEd level editor has been used to design the levels for many famous games, most notably the Commander Keen series,
+Wolfenstein 3D and Rise of the Triad, but there are more games designed with it.
+<p>
+Requirements to compile:
+<ol type=i>
+<li>First of all BlitzMax http://www.blitzmax.com</li>
+<li>The bah.volumes module for BlitzMax written by Bruce A. Henderson. This module can be found on the BlitzMax forums under the "Brucey's Modules" forum.</li>
+<li>JCR6</li>
+<li>GALE (for the editor. The modules do not require this).</li>
+<li>And several of Tricky's modules which can be downloaded at: <a href='http://trickymods.tbbs.nl'>http://trickymods.tbbs.nl</a>. The "unstable" versions of JCR6 and GALE can also be found here</li>
+<li>Recommended, though not required the version of BlitzMax for which I compiled my modules myself is v1.50 or higher.</li>
+</ol>
+<h2><a name=functions></a>Functions Summary</h2><table class=doc width=100%>
+<tr><td class=docleft width=1%><a href=#TeddyDrawAllLayers>TeddyDrawAllLayers</a></td><td class=docright>
+Draws all level layers.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TeddyDrawLayer>TeddyDrawLayer</a></td><td class=docright>
+Draws a level layer.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TeddyLoadAllTextures>TeddyLoadAllTextures</a></td><td class=docright>
+This function loads all textures into the level.
+</td></tr>
+</table>
+<h2
+ id=functionsdet>Functions
+</h2>
+<table class=doc width=100% cellspacing=3 id=TeddyDrawAllLayers>
+<tr><td class=doctop colspan=2>Function TeddyDrawAllLayers(Level:TeddyBear,ScreenX=0,ScreenY=0)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Draws all level layers.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Important to note is that it will always draw all layers in alphabetic order of the layer names. If that's not the order you want, you'll have to draw them all manually in your own order.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TeddyDrawLayer>
+<tr><td class=doctop colspan=2>Function TeddyDrawLayer(Level:TeddyBear, Layer:String,ScreenX=0,ScreenY=0)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Draws a level layer.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Returns true if succusful and false when fails. (Mostly fails only when you send in a NULL object for a level). It does not animate anything. If you need animation you'll have to come up with an alternate routine.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TeddyLoadAllTextures>
+<tr><td class=doctop colspan=2>Function TeddyLoadAllTextures(Level:TeddyBear, JCRMap:TJCRDir, Prefix$="")</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This function loads all textures into the level.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>For doing this this function will assume all texture files live inside a JCR5 file that has been called by JCR_Dir. If you don't want to use textures from a JCR5 file you can still use JCR5_ReadDir to fetch the directory to work from.
+about: The 'prefix' parameter will result into prefixing all texture files as stored inside the JCR file. Specifically meant for when your textures live inside a certain directory inside the JCR5 file. It's up to how you setup Teddybear if you actually 'need' this.<p>Note: If you use the prefix for pathnames you MUST end it with a "/" or the textures will NOT be found.</td></tr>
+</table>
+<br>
+<h2 id=modinfo>Module Information</h2>
+<table width=100%>
+<tr><th width=1%>Module</th><td>Tricky_Teddybear.TeddyDraw</td></tr>
+<tr><th width=1%>Written by</th><td>Jeroen Petrus Broks</td></tr>
+<tr><th width=1%>Version</th><td>15.07.29</td></tr>
+<tr><th width=1%>Copyright</th><td>(c) Copyright Jeroen Petrus Broks, 2012-2015</td></tr>
+<tr><th width=1%>License</th><td>Mozilla Public License</td></tr>
+</body></html>
