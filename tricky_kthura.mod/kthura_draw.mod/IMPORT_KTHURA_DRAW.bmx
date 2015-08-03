@@ -29,10 +29,16 @@ Assert KMap Else "Cannot draw a map when it's null"
 If Not KMap Return KthuraError("Cannot draw a map when it's null") ' Make sure we don't deal with null, since "Assert" only works in debug mode.
 Local k$,O:TKthuraObject
 Local d:ktdrawdriver
+Local okind$
 For k=EachIn MapKeys(KMap.DrawMap)
 	o = kmap.drawmap.get(k)	
 	If o ' -- The actor engine can sometimes cause an empty object to be created. This should fix that.
 		If o.visible Or ForceVisible
+		 	If Left(o.kind,1)="$" 
+				okind = "CSpot
+				Else
+				okind=o.kind
+				endif
 			d = ktdrawdriver(MapValueForKey(drawdrivers,o.kind))
 			Assert d Else "Unknown object kind: "+o.kind
 			If Not d Return KthuraError("Unknown object kind: "+o.kind)
@@ -285,7 +291,7 @@ Type KTOther Extends Ktdrawdriver
 	Method OGetTex(O:TKthuraObject) End Method
 	End Type
 Global DKOther:KTOther = New KTOther
-Global OtherNames$[] = ["Exit","Entrance"]
+Global OtherNames$[] = ["Exit","Entrance","CSpot"] ' All objects marked with $ will be taken as a CSpot (or customized spot)
 	
 
 
