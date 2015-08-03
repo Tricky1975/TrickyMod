@@ -44,7 +44,8 @@ If caseinsensitive
 	S=Upper(S)
 	F=Upper(F)
 	EndIf
-Return Checkers(F,Len(S))[func]=S
+Local ch(S$,L)=Checkers[func]	
+Return Ch(F,Len(S))=S
 End Function
 
 Public
