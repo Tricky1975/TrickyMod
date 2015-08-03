@@ -46,7 +46,7 @@ End Rem
 Function D_Add(K$,V$)  
 ' Too lazy to use MapInsert all the time :P
 MapInsert Mdirry,K,v
-DebugLog "Dirry: "+K+" = "+V
+'DebugLog "Dirry: "+K+" = "+V
 End Function
 
 Rem
