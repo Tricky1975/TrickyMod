@@ -31,3 +31,6 @@ End Rem
 Function Suffixed(Fullstring$,Suffix$,caseinsensitive=False)
 Return truecheck(Fullstring,suffix,casesensitive,0)
 End Function
+
+MKL_Version "",""
+MKL_Lic     "",""
