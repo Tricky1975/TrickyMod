@@ -469,16 +469,16 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	MapInsert ch2.Points,pointsname,ST
 	End Method
 
-	Method IncStat(char$,Stat$,value=1) ' BLD: Increases a stat by the given number. If value is either 0 or undefined, the stat will be increased by 1
+	Method IncStat(char$,Statn$,value=1) ' BLD: Increases a stat by the given number. If value is either 0 or undefined, the stat will be increased by 1
 	Local v=value
 	If v=0 v=1
-	DefStat char,stat,stat(char,stat)+v
+	DefStat char,stat,stat(char,statn)+v
 	End Method
 
-	Method DecStat(char$,Stat$,value=1) ' BLD: Decreases a stat by the given number. If value is either 0 or undefined, the stat will be decreased by 1
+	Method DecStat(char$,Statn$,value=1) ' BLD: Decreases a stat by the given number. If value is either 0 or undefined, the stat will be decreased by 1
 	Local v=value
 	If v=0 v=1
-	DefStat char,stat,stat(char,stat)-v
+	DefStat char,stat,stat(char,statn)-v
 	End Method
 		
 	End Type	
