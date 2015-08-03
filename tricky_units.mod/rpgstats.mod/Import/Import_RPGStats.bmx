@@ -322,7 +322,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	
 	Method GetData$(char$,key$) ' BLD: Retrieve the data in a character
 	Local ch:RPGCharacter = grabchar(char)
-	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.Get","char,"+char])
+	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.GetData","char,"+char,"Data:"+key])
 	'Return ch.strdata.value(key)
 	Local td:trpgdata = trpgdata(MapValueForKey(ch.strdata,key))
 	If Not td Return ""
