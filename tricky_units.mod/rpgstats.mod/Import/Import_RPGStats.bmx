@@ -8,7 +8,7 @@ Rem
 	http://mozilla.org/MPL/2.0/.
 
 
-Version: 15.07.27
+Version: 15.08.03
 
 End Rem
 
@@ -35,7 +35,7 @@ Import tricky_units.TrickyReadString
 Import tricky_units.jcr6stringmap
 Import brl.max2d
 
-MKL_Version "Units - RPGStats/RPGStats.bmx","15.07.27"
+MKL_Version "Units - RPGStats/RPGStats.bmx","15.08.03"
 MKL_Lic     "Units - RPGStats/RPGStats.bmx","Mozilla Public License 2.0"
 
 Private

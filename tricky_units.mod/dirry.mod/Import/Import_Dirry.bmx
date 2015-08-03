@@ -24,7 +24,7 @@ Rem
 
 
 
-Version: 15.02.03
+Version: 15.08.03
 
 End Rem
 
@@ -86,5 +86,5 @@ D_Add("$Home$",GetUserHomeDir())
 
 
 
-MKL_Version "Units - Dirry/Dirry.bmx","15.02.03"
+MKL_Version "Units - Dirry/Dirry.bmx","15.08.03"
 MKL_Lic     "Units - Dirry/Dirry.bmx","zLIB License"
