@@ -1004,13 +1004,13 @@ If requiresignature And TPatch.Config.S("__Signature")<>requiresignature
 	Return
 	EndIf
 Local casesensitive = MainJCR.Config.B("__CaseSensitive")
-Local E$
+Local E$,OE$
 ' Entries
-For E$ = EachIn MapKeys(TPatch.Entries)
+For OE$ = EachIn MapKeys(TPatch.Entries)
 	Local CE$ = tpath+E
 	If Not casesensitive CE = Upper(CE)
-	E = tpath+E
-	TJCREntry(MapValueForKey(TPatch.Entries,E)).Filename = E
+	E = tpath+OE
+	TJCREntry(MapValueForKey(TPatch.Entries,OE)).Filename = E
 	MapInsert MainJCR.Entries,CE,MapValueForKey(TPatch.Entries,E)
 	Next
 For E$ = EachIn MapKeys(TPatch.Comments)
