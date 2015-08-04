@@ -11,13 +11,13 @@ Rem
 Version: 15.05.20
 
 End Rem
-'WARNING! This file is still IN DEVELOPMENT!
-'It should therefore not be used for ANY purpose at all until it's completed!
 
 ' History:
 ' 15.02.01 - JCR6 Main module declared "safe"
 ' 15.02.17 - Added an error driver so your game or utility can set up a callback based error handling whenever a JCR6 error pops up.
 ' 15.03.11 - Fixed a bug that could cause errors when having multiple dir drivers loaded and recognizing only the first in line.
+' 15.08.04 - Add Patch can now force all files in the patch JCR file into a path in the entire dir repository. Please note this is optional, though older code using this routine will NOT have to be changed. :)
+'          - Development note removed. This file should now be safe to use, though keep in mind that unless downloaded from sourceforge, this version may constantly be updated and show some bugs are a result. 8)
 Strict
 
 
@@ -979,8 +979,10 @@ Rem
 bbdoc: Patch a JCR file. The patch will be added to the "MainJCR".
 about: You can either call for a new file or an existing TJCRDir.<br>Important to note is that the config of the patch file is ignored, so the settings of the main file are dominant.<p>It does not matter if the original or the patch are true JCR6 files. As long as the filetype is supported by JCR6 by default or any included drivers, the patcher will work all the same.<p>If the 'requiresignature' parameter is set, then the patched file MUST have the same signature as requested or the patch will fail. If the parameter is not set, any signature or even no signature at all will all be fine.<p>Returns True when the patch is succesful and False if it failed. 
 End Rem
-Function JCR_AddPatch(MainJCR:TJCRDir,Patch:Object,requiresignature$="")
+Function JCR_AddPatch(MainJCR:TJCRDir,Patch:Object,requiresignature$="",Path$="")
 Local TPatch:TJCRDir
+Local TPath = Replace(Path,"\","/")
+If path And Right(path,1)<>"/" path:+"/"
 If TJCRDir(Patch)
 	TPatch = TJCRDir(Patch)
 	ElseIf String(Patch)
@@ -1005,8 +1007,9 @@ Local casesensitive = MainJCR.Config.B("__CaseSensitive")
 Local E$
 ' Entries
 For E$ = EachIn MapKeys(TPatch.Entries)
-	Local CE$ = E
+	Local CE$ = tpath+E
 	If Not casesensitive CE = Upper(CE)
+	E.FileName = tpath+E.FileName
 	MapInsert MainJCR.Entries,CE,MapValueForKey(TPatch.Entries,E)
 	Next
 For E$ = EachIn MapKeys(TPatch.Comments)
