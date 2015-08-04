@@ -1009,7 +1009,7 @@ Local E$
 For E$ = EachIn MapKeys(TPatch.Entries)
 	Local CE$ = tpath+E
 	If Not casesensitive CE = Upper(CE)
-	E.FileName = tpath+E.FileName
+	E = tpath+E
 	MapInsert MainJCR.Entries,CE,MapValueForKey(TPatch.Entries,E)
 	Next
 For E$ = EachIn MapKeys(TPatch.Comments)
