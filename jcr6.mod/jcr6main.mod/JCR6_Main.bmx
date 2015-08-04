@@ -982,7 +982,7 @@ End Rem
 Function JCR_AddPatch(MainJCR:TJCRDir,Patch:Object,requiresignature$="",Path$="")
 Local TPatch:TJCRDir
 Local TPath$ = Replace(Path,"\","/")
-If path And Right(path,1)<>"/" path:+"/"
+If tpath And Right(tpath,1)<>"/" tpath:+"/"
 If TJCRDir(Patch)
 	TPatch = TJCRDir(Patch)
 	ElseIf String(Patch)
