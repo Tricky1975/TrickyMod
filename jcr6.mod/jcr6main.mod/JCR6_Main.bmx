@@ -8,7 +8,7 @@ Rem
 	http://mozilla.org/MPL/2.0/.
 
 
-Version: 15.05.20
+Version: 15.08.04
 
 End Rem
 
@@ -36,7 +36,7 @@ Import tricky_units.MKL_Version
 Import "-ldl"
 ?
 
-MKL_Version "JCR6 - BlitzMax/JCR6_Main.bmx","15.05.20"
+MKL_Version "JCR6 - BlitzMax/JCR6_Main.bmx","15.08.04"
 MKL_Lic     "JCR6 - BlitzMax/JCR6_Main.bmx","Mozilla Public License 2.0"
 
 Private
