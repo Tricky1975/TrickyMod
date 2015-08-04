@@ -540,6 +540,7 @@ If Not MapContains(M.Entries,E)
 	Return
 	EndIf
 Local Ent:TJCREntry = TJCREntry(MapValueForKey(M.Entries,E))
+If Not Ent JCR_JAMERR "Incorrect data received from entry!","<?>",entry,"JCR_B(<???>,~q"+Entry+"~q)"; return
 If Debug
 	Print "Going to access "+E+" from file: "+Ent.Mainfile
 	Print "Offset: "+Ent.Offset
