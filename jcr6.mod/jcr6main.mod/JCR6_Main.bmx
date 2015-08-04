@@ -981,7 +981,7 @@ about: You can either call for a new file or an existing TJCRDir.<br>Important t
 End Rem
 Function JCR_AddPatch(MainJCR:TJCRDir,Patch:Object,requiresignature$="",Path$="")
 Local TPatch:TJCRDir
-Local TPath = Replace(Path,"\","/")
+Local TPath$ = Replace(Path,"\","/")
 If path And Right(path,1)<>"/" path:+"/"
 If TJCRDir(Patch)
 	TPatch = TJCRDir(Patch)
