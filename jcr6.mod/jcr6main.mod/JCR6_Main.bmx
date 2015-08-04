@@ -1007,7 +1007,7 @@ Local casesensitive = MainJCR.Config.B("__CaseSensitive")
 Local E$,OE$
 ' Entries
 For OE$ = EachIn MapKeys(TPatch.Entries)
-	Local CE$ = tpath+E
+	Local CE$ = tpath+OE
 	If Not casesensitive CE = Upper(CE)
 	E = tpath+OE
 	TJCREntry(MapValueForKey(TPatch.Entries,OE)).Filename = E
