@@ -14,6 +14,10 @@ End Rem
 Import MaxGUI.Drivers
 Import brl.eventqueue
 Import Gale.Main
+Import tricky_units.MKL_Version
+
+MKL_Version "",""
+MKL_Lic     "",""
 
 
 Rem
@@ -32,6 +36,11 @@ Rem
 bbdoc: If set to true all console output will be displayed on the STD OUT output as well. Handy when you work from the MaxIDE or similar programs ;)
 End Rem
 Global GALEMGUISTDOUT = True
+
+Rem 
+bbdoc: In this variable you should add all gadgets which should be hidden in case an error pops up
+End Rem
+Global GALEGUI_HideOnError:TList = New TList
 
 
 
@@ -67,6 +76,7 @@ Type GALEMainCon Extends GALE_DebugConsole
 	If GALE_ExitGadget 
 		GaleConsoleWrite "Close this window to quit!"
 		ShowGadget GALE_ExitGadget
+		For Local G:TGadget = EachIn GALEGUI_HideOnError HideGadget G next
 		Repeat
 		WaitEvent
 		Until EventID()=Event_windowclose Or EventID()=event_appterminate
