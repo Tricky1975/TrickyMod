@@ -8,7 +8,7 @@ Rem
 	http://mozilla.org/MPL/2.0/.
 
 
-Version: 15.07.12
+Version: 15.08.05
 
 End Rem
 
@@ -47,7 +47,7 @@ Import Gale.M2D
 'Import "../../JCR/UseJCR.bmx"
 
 
-MKL_Version "GALE - GALE_Image.bmx","15.07.12"
+MKL_Version "GALE - GALE_Image.bmx","15.08.05"
 MKL_Lic     "GALE - GALE_Image.bmx","Mozilla Public License 2.0"
 
 Rem

@@ -8,7 +8,7 @@ Rem
 	http://mozilla.org/MPL/2.0/.
 
 
-Version: 15.07.12
+Version: 15.08.05
 
 End Rem
 
@@ -21,7 +21,7 @@ Import JCR6.JCR6MAIN
 Import gale.Main
 Import tricky_units.TrickyReadString
 
-MKL_Version "GALE - GALE_JCR6API.bmx","15.07.12"
+MKL_Version "GALE - GALE_JCR6API.bmx","15.08.05"
 MKL_Lic     "GALE - GALE_JCR6API.bmx","Mozilla Public License 2.0"
 
 Rem

@@ -8,7 +8,7 @@ Rem
 	http://mozilla.org/MPL/2.0/.
 
 
-Version: 15.07.12
+Version: 15.08.05
 
 End Rem
 Import MaxGUI.Drivers
@@ -16,8 +16,8 @@ Import brl.eventqueue
 Import Gale.Main
 Import tricky_units.MKL_Version
 
-MKL_Version "",""
-MKL_Lic     "",""
+MKL_Version "GALE - GALE_MGUI.bmx","15.08.05"
+MKL_Lic     "GALE - GALE_MGUI.bmx","Mozilla Public License 2.0"
 
 
 Rem
@@ -75,8 +75,8 @@ Type GALEMainCon Extends GALE_DebugConsole
 	'WaitKey	
 	If GALE_ExitGadget 
 		GaleConsoleWrite "Close this window to quit!"
+		For Local G:TGadget = EachIn GALEGUI_HideOnError HideGadget G Next
 		ShowGadget GALE_ExitGadget
-		For Local G:TGadget = EachIn GALEGUI_HideOnError HideGadget G next
 		Repeat
 		WaitEvent
 		Until EventID()=Event_windowclose Or EventID()=event_appterminate
