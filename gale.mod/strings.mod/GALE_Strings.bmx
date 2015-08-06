@@ -15,7 +15,7 @@ Import brl.retro
 Import gale.Main
 Import tricky_Units.prefixsuffix
 
-Type TJBC_String ' BLD: Object Str\nString features\n\n<p><span style='color:#ff0000'>Note! Several features in this object have been deprecated as of version 15.08.06 and may be removed somewhere after the year 2017 or later. The object itself is not deprecated and may even be expanded in the future.<br>Several deprecated features are now brought in my strings.lua file which can be found in several repositories of mine. I hope to give it (along with a few other lua "libraries" of mine their own repository soon).
+Type TJBC_String ' BLD: Object Str\nString features\n\n<p><span style='color:#ff0000'>Note! Several features in this object have been deprecated as of version 15.08.06 and may be removed somewhere after the year 2017 or later. The object itself is not deprecated and may even be expanded in the future.<br>Several deprecated features are now brought into my strings.lua file which can be found in several repositories of mine. I hope to give it (along with a few other lua "libraries" of mine their own repository soon).
 
 	Method Char$(A) ' BLD: returns the char of an ASCII code<p style='color:#ff0000;background-color:#000000; font-family:impact; font-size:20'>DEPRECATED!</p>
 	Return Chr(A)
