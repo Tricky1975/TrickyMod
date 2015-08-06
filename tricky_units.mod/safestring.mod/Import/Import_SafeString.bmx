@@ -110,9 +110,9 @@ End Function
 Rem 
 bbdoc: Creates a "Safe String" in C syntax. If you need a different prefix (since some programming languages use a different setup for this, you can just change the prefix
 End Rem
-Function BSString(Str$,BS$="\")
+Function BSString$(Str$,BS$="\")
 	Local BSA=BS[0]
-	Local Ret$ = Replace(SourceString,"\","%"+BSA)
+	Local Ret$ = Replace(Str,"\","%"+BSA)
 	Local Ak
 	For Ak=0 To 255
 		If SafeChars.Find(Chr(Ak))<0 And ak<>BSA Ret = Replace(Ret,Chr(Ak),"\"+ak)
