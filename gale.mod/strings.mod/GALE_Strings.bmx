@@ -78,11 +78,11 @@ Type TJBC_String ' BLD: Object Str\nString features\n\n<p><span style='color:#ff
 	End Method
 	
 	Method Prefixed(S$,Prefix$) ' BLD: Returns 1 if prefixed with the requested prefix and 0 if not
-	Return tricky.units.Prefixed(S,Prefix)
+	Return tricky_units.Prefixed(S,Prefix)
 	End Method
 
 	Method Suffixed(S$,Prefix$) ' BLD: Returns 1 if suffixed with the requested suffix and 0 if not
-	Return tricky.units.Suffixed(S,Prefix)
+	Return tricky_units.Suffixed(S,Prefix)
 	End Method
 	
 	End Type
