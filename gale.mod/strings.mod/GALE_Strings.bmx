@@ -1,39 +1,21 @@
 Rem
-/* ***** BEGIN LICENSE BLOCK *****
- * Version: MPL 2.0
- *
- * The contents of this file are subject to the Mozilla Public License Version
- * 2.0 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
- * http://www.mozilla.org/MPL/
- *
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
- * for the specific language governing rights and limitations under the
- * License.
- *
- * The Original Code is (c) Jeroen P. Broks.
- *
- * The Initial Developer of the Original Code is
- * Jeroen P. Broks.
- * Portions created by the Initial Developer are Copyright (C) 2012, 2013, 2014
- * the Initial Developer. All Rights Reserved.
- *
- * Contributor(s):
- * -
- *
- * ***** END LICENSE BLOCK ***** */
+
+	(c)  Jeroen Petrus Broks.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
 
 
-
-Version: 14.01.01
+Version: 15.08.06
 
 End Rem
 Import brl.retro
 Import gale.Main
 Import tricky_Units.prefixsuffix
 
-Type TJBC_String ' BLD: Object Str\nString features\n\n<span style='color:#ff0000'>Note! Several features in this object have been deprecated as of version 15.08.06 and may be removed somewhere after the year 2017 or later. The object itself is not deprecated and may even be expanded in the future.<br>Several deprecated features are now brought in my strings.lua file which can be found in several repositories of mine. I hope to give it (along with a few other lua "libraries" of mine their own repository soon).
+Type TJBC_String ' BLD: Object Str\nString features\n\n<p><span style='color:#ff0000'>Note! Several features in this object have been deprecated as of version 15.08.06 and may be removed somewhere after the year 2017 or later. The object itself is not deprecated and may even be expanded in the future.<br>Several deprecated features are now brought in my strings.lua file which can be found in several repositories of mine. I hope to give it (along with a few other lua "libraries" of mine their own repository soon).
 
 	Method Char$(A) ' BLD: returns the char of an ASCII code<p style='color:#ff0000;background-color:#000000; font-family:impact; font-size:20'>DEPRECATED!</p>
 	Return Chr(A)
@@ -65,16 +47,16 @@ Type TJBC_String ' BLD: Object Str\nString features\n\n<span style='color:#ff000
 	Return Left(S,1).toupper()+Right(S,Len(S)-1).tolower()
 	End Method
 	
-	Method Left$(S$,L)<p style='color:#ff0000;background-color:#000000; font-family:impact; font-size:20'>DEPRECATED!</p>
+	Method Left$(S$,L)  ' BLD: <p style='color:#ff0000;background-color:#000000; font-family:impact; font-size:20'>DEPRECATED!</p>
 	Return brl.retro.Left(S,L)
 	End Method
 	
 	' Added 13.06.15
-	Method Trim$(S$) ' BLD: Trim function
+	Method Trim$(S$) ' BLD: Trim function <p style='color:#ff0000;background-color:#000000; font-family:impact; font-size:20'>DEPRECATED!</p>
 	Return brl.retro.Trim(S)
 	End Method
 	
-	Method Right$(S$,L)<p style='color:#ff0000;background-color:#000000; font-family:impact; font-size:20'>DEPRECATED!</p>
+	Method Right$(S$,L) ' BLD: <p style='color:#ff0000;background-color:#000000; font-family:impact; font-size:20'>DEPRECATED!</p>
 	Return Brl.Retro.Right(S,L)
 	End Method
 	

@@ -8,7 +8,7 @@ Rem
 	http://mozilla.org/MPL/2.0/.
 
 
-Version: 15.08.05
+Version: 15.08.06
 
 End Rem
 Import MaxGUI.Drivers
@@ -16,7 +16,7 @@ Import brl.eventqueue
 Import Gale.Main
 Import tricky_units.MKL_Version
 
-MKL_Version "GALE - GALE_MGUI.bmx","15.08.05"
+MKL_Version "GALE - GALE_MGUI.bmx","15.08.06"
 MKL_Lic     "GALE - GALE_MGUI.bmx","Mozilla Public License 2.0"
 
 
