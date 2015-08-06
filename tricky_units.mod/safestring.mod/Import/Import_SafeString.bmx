@@ -24,7 +24,7 @@ Rem
 
 
 
-Version: 15.02.03
+Version: 15.08.06
 
 End Rem
 Strict
@@ -58,11 +58,13 @@ ModuleInfo "Question:Are you not entertained?"
 End Rem
 
 
-
+' 12.11.xx - Initial version
+' 15.02.03 - Adepted for the current module usage in my curent framework
+' 15.08.06 - Added BS String, for compatibility with languages with the C formatting of strings.
 
 Import Tricky_units.MKL_Version
 
-MKL_Version "Units - SafeString/SafeString.bmx","15.02.03"
+MKL_Version "Units - SafeString/SafeString.bmx","15.08.06"
 MKL_Lic     "Units - SafeString/SafeString.bmx","zLIB License"
 
 
@@ -104,6 +106,19 @@ Function UnSafeString$(SourceString$)
 	Next
 	Return Ret
 End Function
+
+Rem 
+bbdoc: Creates a "Safe String" in C syntax. If you need a different prefix (since some programming languages use a different setup for this, you can just change the prefix
+End Rem
+Function BSString(Str$,BS$="\")
+	Local BSA=BS[0]
+	Local Ret$ = Replace(SourceString,"\","%"+BSA)
+	Local Ak
+	For Ak=0 To 255
+		If SafeChars.Find(Chr(Ak))<0 And ak<>BSA Ret = Replace(Ret,Chr(Ak),"\"+ak)
+	Next
+	Return Ret
+	End Function
 
 		
 
