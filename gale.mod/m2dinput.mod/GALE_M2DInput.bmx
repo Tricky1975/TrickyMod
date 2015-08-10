@@ -18,7 +18,7 @@ Strict
 ' 15.04.28 - Yeah, stupid me. I had to make sure BMax can read stuff from the API. Well it can now.
 
 Import brl.polledinput
-Import brl.graphics
+Import brl.Graphics
 Import Pub.FreeJoy
 
 Import gale.Main
@@ -31,6 +31,8 @@ MKL_Lic     "GALE - GALE_M2DInput.bmx","Mozilla Public License 2.0"
 Global KH[256],KD[256],MH[4],MD[4],JH[16],JD[16]
 
 Type TGALEINPUT ' BLD: Object INP\nInput functions. (This only works on engines build on the M2D driver for GALE).
+
+	Field Terminate ' BLD: When Grab is called (either manually or manually) this value will contain 1 if the user requested to terminate the application, if not it will contain 0.<br>(NOTE: Though it technically is possible to assign a value to this variable, doing so is pretty pointless as the next Grab will reassign it automatically anyway).
 	
 	Method Grab() ' BLD: Grabs all keyboard input, mouse buttons and joypad buttons. Please note that some engines based on GALE may do this automatically at certain events (like the start of a new cycle for example). 
 	For Local ak=0 To 255
@@ -44,6 +46,7 @@ Type TGALEINPUT ' BLD: Object INP\nInput functions. (This only works on engines 
 			JH[ak]=JoyHit(ak)
 			JD[ak]=JoyDown(ak)
 			EndIf
+		Terminate = AppTerminate()	
 		Next
 	End Method
 	
