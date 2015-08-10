@@ -8,7 +8,7 @@ Rem
 	http://mozilla.org/MPL/2.0/.
 
 
-Version: 15.08.06
+Version: 15.08.11
 
 End Rem
 Import brl.retro

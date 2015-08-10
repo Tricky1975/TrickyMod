@@ -8,7 +8,7 @@ Rem
 	http://mozilla.org/MPL/2.0/.
 
 
-Version: 15.04.29
+Version: 15.08.11
 
 End Rem
 Strict
@@ -16,6 +16,7 @@ Strict
 ' 15.04.02 - Initial version
 ' 15.04.15 - Fixed bug that placed a NULL value in the Lua API register in stead of the actual API
 ' 15.04.28 - Yeah, stupid me. I had to make sure BMax can read stuff from the API. Well it can now.
+' 15.08.11 - Supports the terminate call now too
 
 Import brl.polledinput
 Import brl.Graphics
@@ -24,7 +25,7 @@ Import Pub.FreeJoy
 Import gale.Main
 Import tricky_units.MKL_Version
 
-MKL_Version "GALE - GALE_M2DInput.bmx","15.04.29"
+MKL_Version "GALE - GALE_M2DInput.bmx","15.08.11"
 MKL_Lic     "GALE - GALE_M2DInput.bmx","Mozilla Public License 2.0"
 
 
@@ -46,8 +47,8 @@ Type TGALEINPUT ' BLD: Object INP\nInput functions. (This only works on engines 
 			JH[ak]=JoyHit(ak)
 			JD[ak]=JoyDown(ak)
 			EndIf
-		Terminate = AppTerminate()	
 		Next
+	Terminate = AppTerminate()	
 	End Method
 	
 	Method KeyD(a) ' BLD: Is the key held down on the moment of the last grab?
