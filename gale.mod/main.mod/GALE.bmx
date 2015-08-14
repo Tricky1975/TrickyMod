@@ -1086,6 +1086,11 @@ Type tByeItem
 	Field Param$[]
 	End Type
 
+Rem
+bbdoc: This variable should contain the name of the work JCR when adding Bye scripts is being used through the Sys object
+End Rem
+Global ByeGAEJCR:TJCRDir
+
 Private
 
 Global ByeDrivers:TMap = New TMap
@@ -1105,7 +1110,7 @@ Private
 Type TSysByeDriver Extends tbasebyedriver
 
 	Method ByeDo()
-	Local TS:TLua = GALE_LoadScript(ByeItem.Script)
+	Local TS:TLua = GALE_LoadScript(ByeGALEJCR,ByeItem.Script)
 	End Method
 	
 	End Type
