@@ -1089,7 +1089,7 @@ Type tByeItem
 Rem
 bbdoc: This variable should contain the name of the work JCR when adding Bye scripts is being used through the Sys object
 End Rem
-Global ByeGAEJCR:TJCRDir
+Global ByeGALEJCR:TJCRDir
 
 Private
 
