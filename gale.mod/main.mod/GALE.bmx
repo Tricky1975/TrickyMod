@@ -1097,7 +1097,7 @@ Private
 Global ByeSequence:TList = New TList
 Public
 Function AddToByeSequence()
-ListAddLast ByeSequnece,byeitem
+ListAddLast ByeSequence,byeitem
 End Function
 
 
