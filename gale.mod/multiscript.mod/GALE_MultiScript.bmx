@@ -86,6 +86,16 @@ Function GALE_AddScript(Tag$,L:TLua)
 MapInsert map,Upper(Tag),L
 End Function
 
+Private
+Type TMSByeDriver Extends tbasebyedriver 
+	Method ByeDo()
+		If Not GALE_MS.ContainsScript(ByeItem.Script) Return ConsoleWrite("WARNING! Bye cannot execute script on tag: "+ByeItem.scipt+" (it doesn't exist)")
+		GALE_MS.Run ByeItem.Script,Null
+		End Method
+	End Type
+	
+Public
+
 Rem
 bbdoc: This object is automatically tied to the variable GALE_MS and contains the same features the Lua script can call on.
 End Rem
@@ -149,6 +159,13 @@ Type TScriptBase ' BLD: Object MS\nThis object contains the manager for the mult
 	Method LN_Run(Tag$,File$,f$="main",p$="") ' BLD: Loads and runs a script, but only if the script has not been loaded before. <p>I set this one up, in order to allow you to load the script on the moment they are first called. My Star Story game took great advantage of this possibility
 	LoadNew Tag,File
 	Run tag,f,p
+	End Method
+	
+	Rem
+	bbdoc: Adds a script from MultiScript to be executed when Bye or similar instruction is called.
+	about: Inside the requested script, the function GALE_BYE() will be searched for and executed. No parameters will be taken, and no values will be returned. If a script is not loaded on the moment Bye is called, this part in the sequence will be ignored
+	End Rem
+	Method AddBye(Tag$) ' BLD: Adds a script from MultiScript to be executed when Bye or similar instruction is called.<p>Inside the requested script, the function GALE_BYE() will be searched for and executed. No parameters will be taken, and no values will be returned. If a script is not loaded on the moment Bye is called, this part in the sequence will be ignored
 	End Method
 	
 	End Type
