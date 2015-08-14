@@ -49,6 +49,11 @@ Global RPGJCRDir$
 Global RPGID$
 Global RPGEngine$
 
+Rem
+bbdoc: If set to 'true' the lua scripts tied to a stat will be ignored. (Most of meant for quick viewers)
+End Rem
+Global RPG_IgnoreScripts
+
 Type RPGPoints
 	Field Have,Maximum,Minimum
 	Field MaxCopy$
@@ -213,7 +218,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.Stat","char,"+char,"Stat,"+stat])
 	Local ST:RPGStat = ch.stat(stat)
 	If Not st GALE_Error("Stat doesn't exist",["F,RPGChar.Stat","char,"+char,"Stat,"+stat])
-	If st.scriptfile And st.callfunction
+	If st.scriptfile And st.callfunction And (Not rpg_ingorescripts)
 		Me.Char = Char
 		Me.Stat = Stat
 		csr = "CHARSTAT:"+Upper(st.ScriptFile)
