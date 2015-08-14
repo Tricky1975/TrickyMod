@@ -89,7 +89,7 @@ End Function
 Private
 Type TMSByeDriver Extends tbasebyedriver 
 	Method ByeDo()
-		If Not GALE_MS.ContainsScript(ByeItem.Script) Return ConsoleWrite("WARNING! Bye cannot execute script on tag: "+ByeItem.scipt+" (it doesn't exist)")
+		If Not GALE_MS.ContainsScript(ByeItem.Script) Return L_ConsoleWrite("WARNING! Bye cannot execute script on tag: "+ByeItem.scipt+" (it doesn't exist)")
 		GALE_MS.Run ByeItem.Script,Null
 		End Method
 	End Type
