@@ -87,11 +87,11 @@ Type TGALEINPUT ' BLD: Object INP\nInput functions. (This only works on engines 
 	Return pub.freejoy.JoyY()
 	End Method
 	
-	Method MouseHide()
+	Method MouseHide() ' BLD: Hide the OS mouse pointer
 	HideMouse
 	End Method
 	
-	Method MouseShow()
+	Method MouseShow() ' BLD: Show the OS mouse pointer
 	ShowMouse
 	End Method
 	

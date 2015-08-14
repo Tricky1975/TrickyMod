@@ -1063,9 +1063,56 @@ For Local D$=EachIn Directives
 	Next
 End Function
 
+Public
+
+Rem
+bbdoc: You can use this to create a "bye" driver.  It can be used to set up stuff to be used in Sys.Bye()
+End Rem
+Type TBaseByeDriver
+	
+	Rem
+	bbdoc: Define this method in the driver to set up the feature done in the Bye sequence. No parameters are taken, and no values are returned either.
+	End Rem
+	Method ByeDo() Abstract
+	
+	End Type
+
+Type tByeItem
+	Field ByeTag$
+	'Field ByeDriver:tbasebyedriver
+	Field Script$
+	Field Param$[]
+	End Type
+
+Private
+
+Global ByeDrivers:TMap = New TMap
+Global ByeSequence:TList = New TList
+Global ByeItem:tByeItem
+Public
+
+
+
+Rem 
+xbbdoc: Registers a new bye driver
+End Rem	
+'Function RegisterByeDriver(Tag$,Driver:TBaseByeDriver)
+'MapInsert ByDrivers,tag,driver
+'End Function
+	
+Private
+Type TSysByeDriver Extends tbasebyedriver
+
+	Method ByeDo()
+	Local TS:TLua = GALE_LoadScript(ByeItem.Script)
+	End Method
+	
+	End Type
+
+Global SysByeDriver:Tsysbyedriver = New TSysByeDriver	
+RegisterByeItem "SYS",
 
 ' -- Contents of GALE_Sys.bmx
-
 Public
 Global SysLuaErrorCrash
 Global SysLuaThrow = 1 ' Make a throw to the IDE when in debug mode
@@ -1089,6 +1136,10 @@ Type TJBC_Sys      ' BLD: Object Sys\nThis object contains a few system features
 	End Method
 	
 	Method Bye()     ' BLD: Ends the game immediately.<br>Please note that if there was any closure to be done, that it's skipped now. The game ends, and there it ends.<p>NOTE: NEVER use os.exit() for the job. GALE is able to clean up it's own shit before exitting your program. os.exit() will skip that and that can lead to things to properly closed. Depending on your GALE version this might lead to leaks.
+	For ByeItem=EachIn ByeSequence
+		If Not ByeItem.ByeDriver	GALE_Error("Not a valid Bye Driver for script: "+byeitem.script)
+		ByeItem.ByeDriver.ByeDo
+		next
 	GALECON.GaleConsoleCloseLogFile
 	End
 	End Method
@@ -1102,7 +1153,14 @@ Type TJBC_Sys      ' BLD: Object Sys\nThis object contains a few system features
 	End Method
 	
 	Method TerminateWhenRequested() ' BLD: When the user requested to close down the app that runs this Lua Script, the application will do so. <p>USE WITH CAUTION!!!<br>The system will NOT ask for confirmation and if things need to be done before closing down it won't happen. Only use this feature when you are sure closing down is no trouble at all. (This does not work with GALE.MGUI)
-	If RequestTerminate() GALECON.GaleConsoleCloseLogFile; End
+	If RequestTerminate() GALECON.GaleConsoleCloseLogFile; Bye
+	End Method
+	
+	Method AddByeScript(LuaScript$) ' BLD: Adds a Lua Script to be executed on the moment Sys.Bye() is called or when the application is terminated by TerminateWhenRequested(). Some applications may also be linked to this feature.
+	ByeItem = New tByeItem
+	ByeItem.Script = LuaScript
+	ByeItem.ByeDriver = SysByeDriver
+	ListAddLast ByeSequence,ByeItem
 	End Method
 		
 End Type
@@ -1168,7 +1226,11 @@ Function GALE_Error(Message$,R$[]=Null)
 End Function
 
 'G_LuaRegisterObject New TJBC_Sys,"Sys"
-GALE_Register New TJBC_Sys,"Sys"
+Rem
+bbdoc: Allows direct access to the Sys object for Lua from BlitzBasic, in case such action is required :)
+End Rem
+Global GALE_Sys:TJBC_Sys = New TJBC_sys
+GALE_Register New GALE_Sys,"Sys"
 'GALE.MaxLua4GALE.G_LuaRegisterObject TJBC_Sys,"Sys"
 
 
