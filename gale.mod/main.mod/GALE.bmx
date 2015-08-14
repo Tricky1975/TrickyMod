@@ -88,6 +88,8 @@ History:
          - The "AutoUse.lua" function has been added. Thanks to this any AutoUse.Lua file found in the same folder as the main file will automatically be included.
 15.02.10 - Fixed the GET variable routine for the serializer as that was not properly converted to JCR6.
 15.02.17 - Added an error driver to catch JCR6 errors.
+15.08.14 - Sys object now also directly accessible from BlitzMax, but in BlitzMax it's GALE_Sys (In Lua it's still Sys)
+         - Ability to make Bye always execute a certain sequence 
 End Rem
 
 Import brl.map
@@ -1092,7 +1094,6 @@ Global ByeItem:tByeItem
 Public
 
 
-
 Rem 
 xbbdoc: Registers a new bye driver
 End Rem	
@@ -1110,7 +1111,7 @@ Type TSysByeDriver Extends tbasebyedriver
 	End Type
 
 Global SysByeDriver:Tsysbyedriver = New TSysByeDriver	
-RegisterByeItem "SYS",
+'RegisterByeItem "SYS",SysByeDriver
 
 ' -- Contents of GALE_Sys.bmx
 Public
@@ -1139,7 +1140,7 @@ Type TJBC_Sys      ' BLD: Object Sys\nThis object contains a few system features
 	For ByeItem=EachIn ByeSequence
 		If Not ByeItem.ByeDriver	GALE_Error("Not a valid Bye Driver for script: "+byeitem.script)
 		ByeItem.ByeDriver.ByeDo
-		next
+		Next
 	GALECON.GaleConsoleCloseLogFile
 	End
 	End Method
