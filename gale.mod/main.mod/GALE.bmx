@@ -1090,13 +1090,15 @@ Rem
 bbdoc: This variable should contain the name of the work JCR when adding Bye scripts is being used through the Sys object
 End Rem
 Global ByeGALEJCR:TJCRDir
+Global ByeItem:tByeItem
 
 Private
-
-Global ByeDrivers:TMap = New TMap
+'Global ByeDrivers:TMap = New TMap
 Global ByeSequence:TList = New TList
-Global ByeItem:tByeItem
 Public
+Function AddToByeSequence()
+ListAddLast ByeSequnece,byeitem
+End Function
 
 
 Rem 

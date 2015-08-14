@@ -93,7 +93,7 @@ Type TMSByeDriver Extends tbasebyedriver
 		GALE_MS.Run ByeItem.Script,Null
 		End Method
 	End Type
-	
+Global MS4Bye:TMSByeDriver = New tmsbyedriver	
 Public
 
 Rem
@@ -166,6 +166,10 @@ Type TScriptBase ' BLD: Object MS\nThis object contains the manager for the mult
 	about: Inside the requested script, the function GALE_BYE() will be searched for and executed. No parameters will be taken, and no values will be returned. If a script is not loaded on the moment Bye is called, this part in the sequence will be ignored
 	End Rem
 	Method AddBye(Tag$) ' BLD: Adds a script from MultiScript to be executed when Bye or similar instruction is called.<p>Inside the requested script, the function GALE_BYE() will be searched for and executed. No parameters will be taken, and no values will be returned. If a script is not loaded on the moment Bye is called, this part in the sequence will be ignored
+	ByeItem = New tbyeitem
+	byeitem.Script=tag
+	Byeitem.byedriver = tmsbyedriver
+	AddToByeSequence
 	End Method
 	
 	End Type
