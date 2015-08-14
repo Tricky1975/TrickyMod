@@ -1080,8 +1080,8 @@ Type TBaseByeDriver
 	End Type
 
 Type tByeItem
-	Field ByeTag$
-	'Field ByeDriver:tbasebyedriver
+	'Field ByeTag$
+	Field ByeDriver:tbasebyedriver
 	Field Script$
 	Field Param$[]
 	End Type
