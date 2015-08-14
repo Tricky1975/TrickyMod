@@ -22,6 +22,7 @@ Rem
 15.07.28 - Deprecated Stat.Me and TMe
          - Added StatExists() method to RPGStat
 15.07.30 - Added Minimum support for Points
+15.08.14 - Added support to ignore scripts (in case this unit is only used in a quick viewing utility)
 End Rem
 
 Strict
@@ -218,7 +219,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.Stat","char,"+char,"Stat,"+stat])
 	Local ST:RPGStat = ch.stat(stat)
 	If Not st GALE_Error("Stat doesn't exist",["F,RPGChar.Stat","char,"+char,"Stat,"+stat])
-	If st.scriptfile And st.callfunction And (Not rpg_ingorescripts)
+	If st.scriptfile And st.callfunction And (Not rpg_ignorescripts)
 		Me.Char = Char
 		Me.Stat = Stat
 		csr = "CHARSTAT:"+Upper(st.ScriptFile)
