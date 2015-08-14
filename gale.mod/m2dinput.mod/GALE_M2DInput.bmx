@@ -8,7 +8,7 @@ Rem
 	http://mozilla.org/MPL/2.0/.
 
 
-Version: 15.08.11
+Version: 15.08.14
 
 End Rem
 Strict
@@ -25,7 +25,7 @@ Import Pub.FreeJoy
 Import gale.Main
 Import tricky_units.MKL_Version
 
-MKL_Version "GALE - GALE_M2DInput.bmx","15.08.11"
+MKL_Version "GALE - GALE_M2DInput.bmx","15.08.14"
 MKL_Lic     "GALE - GALE_M2DInput.bmx","Mozilla Public License 2.0"
 
 

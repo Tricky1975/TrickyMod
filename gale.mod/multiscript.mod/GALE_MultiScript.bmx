@@ -8,13 +8,14 @@ Rem
 	http://mozilla.org/MPL/2.0/.
 
 
-Version: 15.07.12
+Version: 15.08.14
 
 End Rem
 ' 15.02.14 - Initial version
 ' 15.05.05 - Added LoadNew and LN_Run
 ' 15.05.19 - Saved vars in caps????? I removed the caps, as this could only spook up Lua
 '          - GALE_SaveMSVars() and GALE_MapMSSavedVars added
+' 15.08.14 - Added Bye Sequence support
      
 
 Strict

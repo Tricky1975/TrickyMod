@@ -8,7 +8,7 @@ Rem
 	http://mozilla.org/MPL/2.0/.
 
 
-Version: 15.08.05
+Version: 15.08.14
 
 End Rem
 Strict
@@ -122,7 +122,7 @@ Incbin  "Serializer.lua"
 'Info Preset Definitions			' BLD: The next definitions can not be set/unset with DEFINE or UNDEF, but IF and ELSEIF can see them and they can be used there.<p><table><tr><td>$WINDOWS</td><td>Set if running from Windows</td></tr><tr><td>$MAC</td><td>Set if running from MacOS X</td></tr><tr><td>$MACOS</td><td>Alias for $MAC</td></tr><tr><td>$LINUX</td><td>Set if running from Linux</td></tr><tr><td>$DEBUGBUILD</td><td>Set if you happen to use the debug build of the engine</td><tr><td>$RELEASEBUILD</td><td>Set if you use the release build of your engine</td><tr><td>$LITTLEENDIAN</td><td>Set if processor uses LittleEndian</td><tr><td>$BIGENDIAN</td><td>Set if your processor uses BigEndian</td></tr><tr><td>$X86</td><td>Set if you have use and X86 processor (Intel or compatible)</td></tr><tr><td>$PPC</td><td>Set if you use a PowerPC processor</td></tr></table>
 
 
-MKL_Version "GALE - GALE.bmx","15.08.05"
+MKL_Version "GALE - GALE.bmx","15.08.14"
 MKL_Lic     "GALE - GALE.bmx","Mozilla Public License 2.0"
 
 
@@ -1142,13 +1142,17 @@ Type TJBC_Sys      ' BLD: Object Sys\nThis object contains a few system features
 	Method Val(S$)   ' BLD: Tuns a number in a string into an integer.<br>This function is brought in as BlitzMax (in which the project was written) can only send in strings for arguments, but LUA will sometimes need an integer and nothing else.<br>Sys.Val was brought in to solve that.<br>Sys.Val("10") just returns the integer 10 ;)
 	Return S.ToInt()
 	End Method
-	
-	Method Bye()     ' BLD: Ends the game immediately.<br>Please note that if there was any closure to be done, that it's skipped now. The game ends, and there it ends.<p>NOTE: NEVER use os.exit() for the job. GALE is able to clean up it's own shit before exitting your program. os.exit() will skip that and that can lead to things to properly closed. Depending on your GALE version this might lead to leaks.
-	For ByeItem=EachIn ByeSequence
+
+	Method ByeExecute() ' Only here for engine purposes and therefore undocumented to Lua.
+		For ByeItem=EachIn ByeSequence
 		If Not ByeItem.ByeDriver	GALE_Error("Not a valid Bye Driver for script: "+byeitem.script)
 		ByeItem.ByeDriver.ByeDo
 		Next
 	GALECON.GaleConsoleCloseLogFile
+	End Method
+	
+	Method Bye()     ' BLD: Ends the game immediately.<br>Please note that if there was any closure to be done, that it's skipped now. The game ends, and there it ends.<p>NOTE: NEVER use os.exit() for the job. GALE is able to clean up it's own shit before exitting your program. os.exit() will skip that and that can lead to things to properly closed. Depending on your GALE version this might lead to leaks.
+	ByeExecute
 	End
 	End Method
 	
