@@ -532,13 +532,15 @@ Else
 	JCR_JamErr("Unknown object!","<???>",Entry,"JCR_B(<???>,~q"+Entry+"~q)")
 	Return
 	EndIf
+Local E$ = Entry$
+If Not M.Config.B("__CaseSensitive") E=Upper(E)	
 If Not MapContains(M.Entries,E)
 	JCR_JamErr("Entry does not appear to exist!",PM,Entry+" ("+E+")","JCR_B")
 	Return
 	EndIf
 Local Ret:TJCREntry = TJCREntry(MapValueForKey(M.Entries,E))
 Return Ret
-End function
+End Function
 	
 Rem
 bbdoc:Reads the contents of a JCR entry into a bank. 
