@@ -245,11 +245,11 @@ local work = {
                                      -- print(titype.."/"..k)
                                      ret = ret .. TRUE_SERIALIZE("["..result.."]",v,(tabs or 0)+1,true)                                      
                                      end
-                                 if notfirst then    
-                                   ret = ret .."\n"    
-                                   for i=1,tabs or 0 do ret = ret .."     " end   
-                                   for i=1,len(vname.." = ") do ret = ret .. " " end
-                                   end 
+                                 --if notfirst then    
+                                 --  ret = ret .."\n"    
+                                 --  for i=1,tabs or 0 do ret = ret .."     " end   
+                                 --  for i=1,len(vname.." = ") do ret = ret .. " " end
+                                 --  end 
                                  ret = ret .. "}"  
                                  return ret  
                                  end 
