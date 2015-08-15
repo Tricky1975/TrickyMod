@@ -8,7 +8,7 @@ Rem
 	http://mozilla.org/MPL/2.0/.
 
 
-Version: 15.08.04
+Version: 15.08.15
 
 End Rem
 
@@ -18,6 +18,7 @@ End Rem
 ' 15.03.11 - Fixed a bug that could cause errors when having multiple dir drivers loaded and recognizing only the first in line.
 ' 15.08.04 - Add Patch can now force all files in the patch JCR file into a path in the entire dir repository. Please note this is optional, though older code using this routine will NOT have to be changed. :)
 '          - Development note removed. This file should now be safe to use, though keep in mind that unless downloaded from sourceforge, this version may constantly be updated and show some bugs are a result. 8)
+' 15.08.15 - Added a function to grab an entry easily.
 Strict
 
 
@@ -37,7 +38,7 @@ Import tricky_units.MD5 ' Will be used for verification purposes. Full support f
 Import "-ldl"
 ?
 
-MKL_Version "JCR6 - BlitzMax/JCR6_Main.bmx","15.08.04"
+MKL_Version "JCR6 - BlitzMax/JCR6_Main.bmx","15.08.15"
 MKL_Lic     "JCR6 - BlitzMax/JCR6_Main.bmx","Mozilla Public License 2.0"
 
 Private
