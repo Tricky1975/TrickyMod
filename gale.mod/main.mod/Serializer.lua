@@ -247,7 +247,7 @@ local work = {
                                      end
                                  if notfirst then    
                                    ret = ret .."\n"    
-                                   for i=1,tabs or 0 do ret = ret .."\t" end   
+                                   for i=1,tabs or 0 do ret = ret .."     " end   
                                    for i=1,len(vname.." = ") do ret = ret .. " " end
                                    end 
                                  ret = ret .. "}"  
@@ -257,7 +257,7 @@ local work = {
              }             
 local letsgo = work[type(vvalue)] or function() Sys.Error("Unknown type. Cannot serialize","Variable,"..vname..";Type Value,"..type(vvalue)) end
 local i
-for i=1,tabs or 0 do ret = ret .."\t" end
+for i=1,tabs or 0 do ret = ret .."       " end
 ret = ret .. vname .." = "..letsgo() 
 if not noenter then ret = ret .."\n" end
 return ret
