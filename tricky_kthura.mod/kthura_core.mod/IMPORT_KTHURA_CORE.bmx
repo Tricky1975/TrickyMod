@@ -12,6 +12,10 @@ Version: 15.08.04
 
 End Rem
 
+' 15.08.15 - First version considered in 'Alpha' (though earlier releases exist, this is where the project has been declared safe enough to use, though keep in mind that stuff may still be subject to change)
+'          - Documentation has been adapted to this new status in all three modules. (I will only make this notice in the core, but this one and the previous one goes for all mods in Kthura).
+'          - Quick data access within a Kthura map done
+
 
 Strict
 Import tricky_units.MKL_Version
@@ -333,6 +337,21 @@ Type TKthura
 	ListAddLast fullobjectlist,ret
 	If update TotalRemap
 	Return ret		
+	End Method
+	
+	Rem
+	bbdoc: Look up the general data inside a Kthura map
+	returns: A string containing the data. If the data does not exist, an empty string is returned
+	End Rem
+	Method GetData$(key$)
+	Return data.value(key)
+	End Method
+	
+	Rem
+	bbdoc: Define data inside a Kthura map.
+	End Rem
+	Method SetData(key$,Value$)
+	MapInsert data,key,value
 	End Method
 	
 	Rem
