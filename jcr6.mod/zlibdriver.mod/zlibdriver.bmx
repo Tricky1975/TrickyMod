@@ -8,7 +8,7 @@ moduleinfo "Name: jcr6.zlibdriver"
 moduleinfo "Author:Jeroen P. Broks"
 moduleinfo "&copy; Copyright 2014-2015 Jeroen P. Broks"
 moduleinfo "License:Mozilla Public License 2.0"
-moduleinfo "Last mod build:4/8/2015"
+moduleinfo "Last mod build:15/8/2015"
 
 
 import "JCR6_ZLIBDRIVER.bmx"

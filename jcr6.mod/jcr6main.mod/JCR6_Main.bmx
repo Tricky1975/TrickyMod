@@ -31,6 +31,7 @@ Import bah.volumes
 
 Import tricky_Units.StringMap
 Import tricky_units.MKL_Version
+Import tricky_units.MD5 ' Will be used for verification purposes. Full support for this comes later.
 
 ?linux
 Import "-ldl"
@@ -514,6 +515,30 @@ Local E$ = Entry$
 If Not M.Config.B("__CaseSensitive") E=Upper(E)
 Return MapContains(M.Entries,E)
 End Function
+
+Rem
+bbdoc: Returns an entry record from a JCR with the given name.
+End Rem
+Function JCR_Entry:TJCREntry(JCR:Object,Entry$)
+Local M:TJCRDir
+Local PM$
+If String(JCR) 
+	M=JCR_Dir(String(JCR))
+	PM = "~q"+String(JCR)+"~q"
+ElseIf TJCRDir(JCR)
+	M=TJCRDir(JCR)
+	PM = "<Dir Object>"
+Else
+	JCR_JamErr("Unknown object!","<???>",Entry,"JCR_B(<???>,~q"+Entry+"~q)")
+	Return
+	EndIf
+If Not MapContains(M.Entries,E)
+	JCR_JamErr("Entry does not appear to exist!",PM,Entry+" ("+E+")","JCR_B")
+	Return
+	EndIf
+Local Ret:TJCREntry = TJCREntry(MapValueForKey(M.Entries,E))
+Return Ret
+End function
 	
 Rem
 bbdoc:Reads the contents of a JCR entry into a bank. 
@@ -540,7 +565,7 @@ If Not MapContains(M.Entries,E)
 	Return
 	EndIf
 Local Ent:TJCREntry = TJCREntry(MapValueForKey(M.Entries,E))
-If Not Ent JCR_JAMERR "Incorrect data received from entry!","<?>",entry,"JCR_B(<???>,~q"+Entry+"~q)"; return
+If Not Ent JCR_JAMERR "Incorrect data received from entry!","<?>",entry,"JCR_B(<???>,~q"+Entry+"~q)"; Return
 If Debug
 	Print "Going to access "+E+" from file: "+Ent.Mainfile
 	Print "Offset: "+Ent.Offset
