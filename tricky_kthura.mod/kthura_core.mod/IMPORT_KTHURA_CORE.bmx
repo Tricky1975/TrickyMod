@@ -255,6 +255,7 @@ Type TKthuraImagemap Extends TMap
 			EndIf			
 	Else
 		DebugLog "Loading image for Kthura Image map: "+File
+		If Not file KthuraError "Request done to load an image into a Kthura Image map, but no filename was defined"
 		I = LoadImage(JCR_B(JCR,File))
 		EndIf
 	If Not I 
