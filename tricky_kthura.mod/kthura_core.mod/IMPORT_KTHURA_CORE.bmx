@@ -15,6 +15,7 @@ End Rem
 ' 15.08.15 - First version considered in 'Alpha' (though earlier releases exist, this is where the project has been declared safe enough to use, though keep in mind that stuff may still be subject to change)
 '          - Documentation has been adapted to this new status in all three modules. (I will only make this notice in the core, but this one and the previous one goes for all mods in Kthura).
 '          - Quick data access within a Kthura map done
+' 15.08.15 - BUGFIX: The actor pic synchronizer returned null if a picture was already loaded. This has been fixed as it had to return the memory reference of the loaded picture already. (Trying to save memory, don't you sometimes just hate it) :)
 
 
 Strict
@@ -232,14 +233,14 @@ Type tkthuraListmap Extends TMap
 	
 	End Type
 	
-Type TKthuraImagemap Extends TMap
+Type TKthuraImageMap Extends TMap
 	
 	Method Img:TImage(Tag$)	
 	Return TImage(MapValueForKey(Self,Upper(tag)))
 	End Method
 	
 	Method Load:TImage(JCR:TJCRDir,File$,Prefix$,StandardHot$="")
-	If MapContains(Self,Upper(Prefix+":"+File)) Return
+	If MapContains(Self,Upper(Prefix+":"+File)) Return TImage(MapValueForKey(Self,Upper(Prefix+":"+File))
 	Local hotf$ = StripExt(file)+".hot"
 	Local anim$ = StripExt(file)+".frames"
 	Local w,h,s,f,RL$,RS$[],I:TImage
