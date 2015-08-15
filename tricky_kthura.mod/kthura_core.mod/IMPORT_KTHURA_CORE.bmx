@@ -240,7 +240,7 @@ Type TKthuraImageMap Extends TMap
 	End Method
 	
 	Method Load:TImage(JCR:TJCRDir,File$,Prefix$,StandardHot$="")
-	If MapContains(Self,Upper(Prefix+":"+File)) Return TImage(MapValueForKey(Self,Upper(Prefix+":"+File))
+	If MapContains(Self,Upper(Prefix+":"+File)) Return TImage(MapValueForKey(Self,Upper(Prefix+":"+File)))
 	Local hotf$ = StripExt(file)+".hot"
 	Local anim$ = StripExt(file)+".frames"
 	Local w,h,s,f,RL$,RS$[],I:TImage
