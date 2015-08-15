@@ -429,7 +429,7 @@ Type TKthura
 				Next
 		Default
 			If SorB<>0 Print "WARNING! Unknown SorB code found ("+SorB+") using the single picture setting in stead"
-			ret.SinglePic = Textures.Load(TextureJCR,Pics,"Actor.Single")
+			ret.SinglePic = Textures.Load(TextureJCR,Pics,"Actor.Single","BOTTOMCENTER")
 			ret.SinglePicFile = Pics
 		End Select	
 	End Method
