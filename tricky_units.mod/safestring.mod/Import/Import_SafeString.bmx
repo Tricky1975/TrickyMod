@@ -24,7 +24,7 @@ Rem
 
 
 
-Version: 15.08.06
+Version: 15.08.15
 
 End Rem
 Strict
@@ -64,7 +64,7 @@ End Rem
 
 Import Tricky_units.MKL_Version
 
-MKL_Version "Units - SafeString/SafeString.bmx","15.08.06"
+MKL_Version "Units - SafeString/SafeString.bmx","15.08.15"
 MKL_Lic     "Units - SafeString/SafeString.bmx","zLIB License"
 
 
