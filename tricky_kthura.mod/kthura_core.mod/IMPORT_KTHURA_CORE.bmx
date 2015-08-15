@@ -254,6 +254,7 @@ Type TKthuraImagemap Extends TMap
 			I = LoadAnimImage(JCR_B(JCR,File),w,h,s,f)
 			EndIf			
 	Else
+		DebugLog "Loading image for Kthura Image map: "+F
 		I = LoadImage(JCR_B(JCR,File))
 		EndIf
 	If Not I 
