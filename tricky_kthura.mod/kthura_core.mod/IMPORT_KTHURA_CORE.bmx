@@ -456,6 +456,16 @@ Type TKthura
 	Method SpawnActor:TKthuraActor(Spot$,Pics$,Tag$,SorB=1,Update=True)
 	Local SpawnExit:TKthuraObject = TagMap.Get(Spot)
 	If Not SpawnExit KthuraError "Cannot spawn an actor on a spot that does not exist! ("+Spot+")"; Return	
+	?debug
+	Local sorbn$[] = ["Single","Bundle"]
+	DebugLog "I have to spawn an actor on spot: "+spot
+	DebugLog "= Coordinates:  "+SpawnExit.X+","+SpawnExit.Y
+	DebugLog "= Tag:          "+Tag
+	DebugLog "= Picture file: "+Pics
+	DebugLog "= SorB:         "+SorB+" ("+sobn[sorb]+")"
+	DebugLog "= Update:       "+Update
+	DebugLog "= Let's go!"
+	?
 	Local ret:TKthuraActor = createactor(SpawnExit.X,SpawnExit.Y,Pics,Tag,Sorb,update)
 	ret.dominance = spawnexit.dominance
 	ret.R = spawnexit.R
