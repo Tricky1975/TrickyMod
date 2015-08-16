@@ -29,6 +29,7 @@ Version: 15.08.03
 End Rem
 Strict
 ' 15.08.03 - Initial version
+' 15.08.16 - Suffix got prefix in stead of suffix. That's fixed now.
 
 Import brl.retro
 Import tricky_units.MKL_Version
