@@ -63,7 +63,7 @@ bbdoc: Checks if a string is prefixed with the required text
 returns: True is the required prefix is found and False if it isn't found.
 End Rem
 Function Suffixed(Fullstring$,Suffix$,caseinsensitive=False)
-Return truecheck(Fullstring,suffix,caseinsensitive,0)
+Return truecheck(Fullstring,suffix,caseinsensitive,1)
 End Function
 
 MKL_Version "Units - prefixsuffix/prefixsuffix.bmx","15.08.03"
