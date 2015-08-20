@@ -15,7 +15,8 @@ End Rem
 ' 15.08.15 - First version considered in 'Alpha' (though earlier releases exist, this is where the project has been declared safe enough to use, though keep in mind that stuff may still be subject to change)
 '          - Documentation has been adapted to this new status in all three modules. (I will only make this notice in the core, but this one and the previous one goes for all mods in Kthura).
 '          - Quick data access within a Kthura map done
-' 15.08.15 - BUGFIX: The actor pic synchronizer returned null if a picture was already loaded. This has been fixed as it had to return the memory reference of the loaded picture already. (Trying to save memory, don't you sometimes just hate it) :)
+'          - BUGFIX: The actor pic synchronizer returned null if a picture was already loaded. This has been fixed as it had to return the memory reference of the loaded picture already. (Trying to save memory, don't you sometimes just hate it) :)
+'          - BUGFIX: Auto hotspot bottom center for single pic actors. I forgot to set this right ;)
 
 
 Strict
@@ -404,6 +405,28 @@ Type TKthura
 	If update TotalRemap;
 	Return ret
 	End Method
+	
+	Rem
+	bbdoc: Renews an actor with the same data. It's a bit of a "filthy" way to fixing some bugs that can pop up in an actor after moving it. The "Actor" can either be the actors tag, or the existing Kthura object. Please note the actor MUST be part of the map this method is tied upon. "Foreign" actors are not accepted!<p>This feature will just use some basic data to renew the actor (this was the entire point as faulty actors are very likely created from some extra data), meaning that some data inside the actor WILL get lost.
+	End Rem
+	Method RenewActor:TKthuraActor(actor:Object,Update=True)
+	Local AT$ = "<Actor>"
+	Local Ret:TKthuraActor
+	Local A:TKthuraActor = TKthuraActor(Actor)
+	If Not A And String(actor) A = TKthuraActor(tagmap.get(String(actor))); AT = "~q"+String(actor)+"~q"
+	If Not A KthuraError "RenewActor(???): Requested Actor type not recognized"; Return
+	If A.parent<>Self KthuraError "RenewActor(<Actor>): Requested actor not tied to the requested map"; Return
+	ListRemove fullobjectlist,A
+	If A.Tag MapRemove tagmap,A.Tag
+	If A.PicBundle
+		ret = createactor(A.X,A.Y,A.PicBundle,1,update)		
+	ElseIf A.SinglePic
+		ret = Createactor(A.X,A.Y,A.PicBundle,1,update)
+	Else
+		KthuraError "RenewActor("+AT+"): No picture data found in actor! (Broken actor?)"
+		EndIf
+	End Method	
+	
 
 	Method SyncActorPics(ret:TKthuraActor,Pics$,SorB)
 	Local PicList$,Ex$
