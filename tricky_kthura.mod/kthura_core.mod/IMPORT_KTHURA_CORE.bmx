@@ -413,7 +413,11 @@ Type TKthura
 	Local AT$ = "<Actor>"
 	Local Ret:TKthuraActor
 	Local A:TKthuraActor = TKthuraActor(Actor)
-	If Not A And String(actor) A = TKthuraActor(tagmap.get(String(actor))); AT = "~q"+String(actor)+"~q"
+	If Not A And String(actor) 
+		A = TKthuraActor(tagmap.get(String(actor)))
+		AT = "~q"+String(actor)+"~q"
+		If Not A Then KthuraError "RenewActor("+AT+"): Actor not found!"
+		End if
 	If Not A KthuraError "RenewActor(???): Requested Actor type not recognized"; Return
 	If A.parent<>Self KthuraError "RenewActor(<Actor>): Requested actor not tied to the requested map"; Return
 	ListRemove fullobjectlist,A
