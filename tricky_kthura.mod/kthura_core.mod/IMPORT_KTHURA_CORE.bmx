@@ -417,7 +417,7 @@ Type TKthura
 		A = TKthuraActor(tagmap.get(String(actor)))
 		AT = "~q"+String(actor)+"~q"
 		If Not A Then KthuraError "RenewActor("+AT+"): Actor not found!"
-		End if
+		End If
 	If Not A KthuraError "RenewActor(???): Requested Actor type not recognized"; Return
 	If A.parent<>Self KthuraError "RenewActor(<Actor>): Requested actor not tied to the requested map"; Return
 	ListRemove fullobjectlist,A
@@ -429,6 +429,7 @@ Type TKthura
 	Else
 		KthuraError "RenewActor("+AT+"): No picture data found in actor! (Broken actor?)"
 		EndIf
+	ret.dominance = a.dominance	
 	End Method	
 	
 
