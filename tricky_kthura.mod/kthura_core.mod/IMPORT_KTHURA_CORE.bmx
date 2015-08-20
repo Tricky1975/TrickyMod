@@ -419,9 +419,9 @@ Type TKthura
 	ListRemove fullobjectlist,A
 	If A.Tag MapRemove tagmap,A.Tag
 	If A.PicBundle
-		ret = createactor(A.X,A.Y,A.PicBundleDir ,1,update)		
+		ret = createactor(A.X,A.Y,A.PicBundleDir ,A.Tag,1,update)		
 	ElseIf A.SinglePic
-		ret = Createactor(A.X,A.Y,A.SinglePicFile,1,update)
+		ret = Createactor(A.X,A.Y,A.SinglePicFile,A.Tag,1,update)
 	Else
 		KthuraError "RenewActor("+AT+"): No picture data found in actor! (Broken actor?)"
 		EndIf
