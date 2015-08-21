@@ -79,7 +79,7 @@ end
 -- Table features -- 
 function each(a) -- BLD: Can be used if you only need the values in a nummeric indexed tabled. (as ipairs will always return the indexes as well, regardeless if you need them or not)
 local i=0
-if type(a)~="table" 
+if type(a)~="table" then
    Console.Write("Each received a "..table(a).."!",255,0,0)
    return nil
    end
