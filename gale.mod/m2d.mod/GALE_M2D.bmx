@@ -131,7 +131,7 @@ Type GALEMainCon Extends GALE_DebugConsole 'GALE_DebugConsole
 	Method FullView()
 	SetViewport 0,0,GraphicsWidth(),GraphicsHeight()
 	SetOrigin 0,0
-	End method
+	End Method
 	
 	End Type
 

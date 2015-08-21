@@ -1081,7 +1081,7 @@ Type TBaseByeDriver
 
 Type tByeItem
 	'Field ByeTag$
-	Field ByeDriver:tbasebyedriver
+	Field ByeDriver:TBaseByeDriver
 	Field Script$
 	Field Param$[]
 	End Type
@@ -1109,7 +1109,7 @@ End Rem
 'End Function
 	
 Private
-Type TSysByeDriver Extends tbasebyedriver
+Type TSysByeDriver Extends TBaseByeDriver
 
 	Method ByeDo()
 	Local TS:TLua = GALE_LoadScript(ByeGALEJCR,ByeItem.Script)
