@@ -369,6 +369,15 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Return grabchar(char)<>Null
 	End Method
 	
+	Method CharList$(Char$) ' BLD: Retuns a string with all codenames of the loaded chars separated by ;
+	Local ret$
+	For Local k$=EachIn MapKeys ( RPGChars )
+		If ret ret:+";"
+		ret:+k
+		Next
+	Return ret
+	End Method
+	
 	Method CreateChar(Char$) ' BLD: Create a character (if a character already exists under that name, it will simply be deleted).
 	MapInsert RPGChars,Char,New RPGCharacter
 	galecon.galeConsoleWrite "Character ~q"+char+"~q has been created"
