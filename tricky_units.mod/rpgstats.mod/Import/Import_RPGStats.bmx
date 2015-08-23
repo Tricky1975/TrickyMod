@@ -313,7 +313,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 		EndIf	
 	Local td:trpgdata 
 	If MapContains(ch.strData,key) 
-		td = trpgdata(MapValueForKey(ch.strdata,key,td))
+		td = trpgdata(MapValueForKey(ch.strdata,key))
 		Else
 		td = New trpgdata; 
 		MapInsert ch.strdata,key,td
