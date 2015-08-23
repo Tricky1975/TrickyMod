@@ -23,6 +23,7 @@ Rem
          - Added StatExists() method to RPGStat
 15.07.30 - Added Minimum support for Points
 15.08.14 - Added support to ignore scripts (in case this unit is only used in a quick viewing utility)
+15.08.23 - Added fieldname returning strings.
 End Rem
 
 Strict
@@ -490,7 +491,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Method StatFields$(char$) ' BLD: Returns a string with all statistics fieldnames separated by ";". It is recommended to use a split function to split it (if you don't have one I'm sure you can find some scripts for that if you google for that).
 	Local ret$
 	Local ch:RPGCharacter = grabchar(char)
-	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.StatFields","char,"+char,"Stat,"+stat,"Value,"+value])
+	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.StatFields","char,"+char])
 	For Local K$=EachIn MapKeys(ch.stats)
 		If ret ret:+";"
 		ret:+k
@@ -501,7 +502,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Method DataFields$(char$) ' BLD: Returns a string with all stringdata fieldnames separated by ";". It is recommended to use a split function to split it (if you don't have one I'm sure you can find some scripts for that if you google for that).
 	Local ret$
 	Local ch:RPGCharacter = grabchar(char)
-	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.DataFields","char,"+char,"Stat,"+stat,"Value,"+value])
+	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.DataFields","char,"+char)
 	For Local K$=EachIn MapKeys(ch.strdata)
 		If ret ret:+";"
 		ret:+k
@@ -512,7 +513,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Method PointsFields$(char$) ' BLD: Returns a string with all stringdata fieldnames separated by ";". It is recommended to use a split function to split it (if you don't have one I'm sure you can find some scripts for that if you google for that).
 	Local ret$
 	Local ch:RPGCharacter = grabchar(char)
-	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.PointsFields","char,"+char,"Stat,"+stat,"Value,"+value])
+	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.PointsFields")
 	For Local K$=EachIn MapKeys(ch.Points)
 		If ret ret:+";"
 		ret:+k
