@@ -302,7 +302,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 		GALE_Error("Character doesn't exist",["F,RPGChar.SetData","char,"+char])
 		EndIf	
 	Local td:trpgdata 
-	If MapContains(ch.strData,key,td) 
+	If MapContains(ch.strData,key) 
 		td = trpgdata(MapValueForKey(ch.strdata,key,td))
 		Else
 		td = New trpgdata; 
