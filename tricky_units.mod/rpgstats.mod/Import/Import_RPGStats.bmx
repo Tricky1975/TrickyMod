@@ -471,11 +471,11 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Method PointsExists(char$,points$)
 	Local ch:RPGCharacter = grabchar(char)
 	If Not ch 
-		ConsoleWrite "WARNING! PointsExist(~q"+Char+"~q,~q"+points+"~q): Character doesn't exist. Returning False anyway"
+		L_ConsoleWrite "WARNING! PointsExist(~q"+Char+"~q,~q"+points+"~q): Character doesn't exist. Returning False anyway"
 		Return False
 		EndIf
 	Return MapContains(ch.points,points)
-	End method
+	End Method
 		
 	Method Points:RPGPoints(char$,points$,docreate=0) ' BLD: Points. Has two fields. "Have" and "Maximum". These can be used for Hit Points, Mana, Skill Points, maybe even experience points. Whatever. There is also a field called "MaxCopy" which is a string. When you copy this field, the system will always copy the value of the stat noted in this string for the Maximum value. When the value "docreate" is set to 1 the system will create a new value if it doesn't exist yet, when it's set to 2, it will always create a new value and destroy the old, any other value will not allow creation and cause an error if the points do not exist.
 	Local ch:RPGCharacter = grabchar(char)
