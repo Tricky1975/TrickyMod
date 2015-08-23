@@ -300,9 +300,15 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Local ch:RPGCharacter = grabchar(char)
 	If Not ch 
 		GALE_Error("Character doesn't exist",["F,RPGChar.SetData","char,"+char])
+		EndIf	
+	Local td:trpgdata 
+	If MapContains(ch.strData,key,td) 
+		td = trpgdata(MapValueForKey(ch.strdata,key,td))
+		Else
+		td = New trpgdata; 
+		MapInsert ch.strdata,key,td
 		EndIf
-	Local td:trpgdata = New trpgdata; td.d=str
-	MapInsert ch.strdata,key,td
+	td.d=str
 	End Method
 	
 	Method NewData(Char$,key$,str$) ' BLD: If a data field does not exist, create it and define it. If it already exists, ignore it! (1 is returned if a definition took place, 0 is returned when no definition is done)
@@ -493,6 +499,17 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Local ch:RPGCharacter = grabchar(char)
 	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.StatFields","char,"+char])
 	For Local K$=EachIn MapKeys(ch.stats)
+		If ret ret:+";"
+		ret:+k
+		Next
+	Return ret
+	End Method
+
+	Method ListFields$(char$) ' BLD: Returns a string with all list fieldnames separated by ";". It is recommended to use a split function to split it (if you don't have one I'm sure you can find some scripts for that if you google for that).
+	Local ret$
+	Local ch:RPGCharacter = grabchar(char)
+	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.StatFields","char,"+char])
+	For Local K$=EachIn MapKeys(ch.lists)
 		If ret ret:+";"
 		ret:+k
 		Next
