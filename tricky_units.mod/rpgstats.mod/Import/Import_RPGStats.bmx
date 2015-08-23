@@ -8,7 +8,7 @@ Rem
 	http://mozilla.org/MPL/2.0/.
 
 
-Version: 15.08.15
+Version: 15.08.23
 
 End Rem
 
@@ -37,7 +37,7 @@ Import tricky_units.TrickyReadString
 Import tricky_units.jcr6stringmap
 Import brl.max2d
 
-MKL_Version "Units - RPGStats/RPGStats.bmx","15.08.15"
+MKL_Version "Units - RPGStats/RPGStats.bmx","15.08.23"
 MKL_Lic     "Units - RPGStats/RPGStats.bmx","Mozilla Public License 2.0"
 
 Private
@@ -502,7 +502,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Method DataFields$(char$) ' BLD: Returns a string with all stringdata fieldnames separated by ";". It is recommended to use a split function to split it (if you don't have one I'm sure you can find some scripts for that if you google for that).
 	Local ret$
 	Local ch:RPGCharacter = grabchar(char)
-	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.DataFields","char,"+char)
+	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.DataFields","char,"+char])
 	For Local K$=EachIn MapKeys(ch.strdata)
 		If ret ret:+";"
 		ret:+k
@@ -513,7 +513,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Method PointsFields$(char$) ' BLD: Returns a string with all stringdata fieldnames separated by ";". It is recommended to use a split function to split it (if you don't have one I'm sure you can find some scripts for that if you google for that).
 	Local ret$
 	Local ch:RPGCharacter = grabchar(char)
-	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.PointsFields")
+	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.PointsFields","char,"+char])
 	For Local K$=EachIn MapKeys(ch.Points)
 		If ret ret:+";"
 		ret:+k

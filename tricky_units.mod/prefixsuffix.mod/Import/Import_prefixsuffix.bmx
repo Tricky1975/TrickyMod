@@ -24,7 +24,7 @@ Rem
 
 
 
-Version: 15.08.03
+Version: 15.08.23
 
 End Rem
 Strict
@@ -67,5 +67,5 @@ Function Suffixed(Fullstring$,Suffix$,caseinsensitive=False)
 Return truecheck(Fullstring,suffix,caseinsensitive,1)
 End Function
 
-MKL_Version "Units - prefixsuffix/prefixsuffix.bmx","15.08.03"
+MKL_Version "Units - prefixsuffix/prefixsuffix.bmx","15.08.23"
 MKL_Lic     "Units - prefixsuffix/prefixsuffix.bmx","zLIB License"
