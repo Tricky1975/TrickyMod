@@ -266,6 +266,16 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	If Not ST GALE_Error("Source Character's stat doesn't exist",["F,RPGChar.LinkStatStat","sourcechar,"+sourcechar,"targetchar,"+targetchar,"stat,"+statname])
 	MapInsert ch2.Stats,statname,ST
 	End Method
+
+	Method LinkList(sourcechar$,targetchar$,statname$) ' BLD: The list of two characters will be linked. This means that if one list changes the other will change and vice versa. Upon this definition, the targetchar's stat will be overwritten. After that the targetchar or the sourcechar do not matter any more, they will basically share the same stat. (This feature came to be due to its need in Star Story) :)<p>Should the targetchar's stat not exist it will be created in this function.
+	Local ch1:RPGCharacter = grabchar(sourcechar)
+	If Not ch1 GALE_Error("Source Character doesn't exist",["F,RPGChar.LinkStatStat","sourcechar,"+sourcechar,"targetchar,"+targetchar,"stat,"+statname])
+	Local ch2:RPGCharacter = grabchar(targetchar)
+	If Not ch2 GALE_Error("Target Character doesn't exist",["F,RPGChar.LinkStatStat","sourcechar,"+sourcechar,"targetchar,"+targetchar,"stat,"+statname])
+	Local ST:TList = ch1.list(statname)
+	If Not ST GALE_Error("Source Character's stat doesn't exist",["F,RPGChar.LinkStatStat","sourcechar,"+sourcechar,"targetchar,"+targetchar,"stat,"+statname])
+	MapInsert ch2.Lists,statname,ST
+	End Method
 	
       Method SetStat(char$,Stat$,value=0,OnlyIfNotExist=0) ' BLD: Alias for DefStat
 	DefStat(char$,Stat$,value,OnlyIfNotExist) 
@@ -682,6 +692,7 @@ If JCR_Exists(LoadFrom,D+"Links")
 				Case "STAT"	RPGChar.LinkStat(linkch1,linkch2,linkstat)
 				Case "PNTS"	RPGChar.LinkPoints(linkch1,linkch2,linkstat)
 				Case "DATA"	RPGChar.LinkData(linkch1,linkch2,linkstat)
+				Case "LIST" RPGChar.LinkList(linkch1,linkch2,linkstat)
 				Default	Print "ERROR! I don't know what a "+linktype+" is so I cannot link!"
 				End Select		
 		Case 255
@@ -851,6 +862,9 @@ For ch1=EachIn MapKeys(RPGChars) For ch2=EachIn MapKeys(RPGChars)
 			Next
 		For stat=EachIn MapKeys(och1.points)
 			If MapValueForKey(och1.points,stat)=MapValueForKey(och2.points,stat) SaveRPGLink BTE,"PNTS",ch1,ch2,stat
+			Next
+		For stat=EachIn MapKeys(och1.lists)
+			If MapValueForKey(och1.lists,stat)=MapValueForKey(och2.Lists,stat) SaveRPGLink BTE,"LIST",ch1,ch2,stat
 			Next
 		EndIf	
 	Next Next
