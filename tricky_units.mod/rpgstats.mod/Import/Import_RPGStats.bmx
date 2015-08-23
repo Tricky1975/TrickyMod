@@ -219,7 +219,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.Stat","char,"+char,"Stat,"+stat])
 	Local ST:RPGStat = ch.stat(stat)
 	If Not st GALE_Error("Stat doesn't exist",["F,RPGChar.Stat","char,"+char,"Stat,"+stat])
-	If st.scriptfile And st.callfunction And (Not rpg_ignorescripts)
+	If st.scriptfile And st.callfunction And (Not RPG_IgnoreScripts)
 		Me.Char = Char
 		Me.Stat = Stat
 		csr = "CHARSTAT:"+Upper(st.ScriptFile)
@@ -485,6 +485,39 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Local v=value
 	If v=0 v=1
 	DefStat char,statn,stat(char,statn)-v
+	End Method
+	
+	Method StatFields$(char$) ' BLD: Returns a string with all statistics fieldnames separated by ";". It is recommended to use a split function to split it (if you don't have one I'm sure you can find some scripts for that if you google for that).
+	Local ret$
+	Local ch:RPGCharacter = grabchar(char)
+	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.StatFields","char,"+char,"Stat,"+stat,"Value,"+value])
+	For Local K$=EachIn MapKeys(ch.stats)
+		If ret ret:+";"
+		ret:+k
+		Next
+	Return ret
+	End Method
+	
+	Method DataFields$(char$) ' BLD: Returns a string with all stringdata fieldnames separated by ";". It is recommended to use a split function to split it (if you don't have one I'm sure you can find some scripts for that if you google for that).
+	Local ret$
+	Local ch:RPGCharacter = grabchar(char)
+	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.DataFields","char,"+char,"Stat,"+stat,"Value,"+value])
+	For Local K$=EachIn MapKeys(ch.strdata)
+		If ret ret:+";"
+		ret:+k
+		Next
+	Return ret
+	End Method
+
+	Method PointsFields$(char$) ' BLD: Returns a string with all stringdata fieldnames separated by ";". It is recommended to use a split function to split it (if you don't have one I'm sure you can find some scripts for that if you google for that).
+	Local ret$
+	Local ch:RPGCharacter = grabchar(char)
+	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.PointsFields","char,"+char,"Stat,"+stat,"Value,"+value])
+	For Local K$=EachIn MapKeys(ch.Points)
+		If ret ret:+";"
+		ret:+k
+		Next
+	Return ret
 	End Method
 		
 	End Type	
