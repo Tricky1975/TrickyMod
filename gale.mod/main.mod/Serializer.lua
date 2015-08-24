@@ -80,7 +80,7 @@ end
 function each(a) -- BLD: Can be used if you only need the values in a nummeric indexed tabled. (as ipairs will always return the indexes as well, regardeless if you need them or not)
 local i=0
 if type(a)~="table" then
-   Console.Write("Each received a "..table(a).."!",255,0,0)
+   Console.Write("Each received a "..type(a).."!",255,0,0)
    return nil
    end
 return function()
@@ -91,6 +91,10 @@ end
 
 function ieach(a) -- BLD: Same as each, but not in reversed order
 local i=#a+1
+if type(a)~="table" then
+   Console.Write("IEach received a "..type(a).."!",255,0,0)
+   return nil
+   end
 return function()
     i=i-1
     if a[i] then return a[i] end
