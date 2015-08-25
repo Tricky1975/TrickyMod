@@ -98,6 +98,7 @@ Import brl.system
 Import jcr6.jcr6main
 Import tricky_units.MKL_Version
 Import GALE.MaxLua4Gale
+Import tricky_units.Bye
 
 ' Importing the Lua Serializer Script
 Incbin  "Serializer.lua"
@@ -1153,7 +1154,8 @@ Type TJBC_Sys      ' BLD: Object Sys\nThis object contains a few system features
 	
 	Method Bye()     ' BLD: Ends the game immediately.<br>Please note that if there was any closure to be done, that it's skipped now. The game ends, and there it ends.<p>NOTE: NEVER use os.exit() for the job. GALE is able to clean up it's own shit before exitting your program. os.exit() will skip that and that can lead to things to properly closed. Depending on your GALE version this might lead to leaks.
 	ByeExecute
-	End
+	'End
+	tricky_units.Bye.bye
 	End Method
 	
 	Method Error(Message$,R$="") ' BLD: Causes a script to report an error, following the complete GALE tradtions. Depending on the underlying application this can cause the entire program to crash out or not, though the setting is taken from the moment the last script was started. When the application has not been set to crash out entirely, the script will just resume after this error has taken place.
