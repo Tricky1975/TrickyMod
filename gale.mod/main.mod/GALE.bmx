@@ -428,6 +428,7 @@ If LuaConsoleFlip
 End Function
 
 Function GALE_JBC_Error(LO:TLua,ErrorType$,Message$="",ForceLineNumber=0)
+GALE_Sys.ErrorFound:+1
 Local EH$ = "Error loading script :~n[string ~q-- GALE LUA SCRIPT --...~q]:"
 Local EHL = Len(EH)
 Local EH2$ = "[string ~q-- GALE LUA SCRIPT --...~q]:"
@@ -515,7 +516,7 @@ If LO Then
 		EndIf
 	End If
 GALECON.GaleErrorClosureRequest	
-If LuaErrorCrash = True GALECON.GaleConsoleCloseLogFile; End
+If LuaErrorCrash = True GALECON.GaleConsoleCloseLogFile; Bye
 Return True
 End Function
 
@@ -1127,6 +1128,8 @@ Global SysLuaErrorCrash
 Global SysLuaThrow = 1 ' Make a throw to the IDE when in debug mode
 
 Type TJBC_Sys      ' BLD: Object Sys\nThis object contains a few system features that the game could use.
+
+	Field ErrorFound ' BLD: Increases by 1 if an error has been found. Should you have configured gale not to crash out when an error occurs, you'll have to set to back this variable to 0 manually if you want to check if any errors have occured.
 	
 	Method Alert(A$)   ' BLD: Pops up a dialog box with A$ as message<br>\n(Does not work in full screen games)
 	Notify A$
@@ -1155,7 +1158,7 @@ Type TJBC_Sys      ' BLD: Object Sys\nThis object contains a few system features
 	Method Bye()     ' BLD: Ends the game immediately.<br>Please note that if there was any closure to be done, that it's skipped now. The game ends, and there it ends.<p>NOTE: NEVER use os.exit() for the job. GALE is able to clean up it's own shit before exitting your program. os.exit() will skip that and that can lead to things to properly closed. Depending on your GALE version this might lead to leaks.
 	ByeExecute
 	'End
-	tricky_units.Bye.bye
+	tricky_units.Bye.Bye
 	End Method
 	
 	Method Error(Message$,R$="") ' BLD: Causes a script to report an error, following the complete GALE tradtions. Depending on the underlying application this can cause the entire program to crash out or not, though the setting is taken from the moment the last script was started. When the application has not been set to crash out entirely, the script will just resume after this error has taken place.
@@ -1183,6 +1186,7 @@ Rem
 bbdoc: This function will crash out with an error on GALE style.
 End Rem
 Function GALE_Error(Message$,R$[]=Null)
+	GALE_Sys.ErrorFound:+1
 	Local EH$ = "Error loading script :~n[string ~q-- GALE LUA SCRIPT --...~q]:"
 	Local EHL = Len(EH)
 	Local EH2$ = "[string ~q-- GALE LUA SCRIPT --...~q]:"
@@ -1235,7 +1239,7 @@ Function GALE_Error(Message$,R$[]=Null)
 	?Debug
 	If SysLuaThrow Then Throw "Lua Error:~n~n"+EMsg
 	?
-	If SysLuaErrorCrash = True GALECON.GALEConsoleCloseLogFile; End
+	If SysLuaErrorCrash = True GALECON.GALEConsoleCloseLogFile; Bye
 	Return True
 End Function
 
