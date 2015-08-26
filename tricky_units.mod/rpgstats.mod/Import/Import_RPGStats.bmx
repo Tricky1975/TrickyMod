@@ -565,6 +565,14 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 		Next
 	Return ret
 	End Method
+	
+	Method ListChars$() ' BLD: Returns a string with all character codenames of characters currently stored in the memory. (They do not need to be in the party right now). The names are separated by ;
+	Local ret$
+	For Local K$= EachIn MapKeys(RPGChars)
+		If ret ret:+";"
+		ret:+k
+		Next
+	End method	
 		
 	End Type	
 	
