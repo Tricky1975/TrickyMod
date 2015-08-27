@@ -8,7 +8,7 @@ Rem
 	http://mozilla.org/MPL/2.0/.
 
 
-Version: 15.08.04
+Version: 15.08.23
 
 End Rem
 
@@ -29,7 +29,7 @@ Import tricky_units.HotSpot
 Import tricky_units.Pathfinder
 Import tricky_units.serialtrim
 
-MKL_Version "Kthura Map Editor - Mods/Kthura_Core.bmx","15.08.04"
+MKL_Version "Kthura Map Editor - Mods/Kthura_Core.bmx","15.08.23"
 MKL_Lic     "Kthura Map Editor - Mods/Kthura_Core.bmx","Mozilla Public License 2.0"
 
 
@@ -367,7 +367,7 @@ Type TKthura
 	Local s
 	Select KObject.Kind
 		Case "Zone","TiledArea"
-			Return x>=KObject.x And x<=KObject.x+KObject.w And y>=KObject.y And y<=KObject.y
+			Return x>=KObject.x And x<=KObject.x+KObject.w And y>=KObject.y And y<=KObject.y+KObject.h
 		Case "Obstacle"
 			If Not kobject.textureimage Return
 			s = ImageWidth(kobject.textureimage)
