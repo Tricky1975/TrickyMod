@@ -31,6 +31,7 @@ End Rem
 ' 12.xx.xx - Original
 ' 15.02.03 - Adepted to new units set
 ' 15.02.23 - Made a quick LoadIni function
+' 15.08.31 - Deprecated
 
 
 
@@ -76,7 +77,8 @@ End Function
 
 Rem
 bbdoc: Contains the initialization data
-end rem
+about: This object and this entire module is deprecated as of Aug 31st, 2015. It still exist because too many programs still use it, however it is planned to be removed, eventually. Use IniFile2 in stead
+End Rem
 Type TIni
 	Field Values:TMap = New TMap
 	Field Lists:TMap = New TMap
@@ -84,14 +86,16 @@ Type TIni
 	
 	Rem
 	bbdoc: Define an initiation variable
-	endrem
+	about: This object and this entire module is deprecated as of Aug 31st, 2015. It still exist because too many programs still use it, however it is planned to be removed, eventually. Use IniFile2 in stead
+	EndRem
 	Method D(K$,V$)
 	MapInsert Values,K,V
 	End Method
 	
 	Rem 
 	bbdoc: Adds a value to a initiation list
-	end rem
+	about: This object and this entire module is deprecated as of Aug 31st, 2015. It still exist because too many programs still use it, however it is planned to be removed, eventually. Use IniFile2 in stead
+	End Rem
 	Method Add(K$,V$)
 	If Not MapContains(Lists,K) MapInsert Lists,K,New TList
 	ListAddLast TList(MapValueForKey(Lists,K)),V
@@ -100,22 +104,25 @@ Type TIni
 	
 	Rem
 	bbdoc: Returns all items stored in an initiation list into a TList
-	end rem	
+	about: This object and this entire module is deprecated as of Aug 31st, 2015. It still exist because too many programs still use it, however it is planned to be removed, eventually. Use IniFile2 in stead
+	End Rem	
 	Method List:TList(K$)
 	If Not MapContains(Lists,K) Return Null
 	Return TList(MapValueForKey(Lists,K))
 	End Method
 	
 	Rem
-  bbdoc: Retuns the value of an initation variable
-	endrem
+	bbdoc: Retuns the value of an initation variable
+	about: This object and this entire module is deprecated as of Aug 31st, 2015. It still exist because too many programs still use it, however it is planned to be removed, eventually. Use IniFile2 in stead
+	EndRem
 	Method C$(K$)
 	Return String(MapValueForKey(Values,K))
 	End Method
 	
 	Rem
 	bbdoc: Saves all initiation data into a file
-	end rem
+	about: This object and this entire module is deprecated as of Aug 31st, 2015. It still exist because too many programs still use it, however it is planned to be removed, eventually. Use IniFile2 in stead
+	End Rem
 	Method Save(File$)
 	CreateDir ExtractDir(Dirry(File)),1
 	Local BT:TStream = WriteFile(Dirry(File))
@@ -142,7 +149,8 @@ Type TIni
 		
 	Rem
 	bbdoc: Loads all initiation data from a file
-	end rem	
+	about: This object and this entire module is deprecated as of Aug 31st, 2015. It still exist because too many programs still use it, however it is planned to be removed, eventually. Use IniFile2 in stead
+	End Rem	
 	Method Load(File$,ClearAll=0,DoNotCrash=0)
 	Local P:TP
 	Local SP:TP
@@ -221,6 +229,7 @@ Type TIni
 	
 Rem
 bbdoc: A quick way to load an ini-file.
+about: This object and this entire module is deprecated as of Aug 31st, 2015. It still exist because too many programs still use it, however it is planned to be removed, eventually. Use IniFile2 in stead
 End Rem	
 Function LoadIni:TIni(InitFile$)	
 Local ret:TIni = New TIni
