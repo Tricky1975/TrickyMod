@@ -480,7 +480,7 @@ End Rem
 Function JCR_Dir:TJCRDir(JCRFile$)
 Local Ret:TJCRDir
 Local RealJCRFile$ = JCRFile
-If Not ExtractDir(RealJCRFile$) RealJCRFile = "./"+RealJCRFile
+If Not ExtractDir(RealJCRFile$) And RealJCRFile.find("::")<0 Then RealJCRFile = "./"+RealJCRFile
 For Local DRV:DRV_JCRDIR = EachIn DirDrivers
       If DEBUG WriteStdout "Driver: "+DRV.NAME()+" ... "
 	If DRV.Recognize(JCRFIle) Then
