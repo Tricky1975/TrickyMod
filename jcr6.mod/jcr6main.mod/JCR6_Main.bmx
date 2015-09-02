@@ -1,4 +1,14 @@
 Rem
+        JCR6_Main.bmx
+	(c) 2015 Jeroen Petrus Broks.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 15.09.02
+End Rem
+Rem
 
 	(c) 2015 Jeroen Petrus Broks.
 	
@@ -38,8 +48,8 @@ Import tricky_units.MD5 ' Will be used for verification purposes. Full support f
 Import "-ldl"
 ?
 
-MKL_Version "JCR6 - BlitzMax/JCR6_Main.bmx","15.08.15"
-MKL_Lic     "JCR6 - BlitzMax/JCR6_Main.bmx","Mozilla Public License 2.0"
+MKL_Version "JCR6 - JCR6_Main.bmx","15.09.02"
+MKL_Lic     "JCR6 - JCR6_Main.bmx","Mozilla Public License 2.0"
 
 Private
 Const DEBUG = False
