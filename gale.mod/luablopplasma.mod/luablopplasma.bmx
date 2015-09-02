@@ -20,8 +20,8 @@ ModuleInfo "Name: luablopplasma.mod"
 ModuleInfo "Creator: Tricky (Jeroen P. Broks)"
 ModuleInfo "Copyright: Jeroen P. Broks"
 ModuleInfo "License: zLib license"
-ModuleInfo "Version: 15.08"
-ModuleInfo "Last update: Fri 14 August 2015; 16:00:31"
+ModuleInfo "Version: 15.09"
+ModuleInfo "Last update: Wed 02 September 2015; 19:51:52"
 ModuleInfo "Module History: Please check the file GALE_LuaBlopPlasma.bmx for more detailed information on that!"
 
 

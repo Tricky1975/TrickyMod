@@ -1,4 +1,14 @@
 Rem
+        GALE_DebugConsole.bmx
+	(c) 2012,2013,2014, 2015 2012, 2013, 2014.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 15.09.02
+End Rem
+Rem
 /* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 2.0
  *
@@ -47,7 +57,7 @@ Import GALE.MaxLua4GALE
 IMPORT TRICKY_UNITS.CONSOLE
 import Tricky_UNITS.MKL_Version
 
-MKL_Version "GALE - GALE_DebugConsole.bmx","14.03.15"
+MKL_Version "GALE - GALE_DebugConsole.bmx","15.09.02"
 MKL_Lic     "GALE - GALE_DebugConsole.bmx","Mozilla Public License 2.0"
 
 Type LConsole ' BLD: Object Console\nAllows a lua script to write something on the (debug) console

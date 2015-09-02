@@ -20,8 +20,8 @@ ModuleInfo "Name: main.mod"
 ModuleInfo "Creator: Tricky (Jeroen P. Broks)"
 ModuleInfo "Copyright: Jeroen P. Broks"
 ModuleInfo "License: Mozilla Public License 2.0"
-ModuleInfo "Version: 15.08"
-ModuleInfo "Last update: Wed 26 August 2015; 00:41:47"
+ModuleInfo "Version: 15.09"
+ModuleInfo "Last update: Wed 02 September 2015; 19:51:51"
 ModuleInfo "Module History: Please check the file GALE.bmx for more detailed information on that!"
 
 

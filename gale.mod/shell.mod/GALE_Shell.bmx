@@ -1,4 +1,14 @@
 Rem
+        GALE_Shell.bmx
+	(c) 2012, 2015 Jeroen Petrus Broks.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 15.09.02
+End Rem
+Rem
 /* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 2.0
  *
@@ -31,7 +41,7 @@ Version: 13.12.26
 End Rem
 Import GALE.Main
 
-MKL_Version "GALE - GALE_Shell.bmx","13.12.26"
+MKL_Version "GALE - GALE_Shell.bmx","15.09.02"
 MKL_Lic     "GALE - GALE_Shell.bmx","Mozilla Public License 2.0"
 
 Global GALE_Shell_JCR:TMap ' This variable MUST be set in order to use GALE_Shell properly.

@@ -1,4 +1,14 @@
 Rem
+        GALE_MGUI.bmx
+	(c) 2014, 2015 Jeroen Petrus Broks.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 15.09.02
+End Rem
+Rem
 
 	(c) 2014, 2015 Jeroen Petrus Broks.
 	
@@ -16,7 +26,7 @@ Import brl.eventqueue
 Import Gale.Main
 Import tricky_units.MKL_Version
 
-MKL_Version "GALE - GALE_MGUI.bmx","15.08.06"
+MKL_Version "GALE - GALE_MGUI.bmx","15.09.02"
 MKL_Lic     "GALE - GALE_MGUI.bmx","Mozilla Public License 2.0"
 
 

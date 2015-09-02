@@ -1,4 +1,14 @@
 Rem
+        GALE_Mathemethics.bmx
+	(c) 2015 Jeroen Petrus Broks.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 15.09.02
+End Rem
+Rem
 /* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 2.0
  *
@@ -50,7 +60,7 @@ Import brl.retro
 Import tricky_units.MKL_Version
 Import tricky_units.pythagoras
 
-MKL_Version "GALE - GALE_Mathemethics.bmx","15.02.18"
+MKL_Version "GALE - GALE_Mathemethics.bmx","15.09.02"
 MKL_Lic     "GALE - GALE_Mathemethics.bmx","Mozilla Public License 2.0"
 
 SeedRnd MilliSecs()

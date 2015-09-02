@@ -1,4 +1,14 @@
 Rem
+        GALE_JCR6API.bmx
+	(c) 2015 Jeroen Petrus Broks.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 15.09.02
+End Rem
+Rem
 
 	(c) 2015 Jeroen Petrus Broks.
 	
@@ -21,7 +31,7 @@ Import JCR6.JCR6MAIN
 Import gale.Main
 Import tricky_units.TrickyReadString
 
-MKL_Version "GALE - GALE_JCR6API.bmx","15.08.05"
+MKL_Version "GALE - GALE_JCR6API.bmx","15.09.02"
 MKL_Lic     "GALE - GALE_JCR6API.bmx","Mozilla Public License 2.0"
 
 Rem

@@ -1,4 +1,14 @@
 Rem
+        GALE_Keyboard.bmx
+	(c) 2014, 2015 Jeroen Petrus Broks - (This file is deprecated).
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 15.09.02
+End Rem
+Rem
 
 	(c) 2014 Jeroen Petrus Broks.
 	
@@ -77,6 +87,6 @@ Type TL_Keyboard ' BLD: Object Key\nKeyboard features<br><span style='color:#ff0
 G_LuaRegisterObject New TL_Keyboard,"Key"
 	
 	
-MKL_Version "GALE - GALE_Keyboard.bmx","15.04.02"
+MKL_Version "GALE - GALE_Keyboard.bmx","15.09.02"
 MKL_Lic     "GALE - GALE_Keyboard.bmx","Mozilla Public License 2.0"
 

@@ -1,4 +1,14 @@
 Rem
+        GALE_Graph.bmx
+	(c) 2012, 2015 2012.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 15.09.02
+End Rem
+Rem
 /* 
   Quick Functions for Lua regarding Graphics settings
 
