@@ -6,8 +6,8 @@ Module Tricky_Units.NumDump
 Moduleinfo "NameModule: Tricky's Units - NumDump"
 Moduleinfo "Author: Jeroen Broks aka Tricky"
 ModuleInfo "Copyright: &copy; Jeroen Petrus Broks"
-Moduleinfo "License: zlib license"
-moduleinfo "Last update: 09 Mar 2015"
+Moduleinfo "License: zLib license"
+moduleinfo "Last update: 02 Sep 2015"
 
 
 

@@ -6,8 +6,8 @@ Module Tricky_Units.JCR_FilePicker
 Moduleinfo "NameModule: Tricky's Units - JCR_FilePicker"
 Moduleinfo "Author: Jeroen Broks aka Tricky"
 ModuleInfo "Copyright: &copy; Jeroen Petrus Broks"
-Moduleinfo "License: zlib license"
-moduleinfo "Last update: 17 Feb 2015"
+Moduleinfo "License: zLib license"
+moduleinfo "Last update: 02 Sep 2015"
 
 
 

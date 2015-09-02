@@ -6,8 +6,8 @@ Module Tricky_Units.DyrtVoid
 Moduleinfo "NameModule: Tricky's Units - DyrtVoid"
 Moduleinfo "Author: Jeroen Broks aka Tricky"
 ModuleInfo "Copyright: &copy; Jeroen Petrus Broks"
-Moduleinfo "License: zlib license"
-moduleinfo "Last update: 22 Jan 2015"
+Moduleinfo "License: zLib license"
+moduleinfo "Last update: 02 Sep 2015"
 
 
 

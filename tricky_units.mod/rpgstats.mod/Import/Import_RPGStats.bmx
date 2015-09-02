@@ -1,4 +1,14 @@
 Rem
+        RPGStats.bmx
+	(c) 2015 Jeroen Petrus Broks.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 15.09.02
+End Rem
+Rem
 
 	(c) 2015 Jeroen Petrus Broks.
 	
@@ -37,8 +47,8 @@ Import tricky_units.TrickyReadString
 Import tricky_units.jcr6stringmap
 Import brl.max2d
 
-MKL_Version "Units - RPGStats/RPGStats.bmx","15.08.23"
-MKL_Lic     "Units - RPGStats/RPGStats.bmx","Mozilla Public License 2.0"
+MKL_Version "Tricky's Units - RPGStats.bmx","15.09.02"
+MKL_Lic     "Tricky's Units - RPGStats.bmx","Mozilla Public License 2.0"
 
 Private
 Const Chat = True
