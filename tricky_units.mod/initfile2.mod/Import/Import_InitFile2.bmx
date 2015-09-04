@@ -242,7 +242,7 @@ For line=EachIn Listfile(File)
 						Case "IMPORT","INCLUDE"
 							pos = para.find("/")<0
 							?win32
-							pos = pos And Chr(para,1)<>":"
+							pos = pos And Chr(para[1])<>":"
 							pos = pos And para.find("\")
 							?
 							If pos para=ExtractDir(String(file))+"/"+para
