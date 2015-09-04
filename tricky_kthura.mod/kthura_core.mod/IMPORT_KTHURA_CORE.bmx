@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.02
+        Version: 15.09.04
 End Rem
 Rem
 
@@ -39,7 +39,7 @@ Import tricky_units.HotSpot
 Import tricky_units.Pathfinder
 Import tricky_units.serialtrim
 
-MKL_Version "Kthura Map System - Kthura_Core.bmx","15.09.02"
+MKL_Version "Kthura Map System - Kthura_Core.bmx","15.09.04"
 MKL_Lic     "Kthura Map System - Kthura_Core.bmx","Mozilla Public License 2.0"
 
 
@@ -140,6 +140,8 @@ Function KAB3(X,Y)
 If Not UKthura Print "WARNING! No Map to give to an actor walkto"; Return ' Ignore if not set
 If X>ukthura.blockmapboundW Return True
 If Y>ukthura.blockmapboundH Return True
+If X<0 Return True
+If Y<0 Return True
 Return ukthura.blockmap[X,Y]
 End Function
 
