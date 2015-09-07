@@ -225,8 +225,13 @@ Type KTDrawActor Extends ktdrawdriver
 				A.IncFrame()
 				A.FrameSpeedCount=0
 				EndIf
+			A.UnMoveTimer=4	
 		ElseIf A.NotInMotionThen0 And (Not A.Moving)
-			A.Frame=0		
+			If A.UnMoveTimer>0
+				A.UnMovetimer:-1
+			Else
+				A.Frame=0		
+				EndIf
 			EndIf
 		' Actor Walk	
 		Rem ROTTEN WE DON'T NEED THIS!

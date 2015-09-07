@@ -93,6 +93,7 @@ Type TKthuraObject
 	Field Frame
 	Field Frames,FrameWidth,FrameHeight
 	Field FrameSpeed
+	Field AnimationSpeed = -1 ' This setting automatically sets older objects not supporting animation. The editor will by default set this value to 4.
 	Field InMotion = True
 	Field PlusX,PlusY,MinusX,MinusY
 	Field R=255,G=255,B=255
@@ -160,6 +161,7 @@ Type TKthuraActor Extends TKthuraObject
 	Field WalkingIsMotion = True
 	Field WalkX, WalkY
 	Field Moving,MoveIgnoreBlock
+	Field UnMoveTimer = 4
 	Field MoveX, MoveY
 	Field MoveSkip = 4
 	Field FrameSpeed = 4
