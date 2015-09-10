@@ -6,24 +6,12 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.08
-End Rem
-Rem
-
-	(c) 2015 Jeroen Petrus Broks.
-	
-	This Source Code Form is subject to the terms of the 
-	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
-	distributed with this file, You can obtain one at 
-	http://mozilla.org/MPL/2.0/.
-
-
-Version: 15.08.23
-
+        Version: 15.09.10
 End Rem
 
 ' 15.07.12 - First set release
 ' 15.08.04 - Support for customized spots
+' 15.09.10 - Fixed: No textures needed for zones, so why try to load them?
 
 Strict
 IMPORT TRICKY_KTHURA.KTHURA_CORE
@@ -31,7 +19,7 @@ Import brl.map
 Import brl.max2d
 Import tricky_units.MKL_Version
 
-MKL_Version "Kthura Map System - Kthura_Draw.bmx","15.09.08"
+MKL_Version "Kthura Map System - Kthura_Draw.bmx","15.09.10"
 MKL_Lic     "Kthura Map System - Kthura_Draw.bmx","Mozilla Public License 2.0"
 
 

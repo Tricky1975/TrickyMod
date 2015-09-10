@@ -6,20 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.08
-End Rem
-Rem
-
-	(c) 2015 Jeroen Petrus Broks.
-	
-	This Source Code Form is subject to the terms of the 
-	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
-	distributed with this file, You can obtain one at 
-	http://mozilla.org/MPL/2.0/.
-
-
-Version: 15.08.23
-
+        Version: 15.09.10
 End Rem
 
 ' 15.08.15 - First version considered in 'Alpha' (though earlier releases exist, this is where the project has been declared safe enough to use, though keep in mind that stuff may still be subject to change)
@@ -27,6 +14,7 @@ End Rem
 '          - Quick data access within a Kthura map done
 '          - BUGFIX: The actor pic synchronizer returned null if a picture was already loaded. This has been fixed as it had to return the memory reference of the loaded picture already. (Trying to save memory, don't you sometimes just hate it) :)
 '          - BUGFIX: Auto hotspot bottom center for single pic actors. I forgot to set this right ;)
+' 15.09.10 - DEBUG: Added a feature to list out all picture tags tied to an actor
 
 
 Strict
@@ -39,7 +27,7 @@ Import tricky_units.HotSpot
 Import tricky_units.Pathfinder
 Import tricky_units.serialtrim
 
-MKL_Version "Kthura Map System - Kthura_Core.bmx","15.09.08"
+MKL_Version "Kthura Map System - Kthura_Core.bmx","15.09.10"
 MKL_Lic     "Kthura Map System - Kthura_Core.bmx","Mozilla Public License 2.0"
 
 
@@ -172,6 +160,17 @@ Type TKthuraActor Extends TKthuraObject
 	Field WalkingToX,WalkingToY	
 	Field FoundPath:PathFinderUnit
 	Field PathLength
+	
+	Rem
+	bbdoc:Will return a string containing all pictures tied to an actor as a string (with ; as separators).<br>This only works on picbundle actors.
+	End Rem
+	Method HavePics$()
+	Local ret$
+	For Local k$=EachIn MapKeys(Picbundle)
+		If ret ret:+";"
+		ret:+k
+		Next
+	End Method	
 	
 	Rem
 	bbdoc: Increases frame of the current picture
