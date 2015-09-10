@@ -120,6 +120,8 @@ Type KTDrawZones Extends ktdrawdriver
 	DrawText O.Tag,(O.X-x)  ,(O.Y-y) 	
 	End Method
 	
+	Method OGetTex(O:TKthuraObject) End Method
+	
 	End Type
 	
 
