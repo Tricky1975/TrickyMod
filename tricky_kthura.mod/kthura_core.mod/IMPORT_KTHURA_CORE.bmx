@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.10
+        Version: 15.09.11
 End Rem
 
 ' 15.08.15 - First version considered in 'Alpha' (though earlier releases exist, this is where the project has been declared safe enough to use, though keep in mind that stuff may still be subject to change)
@@ -27,7 +27,7 @@ Import tricky_units.HotSpot
 Import tricky_units.Pathfinder
 Import tricky_units.serialtrim
 
-MKL_Version "Kthura Map System - Kthura_Core.bmx","15.09.10"
+MKL_Version "Kthura Map System - Kthura_Core.bmx","15.09.11"
 MKL_Lic     "Kthura Map System - Kthura_Core.bmx","Mozilla Public License 2.0"
 
 
@@ -84,6 +84,8 @@ Type TKthuraObject
 	Field AnimationSpeed = -1 ' This setting automatically sets older objects not supporting animation. The editor will by default set this value to 4.
 	Field InMotion = True
 	Field PlusX,PlusY,MinusX,MinusY
+	Field Rotation
+	Field InsertX,InsertY
 	Field R=255,G=255,B=255
 	Field Alpha:Double = 1
 	Field Impassible = 1
@@ -894,6 +896,14 @@ For RL=EachIn Listfile(JCR_B(JCR,prefix+"Objects"))
 						O = ret.CreateObject(False)
 					Case "KIND" 
 						O.Kind = SL[1]
+					Case "INSERT"
+						DL = SL[1].split(",")
+						If Len(DL)<2 
+							KthuraWarning " Invalid coordinate definition in line #"+cl+" >> "+L
+						Else
+							O.insertX = DL[0].toint()
+							O.insertY = DL[1].toint()
+							EndIf
 					Case "COORD"
 						DL = SL[1].split(",")
 						If Len(DL)<2 
@@ -939,6 +949,8 @@ For RL=EachIn Listfile(JCR_B(JCR,prefix+"Objects"))
 							O.FrameWidth  = DL[0].toint()
 							O.FrameHeight = DL[1].toint()
 							EndIf
+					Case "ROTATION"
+						O.Rotation = SL[1].toint()		
 					Case "ALPHA"
 						O.Alpha = SL[1].todouble()
 					Case "IMPASSIBLE"

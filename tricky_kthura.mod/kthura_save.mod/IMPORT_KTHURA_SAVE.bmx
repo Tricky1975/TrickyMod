@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.02
+        Version: 15.09.11
 End Rem
 Rem
 
@@ -27,7 +27,7 @@ IMPORT TRICKY_KTHURA.KTHURA_CORE
 Import jcr6.zlibdriver
 
 
-MKL_Version "Kthura Map System - KThura_Save.bmx","15.09.02"
+MKL_Version "Kthura Map System - KThura_Save.bmx","15.09.11"
 MKL_Lic     "Kthura Map System - KThura_Save.bmx","Mozilla Public License 2.0"
 
 Private
@@ -64,6 +64,8 @@ For O=EachIn kmap.fullobjectlist
 	WriteLine bte.stream,"~n~nNEW"
 	WriteLine bte.stream,"~tKIND = "+o.kind
 	WriteLine bte.stream,"~tCOORD = "+o.X+","+o.y
+	WriteLine bte.stream,"~tINSERT = "+o.InsertX+","+O.InsertY
+	WriteLine bte.stream,"~tROTATION = "+o.rotation
 	WriteLine bte.stream,"~tSIZE = "+o.w+"x"+o.h
 	WriteLine bte.stream,"~tTAG = "+o.tag
 	WriteLine bte.stream,"~tLABELS = "+o.labels

@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.10
+        Version: 15.09.11
 End Rem
 
 ' 15.07.12 - First set release
@@ -19,7 +19,7 @@ Import brl.map
 Import brl.max2d
 Import tricky_units.MKL_Version
 
-MKL_Version "Kthura Map System - Kthura_Draw.bmx","15.09.10"
+MKL_Version "Kthura Map System - Kthura_Draw.bmx","15.09.11"
 MKL_Lic     "Kthura Map System - Kthura_Draw.bmx","Mozilla Public License 2.0"
 
 
@@ -53,12 +53,13 @@ For k=EachIn MapKeys(KMap.DrawMap)
 			If Not d Return KthuraError("Unknown object kind: "+o.kind)
 			d.ocol o
 			d.oalpha o
-			d.ogettex o
+			d.ogettex o			
 			d.draw o,x,y
 			'DrawText "MAPTAG: "+k,x+o.x,y+o.y ' Debug line. There were some issues with the DrawMap builder in the first drafts of Kthura
 			EndIf
 		EndIf
 	Next
+SetRotation 0	
 End Function
 
 
@@ -97,6 +98,7 @@ Type KTDrawZones Extends ktdrawdriver
 
 	Method Draw(O:TKthuraObject,x,y)
 	If Not Kthura_DrawZones Return
+	SetRotation 0
 	SetColor O.R,O.G,O.B
 	SetAlpha .5
 	DrawRect O.X-x,O.Y-y,O.W,O.H	
@@ -124,7 +126,8 @@ Type KTDrawTiledArea Extends ktdrawdriver
 	'GetOrigin ox,oy
 	SetViewport O.X-x,O.Y-y,O.W,O.H
 	'SetOrigin O.X+x,O.Y+y
-	If O.textureimage TileImage O.TextureImage,O.X-x,O.Y-y,O.Frame Else DrawText "<TEXERROR>",O.X,O.Y
+	SetRotation O.Rotation
+	If O.textureimage TileImage O.TextureImage,(O.X-x)+O.insertX,(O.Y-y)+O.InsertY,O.Frame Else DrawText "<TEXERROR>",O.X,O.Y
 	SetViewport vx,vy,vw,vh
 	End Method
 	
@@ -139,13 +142,14 @@ Type ktDrawObstacle Extends ktdrawdriver
 		If Not O.loadtried KthuraWarning O.kind+" #"+O.IDNum+" has no valid texture file tied to it!"
 		O.loadtried = True
 		Return
-		EndIf
+		EndIf	
 	o.parent.textures.Load(O.parent.textureJCR,o.texturefile,o.kind,"BOTTOMCENTER")
 	o.textureimage = o.parent.textures.img(o.kind+":"+o.texturefile)	
 	End Method
 
 		
 	Method Draw(O:TKthuraObject,x,y)
+	SetRotation O.Rotation
 	If O.textureimage DrawImage O.TextureImage,O.X-x,O.Y-y,O.Frame Else DrawText "<TEXERROR>",O.X,O.Y
 	End Method
 	
@@ -158,7 +162,7 @@ Type KTDrawActor Extends ktdrawdriver
 	'Return ' Crashout for debugging
 	Local A:TKthuraActor = TKthuraActor(O)
 	Local PicList$,Ex$,I:TImage
-	If Not A Return KthuraError("Actor #"+O.idnum+" is not an actor but nevertheless still marked as such")	
+	If Not A Return KthuraError("Actor #"+O.idnum+" is not an actor but nevertheless still marked as such")		
 	If A.Picbundledir	
 		If Not A.PicBundle A.PicBundle = New TMap
 		If Not MapIsEmpty(A.PicBundle) Return 'DebugLog("Pictures for actor #"+A.idNum+" have already been loaded")
@@ -190,6 +194,7 @@ Type KTDrawActor Extends ktdrawdriver
 	Local A:TKthuraActor = TKthuraActor(O)
 	If Not A Return KthuraError("Actor #"+O.idnum+" is not an actor but nevertheless still marked as such")
 	If A.singlepicfile And a.picbundledir Return KthuraError("Actor #"+O.IDnum+" has both a picbundle and a singlepic, which is not allowed!")
+	SetRotation A.Rotation
 	Local I:TImage
 	Local ErrorText$ = "Ok!"
 	Local AcX,AcY
