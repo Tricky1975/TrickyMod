@@ -13,6 +13,7 @@ End Rem
 ' 15.05.19 - Saved vars in caps????? I removed the caps, as this could only spook up Lua
 '          - GALE_SaveMSVars() and GALE_MapMSSavedVars added
 ' 15.08.14 - Added Bye Sequence support
+' 15.09.12 - "Nothing Here" should no longer be saved.
      
 
 Strict
@@ -45,7 +46,7 @@ If updatefirst
 	EndIf
 If Not BT Return Print("WARNING! Cannot save MS vars into an empty JCR file!")
 For Local K$=EachIn MapKeys(MapVars)
-	If Upper(Mapvars.value(K))<>"-- NOTHING HERE--"
+	If Upper(Trim(Mapvars.value(K)))<>"-- NOTHING HERE --"
 		BT2 = BT.CreateEntry(Prefix+K,Storage)
 		WriteString bt2.stream, Mapvars.value(K)
 		BT2.Close
