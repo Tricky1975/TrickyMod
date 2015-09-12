@@ -6,20 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.02
-End Rem
-Rem
-
-	(c) 2015 Jeroen Petrus Broks.
-	
-	This Source Code Form is subject to the terms of the 
-	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
-	distributed with this file, You can obtain one at 
-	http://mozilla.org/MPL/2.0/.
-
-
-Version: 15.08.14
-
+        Version: 15.09.12
 End Rem
 ' 15.02.14 - Initial version
 ' 15.05.05 - Added LoadNew and LN_Run
@@ -58,9 +45,11 @@ If updatefirst
 	EndIf
 If Not BT Return Print("WARNING! Cannot save MS vars into an empty JCR file!")
 For Local K$=EachIn MapKeys(MapVars)
-	BT2 = BT.CreateEntry(Prefix+K,Storage)
-	WriteString bt2.stream, Mapvars.value(K)
-	BT2.Close
+	If Upper(Mapvars.value(K))<>"-- NOTHING HERE--"
+		BT2 = BT.CreateEntry(Prefix+K,Storage)
+		WriteString bt2.stream, Mapvars.value(K)
+		BT2.Close
+		EndIf
 	Next	
 End Function
 
@@ -98,7 +87,7 @@ MapInsert map,Upper(Tag),L
 End Function
 
 Private
-Type TMSByeDriver Extends tbasebyedriver 
+Type TMSByeDriver Extends TBaseByeDriver 
 	Method ByeDo()
 		If Not GALE_MS.ContainsScript(ByeItem.Script) Return L_ConsoleWrite("WARNING! Bye cannot execute script on tag: "+ByeItem.script+" (it doesn't exist)")
 		GALE_MS.Run ByeItem.Script,Null
