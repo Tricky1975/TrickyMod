@@ -557,7 +557,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Method ListHas(char$,list$,itemstring$) ' BLD: returns 1 if the item was found in the list. If the list or the item does not exist it returns 0
 	Local ch:RPGCharacter = grabchar(char)
 	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.ListHas","char,"+char,"list,"+list,"itemstring,"+itemstring])
-	If Not MapContains ch.lists,list Return
+	If Not MapContains(ch.lists,list) Return
 	Return ListContains(ch.list(list),itemstring)
 	End Method
 	
