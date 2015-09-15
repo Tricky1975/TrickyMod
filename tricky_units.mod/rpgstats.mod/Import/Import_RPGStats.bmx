@@ -6,20 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.02
-End Rem
-Rem
-
-	(c) 2015 Jeroen Petrus Broks.
-	
-	This Source Code Form is subject to the terms of the 
-	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
-	distributed with this file, You can obtain one at 
-	http://mozilla.org/MPL/2.0/.
-
-
-Version: 15.08.23
-
+        Version: 15.09.15
 End Rem
 
 Rem
@@ -34,6 +21,7 @@ Rem
 15.07.30 - Added Minimum support for Points
 15.08.14 - Added support to ignore scripts (in case this unit is only used in a quick viewing utility)
 15.08.23 - Added fieldname returning strings.
+15.09.15 - Added ListHas method (I can't believe I forgot that one)
 End Rem
 
 Strict
@@ -47,7 +35,7 @@ Import tricky_units.TrickyReadString
 Import tricky_units.jcr6stringmap
 Import brl.max2d
 
-MKL_Version "Tricky's Units - RPGStats.bmx","15.09.02"
+MKL_Version "Tricky's Units - RPGStats.bmx","15.09.15"
 MKL_Lic     "Tricky's Units - RPGStats.bmx","Mozilla Public License 2.0"
 
 Private

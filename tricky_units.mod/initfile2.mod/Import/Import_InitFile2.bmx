@@ -1,8 +1,8 @@
 Rem
   InitFile2.bmx
   2012, 2015, Total Revision 2015
-  version: 15.09.02
-  Copyright (C) 2012, 2015, Total Revision 2015, 2015 Jeroen P. Broks
+  version: 15.09.15
+  Copyright (C) 2012, 2015, Total Revision 2015 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -41,7 +41,7 @@ Import tricky_units.StringMap
 Import tricky_units.advdatetime
 Import tricky_units.Listfile
 
-MKL_Version "Tricky's Units - InitFile2.bmx","15.09.02"
+MKL_Version "Tricky's Units - InitFile2.bmx","15.09.15"
 MKL_Lic     "Tricky's Units - InitFile2.bmx","ZLib License"
 
 Rem 
