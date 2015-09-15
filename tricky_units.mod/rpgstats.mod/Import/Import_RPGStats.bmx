@@ -546,12 +546,19 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Method ListFields$(char$) ' BLD: Returns a string with all list fieldnames separated by ";". It is recommended to use a split function to split it (if you don't have one I'm sure you can find some scripts for that if you google for that).
 	Local ret$
 	Local ch:RPGCharacter = grabchar(char)
-	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.StatFields","char,"+char])
+	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.ListFields","char,"+char])
 	For Local K$=EachIn MapKeys(ch.lists)
 		If ret ret:+";"
 		ret:+k
 		Next
 	Return ret
+	End Method
+	
+	Method ListHas(char$,list$,itemstring$) ' BLD: returns 1 if the item was found in the list. If the list or the item does not exist it returns 0
+	Local ch:RPGCharacter = grabchar(char)
+	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.ListHas","char,"+char,"list,"+list,"itemstring,"+itemstring])
+	If Not MapContains ch.lists,list Return
+	Return ListContains(ch.list(list),itemstring)
 	End Method
 	
 	Method DataFields$(char$) ' BLD: Returns a string with all stringdata fieldnames separated by ";". It is recommended to use a split function to split it (if you don't have one I'm sure you can find some scripts for that if you google for that).
@@ -582,7 +589,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 		If ret ret:+";"
 		ret:+k
 		Next
-	End method	
+	End Method	
 		
 	End Type	
 	
