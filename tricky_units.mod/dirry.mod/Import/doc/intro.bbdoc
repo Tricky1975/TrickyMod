@@ -1,5 +1,1 @@
-This Module will simply contain a few modified functions of original BlitzMax functions which are better Or more advanced than their original counterparts.
-I did Not write them all myself. They can be written by all members of the BlitzMax community.
-If you have a routine that should definitely be in this Module, please let me know And I might add it.
-<p>
-As a Module I cannot fully license this, since I only collected stuff other people wrote, it would only be fair on my side To credit them all properly, And consider the Module itself as "public domain", but To keep the functions in it copyrighted To And licensed by their respective creators.
+This is a quick directory search routine, based on Brucey's bah.Volumes module.

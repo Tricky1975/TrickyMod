@@ -25,8 +25,7 @@ Rem
 bbdoc: This is a modified version of BRL.Max2D.TileImage. It behaves just like TileImage(), but uses the current Scale and Rotation.
 about: This function was written by: agent4125
 End Rem
-
-Function TileImage2 (image:TImage, x:Float=0# ,y:Float=0#, frame:Int=0)
+Function TileImage2(image:TImage, x:Float=0# ,y:Float=0#, frame:Int=0)
 
     Local scale_x#, scale_y#
     GetScale(scale_x#, scale_y#)
