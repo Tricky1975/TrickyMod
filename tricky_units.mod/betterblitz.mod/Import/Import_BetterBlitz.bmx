@@ -16,7 +16,7 @@ End Rem
 Strict
 
 Import tricky_units.MKL_Version
-
+Import brl.max2d
 
 MKL_Version "Tricky's Units - BetterBlitz.bmx","15.09.16"
 MKL_Lic     "Tricky's Units - BetterBlitz.bmx","Unlicensed"
