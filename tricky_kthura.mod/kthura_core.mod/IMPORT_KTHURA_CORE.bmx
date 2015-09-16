@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.12
+        Version: 15.09.16
 End Rem
 
 ' 15.08.15 - First version considered in 'Alpha' (though earlier releases exist, this is where the project has been declared safe enough to use, though keep in mind that stuff may still be subject to change)
@@ -29,7 +29,7 @@ Import tricky_units.HotSpot
 Import tricky_units.Pathfinder
 Import tricky_units.serialtrim
 
-MKL_Version "Kthura Map System - Kthura_Core.bmx","15.09.12"
+MKL_Version "Kthura Map System - Kthura_Core.bmx","15.09.16"
 MKL_Lic     "Kthura Map System - Kthura_Core.bmx","Mozilla Public License 2.0"
 
 
@@ -224,7 +224,7 @@ Type TKthuraActor Extends TKthuraObject
 	bbdoc: Makes the character walk to a target position
 	about: Contrary to WalkTo, MoveTo uses a rather primitive way to find the way and the character will not be able to find the way when there are obstacles in the way. The character will simply stop moving upon touching those. An advantage of this routine is that it's able to be more precize than WalkTo. Please note the routine should not be used when the character is already walking with WalkTo, or you may get some very odd behavior.
 	End Rem
-	Method MoveTo(TX,TY,TIngoreBlocks=False)
+	Method MoveTo(TX,TY,TIgnoreBlocks=False)
 	Moving = True
 	MoveX = TX
 	MoveY = TY
