@@ -1,9 +1,9 @@
 strict
 Rem
-bbdoc:Module Dirry by Tricky
+bbdoc:Module BetterBlitz by Tricky
 end rem
-Module Tricky_Units.Dirry
-Moduleinfo "NameModule: Tricky's Units - Dirry"
+Module Tricky_Units.BetterBlitz
+Moduleinfo "NameModule: Tricky's Units - BetterBlitz"
 Moduleinfo "Author: Jeroen Broks aka Tricky"
 ModuleInfo "Copyright: &copy; Jeroen Petrus Broks"
 Moduleinfo "License: zLib license"
@@ -11,4 +11,4 @@ moduleinfo "Last update: 16 Sep 2015"
 
 
 
-Import "Import/Import_Dirry.bmx"
+Import "Import/Import_BetterBlitz.bmx"
