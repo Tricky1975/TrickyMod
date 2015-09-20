@@ -1,27 +1,8 @@
 Rem
   InitFile2.bmx
   2012, 2015, Total Revision 2015
-  version: 15.09.15
+  version: 15.09.20
   Copyright (C) 2012, 2015, Total Revision 2015 Jeroen P. Broks
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-  1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
-End Rem
-Rem
-  InitFile2.bmx
-  InitFile
-  version: 15.09.02
-  Copyright (C) 2015 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -41,7 +22,7 @@ Import tricky_units.StringMap
 Import tricky_units.advdatetime
 Import tricky_units.Listfile
 
-MKL_Version "Tricky's Units - InitFile2.bmx","15.09.15"
+MKL_Version "Tricky's Units - InitFile2.bmx","15.09.20"
 MKL_Lic     "Tricky's Units - InitFile2.bmx","ZLib License"
 
 Rem 
@@ -213,6 +194,9 @@ For line=EachIn Listfile(File)
 									If Len(tagparam)<2 
 										Print "Invalid old var definition: "+Tline
 									Else
+										For ak=0 Until 256 
+										    tagparam[1] = Replace(tagparam[1],"%"+Right(Hex(ak),2),Chr(ak))
+										    Next
 										ini.D(tagparam[0],tagparam[1])
 										EndIf
 								Case "Add"
