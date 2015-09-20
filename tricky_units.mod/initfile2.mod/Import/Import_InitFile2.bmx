@@ -194,7 +194,7 @@ For line=EachIn Listfile(File)
 									If Len(tagparam)<2 
 										Print "Invalid old var definition: "+Tline
 									Else
-										For ak=0 Until 256 
+										For Local ak=0 Until 256 
 										    tagparam[1] = Replace(tagparam[1],"%"+Right(Hex(ak),2),Chr(ak))
 										    Next
 										ini.D(tagparam[0],tagparam[1])
