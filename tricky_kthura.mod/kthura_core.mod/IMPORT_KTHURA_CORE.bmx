@@ -961,7 +961,7 @@ For RL=EachIn Listfile(JCR_B(JCR,prefix+"Objects"))
 							EndIf
 					Case "FRAMESPEED"
 						o.FrameSpeed = SL[1].toint()
-						Print "Receveid string: "+DL[0]+" translated to: "+o.framespeed						
+						'Print "Receveid string: "+DL[0]+" translated to: "+o.framespeed						
 					Case "ROTATION"
 						O.Rotation = SL[1].toint()		
 					Case "ALPHA"

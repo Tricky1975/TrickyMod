@@ -155,9 +155,13 @@ Type ktDrawObstacle Extends ktdrawdriver
 		EndIf	
 	o.parent.textures.Load(O.parent.textureJCR,o.texturefile,o.kind,"BOTTOMCENTER")
 	o.textureimage = o.parent.textures.img(o.kind+":"+o.texturefile)	
-	o.Frames = Len(o.textureimage.pixmaps)
-	o.FrameWidth = ImageWidth(o.textureimage)
-	o.Frameheight = ImageHeight(o.textureimage)
+	If o.textureimage
+		o.Frames = Len(o.textureimage.pixmaps)
+		o.FrameWidth = ImageWidth(o.textureimage)
+		o.Frameheight = ImageHeight(o.textureimage)
+		Else 
+		KthuraError "Texture "+o.texturefile+" not properly loaded" 
+		EndIf
 	End Method
 
 		
