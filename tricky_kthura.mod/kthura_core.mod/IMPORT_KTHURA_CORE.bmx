@@ -17,6 +17,7 @@ End Rem
 ' 15.09.10 - DEBUG: Added a feature to list out all picture tags tied to an actor
 ' 15.09.12 - Cam Setting will now only be reported in the debug build
 ' 15.09.16 - IgnoreBlocks ignored by MoveTo. Not any more.
+' 15.09.22 - A few tiny core adaptions to make animated texturing possible (though the draw mode has to deal with it more) :)
 
 
 Strict
@@ -82,8 +83,9 @@ Type TKthuraObject
 	Field LoadTried
 	Field Frame
 	Field Frames,FrameWidth,FrameHeight
-	Field FrameSpeed
-	Field AnimationSpeed = -1 ' This setting automatically sets older objects not supporting animation. The editor will by default set this value to 4.
+	Field FrameSpeed = -1
+	Field framespeedticker
+	'Field AnimationSpeed = -1 ' This setting automatically sets older objects not supporting animation. The editor will by default set this value to 4.
 	Field InMotion = True
 	Field PlusX,PlusY,MinusX,MinusY
 	Field Rotation
@@ -943,11 +945,13 @@ For RL=EachIn Listfile(JCR_B(JCR,prefix+"Objects"))
 						O.Dominance = SL[1].toInt()
 					Case "TEXTURE","TEXTUREFILE"
 						O.Texturefile = SL[1]
-					Case "FRAMES"
+					Case "FRAMES" ' Deprecated
 						O.Frames = SL[1].toInt()
+						KthuraWarning "FRAMES command inside an Kthura object map has been deprecated. Please remove it as soon as possible."
 					Case "CURRENTFRAME","FRAME"
 						O.FRAME = SL[1].TOINT()
-					Case "FRAMESIZE"
+					Case "FRAMESIZE" ' Deprecated
+						KthuraWarning "FRAMESIZE command inside an Kthura object map has been deprecated. Please remove it as soon as possible."
 						DL = SL[1].split("x")
 						If Len(DL)<2 
 							KthuraWarning " Invalid size definition in line #"+cl+" >> "+L
@@ -955,6 +959,9 @@ For RL=EachIn Listfile(JCR_B(JCR,prefix+"Objects"))
 							O.FrameWidth  = DL[0].toint()
 							O.FrameHeight = DL[1].toint()
 							EndIf
+					Case "FRAMESPEED"
+						o.FrameSpeed = SL[1].toint()
+						Print "Receveid string: "+DL[0]+" translated to: "+o.framespeed						
 					Case "ROTATION"
 						O.Rotation = SL[1].toint()		
 					Case "ALPHA"
