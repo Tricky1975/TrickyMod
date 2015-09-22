@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.16
+        Version: 15.09.22
 End Rem
 
 ' 15.08.15 - First version considered in 'Alpha' (though earlier releases exist, this is where the project has been declared safe enough to use, though keep in mind that stuff may still be subject to change)
@@ -29,7 +29,7 @@ Import tricky_units.HotSpot
 Import tricky_units.Pathfinder
 Import tricky_units.serialtrim
 
-MKL_Version "Kthura Map System - Kthura_Core.bmx","15.09.16"
+MKL_Version "Kthura Map System - Kthura_Core.bmx","15.09.22"
 MKL_Lic     "Kthura Map System - Kthura_Core.bmx","Mozilla Public License 2.0"
 
 
@@ -303,6 +303,7 @@ Type TKthuraImageMap Extends TMap
 		ElseIf RL="@HOTEND"
 			HotEnd I
 		Else
+			RS = RL.Split(",")
 			SetImageHandle I,RS[0].toint(),RS[1].toint()	
 			EndIf			
 		EndIf
