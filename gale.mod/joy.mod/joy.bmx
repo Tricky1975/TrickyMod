@@ -20,8 +20,8 @@ ModuleInfo "Name: joy.mod"
 ModuleInfo "Creator: Tricky (Jeroen P. Broks)"
 ModuleInfo "Copyright: Jeroen P. Broks"
 ModuleInfo "License: Mozilla Public License 2.0"
-ModuleInfo "Version: 15.08"
-ModuleInfo "Last update: Fri 14 August 2015; 16:00:30"
+ModuleInfo "Version: 15.09"
+ModuleInfo "Last update: Tue 22 September 2015; 04:36:07"
 ModuleInfo "Module History: Please check the file GALE_Joy.bmx for more detailed information on that!"
 
 

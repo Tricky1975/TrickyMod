@@ -21,7 +21,7 @@ ModuleInfo "Creator: Tricky (Jeroen P. Broks)"
 ModuleInfo "Copyright: Jeroen P. Broks"
 ModuleInfo "License: zLib license"
 ModuleInfo "Version: 15.09"
-ModuleInfo "Last update: Wed 02 September 2015; 19:51:52"
+ModuleInfo "Last update: Tue 22 September 2015; 04:36:09"
 ModuleInfo "Module History: Please check the file GALE_LuaBlopPlasma.bmx for more detailed information on that!"
 
 
