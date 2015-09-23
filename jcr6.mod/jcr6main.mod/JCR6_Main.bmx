@@ -30,6 +30,7 @@ Import bah.volumes
 
 Import tricky_Units.StringMap
 Import tricky_units.MKL_Version
+Import tricky_units.prefixsuffix
 Import tricky_units.MD5 ' Will be used for verification purposes. Full support for this comes later.
 
 ?linux
@@ -1092,10 +1093,12 @@ Function JCR_Changed(JCRDIR:TJCRDir)
 Local m$,mf:tjcrmfiles,e:TJCREntry
 Assert JCRDIR Else "JCR_Changed(Null):~nJCR_Changed received a null value in stead of a dir"
 For m=EachIn MapKeys(JCRDIR.MainFiles)
-	mf = tjcrmfiles(MapValueForKey(JCRDir.MAINFILES,m))
-	If mf.size <>FileSize(m) Return 1
-	If mf.ftime<>FileTime(m) Return 2
-	If Not FileType(m)       Return 3
+	If Not Prefixed("incbin::")
+		mf = tjcrmfiles(MapValueForKey(JCRDir.MAINFILES,m))
+		If mf.size <>FileSize(m)  Return 1
+		If mf.ftime<>FileTime(m)  Return 2
+		If Not (FileType(m) )     Return 3
+		EndIf
 	Next
 For e=EachIn MapValues(JCRDir.Entries)
 	If Not MapContains(JCRDIR.MainFiles,e.mainfile) 
