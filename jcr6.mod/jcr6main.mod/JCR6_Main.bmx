@@ -1098,8 +1098,8 @@ For m=EachIn MapKeys(JCRDIR.MainFiles)
 	If Not FileType(m)       Return 3
 	Next
 For e=EachIn MapValues(JCRDir.Entries)
-	If Not MapContains(JCRDIR.MainFiles,e) 
-		Print "WARNING! JCR file has an unregistered main file in it!~nThis can only be the result of a bug in your program, improper use of the JCR6 module, or a bug inside JCR6!"
+	If Not MapContains(JCRDIR.MainFiles,e.mainfile) 
+		Print "WARNING! JCR file has an unregistered main file in it! ("+e.mainfile+"~nThis can only be the result of a bug in your program, improper use of the JCR6 Module, Or a bug inside JCR6!"
 		Return 4	
 		EndIf
 	Next
