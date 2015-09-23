@@ -7,8 +7,6 @@ Rem
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
         Version: 15.09.02
-End Rem
-Rem
 
 	(c) 2015 Jeroen Petrus Broks.
 	
@@ -29,6 +27,7 @@ End Rem
 ' 15.08.04 - Add Patch can now force all files in the patch JCR file into a path in the entire dir repository. Please note this is optional, though older code using this routine will NOT have to be changed. :)
 '          - Development note removed. This file should now be safe to use, though keep in mind that unless downloaded from sourceforge, this version may constantly be updated and show some bugs are a result. 8)
 ' 15.08.15 - Added a function to grab an entry easily.
+' 15.09.15 - JCR6 can now check if files were changed. JCR_B is now also protected against usage in modified files and will throw an error if a JCR6 file was changed.
 Strict
 
 
@@ -136,6 +135,11 @@ Type TJCREntry
 	Return ret
 	End Method
 	EndType
+	
+Type TJCRMFiles
+	Field size
+	Field ftime
+	End Type	
 
 Rem
 bbdoc: This type is used by JCR_Dir() to store all information in.
@@ -148,12 +152,25 @@ Type TJCRDir
 	Field DirDrvName$
 	Field FATSize,FATCSize,FATAlg$
 	Field FATOffset
+	Field MainFiles:Tmap = New Tmap
 	
 	Method EntryData:TJCREntry(fil$)
 	Return TJCREntry(MapValueForKey(entries,Upper(fil)))
 	End Method
 	
-
+	Method UpdateMain() ' Undocumented, and should only be used by the JCR6 module itself.
+	Local MF:tjcrMFiles
+	ClearMap mainfiles
+	For Local E:TJCREntry = EachIn MapValues(entries)
+		If Not MapContains(E.MainFile)
+			MF = New tjcrmfiles
+			MapInsert E.Mainfile
+			mf.size  = FileSize(E.Mainfile)
+			mf.fTime = FileTime(E.Mainfile)
+			Next
+		Next
+	End Method
+	
 	End Type
 
 Type TJCR_Error
@@ -483,6 +500,8 @@ Type DRV_JCR6 Extends DRV_JCRDIR
 New DRV_JCR6
 Public	
 
+
+
 Rem
 bbdoc:Reads the directory contents of a JCR file.
 about:Though you can request to access the JCR file directy, using this function is preferred (as the feature you request will do it otherwise, anyway). Having a pre-read directory also allows you to use the patching possibilities. The file types that can be read this way are defined by the drivers you loaded. When the file was not found or no drivers were present that recognize this file, this function will return Null
@@ -497,7 +516,8 @@ For Local DRV:DRV_JCRDIR = EachIn DirDrivers
 		If DEBUG Print "Recognized!"
 		ret = New TJCRDir
 		ret = Drv.Dir(realJCRFile)
-		If ret ret.DirDrvName = DRV.Name()		
+		If ret ret.DirDrvName = DRV.Name()
+		ret.UpdateMain		
 		Return Ret
 		EndIf		
 	Next
@@ -571,6 +591,10 @@ Else
 	Return
 	EndIf
 If Not M Return
+If JCR_Changed(M) 
+	JCR_JamErr("Underlying JCR6 resource files have been modified since original load ("+JCR_Changed(M)+")",PM,entry,"JCR_B")
+	Return
+	EndIf
 Local E$ = Entry$
 If Not M.Config.B("__CaseSensitive") E=Upper(E)
 If Not MapContains(M.Entries,E)
@@ -1060,7 +1084,36 @@ For E$ = EachIn MapKeys(TPatch.Comments)
 For E$ = EachIn MapKeys(TPatch.Variables)
 	MapInsert MainJCR.Variables,E,MapValueForKey(TPatch.Variables,E)
 	Next	
+MainJCR.UpdateMain
 Return True	
+End Function
+
+Rem 
+bbdoc:Checks wither or not one of the loaded JCR6 main files have been changed since its original load
+returns:
+The next values may be returned:<ul>
+<li>0 = No changes found</li>
+<li>1 = One of the main files' size was changed</li>
+<li>2 = One of the main files' datetime stamp was changed</li>
+<li>3 = One of the main files has been deleted</li>
+<li>4 = A new main file was added. This one can only happen if an improper patching was done. When doing everything according to JCR6 rules, this value can never be returned. If this value is returned then either your program or JCR6 contains a bug which needs to be fixed asap.</li>
+</ul>
+End Rem
+Function JCR_Changed(JCRDIR:TJCRDir)
+Local m$,mf:tjcrmfiles,e:TJCREntry
+Assert JCRDIR Else "JCR_Changed(Null):~nJCR_Changed received a null value in stead of a dir"
+For m=EachIn MapKeys(JCRDIR.MainFiles)
+	mf = MapValueForKey(JCRDir.MAINFILES,m)
+	If mf.size <>FileSize(m) Return 1
+	If mf.ftime<>FileTime(m) Return 2
+	If Not FileType(m)       Return 3
+	Next
+For e=EachIn MapValues(JCRDir.Entries)
+	If Not MapContains(JCRDIR.MainFiles,e) 
+		Print "WARNING! JCR file has an unregistered main file in it!~nThis can only be the result of a bug in your program, improper use of the JCR6 module, or a bug inside JCR6!"
+		Return 4	
+		EndIf
+	Next
 End Function
 
 
