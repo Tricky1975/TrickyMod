@@ -909,6 +909,7 @@ If Not JCR
 ' Include the serializer by defailt
 RFile = "GALE:SERIALIZER.LUA"
 MapInsert MainList.entries,RFile,GALE_IncBin2JCR("Serializer.lua",RFile)
+MainList.UpdateMain ' As of version 15.09.23 of JCR6 this line is required as otherwise the JCR6 files will not work properly with GALE.
 ListAddLast TmpList,RFile
 ListAddLast CapList,RFile.ToUpper()
 ListAddLast RetList,RFile
