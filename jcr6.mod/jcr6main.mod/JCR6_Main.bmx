@@ -153,7 +153,7 @@ Type TJCRDir
 	For Local E:TJCREntry = EachIn MapValues(entries)
 		If Not MapContains(MainFiles,E.MainFile)
 			MF = New tjcrmfiles
-			MapInsert mainfiles,E.Mainfile
+			MapInsert mainfiles,E.Mainfile,mf
 			mf.size  = FileSize(E.Mainfile)
 			mf.fTime = FileTime(E.Mainfile)
 			EndIf
