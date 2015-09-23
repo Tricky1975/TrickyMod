@@ -40,10 +40,17 @@ If Not KMap Return KthuraError("Cannot draw a map when it's null") ' Make sure w
 Local k$,O:TKthuraObject
 Local d:ktdrawdriver
 Local okind$
+Local olist:TList = New TList
+Local ok
 For k=EachIn MapKeys(KMap.DrawMap)
 	o = kmap.drawmap.get(k)	
+	ok=True
+	ok = ok And (o.visible Or ForceVisible)
+	If ok ListAddLast olist,o
+	Next
+For o=EachIn olist	
 	If o ' -- The actor engine can sometimes cause an empty object to be created. This should fix that.
-		If o.visible Or ForceVisible
+'		If o.visible Or ForceVisible
 		 	If Left(o.kind,1)="$" 
 				okind = "CSpot"
 				Else
@@ -58,7 +65,7 @@ For k=EachIn MapKeys(KMap.DrawMap)
 			d.draw o,x,y
 			'DrawText "MAPTAG: "+k,x+o.x,y+o.y ' Debug line. There were some issues with the DrawMap builder in the first drafts of Kthura
 			EndIf
-		EndIf
+'		EndIf
 	Next
 SetRotation 0	
 End Function
@@ -252,41 +259,7 @@ Type KTDrawActor Extends ktdrawdriver
 				A.Frame=0		
 				EndIf
 			EndIf
-		' Actor Walk	
-		Rem ROTTEN WE DON'T NEED THIS!
-		If A.Walking
-			A.WalkSpot:+A.WalkSkip
-			If A.WalkSpot>A.WalkSkip 
-				A.WalkSpot=A.WalkSkip
-				A.Walking=False
-				EndIf
-			ReadWaySpot A.FoundPath,A.WalkSpot,AcX,AcY
-			A.X = AcX
-			A.Y = AcY
-			EndIf
-		End Rem
 		If A.Walking And (Not A.Moving)
-			Rem junk?
-			timeout=0
-			Repeat
-			ReadWaySpot A.FoundPath,A.WalkSpot,AcX,AcY
-			GoX = (AcX*A.Parent.BlockMapGridW)+(A.Parent.BlockMapGridW/2)
-			GoY = (AcY+1)*A.Parent.BlockMapGridH
-			WtX = A.X
-			WtY = A.Y
-			If A.Y <> GoY 
-				WtY = GoY
-			ElseIf A.X <> GoX
-				WtX = GoX
-				EndIf	
-			If GoX=A.X And GOY=A.Y A.WalkSpot:+1
-			A.Walking = A.WalkSpot<LengthWay(A.FoundPath)
-			TimeOut:+1
-			If TimeOut>100 Print "WARNING! Timeout on the way: "+A.X+","+A.Y+" >> "+WtX+","+WtY+" Time: "+TimeOut+"!"
-			If TimeOut>1000 KthuraError "Pathfinder timeout!"
-			Until (Not A.Walking) Or (wtx<>A.X Or wty<>A.Y)
-			If A.Walking A.MoveTo Wtx,wty
-			End Rem
 			ABX = Floor(A.X/A.parent.BlockmapgridW)
 			ABY = Floor(A.Y/A.parent.BlockmapgridH)
 			ReadWaySpot A.FoundPath,A.WalkSpot,TBX,TBY
