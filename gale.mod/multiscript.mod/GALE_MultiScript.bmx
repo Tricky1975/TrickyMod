@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.12
+        Version: 15.09.23
 End Rem
 ' 15.02.14 - Initial version
 ' 15.05.05 - Added LoadNew and LN_Run
