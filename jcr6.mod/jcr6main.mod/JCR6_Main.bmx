@@ -6,18 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.02
-
-	(c) 2015 Jeroen Petrus Broks.
-	
-	This Source Code Form is subject to the terms of the 
-	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
-	distributed with this file, You can obtain one at 
-	http://mozilla.org/MPL/2.0/.
-
-
-Version: 15.08.15
-
+        Version: 15.09.23
 End Rem
 
 ' History:
@@ -47,7 +36,7 @@ Import tricky_units.MD5 ' Will be used for verification purposes. Full support f
 Import "-ldl"
 ?
 
-MKL_Version "JCR6 - JCR6_Main.bmx","15.09.02"
+MKL_Version "JCR6 - JCR6_Main.bmx","15.09.23"
 MKL_Lic     "JCR6 - JCR6_Main.bmx","Mozilla Public License 2.0"
 
 Private
@@ -167,7 +156,7 @@ Type TJCRDir
 			MapInsert E.Mainfile
 			mf.size  = FileSize(E.Mainfile)
 			mf.fTime = FileTime(E.Mainfile)
-			Next
+			endif
 		Next
 	End Method
 	

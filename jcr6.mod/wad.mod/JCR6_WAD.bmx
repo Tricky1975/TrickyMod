@@ -6,23 +6,13 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.02
-End Rem
-Rem
-
-	(c) 2015 Jeroen Petrus Broks.
-	
-	This Source Code Form is subject to the terms of the 
-	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
-	distributed with this file, You can obtain one at 
-	http://mozilla.org/MPL/2.0/.
-
-
-Version: 15.05.20
-
+        Version: 15.09.23
 End Rem
 Strict
 Import jcr6.jcr6main
+
+MKL_Version "JCR6 - JCR6_WAD.bmx","15.09.23"
+MKL_Lic     "JCR6 - JCR6_WAD.bmx","Mozilla Public License 2.0"
 
 Private
 Function JCR_FetchWAD:TJCRDir(WAD$,SupportLevel=1)

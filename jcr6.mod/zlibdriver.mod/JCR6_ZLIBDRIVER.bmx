@@ -1,4 +1,14 @@
 Rem
+        JCR6_ZLIBDRIVER.bmx
+	(c) 2015 Jeroen Petrus Broks.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 15.09.23
+End Rem
+Rem
 
 	(c) 2015 Jeroen Petrus Broks.
 	
@@ -27,8 +37,8 @@ Import brl.bank
 Import brl.Stream
 Import tricky_units.MKL_Version
 
-MKL_Version "JCR6 - BlitzMax/JCR6_ZLIBDRIVER.bmx","15.05.20"
-MKL_Lic     "JCR6 - BlitzMax/JCR6_ZLIBDRIVER.bmx","Mozilla Public License 2.0"
+MKL_Version "JCR6 - JCR6_ZLIBDRIVER.bmx","15.09.23"
+MKL_Lic     "JCR6 - JCR6_ZLIBDRIVER.bmx","Mozilla Public License 2.0"
 
 
 Type JCR6_ZLIBDRIVER Extends DRV_Compression
