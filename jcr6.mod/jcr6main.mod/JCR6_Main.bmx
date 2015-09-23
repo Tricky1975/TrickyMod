@@ -1092,7 +1092,7 @@ Function JCR_Changed(JCRDIR:TJCRDir)
 Local m$,mf:tjcrmfiles,e:TJCREntry
 Assert JCRDIR Else "JCR_Changed(Null):~nJCR_Changed received a null value in stead of a dir"
 For m=EachIn MapKeys(JCRDIR.MainFiles)
-	mf = MapValueForKey(JCRDir.MAINFILES,m)
+	mf = tjcrmfiles(MapValueForKey(JCRDir.MAINFILES,m))
 	If mf.size <>FileSize(m) Return 1
 	If mf.ftime<>FileTime(m) Return 2
 	If Not FileType(m)       Return 3
