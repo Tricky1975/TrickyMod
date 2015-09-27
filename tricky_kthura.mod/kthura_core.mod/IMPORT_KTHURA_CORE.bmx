@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.23
+        Version: 15.09.26
 End Rem
 
 ' 15.08.15 - First version considered in 'Alpha' (though earlier releases exist, this is where the project has been declared safe enough to use, though keep in mind that stuff may still be subject to change)
@@ -31,7 +31,7 @@ Import tricky_units.HotSpot
 Import tricky_units.Pathfinder
 Import tricky_units.serialtrim
 
-MKL_Version "Kthura Map System - Kthura_Core.bmx","15.09.23"
+MKL_Version "Kthura Map System - Kthura_Core.bmx","15.09.26"
 MKL_Lic     "Kthura Map System - Kthura_Core.bmx","Mozilla Public License 2.0"
 
 
@@ -126,6 +126,27 @@ Type TKthuraObject
 	Method Reform(nx,ny,nw,nh,UpdateBlockMap=True)
 	Move nx,ny,False ' Don't build the blockmap twice, that only eats performance for no reason at all.
 	ReShape nw,nh,updateblockmap
+	End Method
+	
+	Rem
+	bbdoc: Assign data to a Kthura object
+	End Rem
+	Method DataDef(FieldName$,Value$)
+	MapInsert data,fieldname,value
+	End Method
+	
+	Rem
+	bbdoc: Alias for DataDef
+	End Rem
+	Method DataSet(F$,V$) 
+	datadef f,v 
+	End Method
+	
+	Rem
+	bbdoc: Retrieve data from a Kthura Object
+	End Rem
+	Method DataGet$(FieldName$)
+	Return Data.Value(fieldName)
 	End Method
 	
 	End Type
