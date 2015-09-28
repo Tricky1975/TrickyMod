@@ -78,6 +78,9 @@ For k=EachIn MapKeys(KMap.DrawMap)
 	ok=True
 	ok = ok And (o.visible Or ForceVisible)
 	If boundaries
+		d = ktdrawdriver(MapValueForKey(drawdrivers,okind))
+		Assert d Else "Unknown object kind: "+okind
+		ok = ok And d.inboundaries(o)
 		EndIf
 	If ok ListAddLast olist,o
 	Next
