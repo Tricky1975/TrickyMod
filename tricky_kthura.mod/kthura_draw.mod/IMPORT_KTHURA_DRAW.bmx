@@ -52,17 +52,6 @@ Kthura_Boundaries_End_X   = GraphicsWidth()+5
 Kthura_Boundaries_End_Y   = GraphicsHeight()+5
 ' The -5 and +5 are just a few "security" margins, they should not be needed, but they were put in just in case.
 End Function
-Rem
-bbdoc: Sets the boundaries based on the sizes of your graphics screen. This should work in Max2D games either in Windowed or full screen mode. I really don't know how this will behave within a MaxGUI canvas.
-End Rem
-Function Kthura_GrabBoundaries()
-KthuraBoundaries_Begin_X = -5
-KthuraBoundaries_Begin_Y = -5
-KthuraBoundaries_End_X   = GraphicsWidth()+5
-KthuraBoundaries_End_Y   = GraphicsHeight()+5
-' The -5 and +5 are just a few "security" margins, they should not be needed, but they were put in just in case.
-End Function
-
 
 
 Rem
