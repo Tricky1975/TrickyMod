@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.23
+        Version: 15.09.28
 End Rem
 
 ' 15.07.12 - First set release
@@ -21,7 +21,7 @@ Import brl.map
 Import brl.max2d
 Import tricky_units.MKL_Version
 
-MKL_Version "Kthura Map System - Kthura_Draw.bmx","15.09.23"
+MKL_Version "Kthura Map System - Kthura_Draw.bmx","15.09.28"
 MKL_Lic     "Kthura Map System - Kthura_Draw.bmx","Mozilla Public License 2.0"
 
 
@@ -137,7 +137,7 @@ Type KTDrawDriver
 	o.Frameheight = ImageHeight(o.textureimage)
 	End Method
 	
-	Method InBoundaries(O:KthuraObject) Return True End Method ' If no boundaries setting is know just return true.
+	Method InBoundaries(O:tKthuraObject) Return True End Method ' If no boundaries setting is know just return true.
 	
 		
 	End Type
@@ -185,7 +185,7 @@ Type KTDrawTiledArea Extends ktdrawdriver
 	SetViewport vx,vy,vw,vh
 	End Method
 	
-	Method InBoundaries(O:KthuraObject)
+	Method InBoundaries(O:TKthuraObject)
 	Return ..
 		O.X    >=Kthura_boundaries_begin_X And ..
 		O.X+O.W<=Kthura_boundaries_end_x   And ..
@@ -229,7 +229,7 @@ Type ktDrawObstacle Extends ktdrawdriver
 	If O.textureimage DrawImage O.TextureImage,O.X-x,O.Y-y,O.Frame Else DrawText "<TEXERROR>",O.X,O.Y
 	End Method
 
-	Method InBoundaries(O:KthuraObject)
+	Method InBoundaries(O:TKthuraObject)
 	If Not O.textureimage Return True ' Let the drawer itself handle this as an error, we cannot handle it!
 	Return ..
 		O.Y-ImageHeight(o.textureimage)>= Kthura_boundaries_begin_Y And ..
