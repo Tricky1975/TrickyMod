@@ -24,25 +24,34 @@ Import tricky_units.MKL_Version
 MKL_Version "Kthura Map System - Kthura_Draw.bmx","15.09.28"
 MKL_Lic     "Kthura Map System - Kthura_Draw.bmx","Mozilla Public License 2.0"
 
-
 Rem
 bbdoc: Start X Boundary
 about: Boundaries can be set up to improve performance. If they are set everything that falls outside the boudaries, will simply be ignored by the drawer. If the boundaries are not set, the drawer will draw everything regardless if it will be seen by the user or not. Proper usage of these values will speed up the performance. Inproper usage will result into very undesirable effects. People using Kthura in a full Max2D screen (I mean not in a MaxGUI canvas) may want to use @Kthura_GrabBoundaries in stead to be sure this is done the way it should be done.
 End Rem
-Global KthuraBoundaries_Begin_X
+Global Kthura_Boundaries_Begin_X
 Rem
 bbdoc: Start Y Boundary
 End Rem
-Global KthuraBoundaries_Begin_Y
+Global Kthura_Boundaries_Begin_Y
 Rem
 bbdoc: End X Boundary
 End Rem
-Global KthuraBoundaries_End_X
+Global Kthura_Boundaries_End_X
 Rem
 bbdoc: End Y Boundary
 End Rem
-Global KthuraBoundaries_End_Y
+Global Kthura_Boundaries_End_Y
 
+Rem
+bbdoc: Sets the boundaries based on the sizes of your graphics screen. This should work in Max2D games either in Windowed or full screen mode. I really don't know how this will behave within a MaxGUI canvas.
+End Rem
+Function Kthura_GrabBoundaries()
+Kthura_Boundaries_Begin_X = -5
+Kthura_Boundaries_Begin_Y = -5
+Kthura_Boundaries_End_X   = GraphicsWidth()+5
+Kthura_Boundaries_End_Y   = GraphicsHeight()+5
+' The -5 and +5 are just a few "security" margins, they should not be needed, but they were put in just in case.
+End Function
 Rem
 bbdoc: Sets the boundaries based on the sizes of your graphics screen. This should work in Max2D games either in Windowed or full screen mode. I really don't know how this will behave within a MaxGUI canvas.
 End Rem
@@ -137,7 +146,7 @@ Type KTDrawDriver
 	o.Frameheight = ImageHeight(o.textureimage)
 	End Method
 	
-	Method InBoundaries(O:tKthuraObject) Return True End Method ' If no boundaries setting is know just return true.
+	Method InBoundaries(O:TKthuraObject) Return True End Method ' If no boundaries setting is know just return true.
 	
 		
 	End Type
