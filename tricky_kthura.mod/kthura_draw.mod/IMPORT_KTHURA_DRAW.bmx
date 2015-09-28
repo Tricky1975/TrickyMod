@@ -72,7 +72,7 @@ Local d:ktdrawdriver
 Local okind$
 Local olist:TList = New TList
 Local ok
-Local boundaries = KthuraBoundaries_Begin_X <> KthuraBoundaries_End_X And KthuraBoundaries_Begin_Y <> KthuraBoundaries_End_X
+Local boundaries = Kthura_Boundaries_Begin_X <> Kthura_Boundaries_End_X And Kthura_Boundaries_Begin_Y <> Kthura_Boundaries_End_X
 For k=EachIn MapKeys(KMap.DrawMap)
 	o = kmap.drawmap.get(k)	
 	ok=True
