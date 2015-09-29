@@ -19,6 +19,7 @@ End Rem
 ' 15.09.16 - IgnoreBlocks ignored by MoveTo. Not any more.
 ' 15.09.22 - A few tiny core adaptions to make animated texturing possible (though the draw mode has to deal with it more) :)
 ' 15.09.23 - "ForcePassible" support
+' 15.09.29 - Negative dominance blocked
 
 
 Strict
@@ -559,6 +560,10 @@ Type TKthura
 	Method RemapDrawMap()
 	ClearMap drawmap
 	For Local O:TKthuraObject=EachIn fullobjectlist
+		If o.dominance<0 
+			o.dominance = 0
+			KthuraWarning "Negative dominance value in object #"+O.IDNum+" has been set to zero."
+			EndIf
 		MapInsert drawmap,Hex(O.dominance)+"."+Hex(+O.Y)+"."+Hex(O.idnum),O
 		Next
 	End Method
