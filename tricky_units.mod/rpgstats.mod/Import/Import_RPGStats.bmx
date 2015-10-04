@@ -235,7 +235,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Method SafeStat(Char$,Stat$,nomod=0) ' BLD: Returns the atat value, but would the normal Stat() method crash the game if a character or stat does not exist, this one will then return 0
 	Local ch:RPGCharacter = grabchar(char)
 	If Not ch Return 0
-	If ch.stat(stat) Return Stat(char,stat,nomod) Else Return 0	
+	If ch.stat(stat) Return Self.Stat(char,stat,nomod) Else Return 0	
 	End Method
 	
 	Method DefStat(char$,Stat$,value=0,OnlyIfNotExist=0) ' BLD: Defines a value. Please note that if a stat is scripted the scripts it refers to will always use this feature itself to define the value. If "OnlyIfNotExist" is checked to 1 or any higher number than that, the definition only takes place of the stat doesn't exist yet. This was a safety precaution if you want to add stats later without destroying the old data if it exists, but to create it if you added a stat which was (logically) not yet stored in older savegames.
