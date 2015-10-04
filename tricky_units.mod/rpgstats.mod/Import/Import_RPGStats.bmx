@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.15
+        Version: 15.10.04
 End Rem
 
 Rem
@@ -22,6 +22,7 @@ Rem
 15.08.14 - Added support to ignore scripts (in case this unit is only used in a quick viewing utility)
 15.08.23 - Added fieldname returning strings.
 15.09.15 - Added ListHas method (I can't believe I forgot that one)
+15.10.04 - Added SafeStat() Method
 End Rem
 
 Strict
@@ -35,7 +36,7 @@ Import tricky_units.TrickyReadString
 Import tricky_units.jcr6stringmap
 Import brl.max2d
 
-MKL_Version "Tricky's Units - RPGStats.bmx","15.09.15"
+MKL_Version "Tricky's Units - RPGStats.bmx","15.10.04"
 MKL_Lic     "Tricky's Units - RPGStats.bmx","Mozilla Public License 2.0"
 
 Private
@@ -229,6 +230,10 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 		Me = New TMe
 		EndIf		
 	Return st.value + (st.modifier * Int(nomod=0))
+	End Method
+	
+	Method SafeStat(Char$,Stat$,nomod=0) ' BLD: Returns the atat value, but would the normal Stat() method crash the game if a stat does not exist, this one will then return 0
+	If ch.stat(stat) Return Stat(char,stat,nomod) Else Return 0	
 	End Method
 	
 	Method DefStat(char$,Stat$,value=0,OnlyIfNotExist=0) ' BLD: Defines a value. Please note that if a stat is scripted the scripts it refers to will always use this feature itself to define the value. If "OnlyIfNotExist" is checked to 1 or any higher number than that, the definition only takes place of the stat doesn't exist yet. This was a safety precaution if you want to add stats later without destroying the old data if it exists, but to create it if you added a stat which was (logically) not yet stored in older savegames.

@@ -154,13 +154,13 @@ Type TKthuraObject
 	bbdoc: Dumps all data fields
 	about: This function is soley meant for debugging purposes
 	End Rem
-	Method DataDump()
+	Method DataDump$()
 	Local ret$
 	For Local k$=EachIn MapKeys(data)
 		ret:+k+"="+data.value(k)+"; "
 		Next
 	Return ret
-	End method
+	End Method
 	
 	End Type
 	
