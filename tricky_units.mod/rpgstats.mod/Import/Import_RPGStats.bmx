@@ -232,7 +232,9 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Return st.value + (st.modifier * Int(nomod=0))
 	End Method
 	
-	Method SafeStat(Char$,Stat$,nomod=0) ' BLD: Returns the atat value, but would the normal Stat() method crash the game if a stat does not exist, this one will then return 0
+	Method SafeStat(Char$,Stat$,nomod=0) ' BLD: Returns the atat value, but would the normal Stat() method crash the game if a character or stat does not exist, this one will then return 0
+	Local ch:RPGCharacter = grabchar(char)
+	If Not ch Return 0
 	If ch.stat(stat) Return Stat(char,stat,nomod) Else Return 0	
 	End Method
 	
