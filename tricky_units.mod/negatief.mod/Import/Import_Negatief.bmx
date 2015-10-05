@@ -1,41 +1,14 @@
 Rem
-	FOUTE LICENSE, DOEN WE ZO EVEN OVERNIEUW
-	
-	
-	
-	
-	(c) Jeroen P. Broks, 2015, All rights reserved
-	
-		This program is free software: you can redistribute it and/or modify
-		it under the terms of the GNU General Public License as published by
-		the Free Software Foundation, either version 3 of the License, or
-		(at your option) any later version.
-		
-		This program is distributed in the hope that it will be useful,
-		but WITHOUT ANY WARRANTY; without even the implied warranty of
-		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-		GNU General Public License for more details.
-		You should have received a copy of the GNU General Public License
-		along with this program.  If not, see <http://www.gnu.org/licenses/>.
-		
-	Exceptions to the standard GNU license are available with Jeroen's written permission given prior 
-	to the project the exceptions are needed for.
-Version: 15.09.02
-End Rem
-Rem
-/* 
-  Negatief
-
+  Negatief.bmx
+  
+  version: 15.10.06
   Copyright (C) 2015 Jeroen P. Broks
-
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
-
   Permission is granted to anyone to use this software for any purpose,
   including commercial applications, and to alter it and redistribute it
   freely, subject to the following restrictions:
-
   1. The origin of this software must not be misrepresented; you must not
      claim that you wrote the original software. If you use this software
      in a product, an acknowledgment in the product documentation would be
@@ -43,20 +16,13 @@ Rem
   2. Altered source versions must be plainly marked as such, and must not be
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
-
-*/
-
-
-
-Version: 15.07.12
-
 End Rem
 ' PLEASE NOTE THIS MODULE IS STILL UNDER CONSTRUCTION, SO DON'T BE SURPRISED IF IT DOESN'T WORK PROPERLY (IF IT WORKS AT ALL).
 Strict 
 Import tricky_units.ImageCopier
 
-MKL_Version "Tricky's Units - Negatief.bmx","15.09.02"
-MKL_Lic     "Tricky's Units - Negatief.bmx","GNU General Public License 3"
+MKL_Version "Tricky's Units - Negatief.bmx","15.10.06"
+MKL_Lic     "Tricky's Units - Negatief.bmx","ZLib License"
 
 Rem
 bbdoc: Inverts a pixmap coloring in order to create a "negative".
@@ -66,7 +32,7 @@ Function PixNegatief:TPixmap(Pixmap:TPixmap)
 If Not pixmap Print "WARNING! PixNegatief(Null): Cannot invert a Null Pixmap!" Return
 Local x,y
 Local r,g,b,p$,newp$
-Local ret:TPixmap = CreatePixmap(PixmapHeight(Pixmap),PixmapHeight(pixmap),PF_BGRA8888) ' Pixmap.format)
+Local ret:TPixmap = CreatePixmap(PixmapWidth(Pixmap),PixmapHeight(pixmap),PF_BGRA8888) ' Pixmap.format)
 For y=0 Until PixmapHeight(Pixmap) For x=0 Until PixmapWidth(Pixmap)
 	p = Hex(ReadPixel(pixmap,x,y))
 	r = ("$"+p[2..4]).toint() 
@@ -100,7 +66,7 @@ If Len(work.pixmaps)>1 ' Animated images. Somehow it doesn't work too well, and 
 	For Local ak = 0 Until Len(ret.pixmaps)	ret.pixmaps[ak] = PixNegatief(ret.pixmaps[ak])	Next
 	Else
 	'Print "single"
-	rpx = pixnegatief(work.Pixmaps[0])
+	rpx = PixNegatief(work.Pixmaps[0])
 	'SavePixmapPNG rpx,"Test.png",9; Print "Saving test pic"
 	ret = LoadImage(rpx)	EndIf
 Return ret
