@@ -191,10 +191,12 @@ Type KTDrawTiledArea Extends ktdrawdriver
 	
 	Method InBoundaries(O:TKthuraObject)
 	Return ..
+		( ..
 		O.X    >=Kthura_Boundaries_Begin_X And ..
+		O.Y    >=Kthura_Boundaries_Begin_Y ..
+		) Or ( ..
 		O.X+O.W<=Kthura_Boundaries_End_X   And ..
-		O.Y    >=Kthura_Boundaries_Begin_Y And ..
-		O.Y+O.H<=Kthura_Boundaries_End_Y  
+		O.Y+O.H<=Kthura_Boundaries_End_Y  )
 	End Method
 	
 	End Type
