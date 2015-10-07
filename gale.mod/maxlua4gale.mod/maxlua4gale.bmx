@@ -21,7 +21,7 @@ ModuleInfo "General: This is just a modified version of MaxLua intended to use i
 ModuleInfo "Copyright: Blitz Research Ltd."
 ModuleInfo "License: zlib/pnglib"
 ModuleInfo "Version: 1.00"
-ModuleInfo "GALE Version: 15.09"
+ModuleInfo "GALE Version: 15.10"
 
 
 
