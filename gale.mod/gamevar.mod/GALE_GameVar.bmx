@@ -25,6 +25,7 @@ End Rem
 ' History
 ' 11.11.16 - Initial Version
 ' 12.03.31 - Moved to GALE
+' 15.10.08 - Added N() method
 
 
 Import Gale.maxlua4gale
@@ -63,7 +64,11 @@ Type LUA_GameVar  ' BLD: Object Var\n\nThis contains the variables of the game.\
 	
 	Method Got(k$) ' BLD: returns 1 if a var exists 0 if it doesn't.
 	Return MapContains(VarMap(),k)
-	End method
+	End Method
+	
+	Method N(k$,v$) ' BLD: Will define a variable, but only when it doesn't yet exist. When a variable already contains any value at all, this request will be ignored.
+	If Not got(k) d(k,v)
+	End Method
 
 	End Type
 	
