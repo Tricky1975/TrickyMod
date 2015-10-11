@@ -54,6 +54,13 @@ Rem
 bbdoc:When set to true, JCR6 will crash out on an error, and (if possible) put on a comment box containing the error. If set to true, it will also dump on std out, like JCR6DumpError does. Cut short, if this is set the JCR6DumpError state doesn't matter any more :)
 End Rem
 Global JCR6CrashError = False
+
+Rem
+bbdoc: When set to 'true' (default value) it will cause JCR_B() to throw an error if the JCR6 file was changed after the directory was read. When set to 'false' JCR_B() will not do this check, however keep in mind that setting this to false can be quite risky. This variable only came to life because the Kthura editor didn't function well anymore since JCR6 supports this check and it was no longer possible to adept that editor any more without having to rewrite from scratch. I basically recommend to NEVER use this unless you know what you are doing. Using the JCR_Changed() function manually will NOT be affected by this setting.
+End Rem
+Global JCR6CheckChange = True
+
+
  
 Type ConfigMap Extends TMap
      Method T$(Tag$)
@@ -581,7 +588,7 @@ Else
 	Return
 	EndIf
 If Not M Return
-If JCR_Changed(M) 
+If JCR6CheckChange And JCR_Changed(M) 
 	JCR_JamErr("Underlying JCR6 resource files have been modified since original load ("+JCR_Changed(M)+")",PM,entry,"JCR_B")
 	Return
 	EndIf
