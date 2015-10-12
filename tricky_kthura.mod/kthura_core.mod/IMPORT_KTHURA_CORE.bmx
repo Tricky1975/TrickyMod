@@ -428,6 +428,8 @@ Type TKthura
 	Local layer:TKthura = New TKthura
 	layer.multi = multi
 	layer.data = data
+	Layer.textures = textures
+	layer.texturejcr = texturejcr
 	MapInsert multi,layername,layer
 	End Method
 	
