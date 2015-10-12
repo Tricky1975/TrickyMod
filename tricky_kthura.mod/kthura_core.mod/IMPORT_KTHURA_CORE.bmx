@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.10.03
+        Version: 15.10.12
 End Rem
 
 ' 15.08.15 - First version considered in 'Alpha' (though earlier releases exist, this is where the project has been declared safe enough to use, though keep in mind that stuff may still be subject to change)
@@ -33,7 +33,7 @@ Import tricky_units.HotSpot
 Import tricky_units.Pathfinder
 Import tricky_units.serialtrim
 
-MKL_Version "Kthura Map System - Kthura_Core.bmx","15.10.03"
+MKL_Version "Kthura Map System - Kthura_Core.bmx","15.10.12"
 MKL_Lic     "Kthura Map System - Kthura_Core.bmx","Mozilla Public License 2.0"
 
 
@@ -379,6 +379,7 @@ Type TKthura
 	Field TagMap:TKThuramap = New TKThuramap
 	Field TagMapByLabel:TkthuraLabelMap = New TKThuraLabelMap
 	Field Cycle:Long = 0
+	Field Multi:TMap
 	
 	Field textures:TKthuraImageMap = New TKThuraImageMap
 	
@@ -401,6 +402,55 @@ Type TKthura
 	ListAddLast fullobjectlist,ret
 	If update TotalRemap
 	Return ret		
+	End Method
+	
+	Rem
+	bbdoc: Returns true if the current map is a multi-map
+	End Rem
+	Method IsMulti() Return Multi<>Null End Method
+	
+	Rem
+	bbdoc: Turns this map into a multi map. This ONLY works if this map is not a multimap yet. The current map will automatically be named "__BASE" unless you define an other value.
+	End Rem
+	Method MakeMulti(ThisIs$="__BASE")
+	If multi KthuraWarning "Cannot create multi-map, because this map already IS a multi map"; Return 
+	multi = New tmap
+	MapInsert multi,thisis,Self
+	End Method
+	
+	Rem
+	bbdoc: Create a new layer in a Multi-Map
+	about: Please note that all names in full caps and prefixed with "__" are reserved and Kthura will throw a warning if they are used.
+	End Rem
+	Method AddToMulti(LayerName$)
+	If Upper(LayerName$)=LayerName And Prefixed(LayerName,"__") KthuraWarning("This is a reserved setup ("+LayerName+"). I cannot guarantee this will not cause undesirable behavior in future versions of Kthura")
+	If Not multi KthuraError "Cannot add a layer when a map is not a multi-map"; Return
+	Local layer:TKthura = New TKthura
+	layer.multi = multi
+	layer.data = data
+	MapInsert multi,layername,layer
+	End Method
+	
+	Rem
+	bbdoc: Returns the layer within a multi map.
+	about: A way to switch between layers in a multi-map is this: mymap = mymap.getmultilayer("MyLayer")<p>Important note, layer names are CASE SENSITIVE.
+	End Rem
+	Method GetMultiLayer:TKthura(Layer$)
+	If Not multi KthuraError "Cannot get a layer when a map is not a multi map"; Return
+	If Not MapContains(multi,layer) KthuraError "Layer ~q"+Layer+"~q does not appear to exist in this map"; Return
+	Local ret:TKthura = TKthura(MapValueForKey(multi,layer))
+	If Not ret KthuraError "Layer ~q"+layer+"~q appears to be invalid."; Return
+	Return ret
+	End Method
+	
+	Rem
+	bbdoc: Performs a TotalRemap on all maps within a Multi-Map
+	End Rem
+	Method MultiRemap()
+	If Not multi KthuraError "Cannot perform a multiremap when a map is not a multi map"; Return
+	For Local K:TKthura = EachIn MapValues(Multi) 
+		K.totalremap
+		Next
 	End Method
 	
 	Rem
@@ -936,10 +986,17 @@ For RL=EachIn Listfile(JCR_B(JCR,prefix+"Settings"))
 		
 ' Load Objects
 CL=0
+Local ReadLayers = False
 For RL=EachIn Listfile(JCR_B(JCR,prefix+"Objects"))
 	CL:+1
 	L = Trim(RL)
-	If L And Left(L,2)<>"--"
+	If readlayers
+		If L="__END" 
+			readlayers=False
+		Else
+			ret.addtomulti(L)	
+			EndIf
+	ElseIf L And Left(L,2)<>"--"
 		SL = L.Split("=")
 		For ak=0 Until Len SL SL[ak]=Trim(SL[ak]) Next
 		If Left(SL[0],5).toupper()="DATA."
@@ -956,13 +1013,20 @@ For RL=EachIn Listfile(JCR_B(JCR,prefix+"Objects"))
 				EndIf
 		Else
 			SL[0]=Upper(SL[0])
-			If Len(SL)<2 And SL[0]<>"NEW"
+			If Len(SL)<2 And SL[0]<>"NEW" And SL[0]<>"LAYERS"
 				KthuraWarning " Invalid definition in line #"+CL+" >> "+L
 			ElseIf SL[0]<>"NEW" And (Not O)
 				KthuraError "ERROR! Cannot define data when no object is defined! Line #"+cl+" >> "+L
 				Return				
 			Else
 				Select SL[0]
+					Case "LAYERS"
+						If ret.multi KthuraError "Duplicate layers! Layers may only be set ONCE in a Kthura Object list!"
+						ret.MakeMulti("__TEMP__CREATE")
+						MapRemove ret.multi,"__TEMP_CREATE"
+						ReadLayers = True
+					Case "LAYER"
+						ret = ret.GetMultiLayer(SL[1])	
 					Case "NEW"
 						O = ret.CreateObject(False)
 					Case "KIND" 
