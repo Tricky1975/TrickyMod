@@ -1015,7 +1015,7 @@ For RL=EachIn Listfile(JCR_B(JCR,prefix+"Objects"))
 			SL[0]=Upper(SL[0])
 			If Len(SL)<2 And SL[0]<>"NEW" And SL[0]<>"LAYERS"
 				KthuraWarning " Invalid definition in line #"+CL+" >> "+L
-			ElseIf SL[0]<>"NEW" And (Not O)
+			ElseIf SL[0]<>"NEW" And SL[0]<>"LAYERS" And SL[0]<>"LAYER" And (Not O)
 				KthuraError "ERROR! Cannot define data when no object is defined! Line #"+cl+" >> "+L
 				Return				
 			Else
