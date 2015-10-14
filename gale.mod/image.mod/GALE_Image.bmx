@@ -130,8 +130,11 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
 	
 	Method LoadNew(Tag$,File$) ' BLD: Loads an image to the specified tag, but only if the tag has not yet been assigned with another image.
 	If MapContains(MJBC_Lua_Image,Tag) Return 
+	?debug
+	Print "LoadNew(~q"+Tag+"~q,~q"+File+"~q)~n~tTag: "+Tag+" resulted in "+MapContains(MJBC_Lua_Image,Tag)+" so I'm gonna load this picture!"
+	?
 	AssignLoad(Tag,File)
-	End method
+	End Method
 	
 	Method Loaded(Tag$) ' BLD: Returns 1 if there is a loaded picture found on the requested tag, and 0 if not. Please note that Lua deems both values as "true" when used in a direct boolean check!
 	Return MapContains(MJBC_Lua_Image,Upper(tag))
