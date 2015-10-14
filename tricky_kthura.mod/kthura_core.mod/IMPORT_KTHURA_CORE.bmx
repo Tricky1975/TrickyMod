@@ -414,7 +414,7 @@ Type TKthura
 	End Rem
 	Method MakeMulti(ThisIs$="__BASE")
 	If multi KthuraWarning "Cannot create multi-map, because this map already IS a multi map"; Return 
-	multi = New tmap
+	multi = New TMap
 	MapInsert multi,thisis,Self
 	End Method
 	
@@ -451,6 +451,9 @@ Type TKthura
 	Method MultiRemap()
 	If Not multi KthuraError "Cannot perform a multiremap when a map is not a multi map"; Return
 	For Local K:TKthura = EachIn MapValues(Multi) 
+		?debug
+		Print "Remapping ..."
+		?
 		K.totalremap
 		Next
 	End Method
@@ -1025,10 +1028,10 @@ For RL=EachIn Listfile(JCR_B(JCR,prefix+"Objects"))
 					Case "LAYERS"
 						If ret.multi KthuraError "Duplicate layers! Layers may only be set ONCE in a Kthura Object list!"
 						ret.MakeMulti("__TEMP__CREATE")
-						MapRemove ret.multi,"__TEMP_CREATE"
+						MapRemove ret.multi,"__TEMP__CREATE"
 						ReadLayers = True
 					Case "LAYER"
-						ret = ret.GetMultiLayer(SL[1])	
+						ret = ret.GetMultiLayer(SL[1])
 					Case "NEW"
 						O = ret.CreateObject(False)
 					Case "KIND" 
@@ -1109,6 +1112,10 @@ For RL=EachIn Listfile(JCR_B(JCR,prefix+"Objects"))
 		EndIf
 	Next	
 ' Return all this shit
-ret.totalremap
+If ret.multi
+	ret.multiremap
+Else
+	ret.totalremap
+	EndIf
 Return ret	
 End Function
