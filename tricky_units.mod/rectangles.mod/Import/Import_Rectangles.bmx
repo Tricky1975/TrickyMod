@@ -65,5 +65,6 @@ SetAlpha r.inalpha
 rect r.x,r.y,r.w,r.h,0
 SetColor r.outr,r.outg,r.outb
 SetAlpha r.outalpha
-rect r.x,r.y,r.w,r.h,1
+rect r.x,r.y,r.w,r.h,1 
 End Function
+' Just adding a line for show, because the compiler is ignoring stuff due to old cashed stuff (unix, don't you just love it?)
