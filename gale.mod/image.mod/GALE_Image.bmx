@@ -8,7 +8,7 @@ Rem
 	http://mozilla.org/MPL/2.0/.
         Version: 15.10.14
 End Rem
-Rem
+Rem ' Remove the second license block.
 
 	(c) 2012, 2014, 2015 Jeroen Petrus Broks.
 	
@@ -40,6 +40,7 @@ End Rem
 ' 14.09.06 - Added: Image.Image2Anim()
 ' 15.01.23 - Updated the image module to JCR6
 ' 15.07.17 - Added HSV support
+' 15.10.16 - Added advanced rectangle support
 
 Strict
 
@@ -51,6 +52,7 @@ Import jcr6.jcr6main
 Import tricky_units.MKL_Version
 Import Tricky_units.specialloadimage
 Import Tricky_units.TrickyCircle
+Import tricky_units.rectangles
 Import tricky_units.negatief
 Import tricky_units.hsvrgb
 Import Gale.M2D
@@ -397,8 +399,8 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
 	BRL.Max2D.SetBlend Blend
 	End Method
 	
-	Method Rect(X,Y,W,H) ' BLD: Draws a rectangle
-	DrawRect X,Y,W,H
+	Method Rect(X,Y,W,H,Empty) ' BLD: Draws a rectangle<p>If Empty is set to 1 the system will draw an "empty" rectangle in stead of a filled one.
+	Rect X,Y,W,H,empty
 	End Method
 	
 	Method SetAlpha(Alpha:Double) ' BLD: Sets the alpha value (if the blend is in Alpha setting)

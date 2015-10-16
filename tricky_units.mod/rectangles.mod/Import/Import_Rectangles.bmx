@@ -17,6 +17,12 @@ Rem
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 End Rem
+' History
+' 15.10.16 - Initial version
+
+
+Import BRL.StandardIO
+
 Rem 
 bbdoc: Draw a rectangle.
 about: This function draw unfilled rectangle unlike drawrect, unless you explicitly set "empty" to false
