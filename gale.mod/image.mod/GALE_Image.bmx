@@ -400,7 +400,7 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
 	End Method
 	
 	Method Rect(X,Y,W,H,Empty) ' BLD: Draws a rectangle<p>If Empty is set to 1 the system will draw an "empty" rectangle in stead of a filled one.
-	trickyunits.rectangles.Rect X,Y,W,H,empty
+	tricky_units.rectangles.Rect X,Y,W,H,empty
 	End Method
 	
 	Method SetAlpha(Alpha:Double) ' BLD: Sets the alpha value (if the blend is in Alpha setting)
@@ -459,7 +459,7 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
 		
 	Field AdvRectSettings:tadvrect = New tadvrect
 	Method AdvRect(noreset=0) ' BLD: Will draw an advanced rectangle. It contains the x,y,r,g,b and alpha variables all prefixed with as well 'in' and 'out' in order to set the settings of the inner and outer rect. This variable will be destroyed and newly defined unless noreset parameter is set to 1.
-	trickyunits.rectangles.AdvRect AdvRectSettings
+	tricky_units.rectangles.AdvRect AdvRectSettings
 	If Not noreset advrectsettings = New tadvrect
 	End Method
 		
@@ -493,5 +493,4 @@ WaitKey
 End Rem
 GALE_Error("Image Error: "+E)
 End Function
-' Just adding a line for show, because the compiler is ignoring stuff due to old cashed stuff (unix, don't you just love it?)
 
