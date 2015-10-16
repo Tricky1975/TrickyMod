@@ -457,6 +457,12 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
 		Return ret
 		End Method
 		
+	Field AdvRectSettings:tadvrect = New tadvrect
+	Method AdvancedRect(noreset=0) ' BLD: Will draw an advanced rectangle. It contains the x,y,r,g,b and alpha variables all prefixed with as well 'in' and 'out' in order to set the settings of the inner and outer rect. This variable will be destroyed and newly defined unless noreset parameter is set to 1.
+	AdvRect AdvRectSettings
+	If Not noreset advrectsettings = New tadvrect
+	End Method
+		
 End Type
 
 Rem

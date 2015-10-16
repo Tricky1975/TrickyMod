@@ -22,6 +22,7 @@ End Rem
 
 
 Import BRL.StandardIO
+Import brl.max2d
 
 Rem 
 bbdoc: Draw a rectangle.
