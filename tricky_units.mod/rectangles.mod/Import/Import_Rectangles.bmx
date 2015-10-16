@@ -17,6 +17,7 @@ Rem
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 End Rem
+
 ' History
 ' 15.10.16 - Initial version
 
@@ -61,8 +62,8 @@ End Rem
 Function AdvRect(r:tadvrect)	
 SetColor r.inr,r.ing,r.inb
 SetAlpha r.inalpha
-rect r.x,r.y,r.w,r,h,0
+rect r.x,r.y,r.w,r.h,0
 SetColor r.outr,r.outg,r.outb
 SetAlpha r.outalpha
-rect r.x,r.y,r.w,r,h,1
+rect r.x,r.y,r.w,r.h,1
 End Function
