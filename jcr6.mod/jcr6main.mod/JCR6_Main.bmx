@@ -149,7 +149,7 @@ Type TJCRDir
 	Field DirDrvName$
 	Field FATSize,FATCSize,FATAlg$
 	Field FATOffset
-	Field MainFiles:Tmap = New Tmap
+	Field MainFiles:TMap = New TMap
 	
 	Method EntryData:TJCREntry(fil$)
 	Return TJCREntry(MapValueForKey(entries,Upper(fil)))
@@ -497,6 +497,23 @@ Type DRV_JCR6 Extends DRV_JCRDIR
 New DRV_JCR6
 Public	
 
+
+Rem
+bbdoc:Returns the type of file as JCR6 recognizes it.
+about:By default JCR6 will only recognize JCR6 files, however if you load the driver for QuakePAK and WAD, then those kind of files will also be recognized.
+returns:The name of the file type as a string. In case the file was not recognized as any kind of file JCR6 can load (either by itself or by the help of drivers) an empty string will be returned.
+End Rem
+Function JCR_Type$(JCRFile$)
+Local RealJCRFile$ = JCRFile
+If Not ExtractDir(RealJCRFile$) And RealJCRFile.find("::")<0 Then RealJCRFile = "./"+RealJCRFile
+For Local DRV:DRV_JCRDIR = EachIn DirDrivers
+      If DEBUG WriteStdout "Driver: "+DRV.NAME()+" ... "
+	If DRV.Recognize(JCRFIle) Then
+		If DEBUG Print "Recognized!"
+		Return DRV.NAME()
+		EndIf		
+	Next
+End Function
 
 
 Rem
