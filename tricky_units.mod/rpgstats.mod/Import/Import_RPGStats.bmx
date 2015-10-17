@@ -23,6 +23,7 @@ Rem
 15.08.23 - Added fieldname returning strings.
 15.09.15 - Added ListHas method (I can't believe I forgot that one)
 15.10.04 - Added SafeStat() Method
+15.10.17 - Fixed issue not saving minimum values in Points.
 End Rem
 
 Strict
@@ -501,7 +502,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 		EndIf
 	If p.have>p.maximum p.have=p.maximum
 	If p.have<p.minimum p.have=p.minimum
-	If p.minimum>p.maximum Then GALE_Error("Points minumum bigger than maximum! How come?",["Char,"+char,"Points,"+points,"Minimum,"+p.minimum,"Maximum,"+p.maximum])
+	If p.minimum>p.maximum Then GALE_Error("Points minimum bigger than maximum! How come?",["Char,"+char,"Points,"+points,"Minimum,"+p.minimum,"Maximum,"+p.maximum])
 	Return p
 	End Method
 	
@@ -698,7 +699,7 @@ For F=EachIn LChars
 			Case 4
 				sp.maximum = ReadInt(Bt)
 			Case 5
-				sp.minumum = ReadInt(bt) 
+				sp.minimum = ReadInt(bt) 
 			Default
 				EndGraphics
 				Notify "FATAL ERROR:~n~nUnknown tag in character ("+F+") points file ("+tag+") within this savegame file "
@@ -880,7 +881,7 @@ For Local key$=EachIn MapKeys(RPGChars)
 			WriteByte bte.stream,4
 			WriteInt bte.stream,ch.point(pkey).maximum
 			WriteByte bte.stream,5
-			WriteInt bte.stream.ch.point(pkey).minumum
+			WriteInt bte.stream.ch.point(pkey).minimum
 			Next
 		BTE.Close()	
 		' Picture
