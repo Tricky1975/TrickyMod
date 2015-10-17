@@ -1,7 +1,7 @@
 Rem
   Rectangles.bmx
   
-  version: 15.10.16
+  version: 15.10.17
   Copyright (C) 2015 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -67,4 +67,3 @@ SetColor r.outr,r.outg,r.outb
 SetAlpha r.outalpha
 rect r.x,r.y,r.w,r.h,1 
 End Function
-' Just adding a line for show, because the compiler is ignoring stuff due to old cashed stuff (unix, don't you just love it?)

@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.10.04
+        Version: 15.10.17
 End Rem
 
 Rem
@@ -36,7 +36,7 @@ Import tricky_units.TrickyReadString
 Import tricky_units.jcr6stringmap
 Import brl.max2d
 
-MKL_Version "Tricky's Units - RPGStats.bmx","15.10.04"
+MKL_Version "Tricky's Units - RPGStats.bmx","15.10.17"
 MKL_Lic     "Tricky's Units - RPGStats.bmx","Mozilla Public License 2.0"
 
 Private
@@ -697,6 +697,8 @@ For F=EachIn LChars
 				sp.have = ReadInt(BT)
 			Case 4
 				sp.maximum = ReadInt(Bt)
+			Case 5
+				sp.minumum = ReadInt(bt) 
 			Default
 				EndGraphics
 				Notify "FATAL ERROR:~n~nUnknown tag in character ("+F+") points file ("+tag+") within this savegame file "
@@ -877,6 +879,8 @@ For Local key$=EachIn MapKeys(RPGChars)
 			WriteInt bte.stream,ch.point(pkey).have
 			WriteByte bte.stream,4
 			WriteInt bte.stream,ch.point(pkey).maximum
+			WriteByte bte.stream,5
+			WriteInt bte.stream.ch.point(pkey).minumum
 			Next
 		BTE.Close()	
 		' Picture
