@@ -6,20 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.23
-End Rem
-Rem
-
-	(c) 2012, 2013, 2014, 2015 Jeroen Petrus Broks.
-	
-	This Source Code Form is subject to the terms of the 
-	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
-	distributed with this file, You can obtain one at 
-	http://mozilla.org/MPL/2.0/.
-
-
-Version: 15.08.15
-
+        Version: 15.10.17
 End Rem
 Strict
 
@@ -100,6 +87,7 @@ History:
 15.02.17 - Added an error driver to catch JCR6 errors.
 15.08.14 - Sys object now also directly accessible from BlitzMax, but in BlitzMax it's GALE_Sys (In Lua it's still Sys)
          - Ability to make Bye always execute a certain sequence 
+15.10.17 - Removed a few unneeded annoying debug lines.
 End Rem
 
 Import brl.map
@@ -133,7 +121,7 @@ Incbin  "Serializer.lua"
 'Info Preset Definitions			' BLD: The next definitions can not be set/unset with DEFINE or UNDEF, but IF and ELSEIF can see them and they can be used there.<p><table><tr><td>$WINDOWS</td><td>Set if running from Windows</td></tr><tr><td>$MAC</td><td>Set if running from MacOS X</td></tr><tr><td>$MACOS</td><td>Alias for $MAC</td></tr><tr><td>$LINUX</td><td>Set if running from Linux</td></tr><tr><td>$DEBUGBUILD</td><td>Set if you happen to use the debug build of the engine</td><tr><td>$RELEASEBUILD</td><td>Set if you use the release build of your engine</td><tr><td>$LITTLEENDIAN</td><td>Set if processor uses LittleEndian</td><tr><td>$BIGENDIAN</td><td>Set if your processor uses BigEndian</td></tr><tr><td>$X86</td><td>Set if you have use and X86 processor (Intel or compatible)</td></tr><tr><td>$PPC</td><td>Set if you use a PowerPC processor</td></tr></table>
 
 
-MKL_Version "GALE - GALE.bmx","15.09.23"
+MKL_Version "GALE - GALE.bmx","15.10.17"
 MKL_Lic     "GALE - GALE.bmx","Mozilla Public License 2.0"
 
 
@@ -396,7 +384,7 @@ SortList Directives
 If LuaDebugChat 
 	Print "Directives: "+("; ".Join(String[](ListToArray(Directives))))
 	For Local SD$ = EachIn Directives 
-		Print "===> "+SD
+		'Print "===> "+SD
 		Next
 	EndIf
 
@@ -1029,7 +1017,7 @@ For CFile = EachIn RunList
 	Next
 Until ListIsEmpty(TmpList)
 For Local T$ = EachIn(RetList)
-	Print "===> "+T
+	'Print "===> "+T
 	Next
 Return RetList
 End Function
