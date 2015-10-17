@@ -881,7 +881,7 @@ For Local key$=EachIn MapKeys(RPGChars)
 			WriteByte bte.stream,4
 			WriteInt bte.stream,ch.point(pkey).maximum
 			WriteByte bte.stream,5
-			WriteInt bte.stream.ch.point(pkey).minimum
+			WriteInt bte.stream,ch.point(pkey).minimum
 			Next
 		BTE.Close()	
 		' Picture
