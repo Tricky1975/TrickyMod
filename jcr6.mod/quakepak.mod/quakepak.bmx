@@ -8,7 +8,7 @@ moduleinfo "Name: jcr6.quakepak"
 moduleinfo "Author:Jeroen P. Broks"
 moduleinfo "&copy; Copyright 2014-2015 Jeroen P. Broks"
 moduleinfo "License:Mozilla Public License 2.0"
-moduleinfo "Last mod build:17/10/2015"
+moduleinfo "Last mod build:19/10/2015"
 
 
 import "JCR6_QuakePak.bmx"

@@ -383,6 +383,11 @@ Type DRV_JCR6 Extends DRV_JCRDIR
 	Local mtag,fttag$,ftag
 	'Local tag$
 	Local E:TJCREntry
+	If ret.Config.B("__CaseSensitive") 
+		Local deprecated$ = "WARNING!~n~nAs of version 15.10.18/15.10.19 case sensitivity is officially deprecated. Somewhere after 17.01.01 the feature may be removed completely! This is due to technical reasons, and since JCR6 does not actually NEED this feature and it was only causing stability issues I think it's best to remove it (JCR6 is not an ARCHVING tool after all, but rather a resource packer. That means some differences in approach are in order). When viewing JCR6 directories the case will be kept up, as well in automated extractor tools coming from my hand. But in referencing in functions like JCR_B() case sensitivity will be dropped. JCR6 files that were already not using case sensitivity are safe (and won't prompt this message either)"
+		MapInsert ret.comments,"* DEPRECATED FEATURE * 15.10.18",deprecated
+		Print Chr(7)+Deprecated
+		EndIf
 	While Not Eof(BTF) 
 		mtag = ReadByte(BTF)
 		If debug Print "New Main Tag: "+mtag
