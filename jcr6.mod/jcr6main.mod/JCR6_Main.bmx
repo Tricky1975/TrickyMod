@@ -1091,7 +1091,7 @@ Local E$,OE$
 For OE$ = EachIn MapKeys(TPatch.Entries)
 	Local CE$ = tpath+OE
 	If Not casesensitive CE = Upper(CE)
-	E = tpath+OE
+	E = tpath+TJCREntry(MapValueForKey(TPatch.Entries,OE)).Filename 'OE
 	TJCREntry(MapValueForKey(TPatch.Entries,OE)).Filename = E
 	MapInsert MainJCR.Entries,CE,MapValueForKey(TPatch.Entries,OE)
 	Next
