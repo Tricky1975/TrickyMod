@@ -12,5 +12,8 @@ If reporting a bug or any other issue, keep the next stuff in mind.
 2. When it comes to time, the time zone specified in the update note is CET. Of course, the GitHub time notice might be more accurate as GitHub as GitHub takes timezones into account ;)
 3. NEVER forget WHICH specific module contains the bug or any other kind of issue. It makes my life a lot easier if I don't have to check all modules to find out what you are talking about.
 
+Please note, some of these mods may work in Brucey's BMX-NG but not all of them do. 
+Most of them will somewhere in the future be adapted to work in NG, however this is a plan for the long term, and I don't promise anything. Sorry!
+
 Final note:
 You may modify these modules as you please as long as its in accordance with the license set up for that module. It's however not a good idea to upload your modified versions to this repository (even if you only did a bugfix). This repository is only a copy of my real stuff, and thus my next update will very likely overwrite your modifications (my builder is completely automated and merciless, I'm sorry).
