@@ -235,7 +235,7 @@ Type ktDrawObstacle Extends ktdrawdriver
 	If O.textureimage DrawImage O.TextureImage,O.X-x,O.Y-y,O.Frame Else DrawText "<TEXERROR>",O.X,O.Y
 	End Method
 
-	Method InBoundaries(O:TKthuraObject)
+	Method InBoundaries(O:TKthuraObject,x,y)
 	If Not O.textureimage Return True ' Let the drawer itself handle this as an error, we cannot handle it!
 	Return ..
 		(O.Y-sy)-ImageHeight(o.textureimage)>= Kthura_Boundaries_Begin_Y And ..
