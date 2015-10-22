@@ -190,6 +190,7 @@ Type KTDrawTiledArea Extends ktdrawdriver
 	End Method
 	
 	Method InBoundaries(O:TKthuraObject,sx,sy)
+	Rem
 	Return ..
 		( ..
 		O.X-sx    >=Kthura_Boundaries_Begin_X And ..
@@ -197,6 +198,12 @@ Type KTDrawTiledArea Extends ktdrawdriver
 		) Or ( ..
 		(O.X+O.W)-sx<=Kthura_Boundaries_End_X   And ..
 		(O.Y+O.H)-sy<=Kthura_Boundaries_End_Y  )
+	End Rem
+	If (O.X+O.W)-sx<Kthura_Boundaries_Begin_X Return False
+	If (O.Y+O.H)-sy<Kthura_Boundaries_Begin_Y Return False
+	If O.X-sx      >Kthura_Boundaries_End_X   Return False
+	If O.X-sy      >Kthura_Boundaries_End_Y   Return False
+	Return true
 	End Method
 	
 	End Type
@@ -238,10 +245,10 @@ Type ktDrawObstacle Extends ktdrawdriver
 	Method InBoundaries(O:TKthuraObject,sx,sy)
 	If Not O.textureimage Return True ' Let the drawer itself handle this as an error, we cannot handle it!
 	Return ..
-		(O.Y-sy)-ImageHeight(o.textureimage)>= Kthura_Boundaries_Begin_Y And ..
 		(O.Y-sy)+ImageHeight(o.textureimage)>= Kthura_Boundaries_Begin_Y And ..
-		(O.X-sx)-ImageWidth(o.textureImage)>=Kthura_Boundaries_Begin_X And ..
-		(O.X-sx)+ImageWidth(o.textureImage)<=Kthura_Boundaries_End_X
+		(O.Y-sy)-ImageHeight(o.textureimage)<= Kthura_Boundaries_End_Y And ..
+		(O.X-sx)+ImageWidth(o.textureImage)>=Kthura_Boundaries_Begin_X And ..
+		(O.X-sx)-ImageWidth(o.textureImage)<=Kthura_Boundaries_End_X
 		' I wanted to make sure stuff always pops up. 
 		' It will make the system only more demanding to take all handles added to the images into account and this way we also have no trouble with rotations.		
 	End Method
