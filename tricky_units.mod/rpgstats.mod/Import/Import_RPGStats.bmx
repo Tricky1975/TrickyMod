@@ -461,11 +461,11 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	
 	Method ListLen(Char$,List$) ' BLD: Return the number of items in a list. If the list doesn't exist it returns 0.
 	Local ch:RPGCharacter = grabchar(char)
-	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.CountList","char,"+char,"List,"+List]); Return
+	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.CountList","char,"+char,"List,"+List]); Return 0
 	Local ls:TList = ch.list(list)
-	If Not ls Return
+	If Not ls Return 0
 	Return CountList(ls)
-	End method
+	End Method
 	
 		
 	Method ListItem$(char$,List$,Index) ' BLD: Return the item at an index on the list. When the index number is too high an error will pop up.<p>Please note, the api in this method has been adepted to Lua, so it starts with 1, and ends with the countnumber of the list. 0 is therefore not taken as a valid index! Always remember it!
