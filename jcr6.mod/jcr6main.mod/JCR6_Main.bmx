@@ -342,6 +342,10 @@ Type DRV_JCR6 Extends DRV_JCRDIR
 		'Yes a guaranteed crashout, as this can only happen when you use JCR6 on a manner in which it should NOT be used!!!
 		EndIf
 	ret.FATOffset = ReadInt(BT)	
+	If Not ret.FATOffset
+		JCR_JAMERR "Invalid JCR6 file! Looks like it this file has not been properly finalized before usage."
+		Return
+		endif
 	Local ttag = ReadByte(BT)
 	Local Tag$
 	While ttag<>255
