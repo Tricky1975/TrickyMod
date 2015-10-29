@@ -17,6 +17,7 @@ End Rem
 '          - Development note removed. This file should now be safe to use, though keep in mind that unless downloaded from sourceforge, this version may constantly be updated and show some bugs are a result. 8)
 ' 15.08.15 - Added a function to grab an entry easily.
 ' 15.09.15 - JCR6 can now check if files were changed. JCR_B is now also protected against usage in modified files and will throw an error if a JCR6 file was changed.
+' 15.10.29 - Added a feature to throw a proper error when handling unfinalized JCR6 files.
 Strict
 
 
@@ -343,9 +344,9 @@ Type DRV_JCR6 Extends DRV_JCRDIR
 		EndIf
 	ret.FATOffset = ReadInt(BT)	
 	If Not ret.FATOffset
-		JCR_JAMERR "Invalid JCR6 file! Looks like it this file has not been properly finalized before usage."
+		JCR_JAMERR "Invalid JCR6 file! Looks like it this file has not been properly finalized before usage.",fil,"<NONE>","JCR6.Dir()";
 		Return
-		endif
+		EndIf
 	Local ttag = ReadByte(BT)
 	Local Tag$
 	While ttag<>255
