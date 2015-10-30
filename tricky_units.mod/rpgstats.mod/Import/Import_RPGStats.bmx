@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.10.23
+        Version: 15.10.30
 End Rem
 
 Rem
@@ -24,7 +24,6 @@ Rem
 15.09.15 - Added ListHas method (I can't believe I forgot that one)
 15.10.04 - Added SafeStat() Method
 15.10.17 - Fixed issue not saving minimum values in Points.
-15.10.23 - Added ListLen() and I don't understand why I didn't add that one before.
 End Rem
 
 Strict
@@ -38,7 +37,7 @@ Import tricky_units.TrickyReadString
 Import tricky_units.jcr6stringmap
 Import brl.max2d
 
-MKL_Version "Tricky's Units - RPGStats.bmx","15.10.23"
+MKL_Version "Tricky's Units - RPGStats.bmx","15.10.30"
 MKL_Lic     "Tricky's Units - RPGStats.bmx","Mozilla Public License 2.0"
 
 Private
@@ -244,7 +243,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Local ch:RPGCharacter = grabchar(char)
 	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.DefStat","char,"+char,"Stat,"+stat,"Value,"+value])
 	Local ST:RPGStat = ch.stat(stat)
-	If Not St
+	If Not MapContains(ch.Stats,stat)
 		St = New RPGStat
 		MapInsert ch.Stats,stat,st
 	ElseIf OnlyIfNotExist
