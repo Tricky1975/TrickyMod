@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.10.16
+        Version: 15.10.30
 End Rem
 Rem ' Remove the second license block.
 
@@ -59,7 +59,7 @@ Import Gale.M2D
 'Import "../../JCR/UseJCR.bmx"
 
 
-MKL_Version "GALE - GALE_Image.bmx","15.10.16"
+MKL_Version "GALE - GALE_Image.bmx","15.10.30"
 MKL_Lic     "GALE - GALE_Image.bmx","Mozilla Public License 2.0"
 
 Rem
@@ -84,7 +84,7 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
   Field NoFontIsConsoleFont  ' BLD: When set to any value other than 0 (which is the default value), the NoFont function will use the standard debug console function in stead of the default font. This function came to be because Windows appears to hate the original BMax fonts in some projects.
   Field DontUseSpecial = False ' BLD: When set to 1 the Special load abilities of Image.Load will be ignored. When set to 0, everything will load
 
-	Method Load$(File$)  ' BLD: Loads an image (from the JCR file if the project uses that. And it reacts automatically on patches) and stores it into the image buffer and storage and leaves returns an ID to find it back there.<p>When you load mypic.png and mypic.png.hot is loaded the picture will automatically be hotspotted according to the settings inside the .hot file. When a mypic.png.frame file exists, it'll be automatically loaded as an animated picture with the settings inside the file. When the files don't exist they will be ignored. When you want to prevent Image.Load() to check this then set the Image.DontUseSpecial variable to 1.
+	Method Load$(File$,Tag$)  ' BLD: Loads an image (from the JCR file if the project uses that. And it reacts automatically on patches) and stores it into the image buffer and storage and leaves returns an ID to find it back there.<p>When you load mypic.png and mypic.png.hot is loaded the picture will automatically be hotspotted according to the settings inside the .hot file. When a mypic.png.frame file exists, it'll be automatically loaded as an animated picture with the settings inside the file. When the files don't exist they will be ignored. When you want to prevent Image.Load() to check this then set the Image.DontUseSpecial variable to 1. <p>If you set a tag, the image will be assigned to the tag you specified. If that tag is already been taken by a different picture, that picture will automatically be released. (The Image.Free() command is then not needed)
 	Local I:TImage
 	Local B:TBank
 	Local C=0
@@ -104,30 +104,42 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
 		Print "Trying to do a load outside a JCR file!"
 		I = LoadImage(File)
 		EndIf
-	While MapValueForKey(MJBC_Lua_Image,Hex(C)) 
-		C:+1
-		Wend
+	Local ret$
+	If tag
+		ret = tag
+	Else	
+		While MapValueForKey(MJBC_Lua_Image,Hex(C)) 
+			C:+1
+			Wend
+		ret = Hex(C)
+		EndIf	
 	If I	
-		Print "LUA>Image "+File+" has been succesfully loaded and been assigned to image slot: "+Hex(C)
-		MapInsert MJBC_Lua_Image,Hex(C),I 
+		Print "LUA>Image "+File+" has been succesfully loaded and been assigned to image slot: "+Ret
+		MapInsert MJBC_Lua_Image,ret,I 
 		Else
 		Print "LUA>Image "+File+" could NOT be loaded!"
 		ConsoleWrite("WARNING!! Image "+file+" could NOT be loaded!",255,180,0)
 		Return "ERROR"
 		EndIf
-	Return Hex(C)
+	Return ret
 	End Method
 	
 	
-	Method LoadAnim$(File$,W,H,S,A) ' BLD: Loads an animated image (same way as Image.Load).\n<p>W = Image width<br>H = Image height<br>S = Start frame (leave at 0 unless you know what you are doing)<br>A = Number of animation Frames
+	Method LoadAnim$(File$,W,H,S,A,tag$="") ' BLD: Loads an animated image (same way as Image.Load).\n<p>W = Image width<br>H = Image height<br>S = Start frame (leave at 0 unless you know what you are doing)<br>A = Number of animation Frames
 	Local I:TImage
 	Local C=0
+	Local ret$
 	If JCR_Lua_Image_PatchMap Then I = LoadAnimImage(JCR_B(JCR_Lua_Image_PatchMap,File),w,h,s,a)  Else I = LoadAnimImage(File,w,h,s,a)
-	While MapValueForKey(MJBC_Lua_Image,Hex(C)) 
-		C:+1
-		Wend
-	MapInsert MJBC_Lua_Image,Hex(C) , I 
-	Return Hex(C)
+	If tag Then 
+		ret = tag
+		Else
+		While MapValueForKey(MJBC_Lua_Image,Hex(C)) 
+			C:+1
+			Wend
+		ret = Hex(c)
+		EndIf	
+	MapInsert MJBC_Lua_Image,ret , I 
+	Return ret
 	End Method
 	
 	Method LoadNew(Tag$,File$) ' BLD: Loads an image to the specified tag, but only if the tag has not yet been assigned with another image.
@@ -306,7 +318,7 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
 	Print "Image "+Image+" assigned to "+newImageName
 	End Method
 	
-	Method AssignLoad(Image$,File$) ' BLD: Loads an image and assings it automatically to the correct name.
+	Method AssignLoad(Image$,File$) ' BLD: Loads an image and assings it automatically to the correct name. <p><div span='color:#ffff00; background-color: #ff0000'><H1>IMPORTANT NOTE!</H1>As of version 15.10.30 this function has been deprecated. Due some of my projects still using this very much, this function will be kept in for those project's sake, but its usage is strongly discouraged.<p>You can now define tags in the regular Image.Load() and Image.AnimLoad() functions in stead</div>
 	Assign Load(File),Upper(Image)
 	End Method
 	
@@ -457,10 +469,10 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
 		Return ret
 		End Method
 		
-	Field AdvRectSettings:tadvrect = New tadvrect
+	Field AdvRectSettings:tAdvRect = New tAdvRect
 	Method AdvRect(noreset=0) ' BLD: Will draw an advanced rectangle. It contains the x,y,r,g,b and alpha variables all prefixed with as well 'in' and 'out' in order to set the settings of the inner and outer rect. This variable will be destroyed and newly defined unless noreset parameter is set to 1.
 	tricky_units.rectangles.AdvRect AdvRectSettings
-	If Not noreset advrectsettings = New tadvrect
+	If Not noreset advrectsettings = New tAdvRect
 	End Method
 		
 End Type
