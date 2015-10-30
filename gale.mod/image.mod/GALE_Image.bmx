@@ -318,7 +318,7 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
 	Print "Image "+Image+" assigned to "+newImageName
 	End Method
 	
-	Method AssignLoad(Image$,File$) ' BLD: Loads an image and assings it automatically to the correct name. <p><div span='color:#ffff00; background-color: #ff0000'><H1>IMPORTANT NOTE!</H1>As of version 15.10.30 this function has been deprecated. Due some of my projects still using this very much, this function will be kept in for those project's sake, but its usage is strongly discouraged.<p>You can now define tags in the regular Image.Load() and Image.AnimLoad() functions in stead</div>
+	Method AssignLoad(Image$,File$) ' BLD: Loads an image and assings it automatically to the correct name. <p><div style='color:rgb(255,255,0); background-color: rgb(255,0,0)'><H1>IMPORTANT NOTE!</H1>As of version 15.10.30 this function has been deprecated. Due some of my projects still using this very much, this function will be kept in for those project's sake, but its usage is strongly discouraged.<p>You can now define tags in the regular Image.Load() and Image.AnimLoad() functions in stead</div>
 	Assign Load(File),Upper(Image)
 	End Method
 	
