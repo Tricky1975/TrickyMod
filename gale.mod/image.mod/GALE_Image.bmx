@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.10.30
+        Version: 15.11.01
 End Rem
 Rem ' Remove the second license block.
 
@@ -41,6 +41,7 @@ End Rem
 ' 15.01.23 - Updated the image module to JCR6
 ' 15.07.17 - Added HSV support
 ' 15.10.16 - Added advanced rectangle support
+' 15.11.01 - Collision support
 
 Strict
 
@@ -59,7 +60,7 @@ Import Gale.M2D
 'Import "../../JCR/UseJCR.bmx"
 
 
-MKL_Version "GALE - GALE_Image.bmx","15.10.30"
+MKL_Version "GALE - GALE_Image.bmx","15.11.01"
 MKL_Lic     "GALE - GALE_Image.bmx","Mozilla Public License 2.0"
 
 Rem
@@ -205,7 +206,7 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
 	Local img2:TImage = TImage(MapValueForKey(MJBC_Lua_Image,Upper(Image2)))
 	If Not img1 GALE_Error("Cannot check collision of non-exist image: "+Image1); Return
 	If Not img2 GALE_Error("Cannot check collision of non-exist image: "+Image2); Return	
-	ImagesCollide(img1:TImage,x1,y1,0,img2:TImage,x2,y2,0)
+	Return ImagesCollide(img1:TImage,x1,y1,0,img2:TImage,x2,y2,0)
 	End Method
 	
 	Method ReturnHot$(Image$)
