@@ -20,8 +20,8 @@ ModuleInfo "Name: image.mod"
 ModuleInfo "Creator: Tricky (Jeroen P. Broks)"
 ModuleInfo "Copyright: Jeroen P. Broks"
 ModuleInfo "License: Mozilla Public License 2.0"
-ModuleInfo "Version: 15.10"
-ModuleInfo "Last update: Fri 30 October 2015; 12:35:26"
+ModuleInfo "Version: 15.11"
+ModuleInfo "Last update: Sun 01 November 2015; 14:59:28"
 ModuleInfo "Module History: Please check the file GALE_Image.bmx for more detailed information on that!"
 
 
