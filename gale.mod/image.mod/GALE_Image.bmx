@@ -200,7 +200,7 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
 	DrawImage TImage(MapValueForKey(MJBC_Lua_Image,Upper(Image))),X,Y,F
 	End Method
 	
-	Method Collision(Image1$,X1,Y1,Image2,X2,Y2) ' BLD: Returns 1 if the two images collide<br>(Frames are not supported due to Lua's limited range of sending parameters).
+	Method Collision(Image1$,X1,Y1,Image2$,X2,Y2) ' BLD: Returns 1 if the two images collide<br>(Frames are not supported due to Lua's limited range of sending parameters).
 	Local img1:TImage = TImage(MapValueForKey(MJBC_Lua_Image,Upper(Image1)))
 	Local img2:TImage = TImage(MapValueForKey(MJBC_Lua_Image,Upper(Image2)))
 	If Not img1 GALE_Error("Cannot check collision of non-exist image: "+Image1); Return
