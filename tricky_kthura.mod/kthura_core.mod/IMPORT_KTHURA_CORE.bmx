@@ -238,6 +238,7 @@ Type TKthuraActor Extends TKthuraObject
 	Rem
 	bbdoc: Makes an actor walk to a target position.
 	about: If the target coordinates are impossible to reach, your request will simply be ignored.
+	returns: True is the requested target coordinates can be reached and False if that was not possible.
 	End Rem
 	Method WalkTo(TX,TY)
 	UKthura = parent
@@ -257,6 +258,7 @@ Type TKthuraActor Extends TKthuraObject
 		WalkY = TY
 		Pathlength = LengthWay(p)
 		EndIf
+	Return p.success	
 	End Method
 	
 	
