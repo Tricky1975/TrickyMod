@@ -273,10 +273,10 @@ Type TKthuraActor Extends TKthuraObject
 	returns: True if the actor is on the spot, False if the actor is not.
 	End Rem
 	Function OnXY(PX,PY)
-	Local SelfX = Floor( X/Parent.BlockMapGridW)
-	Local selfY = Floor( Y/Parent.BlockMapGridH)
-	Local ParaX = Floor(PX/Parent.BlockMapGridW)
-	Local ParaY = Floor(PY/Parent.BlockMapGridH)
+	Local SelfX = Floor(Self.X/Parent.BlockMapGridW)
+	Local selfY = Floor(Self.Y/Parent.BlockMapGridH)
+	Local ParaX = Floor(    PX/Parent.BlockMapGridW)
+	Local ParaY = Floor(    PY/Parent.BlockMapGridH)
 	Return selfx=parax And paray=selfy
 	End Function
 	
