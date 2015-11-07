@@ -287,7 +287,7 @@ Type TKthuraActor Extends TKthuraObject
 	returns: True if the actor is on the spot, False if the actor is not.
 	End Rem
 	Method OnSpot(SpotTag$)
-	Local A:TKthuraActor = TKthuraActor(MapValueForKey(Parent,SpotTag))
+	Local A:TKthuraActor = TKthuraActor(MapValueForKey(Parent.tagmap,SpotTag))
 	Return OnXY(A.X,A.Y)
 	End Method
 	
