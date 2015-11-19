@@ -1,7 +1,7 @@
 Rem
   ListDir.bmx
   
-  version: 15.09.02
+  version: 15.11.19
   Copyright (C) 2015 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -17,7 +17,7 @@ Rem
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 End Rem
-Rem
+Rem ' 
 	FALSELY LISTED AS GNU! INGORE IT, WILL BE REDONE LATER!
 	
 	
@@ -41,7 +41,7 @@ Rem
 	to the project the exceptions are needed for.
 Version: 15.09.02
 End Rem
-Rem
+Rem ' 
 /* 
   ListDir
 
@@ -79,7 +79,7 @@ Import tricky_units.MKL_Version
 Const LISTDIR_FILEONLY = 1
 Const LISTDIR_DIRONLY  = 2
 
-MKL_Version "Tricky's Units - ListDir.bmx","15.09.02"
+MKL_Version "Tricky's Units - ListDir.bmx","15.11.19"
 MKL_Lic     "Tricky's Units - ListDir.bmx","ZLib License"
 
 Rem
