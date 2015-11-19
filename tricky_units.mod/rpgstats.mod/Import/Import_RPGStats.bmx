@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.10.30
+        Version: 15.11.09
 End Rem
 
 Rem
@@ -37,7 +37,7 @@ Import tricky_units.TrickyReadString
 Import tricky_units.jcr6stringmap
 Import brl.max2d
 
-MKL_Version "Tricky's Units - RPGStats.bmx","15.10.30"
+MKL_Version "Tricky's Units - RPGStats.bmx","15.11.09"
 MKL_Lic     "Tricky's Units - RPGStats.bmx","Mozilla Public License 2.0"
 
 Private
