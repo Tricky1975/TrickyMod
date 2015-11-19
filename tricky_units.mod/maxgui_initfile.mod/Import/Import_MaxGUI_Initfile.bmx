@@ -60,7 +60,7 @@ For K=EachIn MapKeys(gadgetmap)
 		Case gadget_slider
 			SetSliderValue G,ini.C(K).todouble()
 		Case gadget_progbar
-			UpdateProgBar G,init.C(K).todouble()		
+			UpdateProgBar G,ini.C(K).todouble()		
 		Default
 			Print "Warning! Cannot handle gadgetclass "+GadgetClass(G)
 		End Select
