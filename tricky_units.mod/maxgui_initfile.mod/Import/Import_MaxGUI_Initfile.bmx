@@ -92,9 +92,11 @@ For K=EachIn MapKeys(gadgetmap)
 			ret.d K,GadgetText(G)	
 		Case Gadget_ComboBox,Gadget_ListBox,Gadget_Tabber
 			c = SelectedGadgetItem(G)
-			If c>=0 ret.d K,GadgetItemText(G,v)
+			If c>=0 ret.d K,GadgetItemText(G,c)
 		Case gadget_slider
 			ret.d K,SliderValue(G)
+		Default
+			Print "Warning! Cannot handle gadgetclass "+GadgetClass(G)
 		End Select
 	Next
 End Function
