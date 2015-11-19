@@ -99,6 +99,7 @@ For K=EachIn MapKeys(gadgetmap)
 			Print "Warning! Cannot handle gadgetclass "+GadgetClass(G)
 		End Select
 	Next
+Return ret	
 End Function
 
 Rem
