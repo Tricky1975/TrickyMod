@@ -1,7 +1,7 @@
 Rem
   HotSpot.bmx
   
-  version: 15.09.02
+  version: 15.11.19
   Copyright (C) 2015 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -17,7 +17,7 @@ Rem
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 End Rem
-Rem
+Rem '
   HotSpot.bmx
   
   version: 15.09.02
@@ -36,7 +36,7 @@ Rem
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 End Rem
-Rem
+Rem '
 /* 
   HotSpot
 
@@ -97,13 +97,13 @@ Rem
 bbdoc: Move the hotspot to the center of the picture
 End Rem
 Function HotCenter(I:TImage)
-Hotspot I,HS_Center,HS_CENTER
+HotSpot I,HS_Center,HS_CENTER
 End Function
 
 Rem
 bbdoc: Move the hotspot to the bottom right of the picture
 End Rem
 Function HotEnd(I:TImage)
-hotspot I,HS_RIGHT,HS_BOTTOM
+HotSpot I,HS_RIGHT,HS_BOTTOM
 End Function
 

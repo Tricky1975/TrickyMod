@@ -1,7 +1,7 @@
 Rem
   ListFile.bmx
   
-  version: 15.09.02
+  version: 15.11.19
   Copyright (C) 2015 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -17,7 +17,7 @@ Rem
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 End Rem
-Rem
+Rem '
   ListFile.bmx
   
   version: 15.09.02
@@ -36,7 +36,7 @@ Rem
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 End Rem
-Rem
+Rem '
 /* 
   List File
 
@@ -67,12 +67,13 @@ Version: 15.02.24
 End Rem
 'History
 ' 15.02.17 - Initial version
+' 15.11.19 - Removed some shit a buggy auto-licenser put in above. No big deal
 Strict
 Import tricky_units.MKL_Version
 Import brl.stream
 Import brl.linkedlist
 
-MKL_Version "Tricky's Units - ListFile.bmx","15.09.02"
+MKL_Version "Tricky's Units - ListFile.bmx","15.11.19"
 MKL_Lic     "Tricky's Units - ListFile.bmx","ZLib License"
 
 Rem
