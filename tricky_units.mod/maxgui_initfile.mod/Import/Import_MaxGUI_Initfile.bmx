@@ -73,7 +73,7 @@ bbdoc: Sets all values according to the requested configuration.
 about: Config accepts three types. TIni for an already loaded configuration. String to load the config from a file. TBank to load the config from a memory bank (this was done to allow JCR6 compatibility).
 End Rem
 Function MGIF_GetConfig(Config:Object)
-Local C:Config = TIni(Config)
+Local C:TIni = TIni(Config)
 If Type(Config)=String Or Type(config)=TBank LoadIni config,c
 Assert C Else "No valid config data"
 MGIF_GetFromIni C
@@ -105,7 +105,7 @@ End Rem
 Function MGIF_Save(File$)
 Local I:TIni = MGIF_PutConfigInIni()
 SaveIni file,I
-End function		
+End Function		
 
 
 
