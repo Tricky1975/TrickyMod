@@ -62,7 +62,7 @@ For K=EachIn MapKeys(gadgetmap)
 		Case gadget_progbar
 			UpdateProgBar G,init.C(K).todouble()		
 		Default
-			Print "Warning! Cannot handle gadgetclass "+G
+			Print "Warning! Cannot handle gadgetclass "+GadgetClass(G)
 		End Select
 	Next
 End Function	
@@ -74,7 +74,7 @@ about: Config accepts three types. TIni for an already loaded configuration. Str
 End Rem
 Function MGIF_GetConfig(Config:Object)
 Local C:TIni = TIni(Config)
-If Type(Config)=String Or Type(config)=TBank LoadIni config,c
+If String(Config) Or TBank(config) LoadIni config,c
 Assert C Else "No valid config data"
 MGIF_GetFromIni C
 End Function
