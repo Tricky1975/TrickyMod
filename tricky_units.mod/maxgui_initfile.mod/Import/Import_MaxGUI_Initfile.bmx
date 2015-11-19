@@ -91,8 +91,8 @@ For K=EachIn MapKeys(gadgetmap)
 		Case gadget_TextField,Gadget_TextArea,Gadget_Label
 			ret.d K,GadgetText(G)	
 		Case Gadget_ComboBox,Gadget_ListBox,Gadget_Tabber
-			v = SelectedGadgetItem(G)
-			If v>=0 ret.d K,GadgetItemText(G,v)
+			c = SelectedGadgetItem(G)
+			If c>=0 ret.d K,GadgetItemText(G,v)
 		Case gadget_slider
 			ret.d K,SliderValue(G)
 		End Select
