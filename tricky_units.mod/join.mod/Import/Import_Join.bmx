@@ -36,7 +36,7 @@ If TList(LA) A=ListToArray(TList(LA)) Else A=Object[](LA)
 If Not A 
 	Print "Warning! Join received data it could not process"
 	Return
-	End
+	End if
 Local ret$=""
 For Local s$=EachIn A
 	If ret ret:+sub
