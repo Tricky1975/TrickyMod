@@ -1,8 +1,8 @@
 Rem
   Join.bmx
   
-  version: 15.11.20
-  Copyright (C) 2015 Jeroen P. Broks
+  version: 16.01.02
+  Copyright (C) 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -21,7 +21,7 @@ Strict
 Import brl.linkedlist
 Import tricky_units.MKL_Version
 
-MKL_Version "Tricky's Units - Join.bmx","15.11.20"
+MKL_Version "Tricky's Units - Join.bmx","16.01.02"
 MKL_Lic     "Tricky's Units - Join.bmx","ZLib License"
 
 ' 15.11.20 - Initial version
