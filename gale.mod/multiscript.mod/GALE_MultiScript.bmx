@@ -102,7 +102,7 @@ bbdoc: This object is automatically tied to the variable GALE_MS and contains th
 End Rem
 Type TScriptBase ' BLD: Object MS\nThis object contains the manager for the multiscripter
 
-     Debug = False
+     Field Debug = False
 
     Rem
 	bbdoc: True is a script is found. False if not.
@@ -153,11 +153,11 @@ Type TScriptBase ' BLD: Object MS\nThis object contains the manager for the mult
 	If Not fn fn="main"
 	If p pr=p.split(sep)
 	If debug
-		L_ConsoleWrite "RUN - Separator: "+Sep,0,180,255
+		L_ConsoleWrite "RUN - Separator: "+Sep+"; Received: "+Separator,0,180,255
 		For Local ppr$ = EachIn pr
 			L_Consolewrite "RUN - para: "+ppr,255,180,0
 			Next
-		endif
+		EndIf
 	Local gs:TLua = GALE_GetScript(Tag)
 	If Not gs GALE_Error "MS.Run(~q"+Tag+"~q,~q"+f+"~q,~q"+p+"~q): Called non-existent script"
 	gs.Run fn,pr
