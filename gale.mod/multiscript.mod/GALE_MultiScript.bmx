@@ -149,7 +149,7 @@ Type TScriptBase ' BLD: Object MS\nThis object contains the manager for the mult
 	Local sep$ = ";"
 	If separator sep = separator
 	If Not fn fn="main"
-	If p pr=p.split(separator)
+	If p pr=p.split(sep)
 	Local gs:TLua = GALE_GetScript(Tag)
 	If Not gs GALE_Error "MS.Run(~q"+Tag+"~q,~q"+f+"~q,~q"+p+"~q): Called non-existent script"
 	gs.Run fn,pr
