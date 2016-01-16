@@ -1,12 +1,12 @@
 Rem
         GALE_MultiScript.bmx
-	(c) 2015 Jeroen Petrus Broks.
+	(c) 2015, 2016 Jeroen Petrus Broks.
 	
 	This Source Code Form is subject to the terms of the 
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.23
+        Version: 16.01.16
 End Rem
 ' 15.02.14 - Initial version
 ' 15.05.05 - Added LoadNew and LN_Run
@@ -143,11 +143,13 @@ Type TScriptBase ' BLD: Object MS\nThis object contains the manager for the mult
 	Rem
 	bbdoc: Runs a script. If the second parameter is not given, it will automatically run the function called "main". The 3rd parameter should contain the function paramters in one string separated by ";". Please note, this function only accepts strings, so if you send numbers be sure you convert them to numbers in your called function! From BlitzMax you may also want to use GALE_MS_Run in stead!
 	End Rem
-	Method Run(Tag$,f$="main",p$="") ' BLD: Runs a script. If the second parameter is not given, it will automatically run the function called "main". The 3rd parameter should contain the function paramters in one string separated by ";". Please note, this function only accepts strings, so if you send numbers be sure you convert them to numbers in your called function!
+	Method Run(Tag$,f$="main",p$="",separator$=";") ' BLD: Runs a script. If the second parameter is not given, it will automatically run the function called "Main". The 3rd parameter should contain the function paramters in one string separated by ";". Please note, this function only accepts strings, so if you send numbers be sure you convert them to numbers in your called function!
 	Local fn$=f
 	Local pr:String[]
+	Local sep$ = ";"
+	If separator sep = separator
 	If Not fn fn="main"
-	If p pr=p.split(";")
+	If p pr=p.split(separator)
 	Local gs:TLua = GALE_GetScript(Tag)
 	If Not gs GALE_Error "MS.Run(~q"+Tag+"~q,~q"+f+"~q,~q"+p+"~q): Called non-existent script"
 	gs.Run fn,pr
@@ -157,9 +159,9 @@ Type TScriptBase ' BLD: Object MS\nThis object contains the manager for the mult
 	bbdoc: Loads and runs a script, but only if the script has not been loaded before. 
 	about: I set this one up, in order to allow you to load the script on the moment they are first called. My Star Story game took great advantage of this possibility
 	End Rem
-	Method LN_Run(Tag$,File$,f$="main",p$="") ' BLD: Loads and runs a script, but only if the script has not been loaded before. <p>I set this one up, in order to allow you to load the script on the moment they are first called. My Star Story game took great advantage of this possibility
+	Method LN_Run(Tag$,File$,f$="main",p$="",separator$=";") ' BLD: Loads and runs a script, but only if the script has not been loaded before. <p>I set this one up, in order to allow you to load the script on the moment they are first called. My Star Story game took great advantage of this possibility
 	LoadNew Tag,File
-	Run tag,f,p
+	Run tag,f,p,separator
 	End Method
 	
 	Rem

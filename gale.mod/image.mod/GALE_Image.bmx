@@ -1,25 +1,12 @@
 Rem
         GALE_Image.bmx
-	(c) 2012, 2014, 2015 Jeroen Petrus Broks.
+	(c) 2012, 2014, 2015, 2016 Jeroen Petrus Broks.
 	
 	This Source Code Form is subject to the terms of the 
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.11.01
-End Rem
-Rem ' Remove the second license block.
-
-	(c) 2012, 2014, 2015 Jeroen Petrus Broks.
-	
-	This Source Code Form is subject to the terms of the 
-	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
-	distributed with this file, You can obtain one at 
-	http://mozilla.org/MPL/2.0/.
-
-
-Version: 15.08.05
-
+        Version: 16.01.03
 End Rem
 
 ' History
@@ -42,6 +29,7 @@ End Rem
 ' 15.07.17 - Added HSV support
 ' 15.10.16 - Added advanced rectangle support
 ' 15.11.01 - Collision support
+' 16.01.03 - Just a little code clean up, but no big changes
 
 Strict
 
@@ -60,7 +48,7 @@ Import Gale.M2D
 'Import "../../JCR/UseJCR.bmx"
 
 
-MKL_Version "GALE - GALE_Image.bmx","15.11.01"
+MKL_Version "GALE - GALE_Image.bmx","16.01.03"
 MKL_Lic     "GALE - GALE_Image.bmx","Mozilla Public License 2.0"
 
 Rem
