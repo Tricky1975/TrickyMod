@@ -7,7 +7,7 @@ Moduleinfo "NameModule: Tricky's Units - TUI_PolledInput"
 Moduleinfo "Author: Jeroen Broks aka Tricky"
 ModuleInfo "Copyright: &copy; Jeroen Petrus Broks"
 Moduleinfo "License: Mozilla Public License 2.0"
-moduleinfo "Last update: 06 Feb 2015"
+moduleinfo "Last update: 09 Feb 2016"
 
 
 
