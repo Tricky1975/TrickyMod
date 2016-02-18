@@ -1,4 +1,0 @@
-Importing this module will make Tricky's User Interface respond to the polled input module used by Max2D. Once this module is imported, Tricky's UI will take up all the input from there automatically requiring no further instructions. The core module will then automatically be imported as well, so you don't need to import that seperately, however if you still do it nothing dangerous should happen XD
-Please one note, it is not recommendable to use the Polled Input routines such as KeyHit() and MouseHIi() (KeyDown() and MouseDown() are safe) and others while you are using Tricky's UI with this driver. Some conflicts may surely pop up. In stead you can read out TUI_CID.Keyhit[] or TUI_CID.MouseHit[] AFTER you ran the gadget cycle.
-
-
