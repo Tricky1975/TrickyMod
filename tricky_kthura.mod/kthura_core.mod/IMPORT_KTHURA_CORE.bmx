@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.01.10
+        Version: 16.02.18
 End Rem
 
 ' 15.08.15 - First version considered in 'Alpha' (though earlier releases exist, this is where the project has been declared safe enough to use, though keep in mind that stuff may still be subject to change)
@@ -36,7 +36,7 @@ Import tricky_units.HotSpot
 Import tricky_units.Pathfinder
 Import tricky_units.serialtrim
 
-MKL_Version "Kthura Map System - Kthura_Core.bmx","16.01.10"
+MKL_Version "Kthura Map System - Kthura_Core.bmx","16.02.18"
 MKL_Lic     "Kthura Map System - Kthura_Core.bmx","Mozilla Public License 2.0"
 
 
@@ -526,13 +526,18 @@ Type TKthura
 		End Select
 	End Method
 	
+	Field WarnCoordInObjectFromTag = False
+	
 	Rem
 	bbdoc: Retrieve an object from a tag and performs a check if the coordinate is within the object or not.
 	returns: True if this is the case, and False if not. (duh)
 	End Rem	
 	Method CoordInObjectFromTag(Tag$,x,y)
 	Local O:TKthuraObject = tagmap.get(Tag)
-	If Not O Return Print("WARNING! <TKthura>. CoordInObjectFromTag("+Tag+","+x+","+y+"): There is no object with tag: "+Tag)
+	If Not O 
+	   If warncoordinobjectfromtag Print("WARNING! <TKthura>. CoordInObjectFromTag("+Tag+","+x+","+y+"): There is no object with tag: "+Tag)
+	   Return 
+	   endif
 	Return CoordInObject(O,x,y)
 	End Method
 	
