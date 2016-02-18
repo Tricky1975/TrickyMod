@@ -1,0 +1,6 @@
+<img src='JCR.png' style='float:right' alt='JCR'>
+This module will be the main module for JCR6
+<!-- Please note that when you are reading this, this module is still in development and should therefore not be used in your actual projects until it's completed. -->
+<p>
+JCR6 is the 6th installment of the "Jeroen's Collected Resource" system. It packs all files into a great .JCR file making your games easier to distribute.<br>
+By default JCR6 can only read it's own JCR6 format without any compression, however, by adding the drivers that come with this module you can for example add zlib compression, and if you have an algorithm of your own, you can add it here as well.<p>JCR6 does support (like its predecessors) patching making your game easily customizable fans without them destroying the original game.<P>Sort out your possibilities here! 

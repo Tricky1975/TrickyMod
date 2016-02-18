@@ -1,0 +1,78 @@
+Rem
+/* ***** BEGIN LICENSE BLOCK *****
+ * Version: MPL 2.0
+ *
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ * The Original Code is (c) Original Creator.
+ *
+ * The Initial Developer of the Original Code is
+ * Jeroen P. Broks.
+ * Portions created by the Initial Developer are Copyright (C) 2015
+ * the Initial Developer. All Rights Reserved.
+ *
+ * Contributor(s):
+ * -
+ *
+ * ***** END LICENSE BLOCK ***** */
+
+
+
+Version: 15.02.06
+
+End Rem
+' 15.02.24 - Fixed the font issue that caused the alignment to spook up.
+
+MKL_Version "TrickyUI - TUI_Core/TUIC_Label.bmx","15.02.06"
+MKL_Lic     "TrickyUI - TUI_Core/TUIC_Label.bmx","Mozilla Public License 2.0"
+
+
+Rem
+bbdoc: Creates a label containing text 
+End Rem
+Function TUI_CreateLabel:TUI_Gadget(Text$,x,y,parent:TUI_Gadget,font:TImageFont=Null,alignment=0)
+Local ret:TUI_Gadget = New TUI_Gadget
+ret.kind = "Label"
+ret.x = x
+ret.y = y
+ret.w = 0
+ret.h = 0
+ret.font = font
+ret.text = text
+ret.alignment = alignment
+setparent parent,ret
+Return ret
+End Function
+
+
+
+Type TUI_GDrvLabel Extends TUI_Gadgetdriver
+
+	Method Run(G:TUI_Gadget,Enabled)
+	SetImageFont G.font
+	Local tw = TextWidth(G.Text)
+	Local ax[] = [0,TW,TW/2]
+	Local px,py
+	Local lines$[] = G.Text.split("~n")
+	tui_parentcoords g,px,py
+	Local y = py+g.y
+	SetColor G.colors[1,0],g.colors[1,1],g.colors[1,2]
+	'DrawText G.Text,px+g.x,py+g.y
+	For Local L$=EachIn lines
+		G.DText L,(px+g.x)-ax[G.Alignment],y
+		y:+TextHeight(L)
+		Next
+	End Method
+
+End Type
+
+regtuidriver "Label",New TUI_GDrvLabel
+

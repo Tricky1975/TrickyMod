@@ -1,0 +1,30 @@
+Strict
+Import brl.linkedlist
+Import brl.retro
+
+
+Const LISTDIR_FILEONLY = 1
+Const LISTDIR_DIRONLY  = 2
+
+Rem
+bbdoc: Returns a TList containing all files inside a dir. It does not work recursively (for that use the Tree module). If the t parameter is set to LISTDIR_FILEONLY then you'll only get files and if it's set to LISTDIR_DIRONLY it will only contain directories (or folders if you like). When set to 0 it will add directories and folders alike.
+End Rem
+Function ListDir:TList(dir$=".",t=0,allowunixhidden=False)
+Local d$ = Replace(dir,"\","/")
+Local ret:TList = New TList
+If Right(D,1)<>"/" D:+"/"
+Local BD = ReadDir(d)
+Local F$
+Repeat
+F = NextFile(BD)
+If Not F Exit
+If (Left(F,1)<>"." Or allowunixhidden) And (t=0 Or FileType(D+F)=t)
+	ListAddLast ret,F
+	EndIf
+Forever
+CloseDir BD
+SortList ret
+Return ret
+End Function
+
+
