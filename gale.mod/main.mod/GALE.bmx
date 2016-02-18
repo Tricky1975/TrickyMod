@@ -88,6 +88,7 @@ History:
 15.08.14 - Sys object now also directly accessible from BlitzMax, but in BlitzMax it's GALE_Sys (In Lua it's still Sys)
          - Ability to make Bye always execute a certain sequence 
 15.10.17 - Removed a few unneeded annoying debug lines.
+16.02.18 - The "USING" messages are now only printed to the console if needed, and even the loading and compiling stuff in general can be put on "silent".
 End Rem
 
 Import brl.map
@@ -151,6 +152,17 @@ bbdoc: When set, GALE will crash out the program when a JCR6 error occurs during
 about: Important note, the error does not have to be caused by GALE. Any failed JCR call will cause this to happen when GALE is imported.
 End Rem
 Global GALEJCRCRASH = True
+
+
+Rem
+bbdoc: When set to true, it will show all files that are tied to a script with the USE directive.
+End Rem
+Global GALE_USING = False
+
+Rem
+bbdoc: When set to true, none of the compilation messages will be shown (except from errors of course).
+End Rem
+Global GALE_SilentCompile = False
 
 
 Type GALEJCRERRORDRIVER Extends JCR_JAMERR_Driver
@@ -289,10 +301,10 @@ Type TLua
 	Runner(Tag).Tag = Tag
 	Runner(Tag).Chat("Session Created")
 	Runner(Tag).Chat("Calling function: "+RFunction+"()")
-	Self.LastCalledFunction=RFunction+"("+(",".join(args))+");"
+	Self.LastCalledFunction=RFunction+"("+(",".Join(args))+");"
 	If Not Instance Return GALE_JBC_Error(Self,"Runtime Error","Trying to run a script that was not correctly compiled!")
 	Instance.Invoke(RFunction,args)
-	Self.LastCalledFunction=RFunction+"("+(",".join(args))+");"
+	Self.LastCalledFunction=RFunction+"("+(",".Join(args))+");"
 	GALE_JBC_Error(Self,"Runtime error")
 	Runner(Tag).Chat("Session completed!")
 	MapRemove RunnerMap,Tag
@@ -577,7 +589,7 @@ Local CFile$
 Local Ret:TLua = New TLua
 Local SVFile$
 Local CaseVar$ = ""
-L_ConsoleWrite "Processing Script: "+Entry
+If Not gale_silentcompile L_ConsoleWrite "Processing Script: "+Entry
 IncList = GALE_GetIncludes(TJCRDir(MainList),Entry)
 If Not IncList Return Ret
 'Start up (and makes errors appear accordingly, lateron)
@@ -722,7 +734,7 @@ ListAddLast Loader,Line
 Ret.FileName = Entry
 Ret.Line = ListToArray(Loader)
 'Compile the result
-L_ConsoleWrite "Compiling script"
+If Not gale_silentcompile L_ConsoleWrite "Compiling script"
 Ret.Compile
 L_ConsoleWrite "Lua>GALE_OnLoad(~q"+Entry+"~q)",100,100,100
 Ret.Run "GALE_OnLoad",[Entry]
@@ -976,7 +988,7 @@ For CFile = EachIn RunList
 				RFile=EDir+RFile
 				EndIf
 			If JCR And Left(RFile,1)="/" RFile=Right(RFile,Len(RFile)-1)
-			L_ConsoleWrite "= Using:           "+RFile	
+			If Gale_Using And (Not gale_silentcompile) L_ConsoleWrite "= Using:           "+RFile	
 			If (JCR And (Not MapContains(MainList.entries,RFile.ToUpper()))) Or ((Not JCR) And FileType(RFile)<>1)
 				Local LL:TLuaLine = New TLuaLine
 				LO.Line = [LL]
