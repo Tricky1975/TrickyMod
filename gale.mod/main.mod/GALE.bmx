@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.02.18
+        Version: 16.02.19
 End Rem
 Strict
 
@@ -89,6 +89,7 @@ History:
          - Ability to make Bye always execute a certain sequence 
 15.10.17 - Removed a few unneeded annoying debug lines.
 16.02.18 - The "USING" messages are now only printed to the console if needed, and even the loading and compiling stuff in general can be put on "silent".
+16.02.19 - Removal of "USING" (unless the GALE_USING var is set true) did work on single -- @USE, but not on -- @USEDIR. That has now been fixed.
 End Rem
 
 Import brl.map
@@ -122,7 +123,7 @@ Incbin  "Serializer.lua"
 'Info Preset Definitions			' BLD: The next definitions can not be set/unset with DEFINE or UNDEF, but IF and ELSEIF can see them and they can be used there.<p><table><tr><td>$WINDOWS</td><td>Set if running from Windows</td></tr><tr><td>$MAC</td><td>Set if running from MacOS X</td></tr><tr><td>$MACOS</td><td>Alias for $MAC</td></tr><tr><td>$LINUX</td><td>Set if running from Linux</td></tr><tr><td>$DEBUGBUILD</td><td>Set if you happen to use the debug build of the engine</td><tr><td>$RELEASEBUILD</td><td>Set if you use the release build of your engine</td><tr><td>$LITTLEENDIAN</td><td>Set if processor uses LittleEndian</td><tr><td>$BIGENDIAN</td><td>Set if your processor uses BigEndian</td></tr><tr><td>$X86</td><td>Set if you have use and X86 processor (Intel or compatible)</td></tr><tr><td>$PPC</td><td>Set if you use a PowerPC processor</td></tr></table>
 
 
-MKL_Version "GALE - GALE.bmx","16.02.18"
+MKL_Version "GALE - GALE.bmx","16.02.19"
 MKL_Lic     "GALE - GALE.bmx","Mozilla Public License 2.0"
 
 
@@ -589,7 +590,7 @@ Local CFile$
 Local Ret:TLua = New TLua
 Local SVFile$
 Local CaseVar$ = ""
-If Not gale_silentcompile L_ConsoleWrite "Processing Script: "+Entry
+If Not GALE_SilentCompile L_ConsoleWrite "Processing Script: "+Entry
 IncList = GALE_GetIncludes(TJCRDir(MainList),Entry)
 If Not IncList Return Ret
 'Start up (and makes errors appear accordingly, lateron)
@@ -734,7 +735,7 @@ ListAddLast Loader,Line
 Ret.FileName = Entry
 Ret.Line = ListToArray(Loader)
 'Compile the result
-If Not gale_silentcompile L_ConsoleWrite "Compiling script"
+If Not GALE_SilentCompile L_ConsoleWrite "Compiling script"
 Ret.Compile
 L_ConsoleWrite "Lua>GALE_OnLoad(~q"+Entry+"~q)",100,100,100
 Ret.Run "GALE_OnLoad",[Entry]
@@ -988,7 +989,7 @@ For CFile = EachIn RunList
 				RFile=EDir+RFile
 				EndIf
 			If JCR And Left(RFile,1)="/" RFile=Right(RFile,Len(RFile)-1)
-			If Gale_Using And (Not gale_silentcompile) L_ConsoleWrite "= Using:           "+RFile	
+			If GALE_USING And (Not GALE_SilentCompile) L_ConsoleWrite "= Using:           "+RFile	
 			If (JCR And (Not MapContains(MainList.entries,RFile.ToUpper()))) Or ((Not JCR) And FileType(RFile)<>1)
 				Local LL:TLuaLine = New TLuaLine
 				LO.Line = [LL]
@@ -1013,7 +1014,7 @@ For CFile = EachIn RunList
 			For Local DFile$=EachIn MapKeys(MainList.entries)
 				'DebugLog "Requested '"+RFile+"'; found: '"+DFile+"'; FD='"+Left(RFile,Len(DFile))+"';  Ext="+ExtractExt(DFile)+"; Ok="+Int(Left(DFile,Len(RFile))=RFile)
 				If ExtractExt(DFile)="LUA" And Left(DFile,Len(RFile))=RFile 
-					L_ConsoleWrite "= Using:           "+DFile
+					If GALE_USING And (Not GALE_SilentCompile) L_ConsoleWrite "= Using:           "+DFile
 					If ListContains(CapList,DFile.ToUpper())
 						L_ConsoleWrite "= Duplicate Include - Request ignored (Request done in: "+CFile+")",255,0,0
 						Else
