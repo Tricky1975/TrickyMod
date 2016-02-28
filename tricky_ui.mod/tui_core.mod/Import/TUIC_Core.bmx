@@ -8,37 +8,9 @@ Rem
 	http://mozilla.org/MPL/2.0/.
         Version: 16.02.28
 End Rem
-Rem
-/* ***** BEGIN LICENSE BLOCK *****
- * Version: MPL 2.0
- *
- * The contents of this file are subject to the Mozilla Public License Version
- * 2.0 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
- * http://www.mozilla.org/MPL/
- *
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
- * for the specific language governing rights and limitations under the
- * License.
- *
- * The Original Code is (c) Jeroen P. Broks.
- *
- * The Initial Developer of the Original Code is
- * Jeroen P. Broks.
- * Portions created by the Initial Developer are Copyright (C) 2015
- * the Initial Developer. All Rights Reserved.
- *
- * Contributor(s):
- * 
- *
- * ***** END LICENSE BLOCK ***** */
 
-
-
-Version: 15.02.14
-
-End Rem
+' 15.02.14 - Initial
+' 16.02.28 - Items support
 'Strict
 
 'Import brl.max2d
@@ -71,6 +43,72 @@ Type TUI_Gadget
 	
 	Field Parent:TUI_Gadget
 	Field Children:TList = New TList
+	
+	Field Items:TList
+	
+	Field FSelectedItem
+	Rem
+	bbdoc: Contains the index number of the currently selected gadgetitem. If the gadget in question has no gadget items (only list type gadgets have), this variable will always contain the value -2. If no gadget item is selected it contains -1
+	End Rem
+	Method SelectedItem()
+	If Not items Return -2
+	If fselecteditem<-1 Or fselecteditem>CountItems() Return -1
+	Return FSelectedItem
+	End Method
+	
+	Rem
+	bbdoc: Contains the number of items tied to a gadget. If the gadget does not support items, it returns -1
+	End Rem
+	Method CountItems()
+	If Not items Return -1
+	Return CountList(Items)
+	End Method
+	
+	Rem
+	bbdoc: Adds a gadget item
+	End Rem
+	Method AddItem(Txt$)
+	If Not items Return
+	ListAddLast items,txt
+	End Method
+	
+	Rem
+	bbdoc: Reads out an item
+	about: If no items exist it returns an empty string
+	returns: Text of the selected gadget item. If you provide an index number yourself, it will give you that text in stead
+	End Rem
+	Method ItemText(idx=-1)
+	Local i = idx
+	If i<0 i=SelectedItem()
+	If i<0 Return
+	Return String(items.valueatindex(i))
+	End Method
+	
+	Rem
+	bbdoc: Removes an item
+	End Rem
+	Method RemoveItem(I)
+	If Not items Return
+	ListRemove items,I
+	End Method
+	
+	Rem 
+	bbdoc:Sort items
+	End Rem
+	Method SortItems()
+	If Not items Return
+	SortList Items
+	End Method
+	
+	Rem 
+	bbdoc: Clear items
+	End Rem
+	Method ClearItems()
+	If Not items Return
+	ClearList items
+	End Method
+	
+
 	
 	Rem
 	bbdoc: Contains the text of a text based gadget. Altering this value will alter the text inside the gadget. Text input based gadgets will have their text here as well.
@@ -246,6 +284,7 @@ Type TUI_Gadget
 	colors[2,0]=100
 	colors[2,1]=100
 	colors[2,2]=100
+	fselecteditem=-2
 	End Method
 	
 	Method DText(A$,X,Y,PEnabled=True)
