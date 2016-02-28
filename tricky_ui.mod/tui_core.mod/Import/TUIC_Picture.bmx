@@ -1,4 +1,14 @@
 Rem
+        TUIC_Picture.bmx
+	(c) 2015, 2016 Jeroen Petrus Broks.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 16.02.28
+End Rem
+Rem
 /* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 2.0
  *
@@ -29,12 +39,16 @@ Rem
 Version: 15.02.06
 
 End Rem
-MKL_Version "TrickyUI - TUI_Core/TUIC_Picture.bmx","15.02.06"
-MKL_Lic     "TrickyUI - TUI_Core/TUIC_Picture.bmx","Mozilla Public License 2.0"
+
+' 15.02.06 - Initial
+' 16.02.28 - Fixed an bbdoc error
+
+MKL_Version "Tricky's User Interface - TUIC_Picture.bmx","16.02.28"
+MKL_Lic     "Tricky's User Interface - TUIC_Picture.bmx","Mozilla Public License 2.0"
 
 
 Rem
-bbdoc: Makes the entire screen the gadget. 
+bbdoc: Uses a picture (loaded as a TImage) as a gadget. 
 about: This picture is affected by color and alpha settings. If you desire a special alignment, you can just handle the picture with setimagehandle().
 End Rem
 Function TUI_CreatePicture:TUI_Gadget(Image:TImage,x,y,parent:TUI_Gadget)

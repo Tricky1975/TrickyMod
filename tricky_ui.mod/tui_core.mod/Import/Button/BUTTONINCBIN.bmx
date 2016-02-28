@@ -1,4 +1,14 @@
 Rem
+        BUTTONINCBIN.bmx
+	(c) 2016 Jeroen Petrus Broks.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 16.02.28
+End Rem
+Rem
 /* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 2.0
  *
@@ -36,8 +46,8 @@ End Rem
 Incbin "IDLE.png"
 Incbin "ACTION.png"
 
-MKL_Version "TrickyUI - TUI_Core/Button/BUTTONINCBIN.bmx","15.02.06"
-MKL_Lic     "TrickyUI - TUI_Core/Button/BUTTONINCBIN.bmx","Mozilla Public License 2.0"
+MKL_Version "Tricky's User Interface - BUTTONINCBIN.bmx","16.02.28"
+MKL_Lic     "Tricky's User Interface - BUTTONINCBIN.bmx","Mozilla Public License 2.0"
 
 
 Global TUI_IDLEBUTTON:TImage=LoadImage("incbin::IDLE.png")

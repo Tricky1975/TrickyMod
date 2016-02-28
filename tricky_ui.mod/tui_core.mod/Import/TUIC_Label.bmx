@@ -1,4 +1,14 @@
 Rem
+        TUIC_Label.bmx
+	(c) 2015, 2016 Jeroen Petrus Broks.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 16.02.28
+End Rem
+Rem
 /* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 2.0
  *
@@ -31,8 +41,8 @@ Version: 15.02.06
 End Rem
 ' 15.02.24 - Fixed the font issue that caused the alignment to spook up.
 
-MKL_Version "TrickyUI - TUI_Core/TUIC_Label.bmx","15.02.06"
-MKL_Lic     "TrickyUI - TUI_Core/TUIC_Label.bmx","Mozilla Public License 2.0"
+MKL_Version "Tricky's User Interface - TUIC_Label.bmx","16.02.28"
+MKL_Lic     "Tricky's User Interface - TUIC_Label.bmx","Mozilla Public License 2.0"
 
 
 Rem

@@ -1,3 +1,13 @@
+Rem
+        TUIC_CheckBox.bmx
+	(c) 2015, 2016 Jeroen Petrus Broks.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 16.02.28
+End Rem
 
 Type TUI_GDrvCheckbox Extends TUI_Gadgetdriver
 
@@ -53,5 +63,5 @@ setparent parent,ret
 Return ret
 End Function
 
-MKL_Version "TrickyUI - TUI_Core/TUIC_Checkbox.bmx","15.02.11"
-MKL_Lic     "TrickyUI - TUI_Core/TUIC_Checkbox.bmx","Mozilla Public License 2.0"
+MKL_Version "Tricky's User Interface - TUIC_CheckBox.bmx","16.02.28"
+MKL_Lic     "Tricky's User Interface - TUIC_CheckBox.bmx","Mozilla Public License 2.0"
