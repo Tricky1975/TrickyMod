@@ -24,7 +24,9 @@ End Function
 Type TUI_GDrvListbox Extends TUI_Gadgetdriver
 
 	Method Run(G:TUI_Gadget,Enabled)
-	setimagefont g.font
+	Local px,py
+	tui_parentcoords G,px,py
+	SetImageFont g.font
 	Local a:Double = GetAlpha()
 	SetAlpha G.alpha
 	SetColor G.colors[(g.enabled And enabled),0],G.colors[(g.enabled And enabled),1],G.colors[(g.enabled And enabled),2]
