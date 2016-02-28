@@ -117,11 +117,11 @@ Type TUI_Gadget
 	End Method
 	
 	Rem
-	bbdoc: Removes an item
+	bbdoc: Removes an item by text
 	End Rem
-	Method RemoveItem(I)
+	Method RemoveItemFromText(I$)
 	If Not items Return
-	ListRemove items,I
+	ListRemove items,I$
 	End Method
 	
 	Rem 
