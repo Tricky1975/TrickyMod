@@ -23,6 +23,6 @@ Include "TUIC_TextInput.bmx"
 Include "TUIC_Label.bmx"
 Include "TUIC_Picture.bmx"
 Include "TUIC_CheckBox.bmx"
-Include "TUIC_Include.bmx"
+Include "TUIC_ListBox.bmx"
 
 Include "TUIC_Confirm.bmx"
