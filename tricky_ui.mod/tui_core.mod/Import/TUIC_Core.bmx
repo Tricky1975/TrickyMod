@@ -7,37 +7,6 @@ Rem
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
         Version: 16.02.28
-End Rem ' Lic block below is old. Will be removed automatically
-Rem
-/* ***** BEGIN LICENSE BLOCK *****
- * Version: MPL 2.0
- *
- * The contents of this file are subject to the Mozilla Public License Version
- * 2.0 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
- * http://www.mozilla.org/MPL/
- *
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
- * for the specific language governing rights and limitations under the
- * License.
- *
- * The Original Code is (c) Jeroen P. Broks.
- *
- * The Initial Developer of the Original Code is
- * Jeroen P. Broks.
- * Portions created by the Initial Developer are Copyright (C) 2015
- * the Initial Developer. All Rights Reserved.
- *
- * Contributor(s):
- * 
- *
- * ***** END LICENSE BLOCK ***** */
-
-
-
-Version: 15.02.14
-
 End Rem
 
 ' 15.02.14 - Initial
@@ -76,6 +45,7 @@ Type TUI_Gadget
 	Field Children:TList = New TList
 	
 	Field Items:TList
+	Field ScrollX,ScrollY
 	
 	Field FSelectedItem
 	
@@ -436,6 +406,13 @@ End Function
 Type TUI_GadgetDriver
 	
 	Method Run(G:TUI_Gadget, Enabled) Abstract
+	
+	' These empty methods can optionally be replaced
+	Method SetScroll(X,Y) End Method
+	Method ScrollUp(Md=1) End Method
+	Method ScrollDown(MD=1) ScrollUp(-md) End Method
+	Method ScrollLeft(md=1) End Method
+	Method ScrollRight(md) ScrollLeft(-md) End Method
 	
 	End Type
 
