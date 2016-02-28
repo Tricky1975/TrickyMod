@@ -1,13 +1,3 @@
-Rem
-        TUIC_Listbox.bmx
-	(c) 2016 Jeroen Petrus Broks.
-	
-	This Source Code Form is subject to the terms of the 
-	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
-	distributed with this file, You can obtain one at 
-	http://mozilla.org/MPL/2.0/.
-        Version: 16.02.28
-End Rem
 ' 16.02.29 - Initial (yeah, Feb 29, the day we only have once in the four years, hehe).
 
 
@@ -34,7 +24,7 @@ End Function
 Type TUI_GDrvListbox Extends TUI_Gadgetdriver
 
 	Method Run(G:TUI_Gadget,Enabled)
-	setfont g.font
+	setimagefont g.font
 	Local a:Double = GetAlpha()
 	SetAlpha G.alpha
 	SetColor G.colors[(g.enabled And enabled),0],G.colors[(g.enabled And enabled),1],G.colors[(g.enabled And enabled),2]
