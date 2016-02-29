@@ -48,7 +48,7 @@ Type TUI_GDrvListbox Extends TUI_Gadgetdriver
 	SetAlpha a
 	SetColor G.colors[(g.enabled And enabled)+2,0],G.colors[(g.enabled And enabled)+2,1],G.colors[(g.enabled And enabled)+2,2]
 	' Viewport
-	Local ovpx,ovpy,ovpw,ovph,oox,ooy
+	Local ovpx,ovpy,ovpw,ovph,oox#,ooy#
 	GetViewport ovpx,ovpy,ovpw,ovph
 	GetOrigin oox,ooy
 	SetViewport G.x+px,G.y+py,g.w,g.h

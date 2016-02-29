@@ -410,9 +410,9 @@ Type TUI_GadgetDriver
 	' These empty methods can optionally be replaced
 	Method SetScroll(G:TUI_Gadget,X,Y) End Method
 	Method ScrollUp(G:TUI_Gadget,Md=1) End Method
-	Method ScrollDown(G:TUI_Gadget,MD=1) ScrollUp(-md) End Method
+	Method ScrollDown(G:TUI_Gadget,MD=1) ScrollUp(G,-md) End Method
 	Method ScrollLeft(G:TUI_Gadget,md=1) End Method
-	Method ScrollRight(G:TUI_Gadget,md) ScrollLeft(-md) End Method
+	Method ScrollRight(G:TUI_Gadget,md) ScrollLeft(G,-md) End Method
 	
 	End Type
 
