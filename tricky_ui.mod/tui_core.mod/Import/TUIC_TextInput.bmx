@@ -6,13 +6,13 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.02.28
+        Version: 16.02.29
 End Rem
 
 ' 16.02.06 - Initial
 ' 16.02.29 - Fixed bbdoc text and license block
 
-MKL_Version "Tricky's User Interface - TUIC_TextInput.bmx","16.02.28"
+MKL_Version "Tricky's User Interface - TUIC_TextInput.bmx","16.02.29"
 MKL_Lic     "Tricky's User Interface - TUIC_TextInput.bmx","Mozilla Public License 2.0"
 
 
@@ -74,7 +74,7 @@ Type TUI_GDrvUserInput Extends TUI_Gadgetdriver
 				EndIf			 			
 			Next
 		EndIf
-	If ((TUI_CID.MouseX>=px+G.X And TUI_CID.MouseX<=px+G.X+G.W And TUI_CID.MouseY>=px+G.Y And TUI_CID.MouseY<=px+G.Y+G.H And TUI_CID.MouseHit[1]) Or (G.AltKey And TUI_CID.KeyHit[G.Altkey])) And G.Enabled TUI_ActivateGadget G	
+	If ((TUI_CID.MouseX>=px+G.X And TUI_CID.MouseX<=px+G.X+G.W And TUI_CID.MouseY>=px+G.Y And TUI_CID.MouseY<=py+G.Y+G.H And TUI_CID.MouseHit[1]) Or (G.AltKey And TUI_CID.KeyHit[G.Altkey])) And G.Enabled TUI_ActivateGadget G	
 	End Method
 
 End Type

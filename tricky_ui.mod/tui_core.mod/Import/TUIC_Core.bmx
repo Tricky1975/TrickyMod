@@ -54,9 +54,18 @@ Type TUI_Gadget
 	End Rem
 	Method SelectedItem()
 	If Not items Return -2
-	If fselecteditem<-1 Or fselecteditem>CountItems() Return -1
+	If fselecteditem<-1 Or fselecteditem>=CountItems() Return -1
 	Return FSelectedItem
 	End Method
+	
+	Rem
+	bbdoc: Selects an item. Put in any negative number to unselect the item without selecting another. If you select a higher number than the number of items, the same will happen
+	End Rem
+	Method SelectItem(i)
+	If fselecteditem<-1 Or fselecteditem>=CountItems() FSelectedItem = -1 Else FSelectedItem = i
+	End method
+	
+	
 	
 	Rem
 	bbdoc: Contains the number of items tied to a gadget. If the gadget does not support items, it returns -1
