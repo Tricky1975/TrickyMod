@@ -1,3 +1,14 @@
+Rem
+        TUIC_Listbox.bmx
+	(c) 2016 Jeroen Petrus Broks.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 16.02.29
+End Rem
+
 ' 16.02.29 - Initial (yeah, Feb 29, the day we only have once in the four years, hehe).
 
 
@@ -15,6 +26,7 @@ ret.h = h
 ret.parent = parent
 ret.enabledcolor 0,0,0
 ret.alpha = .5
+ret.items = New TList
 setparent parent,ret
 Return ret
 End Function
@@ -24,19 +36,44 @@ End Function
 Type TUI_GDrvListbox Extends TUI_Gadgetdriver
 
 	Method Run(G:TUI_Gadget,Enabled)
+	' init
 	Local px,py
 	tui_parentcoords G,px,py
 	SetImageFont g.font
 	Local a:Double = GetAlpha()
+	' Box
 	SetAlpha G.alpha
 	SetColor G.colors[(g.enabled And enabled),0],G.colors[(g.enabled And enabled),1],G.colors[(g.enabled And enabled),2]
 	DrawRect G.x+px,G.y+py,g.w,g.h
 	SetAlpha a
 	SetColor G.colors[(g.enabled And enabled)+2,0],G.colors[(g.enabled And enabled)+2,1],G.colors[(g.enabled And enabled)+2,2]
-
+	' Viewport
+	Local ovpx,ovpy,ovpw,ovph,oox,ooy
+	GetViewport ovpx,ovpy,ovpw,ovph
+	GetOrigin oox,ooy
+	SetViewport G.x+px,G.y+py,g.w,g.h
+	SetOrigin G.x+px,G.y+py
+	' Items
+	Local y  = - G.ScrollY
+	Local ii = -1
+	Local it$	
+	For it = EachIn G.Items
+		ii:+1
+		If ii==G.FSelectedItem 
+			SetColor G.colors[(g.enabled And enabled),0],G.colors[(g.enabled And enabled),1],G.colors[(g.enabled And enabled),2]
+			DrawRect 0,y,g.w,TextHeight(it)
+			SetColor G.colors[(g.enabled And enabled)+2,0],G.colors[(g.enabled And enabled)+2,1],G.colors[(g.enabled And enabled)+2,2]
+			EndIf
+		DrawText it,3,y
+		y:+TextHeight(it)	
+		Next
+	' Restore originals
+	SetOrigin oox,ooy
+	SetViewport ovpx,ovpy,ovpw,ovph
 	End Method
 
 	Method ScrollUp(md=1)
+	G.ScrollY = G.ScrollY - 1
 	End Method
 
 	End Type

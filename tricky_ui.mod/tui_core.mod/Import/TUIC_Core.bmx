@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.02.28
+        Version: 16.02.29
 End Rem
 
 ' 15.02.14 - Initial
@@ -16,7 +16,7 @@ End Rem
 'Import brl.max2d
 'Import tricky_units.MKL_Version
 
-MKL_Version "Tricky's User Interface - TUIC_Core.bmx","16.02.28"
+MKL_Version "Tricky's User Interface - TUIC_Core.bmx","16.02.29"
 MKL_Lic     "Tricky's User Interface - TUIC_Core.bmx","Mozilla Public License 2.0"
 
 ' Main Types
@@ -408,11 +408,11 @@ Type TUI_GadgetDriver
 	Method Run(G:TUI_Gadget, Enabled) Abstract
 	
 	' These empty methods can optionally be replaced
-	Method SetScroll(X,Y) End Method
-	Method ScrollUp(Md=1) End Method
-	Method ScrollDown(MD=1) ScrollUp(-md) End Method
-	Method ScrollLeft(md=1) End Method
-	Method ScrollRight(md) ScrollLeft(-md) End Method
+	Method SetScroll(G:TUI_Gadget,X,Y) End Method
+	Method ScrollUp(G:TUI_Gadget,Md=1) End Method
+	Method ScrollDown(G:TUI_Gadget,MD=1) ScrollUp(-md) End Method
+	Method ScrollLeft(G:TUI_Gadget,md=1) End Method
+	Method ScrollRight(G:TUI_Gadget,md) ScrollLeft(-md) End Method
 	
 	End Type
 
