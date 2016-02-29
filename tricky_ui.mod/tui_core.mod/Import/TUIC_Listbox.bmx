@@ -57,6 +57,10 @@ Type TUI_GDrvListbox Extends TUI_Gadgetdriver
 	Local y  = - G.ScrollY
 	Local ii = -1
 	Local it$	
+	If Not G.Items
+		Print "WARNING! Item list was Null"
+		G.Items = New G.Items
+		EndIf	
 	For it = EachIn G.Items
 		ii:+1
 		If ii=G.FSelectedItem 
