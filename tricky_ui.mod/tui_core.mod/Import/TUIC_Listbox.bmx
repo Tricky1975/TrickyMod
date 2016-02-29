@@ -63,7 +63,7 @@ Type TUI_GDrvListbox Extends TUI_Gadgetdriver
 		EndIf	
 	For it = EachIn G.Items
 		ii:+1
-		'If ((TUI_CID.MouseX>=px+G.X And TUI_CID.MouseX<=px+G.X+G.W And TUI_CID.MouseY>=(py+G.Y+y)-g.scrolly And TUI_CID.MouseY<=(py+G.Y+G.H+y+TextHeight(it))-g.scrolly)) Then G.selectitem ii
+		If ((TUI_CID.MouseX>=px+G.X And TUI_CID.MouseX<=px+G.X+G.W And TUI_CID.MouseY>=(py+G.Y+y)-g.scrolly And TUI_CID.MouseY<=(py+G.Y+G.H+y+TextHeight(it))-g.scrolly)) Then G.selectitem ii
 		If ii=G.FSelectedItem 
 			SetColor G.colors[(g.enabled And enabled),0],G.colors[(g.enabled And enabled),1],G.colors[(g.enabled And enabled),2]
 			DrawRect 0,y,g.w,TextHeight(it)
@@ -75,7 +75,7 @@ Type TUI_GDrvListbox Extends TUI_Gadgetdriver
 	' Restore originals
 	SetOrigin oox,ooy
 	SetViewport ovpx,ovpy,ovpw,ovph
-	'If ((TUI_CID.MouseX>=px+G.X And TUI_CID.MouseX<=px+G.X+G.W And TUI_CID.MouseY>=py+G.Y And TUI_CID.MouseY<=py+G.Y+G.H And TUI_CID.MouseHit[1]) Or (G.AltKey And TUI_CID.KeyHit[G.Altkey])) And G.Enabled TUI_ActivateGadget G	
+	If ((TUI_CID.MouseX>=px+G.X And TUI_CID.MouseX<=px+G.X+G.W And TUI_CID.MouseY>=py+G.Y And TUI_CID.MouseY<=py+G.Y+G.H And TUI_CID.MouseHit[1]) Or (G.AltKey And TUI_CID.KeyHit[G.Altkey])) And G.Enabled TUI_ActivateGadget G	
 	End Method
 
 	Method ScrollUp(G:TUI_Gadget,md=1)
