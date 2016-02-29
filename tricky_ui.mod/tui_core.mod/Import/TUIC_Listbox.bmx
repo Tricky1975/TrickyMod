@@ -50,7 +50,7 @@ Type TUI_GDrvListbox Extends TUI_Gadgetdriver
 	' Viewport
 	Local ovpx,ovpy,ovpw,ovph,oox#,ooy#
 	GetViewport ovpx,ovpy,ovpw,ovph
-	GetOrigin oox,ooy-g.scrolly
+	GetOrigin oox,ooy '-g.scrolly
 	SetViewport G.x+px,G.y+py,g.w,g.h
 	SetOrigin G.x+px,G.y+py
 	' Items
@@ -75,7 +75,7 @@ Type TUI_GDrvListbox Extends TUI_Gadgetdriver
 	' Restore originals
 	SetOrigin oox,ooy
 	SetViewport ovpx,ovpy,ovpw,ovph
-	If ((TUI_CID.MouseX>=px+G.X And TUI_CID.MouseX<=px+G.X+G.W And TUI_CID.MouseY>=py+G.Y And TUI_CID.MouseY<=py+G.Y+G.H And TUI_CID.MouseHit[1]) Or (G.AltKey And TUI_CID.KeyHit[G.Altkey])) And G.Enabled TUI_ActivateGadget G	
+	'If ((TUI_CID.MouseX>=px+G.X And TUI_CID.MouseX<=px+G.X+G.W And TUI_CID.MouseY>=py+G.Y And TUI_CID.MouseY<=py+G.Y+G.H And TUI_CID.MouseHit[1]) Or (G.AltKey And TUI_CID.KeyHit[G.Altkey])) And G.Enabled TUI_ActivateGadget G	
 	End Method
 
 	Method ScrollUp(G:TUI_Gadget,md=1)
