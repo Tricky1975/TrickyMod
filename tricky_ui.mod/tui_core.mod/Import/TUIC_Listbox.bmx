@@ -63,7 +63,7 @@ Type TUI_GDrvListbox Extends TUI_Gadgetdriver
 		EndIf	
 	For it = EachIn G.Items
 		ii:+1
-		If ((TUI_CID.MouseX>=px+G.X And TUI_CID.MouseX<=px+G.X+G.W And TUI_CID.MouseY>=(py+G.Y+y) And TUI_CID.MouseY<=(py+G.Y+G.H+y+TextHeight(it))zwx)) Then G.selectitem ii
+		If ((TUI_CID.MouseX>=px+G.X And TUI_CID.MouseX<=px+G.X+G.W And TUI_CID.MouseY>=(py+G.Y+y) And TUI_CID.MouseY<=(py+G.Y+G.H+y+TextHeight(it)))) Then G.selectitem ii
 		If ii=G.FSelectedItem 
 			SetColor G.colors[(g.enabled And enabled),0],G.colors[(g.enabled And enabled),1],G.colors[(g.enabled And enabled),2]
 			DrawRect 0,y,g.w,TextHeight(it)
