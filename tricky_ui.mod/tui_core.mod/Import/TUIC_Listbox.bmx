@@ -59,7 +59,7 @@ Type TUI_GDrvListbox Extends TUI_Gadgetdriver
 	Local it$	
 	For it = EachIn G.Items
 		ii:+1
-		If ii==G.FSelectedItem 
+		If ii=G.FSelectedItem 
 			SetColor G.colors[(g.enabled And enabled),0],G.colors[(g.enabled And enabled),1],G.colors[(g.enabled And enabled),2]
 			DrawRect 0,y,g.w,TextHeight(it)
 			SetColor G.colors[(g.enabled And enabled)+2,0],G.colors[(g.enabled And enabled)+2,1],G.colors[(g.enabled And enabled)+2,2]
@@ -72,7 +72,7 @@ Type TUI_GDrvListbox Extends TUI_Gadgetdriver
 	SetViewport ovpx,ovpy,ovpw,ovph
 	End Method
 
-	Method ScrollUp(md=1)
+	Method ScrollUp(G:TUI_Gadget,md=1)
 	G.ScrollY = G.ScrollY - 1
 	End Method
 
