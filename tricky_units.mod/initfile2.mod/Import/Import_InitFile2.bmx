@@ -1,7 +1,7 @@
 Rem
   InitFile2.bmx
   2012, 2015, Total Revision 2015
-  version: 16.01.04
+  version: 16.03.01
   Copyright (C) 2012, 2015, Total Revision 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -22,7 +22,7 @@ Import tricky_units.StringMap
 Import tricky_units.advdatetime
 Import tricky_units.Listfile
 
-MKL_Version "Tricky's Units - InitFile2.bmx","16.01.04"
+MKL_Version "Tricky's Units - InitFile2.bmx","16.03.01"
 MKL_Lic     "Tricky's Units - InitFile2.bmx","ZLib License"
 
 Rem 
@@ -51,12 +51,13 @@ Type TIni
 	End Rem
 	Method Kill(T$)
 	MapRemove Vars,Upper(T)
-	End method
+	End Method
 	
 	Rem
 	bbdoc: creates a list, in the ini
 	End Rem
-	Method CList(T$)
+	Method CList(T$,OnlyIfNew=False)
+	If OnlyIfNew And MapContains(lists,Upper(T)) Then Return
 	MapInsert lists,Upper(T),New TList
 	End Method
 	

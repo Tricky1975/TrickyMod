@@ -7,7 +7,7 @@ Moduleinfo "NameModule: Tricky's Units - InitFile2"
 Moduleinfo "Author: Jeroen Broks aka Tricky"
 ModuleInfo "Copyright: &copy; Jeroen Petrus Broks"
 Moduleinfo "License: zLib license"
-moduleinfo "Last update: 04 Jan 2016"
+moduleinfo "Last update: 01 Mar 2016"
 
 
 
