@@ -15,5 +15,10 @@ If reporting a bug or any other issue, keep the next stuff in mind.
 Please note, some of these mods may work in Brucey's BMX-NG but not all of them do. 
 Most of them will somewhere in the future be adapted to work in NG, however this is a plan for the long term, and I don't promise anything. Sorry!
 
+One note for Linux users:
+Windows is case-insensitive, and Mac can allow case-insensitivity. My work device was ExFAT formatted, which is case-insensitive. Linux users should therefore be aware of the fact that when BlitzMax is installed on a Linux formatted device some modules may fail to build. Case mismatches were simply ignored by my compiler when compiling for Mac and Windows, and that is what I do most, and thus you may suffer a little when compiling on Linux as I don see these errors.
+Whenever you see Linux acting up because of this, don hesitate to report it as a "bug".
+Sorry for any inconvience.
+
 Final note:
 You may modify these modules as you please as long as its in accordance with the license set up for that module. It's however not a good idea to upload your modified versions to this repository (even if you only did a bugfix). This repository is only a copy of my real stuff, and thus my next update will very likely overwrite your modifications (my builder is completely automated and merciless, I'm sorry).
