@@ -53,9 +53,9 @@ End Rem
 Function List2File(file:Object,list:TList)
 Local T:TStream
 If String(file) 
-	T = WriteFile(t)
+	T = WriteFile(String(file))
 ElseIf TStream(file)
-	T = file
+	T = TStream(file)
 Else
 	Print "HEY! I don't know that file type!"
 	Return
