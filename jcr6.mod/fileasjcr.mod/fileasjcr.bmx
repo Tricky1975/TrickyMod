@@ -6,9 +6,9 @@ end rem
 module jcr6.fileasjcr
 moduleinfo "Name: jcr6.fileasjcr"
 moduleinfo "Author:Jeroen P. Broks"
-moduleinfo "&copy; Copyright 2014-2015 Jeroen P. Broks"
+moduleinfo "&copy; Copyright 2014-2016 Jeroen P. Broks"
 moduleinfo "License:Mozilla Public License 2.0"
-moduleinfo "Last mod build:29/10/2015"
+moduleinfo "Last mod build:10/3/2016"
 
 
 import "JCR6_FileAsJCR.bmx"
