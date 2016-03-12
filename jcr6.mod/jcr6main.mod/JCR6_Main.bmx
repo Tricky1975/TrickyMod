@@ -20,6 +20,7 @@ End Rem
 ' 15.10.29 - Added a feature to throw a proper error when handling unfinalized JCR6 files.
 ' 16.03.12 - All multi-file resources will have the 'multi-file' tag (regardless if the external files can be found or not! That was a security choice, not a bug). The CLI tools need this
 '          - Comments can now also be written to a JCR6 file
+'          - Fixed MEMORY_ACCESS_VIOLATION (windows) / Segmentation Fault (Mac/Linux) when JCR6 tries to pack a file that doesn't exist.
 
 Strict
 
@@ -876,7 +877,7 @@ Type TJCRCreate Extends TJCRDir
 		JCR_JAMERR("'Original' parameter must be either a string or a TBank!",JCRWriteFIle,"<???>","TJCRCreate.AddEntry")
 		Return
 		EndIf
-	If Not bnk Then JCR_JAMERR("Data to store could not be retrieved.",JCRWriteFIle,OF,"TJCRCreate.AddEntry")
+	If Not bnk Then JCR_JAMERR("Data to store could not be retrieved.",JCRWriteFIle,OF,"TJCRCreate.AddEntry"); Return
 	If Not CDrive(Algorithm) 
 		JCR_JamErr "Compression algorithm '"+Algorithm+"' is unknown. Make sure the driver is loaded!",JCRWriteFile,OF,"TJCRCreate.AddEntry"
 		Return
