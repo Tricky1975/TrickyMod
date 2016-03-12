@@ -8,7 +8,7 @@ moduleinfo "Name: jcr6.realdir"
 moduleinfo "Author:Jeroen P. Broks"
 moduleinfo "&copy; Copyright 2014-2016 Jeroen P. Broks"
 moduleinfo "License:Mozilla Public License 2.0"
-moduleinfo "Last mod build:10/3/2016"
+moduleinfo "Last mod build:12/3/2016"
 
 
 import "JCR6_RealDir.bmx"

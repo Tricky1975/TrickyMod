@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.03.10
+        Version: 16.03.12
 End Rem
 
 ' History:
@@ -18,6 +18,8 @@ End Rem
 ' 15.08.15 - Added a function to grab an entry easily.
 ' 15.09.15 - JCR6 can now check if files were changed. JCR_B is now also protected against usage in modified files and will throw an error if a JCR6 file was changed.
 ' 15.10.29 - Added a feature to throw a proper error when handling unfinalized JCR6 files.
+' 16.03.12 - All mutlt-file resources will have the 'multi-file' tag (regardless if the external files can be found or not! That was a security choice, not a bug). The CLI tools need this
+
 Strict
 
 
@@ -38,7 +40,7 @@ Import tricky_units.MD5 ' Will be used for verification purposes. Full support f
 Import "-ldl"
 ?
 
-MKL_Version "JCR6 - JCR6_Main.bmx","16.03.10"
+MKL_Version "JCR6 - JCR6_Main.bmx","16.03.12"
 MKL_Lic     "JCR6 - JCR6_Main.bmx","Mozilla Public License 2.0"
 
 Private
@@ -151,6 +153,7 @@ Type TJCRDir
 	Field FATSize,FATCSize,FATAlg$
 	Field FATOffset
 	Field MainFiles:TMap = New TMap
+	Field Multfile = False
 	
 	Method EntryData:TJCREntry(fil$)
 	Return TJCREntry(MapValueForKey(entries,Upper(fil)))
@@ -448,10 +451,11 @@ Type DRV_JCR6 Extends DRV_JCRDIR
 						Local V$ = alt_Readstring(BTF)
 						MapInsert ret.Variables,K,V			
 					Case "REQUIRE","IMPORT"
+						ret.multifile = True
 						Local deptag = ReadByte(BTF)
 						Local depk$,depv$
 						Local depm:StringMap
-						depm = New StringMap
+						depm = New StringMap						
 						While deptag<>255
 							depk = alt_readstring(BTF)
 							depv = alt_readstring(BTF)
