@@ -18,7 +18,8 @@ End Rem
 ' 15.08.15 - Added a function to grab an entry easily.
 ' 15.09.15 - JCR6 can now check if files were changed. JCR_B is now also protected against usage in modified files and will throw an error if a JCR6 file was changed.
 ' 15.10.29 - Added a feature to throw a proper error when handling unfinalized JCR6 files.
-' 16.03.12 - All mutlt-file resources will have the 'multi-file' tag (regardless if the external files can be found or not! That was a security choice, not a bug). The CLI tools need this
+' 16.03.12 - All multi-file resources will have the 'multi-file' tag (regardless if the external files can be found or not! That was a security choice, not a bug). The CLI tools need this
+'          - Comments can now also be written to a JCR6 file.
 
 Strict
 
@@ -974,6 +975,17 @@ Type TJCRCreate Extends TJCRDir
 		WriteByte btf,1 alt_writestring btf,"Signature" alt_writestring btf,dependency.Sig
 		WriteByte btf,$ff
 		Next	
+	' Comments
+	'If Not MapIsEmpty(comments)
+	'	Print "WARNING! The current version of JCR6 has no support for comments while writing JCR files."
+	'	Print "This feature is planned for the very near future. For now comments will be ignored!"
+	'	EndIf
+	For Local k$=EachIn MapKeys(comments)
+		alt_writestring "COMMENT"
+		alt_writestring k
+		alt_writestting comments.value(k)
+		Next
+	' Closure	
 	WriteByte btf,255		
 	CloseFile BTF
 	Local bnk:TBank = LoadBank(F)
@@ -997,7 +1009,7 @@ Type TJCRCreate Extends TJCRDir
 	Alt_WriteString BT,Alg
 	WriteBank CBnk,Bt,0,BankSize(CBnk)
 	SeekStream BT,oof
-	WriteInt BT,FTPOs
+	WriteInt BT,FTPOs	
 	CloseFile BT
 	DeleteFile F
 	End Method
