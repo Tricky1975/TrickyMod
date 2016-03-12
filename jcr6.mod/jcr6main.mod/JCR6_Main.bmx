@@ -19,7 +19,7 @@ End Rem
 ' 15.09.15 - JCR6 can now check if files were changed. JCR_B is now also protected against usage in modified files and will throw an error if a JCR6 file was changed.
 ' 15.10.29 - Added a feature to throw a proper error when handling unfinalized JCR6 files.
 ' 16.03.12 - All multi-file resources will have the 'multi-file' tag (regardless if the external files can be found or not! That was a security choice, not a bug). The CLI tools need this
-'          - Comments can now also be written to a JCR6 file.
+'          - Comments can now also be written to a JCR6 file
 
 Strict
 
@@ -981,9 +981,9 @@ Type TJCRCreate Extends TJCRDir
 	'	Print "This feature is planned for the very near future. For now comments will be ignored!"
 	'	EndIf
 	For Local k$=EachIn MapKeys(comments)
-		alt_writestring "COMMENT"
-		alt_writestring k
-		alt_writestting comments.value(k)
+		alt_writestring btf,"COMMENT"
+		alt_writestring btf,k
+		alt_writestting btf,comments.value(k)
 		Next
 	' Closure	
 	WriteByte btf,255		
