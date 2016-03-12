@@ -983,7 +983,7 @@ Type TJCRCreate Extends TJCRDir
 	For Local k$=EachIn MapKeys(comments)
 		alt_writestring btf,"COMMENT"
 		alt_writestring btf,k
-		alt_writestting btf,comments.value(k)
+		alt_writestring btf,comments.value(k)
 		Next
 	' Closure	
 	WriteByte btf,255		
