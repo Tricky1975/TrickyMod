@@ -982,6 +982,7 @@ Type TJCRCreate Extends TJCRDir
 	'	Print "This feature is planned for the very near future. For now comments will be ignored!"
 	'	EndIf
 	For Local k$=EachIn MapKeys(comments)
+		WriteByte btf,1
 		alt_writestring btf,"COMMENT"
 		alt_writestring btf,k
 		alt_writestring btf,comments.value(k)
