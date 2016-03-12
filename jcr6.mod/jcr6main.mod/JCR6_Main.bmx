@@ -153,7 +153,7 @@ Type TJCRDir
 	Field FATSize,FATCSize,FATAlg$
 	Field FATOffset
 	Field MainFiles:TMap = New TMap
-	Field Multfile = False
+	Field Multifile = False
 	
 	Method EntryData:TJCREntry(fil$)
 	Return TJCREntry(MapValueForKey(entries,Upper(fil)))
