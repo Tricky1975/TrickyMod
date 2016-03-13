@@ -769,7 +769,7 @@ JCR_DefaultCreateConfig.Def("&__CaseSensitive","0")
 Public
 
 Function JCR_GetDefaultCreateConfig:configmap()
-Local ret:configmap = newconfigmap
+Local ret:configmap = New configmap
 For Local k$=EachIn MapKeys(JCR_DefaultCreateConfig)
 	MapInsert ret,MapValueForKey(JCR_DefaultCreateConfig,k)
 	Next
