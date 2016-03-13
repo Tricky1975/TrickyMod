@@ -21,6 +21,7 @@ End Rem
 ' 16.03.12 - All multi-file resources will have the 'multi-file' tag (regardless if the external files can be found or not! That was a security choice, not a bug). The CLI tools need this
 '          - Comments can now also be written to a JCR6 file
 '          - Fixed MEMORY_ACCESS_VIOLATION (windows) / Segmentation Fault (Mac/Linux) when JCR6 tries to pack a file that doesn't exist.
+' 16.03.13 - Fixed typo in "unknown"
 
 Strict
 
@@ -72,7 +73,7 @@ Type ConfigMap Extends TMap
 	If MapContains(Self,"$"+Tag) Return "Str"
 	If MapContains(Self,"&"+Tag) Return "Bool"
 	If MapContains(Self,"%"+Tag) Return "Int"
-	Return "Uknown"
+	Return "Unknown"
 	End Method
      Method S$(Tag$)
       Return String(MapValueForKey(Self,"$"+Tag))
@@ -766,6 +767,15 @@ Private
 Global JCR_DefaultCreateConfig:configmap = New configmap
 JCR_DefaultCreateConfig.Def("&__CaseSensitive","0")
 Public
+
+Function JCR_GetDefaultCreateConfig:configmap()
+Local ret:configmap = newconfigmap
+For Local k$=EachIn MapKeys(JCR_DefaultCreateConfig)
+	MapInsert ret,MapValueForKey(JCR_DefaultCreateConfig,k)
+	Next
+Return ret
+End Function
+
 
 Rem
 bbdoc: This is an extended stream you need for writing data directly into a JCR6 entry. Use the Stream variable inside it for the stream commands
