@@ -85,18 +85,20 @@ Type LConsole ' BLD: Object StdOut\nAllows a lua script to write something to St
 	
 	Method Write(Txt$,R=255,G=255,B=255) ' BLD: Writes something onto the console in the desired color
 	'ConsoleWrite Txt,R,G,B
-	Print txt
+	BRL.StandardIO.Print txt
 	End Method
 
 	Method Print(Txt$,R=255,G=255,B=255) ' BLD: Alias for Console.Write
 	'ConsoleWrite Txt,R,G,B
-	Print txt
+	write txt
 	End Method
 	
 	Method SL_Write(txt$) ' BLD: Writes to STD_Out, but will not go to the next line
 	WriteStdout txt
 	End Method
-		
+	
+	Method Input$(question$) ' BLD: Takes user input from the command console
+	Return BRL.StandardIO.Input(Question)	
 	End Type
 	
 G_LuaRegisterObject New LConsole,"Console"
