@@ -1,26 +1,16 @@
 Rem
         JCR6_FileAsJCR.bmx
-	(c) 2015 Jeroen Petrus Broks.
+	(c) 2015, 2016 Jeroen Petrus Broks.
 	
 	This Source Code Form is subject to the terms of the 
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.02
+        Version: 16.03.13
 End Rem
-Rem
 
-	(c) 2015 Jeroen Petrus Broks.
-	
-	This Source Code Form is subject to the terms of the 
-	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
-	distributed with this file, You can obtain one at 
-	http://mozilla.org/MPL/2.0/.
-
-
-Version: 15.05.20
-
-End Rem
+' 15.05.20 - Initial
+' 16.03.13 - Quick Patch
 Strict
 Import jcr6.jcr6Main
 Rem
@@ -31,7 +21,7 @@ Function Raw2JCR:TJCRDir(Rawfile$,EntryName$="")
 Local EN$ = entryname; If Not EN EN = StripDir(RawFile)
 Local ret:TJCRDir = New TJCRDir
 Local E:TJCREntry
-Local BT:TStream = readFile(RawFile)
+Local BT:TStream = ReadFile(RawFile)
 If Not BT
 	Print "WARNING! File "+RawFile+" could not be opened for analysis."
 	Return ret
@@ -51,6 +41,14 @@ E.PVars = New StringMap
 Return ret
 End Function
 
+Rem
+bbdoc: Adds a raw file to a loaded JCR resource as a patch.
+End Rem
+Function AddRaw(D:TJCRDir,RawFile$,EntryName$)
+JCR_AddPatch d,Raw2JCR(RawFile,entryname)
+End Function
 
-MKL_Version "JCR6 - JCR6_FileAsJCR.bmx","15.09.02"
+
+
+MKL_Version "JCR6 - JCR6_FileAsJCR.bmx","16.03.13"
 MKL_Lic     "JCR6 - JCR6_FileAsJCR.bmx","Mozilla Public License 2.0"
