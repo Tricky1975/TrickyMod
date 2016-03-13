@@ -1,4 +1,5 @@
-Import GALE.MaxLua4Gale
+'Import GALE.MaxLua4Gale
+Import Gale.Main
 
 Type GALEtxtMainCon Extends GALE_DebugConsole 'GALE_DebugConsole
 	Method GaleConsoleWrite(Txt$,R=255,G=255,B=255)
