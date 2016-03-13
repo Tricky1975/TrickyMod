@@ -1,12 +1,12 @@
 --[[
         Serializer.lua
-	(c) 2012, 2015 Jeroen Petrus Broks.
+	(c) 2012, 2015, 2016 Jeroen Petrus Broks.
 	
 	This Source Code Form is subject to the terms of the 
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.10.07
+        Version: 16.03.13
 ]]
 
 --[[

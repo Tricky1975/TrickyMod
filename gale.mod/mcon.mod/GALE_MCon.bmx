@@ -1,3 +1,13 @@
+Rem
+        GALE_MCon.bmx
+	(c) 2016 Jeroen Petrus Broks.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 16.03.13
+End Rem
 'Import GALE.MaxLua4Gale
 Import Gale.Main
 
@@ -5,6 +15,12 @@ Rem
 bbdoc: If you set this to True, the system will as the user to hit enter before the console app closes, otherwise it closes immediately. This only has effect on error crashings.
 End Rem
 Global HitEnterBeforeCloseDown
+
+Rem
+bbdoc: If set to true, the system will cause the OS to clear the screen if GALE thinks it's needed. If this is only annoying, just leave it to false. ;)
+End Rem
+Global AllowOSCls
+
 
 Type GALEtxtMainCon Extends GALE_DebugConsole 'GALE_DebugConsole
 	Method GaleConsoleWrite(Txt$,R=255,G=255,B=255)
@@ -49,6 +65,7 @@ Type GALEtxtMainCon Extends GALE_DebugConsole 'GALE_DebugConsole
 	End Method
 
 	Method DoCls()
+	If Not allowoscls return
 	'Cls
 	?Not Win32
 	system_ "clear"
