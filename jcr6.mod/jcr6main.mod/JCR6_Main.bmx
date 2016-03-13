@@ -771,7 +771,7 @@ Public
 Function JCR_GetDefaultCreateConfig:configmap()
 Local ret:configmap = New configmap
 For Local k$=EachIn MapKeys(JCR_DefaultCreateConfig)
-	MapInsert ret,MapValueForKey(JCR_DefaultCreateConfig,k)
+	MapInsert ret,k,MapValueForKey(JCR_DefaultCreateConfig,k)
 	Next
 Return ret
 End Function
