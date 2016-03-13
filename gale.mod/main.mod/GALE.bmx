@@ -91,6 +91,7 @@ History:
 16.02.18 - The "USING" messages are now only printed to the console if needed, and even the loading and compiling stuff in general can be put on "silent".
 16.02.19 - Removal of "USING" (unless the GALE_USING var is set true) did work on single -- @USE, but not on -- @USEDIR. That has now been fixed.
 16.03.13 - Removed some outdated debug shit from the error handler
+16.03.13 - Compilation error in the serializer fixed. (Odd thing is... the Star Story project could NEVER have worked if this bug was for real. Still it popped up in the JCR6 scripting utilities. Do you believe in ghosts? I do now. Well it's fixed, and let's hope my ghost doesn't change it again.
 End Rem
 
 Import brl.map

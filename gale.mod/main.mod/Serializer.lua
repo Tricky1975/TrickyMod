@@ -20,6 +20,7 @@ History:
          - mid working with one letter too many bug has been fixed
          - Each libary has been put in here as well   
 16.02.25 - Len with 'nil' value will not lead to crashes any more               
+16.03.13 - "then" expected? I wonder how the script worked before if this was an issue all the time? Not possible, but yet it suddenly happened. I believe in ghosts now. Anyway, it's fixed!
 
 ]]
 
@@ -129,7 +130,7 @@ end
 function len(a)
 local k,v
 local ret=0
-if not a return 0 end
+if not a then return 0 end
 if type(a)=="table" then
   --for k,v in ipairs(a) do
   --    ret = ret + 1
