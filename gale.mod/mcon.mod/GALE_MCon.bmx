@@ -1,6 +1,11 @@
 'Import GALE.MaxLua4Gale
 Import Gale.Main
 
+Rem
+bbdoc: If you set this to True, the system will as the user to hit enter before the console app closes, otherwise it closes immediately. This only has effect on error crashings.
+End Rem
+Global HitEnterBeforeCloseDown
+
 Type GALEtxtMainCon Extends GALE_DebugConsole 'GALE_DebugConsole
 	Method GaleConsoleWrite(Txt$,R=255,G=255,B=255)
 	Print txt
@@ -35,7 +40,7 @@ Type GALEtxtMainCon Extends GALE_DebugConsole 'GALE_DebugConsole
 	'ConsoleShow
 	'Flip
 	'WaitKey	
-	Input "Hit ENTER to continue: "
+	If hitEnterbeforeclosedown Input "Hit ENTER to continue: "
 	End 
 	End Method
 	
