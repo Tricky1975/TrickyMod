@@ -13,6 +13,7 @@ Type GALEtxtMainCon Extends GALE_DebugConsole 'GALE_DebugConsole
 	Method GaleConsoleDoublePrint2(Txt1$,Txt2$,T,R1=255,G1=255,B1=255,R2=255,G2=255,B2=255)
 	'ConsoleDoublePrint2 txt1,txt2,t,r1,g1,b1,r2,g2,b2
 	Local p=Len(txt1)
+	t = t/11
 	If t=0 t=40
 	WriteStdout txt1
 	If p>=t
@@ -99,6 +100,8 @@ Type LConsole ' BLD: Object StdOut\nAllows a lua script to write something to St
 	
 	Method Input$(question$) ' BLD: Takes user input from the command console
 	Return BRL.StandardIO.Input(Question)	
+	End Method
+	
 	End Type
 	
 G_LuaRegisterObject New LConsole,"Console"
