@@ -7,7 +7,7 @@ Type GALEtxtMainCon Extends GALE_DebugConsole 'GALE_DebugConsole
 	End Method
 
 	Method GaleConsoleShow()
-	ConsoleShow
+	'ConsoleShow
 	End Method
 
 	Method GaleConsoleDoublePrint2(Txt1$,Txt2$,T,R1=255,G1=255,B1=255,R2=255,G2=255,B2=255)
@@ -74,7 +74,7 @@ Type GALEtxtMainCon Extends GALE_DebugConsole 'GALE_DebugConsole
 	End Type
 
 Public
-GaleCon = New GALEMainCon
+GaleCon = New GALEtxtMainCon
 Private
 
 
