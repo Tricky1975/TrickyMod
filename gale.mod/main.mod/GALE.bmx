@@ -90,6 +90,7 @@ History:
 15.10.17 - Removed a few unneeded annoying debug lines.
 16.02.18 - The "USING" messages are now only printed to the console if needed, and even the loading and compiling stuff in general can be put on "silent".
 16.02.19 - Removal of "USING" (unless the GALE_USING var is set true) did work on single -- @USE, but not on -- @USEDIR. That has now been fixed.
+16.03.13 - Removed some outdated debug shit from the error handler
 End Rem
 
 Import brl.map
@@ -478,17 +479,17 @@ If EMsg.find("line") Then
 	Local EW$[] = EMsg.Split(" ")
 	Local LN
 	For Local ak=0 To EW.Length-1
-		Print "Word "+ak+" is '"+EW[ak]+"'"
+		'Print "Word "+ak+" is '"+EW[ak]+"'"
 		If EW[ak].tolower()="line" And ak<EW.Length-1
 			LN = EW[ak+1].ToInt()
 			If Right(EW[ak+1],1)=")" Then 
 				EW[AK+1] = Left(EW[AK+1],Len(EW[Ak+1])-1)
 				LN = EW[ak+1].ToInt()
-				Print "LN = "+LN
+				'Print "LN = "+LN
 				EndIf
 			Line=TLuaLine(LO.Line[LN-1]);
 			If LN 
-				Print "Adding data"
+				'Print "Adding data"
 				ListAddLast LineRefs,["Line "+LN+" => File:",Line.File]
 				ListAddLast LineRefs,["Line "+LN+" => Line:",Line.LineNumber+""]
 				ListAddLast LineRefs,["Line "+LN+" => Code:",Line.Line]

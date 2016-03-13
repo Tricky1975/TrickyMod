@@ -18,7 +18,8 @@ History:
          - The contents of the "strings" library have been moved in here.
          - len returning a table in stead of the table length bug has been fixed
          - mid working with one letter too many bug has been fixed
-         - Each libary has been put in here as well         
+         - Each libary has been put in here as well   
+16.02.25 - Len with 'nil' value will not lead to crashes any more               
 
 ]]
 
@@ -128,6 +129,7 @@ end
 function len(a)
 local k,v
 local ret=0
+if not a return 0 end
 if type(a)=="table" then
   --for k,v in ipairs(a) do
   --    ret = ret + 1
