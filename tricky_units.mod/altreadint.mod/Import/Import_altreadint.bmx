@@ -43,6 +43,7 @@ Global ario
 Function s2h$(f:TStream,bytes:Byte,endian:Byte)
 Local H$ 
 Local b,bh$
+If showario Print ario+"|"+bytes+" > "
 For Local i=1 To bytes
 	ario:+1
 	b = ReadByte(f)
@@ -57,10 +58,13 @@ For Local i=1 To bytes
 		End Select
 	Next
 h = "$"+h	
+If showario Print h
 Return h
 End Function
 
 Public
+
+Global showario=False
 
 Function resetario(v=0) ario=v End Function
 
