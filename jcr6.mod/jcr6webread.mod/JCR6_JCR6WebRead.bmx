@@ -20,7 +20,7 @@ Private
 			tr=fil
 		Else
 			If Not FileType(fil) Return
-			tr=wname(LoadString(fil))
+			tr=wname(Trim(LoadString(fil)))
 			If tr.find("~n") Return 
 			If tr.find("~r") Return 
 			If tr[0..6]<>"http::" Return
