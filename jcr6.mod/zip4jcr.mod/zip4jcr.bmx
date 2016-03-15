@@ -12,6 +12,7 @@ ModuleInfo "Last mod build:15/3/2016"
 
 
 'Import "JCR6_ZIP4JCR.bmx"
+Import brl.standardio
 Print "The ZIP support is still in development and should NOT be touched now, as it doesn't work yet!!!"
 Throw "The ZIP support is still in development and should NOT be touched now, as it doesn't work yet!!!"
 End
