@@ -53,7 +53,8 @@ For Local i=1 To bytes
 		End Select
 	Next
 h = "$"+h	
-End function
+Return h
+End Function
 
 Public
 
