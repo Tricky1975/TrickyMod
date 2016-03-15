@@ -94,16 +94,17 @@ Type DRV_WebRead Extends DRV_JCRDIR
 						MapInsert ret.entries,Upper(lp),e
 						e.filename = lc
 						e.storage = "Store" ' If not defined, "Store" will do
+						e.mainfile = wname(fil)+lp
 					Case "SIZE"
-						If e e.size = lc.toint()
+						If e e.size = lp.toint()
 					Case "COMP","COMPRESSED","COMPRESSEDSIZE"
-						If e e.compressedsize = lc.toint()
+						If e e.compressedsize = lp.toint()
 					Case "STORAGE"
-						e.storage = lc
+						e.storage = lp
 					Case "AUTHOR"
-						e.author = lc
+						e.author = lp
 					Case "NOTES"
-						e.notes = lc
+						e.notes = lp
 					Default
 						CloseStream bt
 						JCR_JAMERR "Unknown command: "+lc,fil,"N/A","Driver.WebRead.Dir"	
