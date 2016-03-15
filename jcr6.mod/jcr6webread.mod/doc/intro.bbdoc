@@ -1,0 +1,6 @@
+This is a driver that allows you to make JCR read files from the internet.
+You can of course do it by calling a JCR file made the regular way from a direct internet URL, however calling and seeking through it can be a bit demanding on the memory and bandwidth.
+Using this driver will make JCR only read that data it needs and nothing more or less.
+<p>
+This driver will just read a file from the net and after that process it the way JCR6 always does. This means that if you have used compression in those files, JCR6 can read it all the same and unpack the files, providing you have the driver loaded for the used compression algorithm.
+In order to make JCR able to read the files an index is needed. <a href='index.php'>this .php script</a> is a very simple way to go. The information inside the script itself will tell you more.
