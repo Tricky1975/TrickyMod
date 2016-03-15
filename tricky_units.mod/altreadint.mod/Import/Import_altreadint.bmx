@@ -37,10 +37,14 @@ Const ALR_Big:Byte = 1
 
 Private
 
+Global ario
+
+
 Function s2h$(f:TStream,bytes:Byte,endian:Byte)
 Local H$ 
 Local b,bh$
 For Local i=1 To bytes
+	ario:+1
 	b = ReadByte(f)
 	bh$ = Right(Hex(b),2)
 	Select endian
@@ -57,6 +61,8 @@ Return h
 End Function
 
 Public
+
+Function resetario(v=0) ario=v End Function
 
 
 Rem
