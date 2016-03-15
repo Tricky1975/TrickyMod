@@ -20,9 +20,12 @@ Private
 			tr=fil
 		Else
 			If Not FileType(fil) Return
-			tr=wname(Trim(LoadString(fil)))
-			If tr.find("~n") DebugLog "<NL> found"; Return 
-			If tr.find("~r") DebugLog "<CR> found"; Return 
+			'tr=wname(Trim(LoadString(fil)))
+			Local b:TStream = ReadFile(fil)
+			tr = wname(Trim(ReadLine(b)))
+			CloseFile b
+			'If tr.find("~n") DebugLog "<NL> found"; Return 
+			'If tr.find("~r") DebugLog "<CR> found"; Return 
 			If tr[0..6]<>"http::" DebugLog tr[0..6]+"Not the prefix I wanted" Return
 		EndIf
 		Local bt:TStream = OpenFile(tr)
