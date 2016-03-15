@@ -43,7 +43,7 @@ Global ario
 Function s2h$(f:TStream,bytes:Byte,endian:Byte)
 Local H$ 
 Local b,bh$
-If showario Print ario+"|"+bytes+" > "
+If showario writestdout ario+"|"+bytes+" > "
 For Local i=1 To bytes
 	ario:+1
 	b = ReadByte(f)
