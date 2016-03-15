@@ -97,7 +97,7 @@ Type DRV_WebRead Extends DRV_JCRDIR
 					Case "FILE","ENTRY"
 						e = New TJCREntry
 						MapInsert ret.entries,Upper(lp),e
-						e.filename = lc
+						e.filename = lp
 						e.storage = "Store" ' If not defined, "Store" will do
 						e.mainfile = wname(fil)+lp
 					Case "SIZE"
