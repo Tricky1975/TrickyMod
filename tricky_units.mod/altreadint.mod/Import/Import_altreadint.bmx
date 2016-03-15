@@ -33,7 +33,7 @@ Const ALR_Little:Byte = 0
 Rem
 bbdoc: Can be used with the AltReadInt() function to denote it has to be read as BigEndian
 End Rem
-Const ALR_Little:Byte = 1
+Const ALR_Big:Byte = 1
 
 Private
 
