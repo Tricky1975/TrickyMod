@@ -13,9 +13,9 @@ Private
 		Return n
 	End Function
 	
-	Function GetRead:TStream(file$)
+	Function GetRead:TStream(fil$ Var)
 		Local tr$
-		Local fil$ = wname(file)
+		fil$ = wname(fil)
 		If fil[0..6]="http::" 
 			tr=fil
 		Else
@@ -27,6 +27,7 @@ Private
 			'If tr.find("~n") DebugLog "<NL> found"; Return 
 			'If tr.find("~r") DebugLog "<CR> found"; Return 
 			If tr[0..6]<>"http::" DebugLog tr[0..6]+"Not the prefix I wanted" Return
+			fil=tr
 		EndIf
 		Local bt:TStream = OpenFile(tr)
 		Local rl$
@@ -53,9 +54,10 @@ Type DRV_WebRead Extends DRV_JCRDIR
 		Return ret		
 	End Method
 	
-	Method Dir:TJCRDir(fil$)
+	Method Dir:TJCRDir(file$)
 		ret:TJCRDir = New TJCRDir
 		Local e:TJCREntry
+		Local fil$=file
 		Local bt:TStream = getread(fil)
 		Local l$,lc$,lp$,s
 		Repeat
