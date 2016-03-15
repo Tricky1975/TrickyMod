@@ -22,6 +22,7 @@ End Rem
 '          - Comments can now also be written to a JCR6 file
 '          - Fixed MEMORY_ACCESS_VIOLATION (windows) / Segmentation Fault (Mac/Linux) when JCR6 tries to pack a file that doesn't exist.
 ' 16.03.13 - Fixed typo in "unknown"
+' 16.03.15 - Fixed a bug that would cause a crash if a dir driver returns nothing at all.
 
 Strict
 
@@ -547,7 +548,7 @@ For Local DRV:DRV_JCRDIR = EachIn DirDrivers
 		If DEBUG Print "Recognized!"
 		ret = New TJCRDir
 		ret = Drv.Dir(realJCRFile)
-		If ret ret.DirDrvName = DRV.Name()
+		If ret ret.DirDrvName = DRV.Name() Else Return 
 		ret.UpdateMain		
 		Return Ret
 		EndIf		
