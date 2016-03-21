@@ -37,6 +37,8 @@ Function IniCall(name$,ini:TIni,para$)
 Local f:tf = MapValueForKey(tf,Upper(name))
 If Not f Return Print("ERROR! Call: I could not retrieve function: "+name)
 f.f(ini,para)
+End Function
+
 Public
 
 Rem
@@ -292,7 +294,7 @@ For line=EachIn Listfile(File)
 					Else
 						tagsplit=line.split(":")
 						inicall tagsplit[0],ini,UnIniString(tagsplit[1])
-						endif
+						EndIf
 						
 				Default
 					Print "ERROR! Unknown tag: "+tag
