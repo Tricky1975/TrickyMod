@@ -34,7 +34,7 @@ Type tf
 Global tfm:TMap = New TMap	
 
 Function IniCall(name$,ini:TIni,para$)
-Local f:tf = MapValueForKey(tf,Upper(name))
+Local f:tf = tf(MapValueForKey(tfm,Upper(name)))
 If Not f Return Print("ERROR! Call: I could not retrieve function: "+name)
 f.f(ini,para)
 End Function
@@ -49,7 +49,7 @@ Function Ini_RegFunc(Name$,Func(Ini:TIni,Para:String))
 Local f:tf = New tf
 f.f = func
 MapInsert tfm,Upper(name),t
-End
+End Function
 
 Rem 
 bbdoc: Variable used by init reader/writer
