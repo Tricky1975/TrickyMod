@@ -48,7 +48,7 @@ End Rem
 Function Ini_RegFunc(Name$,Func(Ini:TIni,Para:String))
 Local f:tf = New tf
 f.f = func
-MapInsert tfm,Upper(name),t
+MapInsert tfm,Upper(name),f
 End Function
 
 Rem 
