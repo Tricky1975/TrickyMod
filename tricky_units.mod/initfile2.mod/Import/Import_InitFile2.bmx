@@ -1,7 +1,7 @@
 Rem
   InitFile2.bmx
   2012, 2015, Total Revision 2015
-  version: 16.03.01
+  version: 16.03.21
   Copyright (C) 2012, 2015, Total Revision 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -22,8 +22,32 @@ Import tricky_units.StringMap
 Import tricky_units.advdatetime
 Import tricky_units.Listfile
 
-MKL_Version "Tricky's Units - InitFile2.bmx","16.03.01"
+MKL_Version "Tricky's Units - InitFile2.bmx","16.03.21"
 MKL_Lic     "Tricky's Units - InitFile2.bmx","ZLib License"
+
+
+Private
+Type tf
+	Field f(Ini:TIni,para$)
+	End Type
+	
+Global tfm:TMap = New TMap	
+
+Function IniCall(name$,ini:TIni,para$)
+Local f:tf = MapValueForKey(tf,Upper(name))
+If Not f Return Print("ERROR! Call: I could not retrieve function: "+name)
+f.f(ini,para)
+Public
+
+Rem
+bbdoc: Registers a function to initfile
+about: These functions can be called when loading an ini file. I must note this is a read-only function, as the effect of it will be deleted when you write these functions. Just register a function with the ini and a single string as parameter. The Function can then do with the ini according to what the ini file wants. (This function works case INSENSITIVELY)
+End Rem
+Function Ini_RegFunc(Name$,Func(Ini:TIni,Para:String))
+Local f:tf = New tf
+f.f = func
+MapInsert tfm,Upper(name),t
+End
 
 Rem 
 bbdoc: Variable used by init reader/writer
@@ -262,6 +286,14 @@ For line=EachIn Listfile(File)
 						EndIf
 				Case "LIST"
 					ListAddLast lst,uninistring(line)
+				Case "CALL"
+					If line.find(":")<0
+						Print "Call: Syntax error: "+line
+					Else
+						tagsplit=line.split(":")
+						inicall tagsplit[0],ini,UnIniString(tagsplit[1])
+						endif
+						
 				Default
 					Print "ERROR! Unknown tag: "+tag
 					Return	
