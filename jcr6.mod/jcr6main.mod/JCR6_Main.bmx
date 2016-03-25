@@ -577,6 +577,7 @@ End Rem
 Function JCR_Exists(JCR:Object,Entry$)
 Local M:TJCRDir
 Local PM$
+If Chr(entry[0])="/" entry = Right(entry,Len(entry)-1)
 If String(JCR) 
 	M=JCR_Dir(String(JCR))
 	PM = "~q"+String(JCR)+"~q"
@@ -599,6 +600,7 @@ End Rem
 Function JCR_Entry:TJCREntry(JCR:Object,Entry$)
 Local M:TJCRDir
 Local PM$
+If Chr(entry[0])="/" entry = Right(entry,Len(entry)-1)
 If String(JCR) 
 	M=JCR_Dir(String(JCR))
 	PM = "~q"+String(JCR)+"~q"
@@ -626,6 +628,7 @@ End Rem
 Function JCR_B:TBank(JCR:Object,Entry$)
 Local M:TJCRDir
 Local PM$
+If Chr(entry[0])="/" entry = Right(entry,Len(entry)-1)
 If String(JCR) 
 	M=JCR_Dir(String(JCR))
 	PM = "~q"+String(JCR)+"~q"
