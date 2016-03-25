@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.03.13
+        Version: 16.03.21
 End Rem
 
 ' History:
@@ -44,7 +44,7 @@ Import tricky_units.MD5 ' Will be used for verification purposes. Full support f
 Import "-ldl"
 ?
 
-MKL_Version "JCR6 - JCR6_Main.bmx","16.03.13"
+MKL_Version "JCR6 - JCR6_Main.bmx","16.03.21"
 MKL_Lic     "JCR6 - JCR6_Main.bmx","Mozilla Public License 2.0"
 
 Private
@@ -533,12 +533,25 @@ For Local DRV:DRV_JCRDIR = EachIn DirDrivers
 	Next
 End Function
 
+Rem
+bbdoc: Prefixes all files inside a JCR resource dir.
+about: This function is actually called by JCR_Dir() automatically, but I documented it in order to make you able to do it manually if you feel the need. NOTE! This routine does NOT work properly on case-sensitive resources. This case-sensitivity was already deprecated when this function came to be, this will NOT be fixed!
+End Rem
+Function JCR_Prefix(JCRDir:TJCRDir,prefix$)
+If Not prefix Return ' Let's not waste any effort when it's not needed!
+Local entries:TMap = JCRDir.entries
+JCRDir.entries = New TMap
+For Local e:TJCREntry=MapValues(entries)
+	e.filename = prefix+e.filename
+	MapInsert JCRDir.entries,Upper(e.filename)
+	Next
+End function
 
 Rem
 bbdoc:Reads the directory contents of a JCR file.
-about:Though you can request to access the JCR file directy, using this function is preferred (as the feature you request will do it otherwise, anyway). Having a pre-read directory also allows you to use the patching possibilities. The file types that can be read this way are defined by the drivers you loaded. When the file was not found or no drivers were present that recognize this file, this function will return Null
+about:Though you can request to access the JCR file directy, using this function is preferred (as the feature you request will do it otherwise, anyway). Having a pre-read directory also allows you to use the patching possibilities. The file types that can be read this way are defined by the drivers you loaded. When the file was not found or no drivers were present that recognize this file, this function will return Null. If the "prefix" parameter is set all files inside the JCR file will be prefixed.
 End Rem
-Function JCR_Dir:TJCRDir(JCRFile$)
+Function JCR_Dir:TJCRDir(JCRFile$,Prefix$="")
 Local Ret:TJCRDir
 Local RealJCRFile$ = JCRFile
 If Not ExtractDir(RealJCRFile$) And RealJCRFile.find("::")<0 Then RealJCRFile = "./"+RealJCRFile
@@ -549,7 +562,8 @@ For Local DRV:DRV_JCRDIR = EachIn DirDrivers
 		ret = New TJCRDir
 		ret = Drv.Dir(realJCRFile)
 		If ret ret.DirDrvName = DRV.Name() Else Return 
-		ret.UpdateMain		
+		ret.UpdateMain
+		JCR_Prefix ret,prefix		
 		Return Ret
 		EndIf		
 	Next

@@ -1,8 +1,18 @@
+Rem
+        JCR6_JCR6WebRead.bmx
+	(c) 2016 Jeroen Petrus Broks.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 16.03.21
+End Rem
 Import jcr6.jcr6main
 Import tricky_units.prefixsuffix
 
-MKL_Version "",""
-MKL_Lic     "",""
+MKL_Version "JCR6 - JCR6_JCR6WebRead.bmx","16.03.21"
+MKL_Lic     "JCR6 - JCR6_JCR6WebRead.bmx","Mozilla Public License 2.0"
 
 
 Private
