@@ -541,11 +541,11 @@ Function JCR_Prefix(JCRDir:TJCRDir,prefix$)
 If Not prefix Return ' Let's not waste any effort when it's not needed!
 Local entries:TMap = JCRDir.entries
 JCRDir.entries = New TMap
-For Local e:TJCREntry=MapValues(entries)
+For Local e:TJCREntry=EachIn MapValues(entries)
 	e.filename = prefix+e.filename
 	MapInsert JCRDir.entries,Upper(e.filename)
 	Next
-End function
+End Function
 
 Rem
 bbdoc:Reads the directory contents of a JCR file.
