@@ -543,7 +543,7 @@ Local entries:TMap = JCRDir.entries
 JCRDir.entries = New TMap
 For Local e:TJCREntry=EachIn MapValues(entries)
 	e.filename = prefix+e.filename
-	MapInsert JCRDir.entries,Upper(e.filename)
+	MapInsert JCRDir.entries,Upper(e.filename),e
 	Next
 End Function
 
