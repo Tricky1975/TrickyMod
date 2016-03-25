@@ -40,7 +40,7 @@ E.Storage = "Store"
 E.Offset = 0
 E.MainFile = RawFile
 E.PVars = New StringMap
-ret.updatemain
+ret.updatemain; DebugLog "MainUpdate done"
 Return ret
 End Function
 
