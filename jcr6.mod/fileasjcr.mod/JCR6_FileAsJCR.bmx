@@ -11,6 +11,8 @@ End Rem
 
 ' 15.05.20 - Initial
 ' 16.03.13 - Quick Patch
+' 16.03.25 - Update Main
+
 Strict
 Import jcr6.jcr6Main
 Rem
@@ -38,6 +40,7 @@ E.Storage = "Store"
 E.Offset = 0
 E.MainFile = RawFile
 E.PVars = New StringMap
+ret.updatemain
 Return ret
 End Function
 
