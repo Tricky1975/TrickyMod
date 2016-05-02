@@ -21,18 +21,20 @@ Private
 	
 Public
 	Rem
-	bbdoc: ...
+	bbdoc: NoDesc
 	End Rem
 
 	Function Anna_Request:StringMap(query$)
-		Local l:TList =  Listfile(site+"?"+query)
+		Local l:TList = Listfile(site+"?"+query)
 		Local reading,closed
 		Local ret:StringMap = New StringMap		
-		Local prev$,dta$[]
-		For Local ln$ = EachIn l
+		Local prev$,dta$[],ln$
+		For Local utln$ = EachIn l
+			ln = Trim(utln)
+			Print ln
 			If reading 
 				dta=ln.split(":")
-				If Len(dta)>2
+				If Len(dta)>=2
 					If dta[0]="BYEBYE" And dta[1]="SEEYA"
 						reading = False
 						closed  = True
@@ -40,7 +42,7 @@ Public
 						MapInsert ret,dta[0],dta[1]
 					EndIf	
 				Else
-					Print "WARNING! Invalid instruction given by Anna! >> "+ln	
+					Print "WARNING! Invalid instruction given by Anna! >> "+ln	+" ("+Len(dta)+")"
 				EndIf
 			EndIf
 			If ln="HANDSHAKE" And prev="GREET:ANNA"
