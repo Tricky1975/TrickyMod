@@ -3,6 +3,11 @@ Rem
 The source code of this module is ONLY available in order to get some modules and games of mine using Anna compiled.
 It is not allowed to use Anna yourself, and any attempts to do so can lead to Anna blocking your from further access.
 
+The licenses of the games themselves do not matter. The Anna Module may only be used in unmodified versions of the game.
+If you are going to modify the original game, all references to Anna must be removed or must at least not be called to.
+
+(c) Jeroen Petrus Broks, 2016, all rights reserved!
+
 End Rem
 
 
@@ -13,14 +18,18 @@ Strict
 
 Private
 	Const site$ = "http::utbbs.tbbs.nl/Game.php"
+	
 Public
+	Rem
+	bbdoc: ...
+	End Rem
 
 	Function Anna_Request:StringMap(query)
 		Local l:TList =  Listfile(site+"?"+query)
 		Local reading,closed
-		Local ret = New StringMap
+		Local ret:StringMap = New StringMap		
 		Local prev$,dta$[]
-		For ln = EachIn l
+		For Local ln$ = EachIn l
 			If reading 
 				dta=ln.split(":")
 				If Len(dta)>2
