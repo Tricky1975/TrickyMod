@@ -1,8 +1,8 @@
 Rem
   StringMap.bmx
   2015
-  version: 15.09.02
-  Copyright (C) 2015 Jeroen P. Broks
+  version: 16.05.02
+  Copyright (C) 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -49,7 +49,7 @@ End Rem
 Import brl.map
 Import tricky_units.MKL_Version
 
-MKL_Version "Tricky's Units - StringMap.bmx","15.09.02"
+MKL_Version "Tricky's Units - StringMap.bmx","16.05.02"
 MKL_Lic     "Tricky's Units - StringMap.bmx","ZLib License"
 
 Rem
@@ -61,8 +61,20 @@ Type StringMap Extends TMap
 	bbdoc: returns a string value in the map. Only works if both the key and the value are strings
 	End Rem
 	Method value$(key$)
-	Return String(MapValueForKey(Self,key))
+		Return String(MapValueForKey(Self,key))
 	End Method
 	
-	End Type
+	Rem
+	bbdoc: Returns a string with all keys and values. This is only meant for debugging purposes
+	End Rem
+	Method dump$()
+		Local ret$
+		For k$=EachIn MapKeys(Self)
+			If ret ret:+"~n"
+			ret:+k+" = "+value(k)
+		Next
+		Return ret
+	End method
+	
+End Type
 
