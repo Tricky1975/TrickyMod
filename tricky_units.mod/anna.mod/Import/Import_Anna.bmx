@@ -24,7 +24,7 @@ Public
 	bbdoc: ...
 	End Rem
 
-	Function Anna_Request:StringMap(query)
+	Function Anna_Request:StringMap(query$)
 		Local l:TList =  Listfile(site+"?"+query)
 		Local reading,closed
 		Local ret:StringMap = New StringMap		
