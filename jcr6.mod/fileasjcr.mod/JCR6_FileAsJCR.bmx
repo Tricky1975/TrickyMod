@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.03.13
+        Version: 16.05.03
 End Rem
 
 ' 15.05.20 - Initial
@@ -53,5 +53,5 @@ End Function
 
 
 
-MKL_Version "JCR6 - JCR6_FileAsJCR.bmx","16.03.13"
+MKL_Version "JCR6 - JCR6_FileAsJCR.bmx","16.05.03"
 MKL_Lic     "JCR6 - JCR6_FileAsJCR.bmx","Mozilla Public License 2.0"

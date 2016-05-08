@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.03.21
+        Version: 16.05.03
 End Rem
 
 ' History:
@@ -44,7 +44,7 @@ Import tricky_units.MD5 ' Will be used for verification purposes. Full support f
 Import "-ldl"
 ?
 
-MKL_Version "JCR6 - JCR6_Main.bmx","16.03.21"
+MKL_Version "JCR6 - JCR6_Main.bmx","16.05.03"
 MKL_Lic     "JCR6 - JCR6_Main.bmx","Mozilla Public License 2.0"
 
 Private
@@ -620,6 +620,12 @@ If Not MapContains(M.Entries,E)
 Local Ret:TJCREntry = TJCREntry(MapValueForKey(M.Entries,E))
 Return Ret
 End Function
+
+
+Rem
+bbdoc: When set to true, multiple slashes in entry names will automatically be filtered out.
+End Rem
+Global JCR6_RemoveDoubleSlash = True
 	
 Rem
 bbdoc:Reads the contents of a JCR entry into a bank. 
@@ -645,6 +651,13 @@ If JCR6CheckChange And JCR_Changed(M)
 	Return
 	EndIf
 Local E$ = Entry$
+Local TE$
+If JCR6_RemoveDoubleSlash
+	Repeat
+		E=TE
+		E=Replace(TE,"//","/")
+	Until E=TE
+	endif
 If Not M.Config.B("__CaseSensitive") E=Upper(E)
 If Not MapContains(M.Entries,E)
 	JCR_JamErr("Entry does not appear to exist!",PM,Entry+" ("+E+")","JCR_B")
