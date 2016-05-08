@@ -654,10 +654,10 @@ Local E$ = Entry$
 Local TE$
 If JCR6_RemoveDoubleSlash
 	Repeat
-		E=TE
+		TE=E
 		E=Replace(TE,"//","/")
 	Until E=TE
-	endif
+	EndIf
 If Not M.Config.B("__CaseSensitive") E=Upper(E)
 If Not MapContains(M.Entries,E)
 	JCR_JamErr("Entry does not appear to exist!",PM,Entry+" ("+E+")","JCR_B")
