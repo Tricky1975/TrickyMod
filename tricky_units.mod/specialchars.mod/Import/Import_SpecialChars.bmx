@@ -1,8 +1,8 @@
 Rem
   SpecialChars.bmx
   
-  version: 15.09.02
-  Copyright (C) 2015 Jeroen P. Broks
+  version: 16.05.14
+  Copyright (C) 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -54,37 +54,42 @@ about: The list of characters is not yet complete. More characters will be added
 End Rem
 Function DefineSpecialChars()
 ' -- e
-VarDef "<eecu>",Chr(233)
-VarDef "<euml>",Chr(235)
-VarDef "<egrv>",Chr(232)
-VarDef "<ecir>",Chr(234)
+VarDef "<eecu>" ,Chr(233)
+VarDef "<euml>" ,Chr(235)
+VarDef "<egrv>" ,Chr(232)
+VarDef "<ecir>" ,Chr(234)
+VarDef "<ecirc>",Chr(234)
 ' -- a
-VarDef "<agrv>",Chr(224)
-VarDef "<aecu>",Chr(225)
-VarDef "<acir>",Chr(226)
-VarDef "<auml>",Chr(227)
-VarDef "<aswe>",Chr(229)
-VarDef "<ae>"  ,Chr(230)
+VarDef "<agrv>" ,Chr(224)
+VarDef "<aecu>" ,Chr(225)
+VarDef "<acir>" ,Chr(226)
+VarDef "<acirc>",Chr(226)
+VarDef "<auml>" ,Chr(227)
+VarDef "<aswe>" ,Chr(229)
+VarDef "<ae>"   ,Chr(230)
 ' -- c cedille
 VarDef "<cced>",Chr(231)
 ' -- i
-VarDef "<igrv>",Chr(236)
-VarDef "<iecu>",Chr(237)
-VarDef "<icir>",Chr(238)
-VarDef "<iuml>",Chr(239)
+VarDef "<igrv>" ,Chr(236)
+VarDef "<iecu>" ,Chr(237)
+VarDef "<icir>" ,Chr(238)
+VarDef "<icirc>",Chr(238)
+VarDef "<iuml>" ,Chr(239)
 ' -- n with ~
 VarDef "<nesp>",Chr(241)
 ' -- o
-VarDef "<ogrv>",Chr(242)
-VarDef "<oecu>",Chr(243)
-VarDef "<ocir>",Chr(244)
-VarDef "<ouml>",Chr(246)
-VarDef "<oe>  ",Chr(156)
+VarDef "<ogrv>" ,Chr(242)
+VarDef "<oecu>" ,Chr(243)
+VarDef "<ocir>" ,Chr(244)
+VarDef "<ocirc>",Chr(244)
+VarDef "<ouml>" ,Chr(246)
+VarDef "<oe>  " ,Chr(156)
 ' -- u
-VarDef "<ugrv>",Chr(249)
-VarDef "<uecu>",Chr(250)
-VarDef "<ucir>",Chr(251)
-VarDef "<uuml>",Chr(252)
+VarDef "<ugrv>" ,Chr(249)
+VarDef "<uecu>" ,Chr(250)
+VarDef "<ucir>" ,Chr(251)
+VarDef "<ucirc>",Chr(251)
+VarDef "<uuml>" ,Chr(252)
 ' -- Capital A
 VarDef "<Agrv>",Chr(192)
 VarDef "<Aecu>",Chr(193)
@@ -121,5 +126,5 @@ VarDef "<Uuml>",Chr(220)
 VarDef "<beta>",Chr(223)
 End Function
 
-MKL_Version "Tricky's Units - SpecialChars.bmx","15.09.02"
+MKL_Version "Tricky's Units - SpecialChars.bmx","16.05.14"
 MKL_Lic     "Tricky's Units - SpecialChars.bmx","ZLib License"
