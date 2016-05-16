@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.03.13
+        Version: 16.02.19
 End Rem
 Strict
 
@@ -125,7 +125,7 @@ Incbin  "Serializer.lua"
 'Info Preset Definitions			' BLD: The next definitions can not be set/unset with DEFINE or UNDEF, but IF and ELSEIF can see them and they can be used there.<p><table><tr><td>$WINDOWS</td><td>Set if running from Windows</td></tr><tr><td>$MAC</td><td>Set if running from MacOS X</td></tr><tr><td>$MACOS</td><td>Alias for $MAC</td></tr><tr><td>$LINUX</td><td>Set if running from Linux</td></tr><tr><td>$DEBUGBUILD</td><td>Set if you happen to use the debug build of the engine</td><tr><td>$RELEASEBUILD</td><td>Set if you use the release build of your engine</td><tr><td>$LITTLEENDIAN</td><td>Set if processor uses LittleEndian</td><tr><td>$BIGENDIAN</td><td>Set if your processor uses BigEndian</td></tr><tr><td>$X86</td><td>Set if you have use and X86 processor (Intel or compatible)</td></tr><tr><td>$PPC</td><td>Set if you use a PowerPC processor</td></tr></table>
 
 
-MKL_Version "GALE - GALE.bmx","16.03.13"
+MKL_Version "GALE - GALE.bmx","16.02.19"
 MKL_Lic     "GALE - GALE.bmx","Mozilla Public License 2.0"
 
 

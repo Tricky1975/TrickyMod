@@ -7,7 +7,7 @@ Moduleinfo "NameModule: Tricky's Units - GameVars"
 Moduleinfo "Author: Jeroen Broks aka Tricky"
 ModuleInfo "Copyright: &copy; Jeroen Petrus Broks"
 Moduleinfo "License: zLib license"
-moduleinfo "Last update: 22 Sep 2015"
+moduleinfo "Last update: 16 May 2016"
 
 
 
