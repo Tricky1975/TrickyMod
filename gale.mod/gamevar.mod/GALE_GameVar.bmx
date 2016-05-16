@@ -1,12 +1,12 @@
 Rem
         GALE_GameVar.bmx
-	(c) 2012, 2015 Jeroen Petrus Broks.
+	(c) 2012, 2015, 2016 Jeroen Petrus Broks.
 	
 	This Source Code Form is subject to the terms of the 
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.10.14
+        Version: 16.05.16
 End Rem
 Rem
 
@@ -85,7 +85,7 @@ Type LUA_GameVar  ' BLD: Object Var\n\nThis contains the variables of the game.\
 			For i=0 Until Len v
 				If i<>0 ret:+",~n"
 				ret:+"~t~q"
-				For Local a=0 Until Len v[i]
+				For Local a=0 Until Len(v[i])
 					If a>31 And a<123
 						ret:+Chr(a)
 					Else
