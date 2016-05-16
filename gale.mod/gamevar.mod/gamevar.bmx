@@ -21,7 +21,7 @@ ModuleInfo "Creator: Tricky (Jeroen P. Broks)"
 ModuleInfo "Copyright: Jeroen P. Broks"
 ModuleInfo "License: Mozilla Public License 2.0"
 ModuleInfo "Version: 16.05"
-ModuleInfo "Last update: Mon 16 May 2016; 20:58:53"
+ModuleInfo "Last update: Mon 16 May 2016; 21:02:41"
 ModuleInfo "Module History: Please check the file GALE_GameVar.bmx for more detailed information on that!"
 
 

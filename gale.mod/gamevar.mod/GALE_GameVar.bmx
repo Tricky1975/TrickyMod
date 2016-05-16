@@ -72,8 +72,9 @@ Type LUA_GameVar  ' BLD: Object Var\n\nThis contains the variables of the game.\
 	
 	Method Vars$(sep$) ' BLD: Lists all variables in a string.<br>The separator is the character used between all names, by default ";". If you use "*array*" as separator, the string will contain a Lua syntax formed array and if you use "*module*" as separator you have a ready to go "module" you can tie to a function with the "loadstring" function.
 	Local s$=sep
-	Local ret
+	Local ret$
 	Local v$[] = VarKeys()
+	Local i
 	If Not s s=";"
 	Select Upper(s)
 		Case "*ARRAY*","*MODULE*"
@@ -81,7 +82,7 @@ Type LUA_GameVar  ' BLD: Object Var\n\nThis contains the variables of the game.\
 				Case "*ARRAY*" ret="{~n"
 				Case "*MODULE*" ret = "return {~n"
 			End Select
-			For Local i=0 Until Len v
+			For i=0 Until Len v
 				If i<>0 ret:+",~n"
 				ret:+"~t~q"
 				For Local a=0 Until Len v[i]
@@ -95,13 +96,13 @@ Type LUA_GameVar  ' BLD: Object Var\n\nThis contains the variables of the game.\
 			Next
 			ret:+"}~n~n"
 		Default
-			For Local i=0 Until Len v
+			For i=0 Until Len v
 				If ret ret:+s
 				If v[i].find(s)>-1 Print "WARNING! Separator found inside varname: "+v[i]+" ("+s+")"
 				ret:+v[i]
 			Next
 		End Select
-	End method					
+	End Method					
 
 	End Type
 	
