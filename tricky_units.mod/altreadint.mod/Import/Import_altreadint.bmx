@@ -1,7 +1,7 @@
 Rem
   altreadint.bmx
   Alt Read Int
-  version: 16.03.15
+  version: 16.06.11
   Copyright (C) 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -17,11 +17,14 @@ Rem
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 End Rem
+
+' - 16.03.15 - First version numbered
+' - 16.06.11 - Adepted to BlitzMax NG
 Strict
 
 Import tricky_units.MKL_Version
 
-MKL_Version "Tricky's Units - altreadint.bmx","16.03.15"
+MKL_Version "Tricky's Units - altreadint.bmx","16.06.11"
 MKL_Lic     "Tricky's Units - altreadint.bmx","ZLib License"
 
 
@@ -43,7 +46,7 @@ Global ario
 Function s2h$(f:TStream,bytes:Byte,endian:Byte)
 Local H$ 
 Local b,bh$
-If showario writestdout ario+"|"+bytes+" > "
+If showario WriteStdout ario+"|"+bytes+" > "
 For Local i=1 To bytes
 	ario:+1
 	b = ReadByte(f)
@@ -51,7 +54,7 @@ For Local i=1 To bytes
 	Select endian
 		Case ALR_Little
 			h = bh + h
-		Case ALR_big
+		Case ALR_Big
 			h:+bh
 		Default
 			Throw "Unknown endian type ("+endian+")"
@@ -73,7 +76,7 @@ Rem
 bbdoc: Reads an integer from a string based on the number of bytes you want to read
 about: This routine has been made, because BlitzMax has only a few kinds of setups that can be read, but some data files were never setup for this and require some setting BlitzMax does not support. Thus this simple function.<br>Please note you can give up any number of bytes you want, but going past the length a BlitzMax integer uses (currently 4 bytes) will cause some bad behavior.
 End Rem
-Function AltReadInt(f:TStream,Bytes:Byte,Endian=ALR_Little)
+Function AltReadInt(f:TStream,Bytes:Byte,Endian:Byte=ALR_Little)
 Return s2h(f,bytes,endian).toint()
 End Function
 
@@ -81,6 +84,6 @@ End Function
 Rem
 bbdoc: Same as AltReadInt, but then for Long types. (limit here is 8 bytes)
 End Rem
-Function AltReadLong:Long(f:TStream,Bytes:Byte,Endian=ALR_Little)
+Function AltReadLong:Long(f:TStream,Bytes:Byte,Endian:byte=ALR_Little)
 Return s2h(f,bytes,endian).tolong()
 End Function

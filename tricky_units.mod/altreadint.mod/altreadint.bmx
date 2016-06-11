@@ -7,7 +7,7 @@ Moduleinfo "NameModule: Tricky's Units - altreadint"
 Moduleinfo "Author: Jeroen Broks aka Tricky"
 ModuleInfo "Copyright: &copy; Jeroen Petrus Broks"
 Moduleinfo "License: zLib license"
-moduleinfo "Last update: 15 Mar 2016"
+moduleinfo "Last update: 11 Jun 2016"
 
 
 
