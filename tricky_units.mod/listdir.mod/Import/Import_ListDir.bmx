@@ -17,6 +17,7 @@ Rem
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 End Rem
+
 ' 15.05.26 - Initial
 ' 16.06.11 - Removed the duplicate and even faulty license blocks
 '          - Made compatible with Brucey's BlitzMax NG

@@ -1,8 +1,8 @@
 Rem
   AdvDateTime.bmx
   Advanced Date Time
-  version: 15.09.02
-  Copyright (C) 2012, 2015 Jeroen P. Broks
+  version: 16.06.11
+  Copyright (C) 2012, 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -16,35 +16,6 @@ Rem
   2. Altered source versions must be plainly marked as such, and must not be
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
-End Rem
-Rem
-/* 
-  Advanced DateTime
-
-  Copyright (C) 2012, 2015 Jeroen Broks
-
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
-
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-
-  1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
-
-*/
-
-
-
-Version: 15.01.21
-
 End Rem
 
 
@@ -53,14 +24,16 @@ History
 12.06.06 - Original version
 12.08.15 - Added Hour(), Minute(), Second(), Leap() and Time()
          - Turned into a BlitzMax Module
-end rem
+16.06.11 - Removed duplicate license block
+         - Adepted for BlitzMax NG
+End Rem
 
 
 'Import "MKL_Version.bmx"
-Import tricky_units.mkl_version
+Import tricky_units.MKL_Version
 Import brl.map
 
-MKL_Version "Tricky's Units - AdvDateTime.bmx","15.09.02"
+MKL_Version "Tricky's Units - AdvDateTime.bmx","16.06.11"
 MKL_Lic     "Tricky's Units - AdvDateTime.bmx","ZLib License"
 
 Rem
@@ -181,7 +154,7 @@ Function Time:Long(N:TNow=Null)
 	Local monthdays[] = [0,31,28,31,30,31,30,31,31,30,31,30,31]
 	Local Ak
 	If Leap(N) monthdays[2] = 29
-	For Ak=1 To Month()
+	For Local Ak=1 To Month()
 		Ret:+(daytime*monthdays[ak])
 		Next
 	Ret:+(Hour()*60*60)
@@ -206,7 +179,7 @@ Function MonthNames:String[](Language$="English")
 Local Ret:String[] 
 If MapContains(MonthNameArray,Language) Return String[](MapValueForKey(MonthNameArray,Language))
 Ret = New String[13]
-For ak=1 To 12
+For Local ak=1 To 12
 	Ret[Ak]="UNKNOWN LANGUAGE"
 	Next
 MapInsert MonthNameArray,Language,Ret ' Let's cache it. Saves time if a lot of unknown calls are done :P
