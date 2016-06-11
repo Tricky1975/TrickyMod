@@ -1,8 +1,8 @@
 Rem
   Tree.bmx
   
-  version: 15.09.02
-  Copyright (C) 2012-2015, 2015 Jeroen P. Broks
+  version: 16.06.11
+  Copyright (C) 2012-2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -16,35 +16,6 @@ Rem
   2. Altered source versions must be plainly marked as such, and must not be
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
-End Rem
-Rem
-/* 
-  Tree
-
-  Copyright (C) 2012, 2013, 2014, 2015 Jeroen Petrus Broks
-
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
-
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-
-  1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
-
-*/
-
-
-
-Version: 15.06.27
-
 End Rem
 
 
@@ -63,6 +34,7 @@ End Rem
 '            = License became zLib in stead of MPL
 ' 14.02.04 - Lots of programs appeared to be crashing. Trying out some things, that could work as a fix... (hopefully, as it's not clear where the evil lies)
 ' 14.06.21 - Oops, I left the debugger on. Turned it off ;)
+' 16.06.11 - Adepted for BlitzMax NG
 
 Strict
 
@@ -71,7 +43,7 @@ Import maxgui.drivers
 
 Import tricky_units.MKL_Version
 
-MKL_Version "Tricky's Units - Tree.bmx","15.09.02"
+MKL_Version "Tricky's Units - Tree.bmx","16.06.11"
 MKL_Lic     "Tricky's Units - Tree.bmx","ZLib License"
 
 Private
@@ -99,7 +71,11 @@ Local Ret:TList = CreateList()
 Local File$
 Local Ak
 Local CurDir$ = CurrentDir()
+?NG
+Local BD:Byte Ptr
+?Not NG
 Local BD
+?
 Local FFN$
 Local F$
 If Dir<>"" Then ChangeDir Dir
@@ -149,7 +125,11 @@ Local Ret:TList = New TList
 Local PDirs:TList 
 Local FDirs:TList = New TList
 Local CDir$ = CurrentDir()
+?NG
+Local BD:Byte Ptr
+?Not NG
 Local BD
+?
 Local F$,D$,SD$
 If Dir 
 	If FileType(dir)<>2 
