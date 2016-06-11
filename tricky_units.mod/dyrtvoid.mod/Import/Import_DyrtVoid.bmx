@@ -78,7 +78,7 @@ For PY=0 To TH-1
 		Tile.Tile = (PY*TW)+(PX)
 		Tile.Rad = Rand(10,GraphicsWidth())
 		Tile.Deg = Rand(1,360)
-		Tile.Spd = Tile.Rad		
+		Tile.Spd = Int(Tile.Rad		)
 		Tile.GetS()
 		Tile.MX = (Tile.SX - Tile.X)/40
 		Tile.MY = (Tile.SY - Tile.Y)/40
