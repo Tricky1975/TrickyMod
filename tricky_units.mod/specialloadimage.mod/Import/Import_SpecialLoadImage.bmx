@@ -1,8 +1,8 @@
 Rem
   SpecialLoadImage.bmx
   Special - Load Image
-  version: 15.09.02
-  Copyright (C) 2013, 2015 Jeroen P. Broks
+  version: 16.06.12
+  Copyright (C) 2013, 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -16,39 +16,12 @@ Rem
   2. Altered source versions must be plainly marked as such, and must not be
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
-End Rem
-Rem
-/* 
-  Special - Load Image
-
-  Copyright (C) 2013, 2015 Jeroen P. Broks
-
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
-
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-
-  1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
-
-*/
-
-
-
-Version: 15.06.27
-
 End Rem
 
 ' 14.02.25 - initial version
 ' 15.01.23 - adepted to jcr6
+' 16.06.12 - Removed dupe license block
+'          - Adapted for Blitz NG
 Strict
 
 Import    jcr6.jcr6main
@@ -78,7 +51,7 @@ Local ErrHead$ = "AdvLoadImage(<Object>,~q"+Imagefile+"~q,"+HotFlag+"): "
 Local RL$,RS$[]
 If MapContains(JCR.entries,FrmF)
 	BT = JCR_ReadFile(JCR,FrmF)
-	L$ = Trim(ReadString(BT,StreamSize(BT)))
+	L$ = Trim(ReadString(BT,Int(StreamSize(BT))))
 	CloseFile BT
 	P = SplitUp(L,4,FrmF)
 	If Not P 
@@ -178,4 +151,4 @@ Return Ret
 End Function
 
 MKL_Lic     "Tricky's Units - SpecialLoadImage.bmx","ZLib License"
-MKL_Version "Tricky's Units - SpecialLoadImage.bmx","15.09.02"
+MKL_Version "Tricky's Units - SpecialLoadImage.bmx","16.06.12"

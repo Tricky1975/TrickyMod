@@ -1,8 +1,8 @@
 Rem
   Negatief.bmx
   
-  version: 15.10.06
-  Copyright (C) 2015 Jeroen P. Broks
+  version: 16.06.12
+  Copyright (C) 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -21,7 +21,7 @@ End Rem
 Strict 
 Import tricky_units.ImageCopier
 
-MKL_Version "Tricky's Units - Negatief.bmx","15.10.06"
+MKL_Version "Tricky's Units - Negatief.bmx","16.06.12"
 MKL_Lic     "Tricky's Units - Negatief.bmx","ZLib License"
 
 Rem
@@ -44,7 +44,7 @@ For y=0 Until PixmapHeight(Pixmap) For x=0 Until PixmapWidth(Pixmap)
 	newp = "$"+p[0..2]+Right(Hex(r),2)+Right(Hex(g),2)+Right(Hex(b),2)
 	'Print "Inverting ("+x+","+y+")~t of ("+PixmapWidth(Pixmap)+","+PixmapHeight(Pixmap)+") => ("+r+","+g+","+b+")/"+newP ' debug line
 	WritePixel ret,x,y,newp.toint()
-	Next Next ' Twice For = twice Next
+	Next; Next ' Twice For = twice Next
 Return ret	
 End Function
 
