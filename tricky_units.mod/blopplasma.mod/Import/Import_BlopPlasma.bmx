@@ -1,8 +1,8 @@
 Rem
   BlopPlasma.bmx
   
-  version: 15.09.02
-  Copyright (C) 2015 Jeroen P. Broks
+  version: 16.06.11
+  Copyright (C) 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -17,60 +17,16 @@ Rem
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 End Rem
-Rem
-  BlopPlasma.bmx
-  BlopPlasma - Originally developped by ImaginaryHuman for the Public Domain. This work is an improved work based on that, done by Tricky
-  version: 15.09.02
-  Copyright (C) 2012, 2014, 2015 Jeroen P. Broks
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-  1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
-End Rem
-Rem
-/* 
-  BlopPlasma - Originally developped by ImaginaryHuman for the Public Domain. This work is an improved work based on that, done by Tricky
 
-  Copyright (C) 2012, 2014, 2015 Jeroen Petrus Broks
-
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
-
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-
-  1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
-
-*/
-
-
-
-Version: 15.01.22
-
-End Rem
+' The original code was written by Imaginary Human, and he dedicated this work to the Public domain.
+' In 2012 Jeroen Broks fixed some bugs in this routine and turned this into a module
+' In 2016 he tried to make this compatible with BlitzMax NG 
 
 Strict
 
 Import brl.Max2d
 Import brl.Random
-Import tricky_units.mkl_version
+Import tricky_units.MKL_Version
 Rem
 
 	Blop Plasma.
@@ -83,7 +39,7 @@ End Rem
 
 Incbin "BlopPlasma/Blop.png"
 
-MKL_Version "Tricky's Units - BlopPlasma.bmx","15.09.02"
+MKL_Version "Tricky's Units - BlopPlasma.bmx","16.06.11"
 MKL_Lic     "Tricky's Units - BlopPlasma.bmx","ZLib License"
 
 Global Blops=60
@@ -111,7 +67,7 @@ If BlopRadius=511
 	Local A#,R#,G
 	For R#=1 To BlopRadius Step N
 		A#=R*R/Width
-		SetColor A,A,A
+		SetColor Int(A),Int(A),Int(A)
 		DrawOval R/2,R/2,Z-R,Z-R 'change to DrawRect for inverted blobs
 		Next
 	PicBlop=CreateImage(Z,Z)
@@ -177,7 +133,7 @@ If D[G]<=0 Then
 K[G]:+N
 If K[G]>360 K[G]:-360
 'SetColor (PlasmaWidth-K[G])*PlasR,(Z-C[G])*PlasG,(Z-D[G])*PlasB
-SetColor (Z-K[G])*PlasR,(Z-C[G])*PlasG,(Z-D[G])*PlasB
+SetColor Int((Z-K[G])*PlasR),Int((Z-C[G])*PlasG),Int((Z-D[G])*PlasB)
 SetRotation K[G]
 DrawImage PicBlop,C[G],D[G]
 If Chat Then
