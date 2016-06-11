@@ -1,8 +1,8 @@
 Rem
   MKL_Version.bmx
   
-  version: 15.09.02
-  Copyright (C) 201, 2015 Jeroen P. Broks
+  version: 16.06.11
+  Copyright (C) 2012, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -16,35 +16,6 @@ Rem
   2. Altered source versions must be plainly marked as such, and must not be
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
-End Rem
-Rem
-/* 
-  MKL - Version
-
-  Copyright (C) 2012, 2015 Jeroen Petrus Broks
-
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
-
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-
-  1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
-
-*/
-
-
-
-Version: 15.01.21
-
 End Rem
 
 
@@ -52,14 +23,15 @@ End Rem
 ' Version: 12.04.19 - Turned into part of a module, which shall be used henchforth
 ' Version: 12.10.02 - Built in safety features as the lists do sometimes (mysteriously) turn back to NULL. Cause unknown, but it should now longer allow a project to crash.
 ' Version: 15.01.21 - Adepted for the new JCR6 time (not that JCR6 was actually used, but at the start of the switch I basically adepted nearly all my modes)
+' Version: 16.06.11 - Confirmed to be compatible with Brucey's BlitzMax NG
 
 Strict
 Import brl.map
 Import brl.retro
 
 Private
-Global SourceVersions:Tmap = New TMap	
-Global SourceLicenses:TMap = New Tmap
+Global SourceVersions:TMap = New TMap	
+Global SourceLicenses:TMap = New TMap
 Public
 
 Rem
@@ -145,5 +117,5 @@ For Local K$=EachIn MapKeys(Sourceversions)
 Return Ret
 End Function
 
-MKL_Version "Tricky's Units - MKL_Version.bmx","15.09.02"
+MKL_Version "Tricky's Units - MKL_Version.bmx","16.06.11"
 MKL_Lic     "Tricky's Units - MKL_Version.bmx","ZLib License"
