@@ -175,6 +175,7 @@ Local CDir$ = CurrentDir()
 Local BD:Byte Ptr
 ?Not bmxng
 Local BD
+?
 Local F$,D$,SD$
 Local NotEmpty
 Local FCount:Long=0
