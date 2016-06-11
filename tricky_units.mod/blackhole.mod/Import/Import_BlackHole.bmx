@@ -1,7 +1,7 @@
 Rem
   BlackHole.bmx
   
-  version: 16.06.11
+  version: 16.06.12
   Copyright (C) 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -22,6 +22,7 @@ End Rem
 ' 15.01.22 - Adepted to use with JCR6 in stead of JCR5
 ' 16.06.11 - Removed dupe license blocks
 '          - NG adaptions
+' 16.06.12 - It suddenly didn't compile in NG any more. Well it should now.
 
 Strict
 Import jcr6.jcr6main
@@ -128,7 +129,11 @@ If Rand(1,BH.startrate)=1 And CountList(BH.Objects)<BH.MaxObjects
 	EndIf
 For O=EachIn BH.Objects
 	If Not O Print "WARNING! Null found in blackhole object list"
+	?Not bmxng
 	Local Col:Double = (O.Radius/BH.StartRadius)*255
+	?bmxng
+	Local Col:Int = Int((O.Radius/BH.StartRadius)*255)
+	?	
 	Local SC:Double = (O.Radius/BH.StartRadius)
 	SetColor Col,Col,Col
 	SetScale SC,SC
