@@ -140,7 +140,7 @@ For O=EachIn BH.Objects
 	SetScale SC,SC
 	O.Pos    :+ Double(O.Speed)*.02
 	O.Radius :- Double(O.Speed)*.01
-	DrawImage O.Img,X+Sin(O.Pos)*O.Radius,Y+Cos(O.Pos)*O.Radius
+	DrawImage O.Img,Float(X+Sin(O.Pos)*O.Radius),Float(Y+Cos(O.Pos)*O.Radius)
 	If O.Radius<=0 ListRemove BH.Objects,O
 	Next
 SetScale SX,SY	
