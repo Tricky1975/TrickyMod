@@ -1,8 +1,8 @@
 Rem
   MaxGUI_Input.bmx
   
-  version: 15.09.02
-  Copyright (C) 2014, 2015 Jeroen P. Broks
+  version: 16.06.11
+  Copyright (C) 2014, 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -17,7 +17,7 @@ Rem
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 End Rem
-Rem
+Rem'
 /* 
   MaxGUI Input
 
@@ -48,12 +48,14 @@ Version: 15.04.19
 End Rem
 ' 15.02.03 - Adeption to the new module setup that came in place since JCR6
 ' 15.04.10 - Fixed the bug that would not remove the input window out of the screen, if the user cancelled the input
+' 16.06.11 - Made compatible with BlitzMax NG
+'          - removed dupe license block
 Strict
 Import MaxGUI.Drivers
 Import Tricky_units.MKL_Version
 Import brl.eventqueue
 
-MKL_Version "Tricky's Units - MaxGUI_Input.bmx","15.09.02"
+MKL_Version "Tricky's Units - MaxGUI_Input.bmx","16.06.11"
 MKL_Lic     "Tricky's Units - MaxGUI_Input.bmx","ZLib License"
 
 
@@ -65,7 +67,7 @@ Global MaxGUI_InputAccepted
 
 Private
 DebugLog "MGIWX = "+Double(ClientWidth(Desktop()))*.75
-Global GI_Win:TGadget = CreateWindow("---",0,0,Double(ClientWidth(Desktop()))*.75,75,Null,WINDOW_CLIENTCOORDS | WINDOW_CENTER | WINDOW_HIDDEN | WINDOW_TITLEBAR)
+Global GI_Win:TGadget = CreateWindow("---",0,0,Int(Double(ClientWidth(Desktop()))*.75),75,Null,WINDOW_CLIENTCOORDS | WINDOW_CENTER | WINDOW_HIDDEN | WINDOW_TITLEBAR)
 Global GI_Qst:TGadget = CreateLabel("---",0,0,ClientWidth(GI_WIN),25,GI_WIN)
 Global GI_Txt:TGadget = CreateTextField(0,25,ClientWidth(GI_WIN),25,GI_WIN)
 Global GI_OkB:TGadget = CreateButton("Ok",ClientWidth(GI_WIN)-100,50,100,25,GI_WIN,BUTTON_OK)
