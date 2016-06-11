@@ -126,7 +126,7 @@ For tile = EachIn tiles
 	Tile.GetS()
 	SetColor Tile.Col,Tile.Col,Tile.Col
 	SetScale Tile.Scale,Tile.Scale
-	DrawImage I,Tile.SX,Tile.SY,Tile.Tile
+	DrawImage I,Float(Tile.SX),Float(Tile.SY),Tile.Tile
 	EndIf
     Next
 Flip
