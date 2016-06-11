@@ -71,9 +71,9 @@ Local Ret:TList = CreateList()
 Local File$
 Local Ak
 Local CurDir$ = CurrentDir()
-?NG
+?bmxNG
 Local BD:Byte Ptr
-?Not NG
+?Not bmxNG
 Local BD
 ?
 Local FFN$
@@ -125,9 +125,9 @@ Local Ret:TList = New TList
 Local PDirs:TList 
 Local FDirs:TList = New TList
 Local CDir$ = CurrentDir()
-?NG
+?bmxNG
 Local BD:Byte Ptr
-?Not NG
+?Not bmxNG
 Local BD
 ?
 Local F$,D$,SD$
@@ -171,6 +171,9 @@ Local Ret:TStream = WriteStream(File) If Not Ret Return Null
 Local PDirs:TStream 
 Local FDirs:TStream = WriteStream(File+".fdir")
 Local CDir$ = CurrentDir()
+?bmxng
+Local BD:Byte Ptr
+?Not bmxng
 Local BD
 Local F$,D$,SD$
 Local NotEmpty
