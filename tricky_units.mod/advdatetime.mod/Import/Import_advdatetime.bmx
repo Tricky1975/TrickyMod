@@ -30,6 +30,7 @@ End Rem
 
 
 'Import "MKL_Version.bmx"
+Strict
 Import tricky_units.MKL_Version
 Import brl.map
 
@@ -153,7 +154,6 @@ Function Time:Long(N:TNow=Null)
 	ret = (yearspassed+(daytime)*365)
 	                    '  J  F  M  A  M  J  J  A  S  O  N  D
 	Local monthdays[] = [0,31,28,31,30,31,30,31,31,30,31,30,31]
-	Local Ak
 	If Leap(N) monthdays[2] = 29
 	For Ak=1 To Month()
 		Ret:+(daytime*monthdays[ak])
