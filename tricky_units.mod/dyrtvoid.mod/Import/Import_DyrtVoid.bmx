@@ -19,6 +19,7 @@ Rem
 End Rem
 ' 14.00.00 - Initial
 ' 15.06.11 - Adepted to BlitzMax NG
+'          - Removed dupe license text
 Strict
 
 Import tricky_units.MKL_Version
@@ -124,7 +125,7 @@ For tile = EachIn tiles
 	Else
 	Ok=False
 	Tile.GetS()
-	SetColor Tile.Col,Tile.Col,Tile.Col
+	SetColor Int(Tile.Col),Int(Tile.Col),Int(Tile.Col)
 	SetScale Tile.Scale,Tile.Scale
 	DrawImage I,Float(Tile.SX),Float(Tile.SY),Tile.Tile
 	EndIf
