@@ -38,7 +38,9 @@ Import "Console/font.bmx"
 MKL_Version "Tricky's Units - Console.bmx","16.06.11"
 MKL_Lic     "Tricky's Units - Console.bmx","ZLib License"
 
-Private
+?Not bmxng
+Private ' Never use the private stuff, but otherwise blitzmax appears unable to take this.
+?
 
 Type ConsoleLine
 	Field Y
