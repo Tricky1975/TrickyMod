@@ -145,6 +145,7 @@ Function Time:Long(N:TNow=Null)
 	' Number of seconds since 1981
 	Assert Year(N)>=1981 Else "Invalid year!"
 	If Year(N)<1981 Return
+	Local AK
 	Local ret:Long
 	Local yearspassed = Year(N)-2009
 	Local leaps = Floor(yearspassed/4)   ' How many leap years have passed?
@@ -154,7 +155,7 @@ Function Time:Long(N:TNow=Null)
 	Local monthdays[] = [0,31,28,31,30,31,30,31,31,30,31,30,31]
 	Local Ak
 	If Leap(N) monthdays[2] = 29
-	For Local Ak=1 To Month()
+	For Ak=1 To Month()
 		Ret:+(daytime*monthdays[ak])
 		Next
 	Ret:+(Hour()*60*60)
@@ -177,9 +178,10 @@ about: By default the supported languages are English, Dutch, French and German,
 End Rem
 Function MonthNames:String[](Language$="English")
 Local Ret:String[] 
+Local ak
 If MapContains(MonthNameArray,Language) Return String[](MapValueForKey(MonthNameArray,Language))
 Ret = New String[13]
-For Local ak=1 To 12
+For ak=1 To 12
 	Ret[Ak]="UNKNOWN LANGUAGE"
 	Next
 MapInsert MonthNameArray,Language,Ret ' Let's cache it. Saves time if a lot of unknown calls are done :P
