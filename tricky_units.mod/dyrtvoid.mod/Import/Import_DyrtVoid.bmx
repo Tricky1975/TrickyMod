@@ -1,8 +1,8 @@
 Rem
   DyrtVoid.bmx
   
-  version: 15.09.02
-  Copyright (C) 2015 Jeroen P. Broks
+  version: 16.06.11
+  Copyright (C) 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -17,62 +17,16 @@ Rem
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 End Rem
-Rem
-  DyrtVoid.bmx
-  2015
-  version: 15.09.02
-  Copyright (C) 2014, 2015 Jeroen P. Broks
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-  1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
-End Rem
-Rem
-/* 
-  Dyrt - Void Effect
-
-  Copyright (C) 2014, 2015 Jeroen P. Broks
-
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
-
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-
-  1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
-
-*/
-
-
-
-Version: 15.01.22
-
-End Rem
+' 14.00.00 - Initial
+' 15.06.11 - Adepted to BlitzMax NG
 Strict
 
-Import tricky_units.mkl_version
+Import tricky_units.MKL_Version
 Import brl.linkedlist
 Import brl.max2d
 
 Private
-MKL_Version "Tricky's Units - DyrtVoid.bmx","15.09.02"
+MKL_Version "Tricky's Units - DyrtVoid.bmx","16.06.11"
 MKL_Lic     "Tricky's Units - DyrtVoid.bmx","ZLib License"
 
 
@@ -148,7 +102,7 @@ For Tile = EachIn Tiles
     If Abs(Tile.X-Tile.SX)<5 Tile.X = Tile.SX
     If Abs(Tile.Y-Tile.SY)<5 Tile.Y = Tile.SY
     Ok = Ok And Tile.X=Tile.SX And Tile.Y=Tile.SY
-    DrawImage I,Tile.X,Tile.Y,Tile.Tile
+    DrawImage I,Float(Tile.X),Float(Tile.Y),Tile.Tile
     Next
 Flip
 TimeOut:+1
