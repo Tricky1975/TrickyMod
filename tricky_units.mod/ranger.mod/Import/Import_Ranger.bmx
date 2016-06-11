@@ -1,7 +1,7 @@
 Rem
   Ranger.bmx
   
-  version: 16.06.06
+  version: 16.06.12
   Copyright (C) 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -18,6 +18,11 @@ Rem
   3. This notice may not be removed or altered from any source distribution.
 End Rem
 Import brl.math
+Import tricky_units.MKL_Version
+
+MKL_Version "Tricky's Units - Ranger.bmx","16.06.12"
+MKL_Lic     "Tricky's Units - Ranger.bmx","ZLib License"
+
 Rem
 bbdoc: Set up a range array for the For command. 
 about: This command has been setup as BlitzMax only accepts constants For 'step' for reasons beyond my understanding, but it is highly annoying. You don't need to set up a negative step if the end value is lower than the start value.<p>I know this is very likely slower than doing this the regular way, however due to BlitzMax not accepting variables for steps, I was a bit forced to come up with this!

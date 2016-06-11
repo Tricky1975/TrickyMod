@@ -1,8 +1,8 @@
 Rem
   Rectangles.bmx
   
-  version: 15.10.17
-  Copyright (C) 2015 Jeroen P. Broks
+  version: 16.06.12
+  Copyright (C) 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -20,6 +20,7 @@ End Rem
 
 ' History
 ' 15.10.16 - Initial version
+' 16.06.12 - Adeptions for BlitzMax NG
 
 
 Import BRL.StandardIO
@@ -59,11 +60,11 @@ Type tAdvRect
 Rem
 bbdoc: Draw the rectangle with the advanced settings defined in your tAdvRect variable.
 End Rem	
-Function AdvRect(r:tadvrect)	
+Function AdvRect(r:tAdvRect)	
 SetColor r.inr,r.ing,r.inb
-SetAlpha r.inalpha
-rect r.x,r.y,r.w,r.h,0
+SetAlpha Float(r.inalpha)
+Rect r.x,r.y,r.w,r.h,0
 SetColor r.outr,r.outg,r.outb
-SetAlpha r.outalpha
-rect r.x,r.y,r.w,r.h,1 
+SetAlpha Float(r.outalpha)
+Rect r.x,r.y,r.w,r.h,1 
 End Function
