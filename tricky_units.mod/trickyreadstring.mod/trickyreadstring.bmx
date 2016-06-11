@@ -7,7 +7,7 @@ Moduleinfo "NameModule: Tricky's Units - TrickyReadString"
 Moduleinfo "Author: Jeroen Broks aka Tricky"
 ModuleInfo "Copyright: &copy; Jeroen Petrus Broks"
 Moduleinfo "License: zLib license"
-moduleinfo "Last update: 22 Sep 2015"
+moduleinfo "Last update: 11 Jun 2016"
 
 
 
