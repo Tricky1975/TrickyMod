@@ -6,12 +6,14 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.03.21
+        Version: 16.06.11
 End Rem
+' 16.03.21 - Initial version
+' 16.06.11 - A few fixes for NG
 Import jcr6.jcr6main
 Import tricky_units.prefixsuffix
 
-MKL_Version "JCR6 - JCR6_JCR6WebRead.bmx","16.03.21"
+MKL_Version "JCR6 - JCR6_JCR6WebRead.bmx","16.06.11"
 MKL_Lic     "JCR6 - JCR6_JCR6WebRead.bmx","Mozilla Public License 2.0"
 
 
@@ -65,7 +67,7 @@ Type DRV_WebRead Extends DRV_JCRDIR
 	End Method
 	
 	Method Dir:TJCRDir(file$)
-		ret:TJCRDir = New TJCRDir
+		Local ret:TJCRDir = New TJCRDir
 		Local e:TJCREntry
 		Local fil$=file
 		Local bt:TStream = getread(fil)

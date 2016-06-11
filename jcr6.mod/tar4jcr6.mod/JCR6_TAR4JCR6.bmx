@@ -6,11 +6,13 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.03.10
+        Version: 16.06.11
 End Rem
+
+' 16.06.11 - First stable version
 Import jcr6.jcr6main
 
-MKL_Version "JCR6 - JCR6_TAR4JCR6.bmx","16.03.10"
+MKL_Version "JCR6 - JCR6_TAR4JCR6.bmx","16.06.11"
 MKL_Lic     "JCR6 - JCR6_TAR4JCR6.bmx","Mozilla Public License 2.0"
 
 Private
@@ -27,6 +29,7 @@ Function O2D(GET:String)
 Local A$=Trim(GET)
 Local e = Len(A)-1
 Local ret = 0
+Local i
 For i=0 Until Len(a)
 	'Print "Calc: i = "+i+" e = "+e+" ch = "+a[e-i]+" 8^"+i+"="+Int(8^i)
 	ret :+ (a[e-i]-48)*(8^i)
