@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.05.03
+        Version: 16.05.09
 End Rem
 
 ' History:
@@ -23,6 +23,7 @@ End Rem
 '          - Fixed MEMORY_ACCESS_VIOLATION (windows) / Segmentation Fault (Mac/Linux) when JCR6 tries to pack a file that doesn't exist.
 ' 16.03.13 - Fixed typo in "unknown"
 ' 16.03.15 - Fixed a bug that would cause a crash if a dir driver returns nothing at all.
+' 16.06.11 - First setup for NG compatibility
 
 Strict
 
@@ -44,7 +45,7 @@ Import tricky_units.MD5 ' Will be used for verification purposes. Full support f
 Import "-ldl"
 ?
 
-MKL_Version "JCR6 - JCR6_Main.bmx","16.05.03"
+MKL_Version "JCR6 - JCR6_Main.bmx","16.05.09"
 MKL_Lic     "JCR6 - JCR6_Main.bmx","Mozilla Public License 2.0"
 
 Private
@@ -68,6 +69,13 @@ End Rem
 Global JCR6CheckChange = True
 
 
+
+Private
+Function JI_BankSize(A:TBank) ' NG needs this
+	Return Int(BankSize(A))
+End function
+
+Public
  
 Type ConfigMap Extends TMap
      Method T$(Tag$)
@@ -684,8 +692,8 @@ SeekStream bt,ent.offset
 cb = CreateBank(Ent.Compressedsize)
 ReadBank cb,bt,0,ent.compressedsize
 ucb = CDrive(Ent.Storage).Expand(cb,ent.size)
-If ent.size<>BankSize(ucb)
-	JCR_JamErr "Expansion error. Size mismatch ("+ent.size+"!="+BankSize(ucb)+")",Ent.MainFile,Entry,"JCR_B"
+If ent.size<>JI_BankSize(ucb)
+	JCR_JamErr "Expansion error. Size mismatch ("+ent.size+"!="+JI_BankSize(ucb)+")",Ent.MainFile,Entry,"JCR_B"
 	EndIf
 Return ucb	
 End Function
@@ -924,16 +932,16 @@ Type TJCRCreate Extends TJCRDir
 		Return
 		EndIf
 	CBnk = CDRIVE(Algorithm).compress(Bnk)
-	If BankSize(CBnk)>=BankSize(Bnk) ' Store if compression failed.
+	If JI_BankSize(CBnk)>=JI_BankSize(Bnk) ' Store if compression failed.
 		CBnk = Bnk
 		Alg = "Store"
 		EndIf		
 	ent.FileName = EntryName
 	ent.MainFile$ = JCRWriteFIle
-	ent.Size = BankSize(Bnk)
+	ent.Size = JI_BankSize(Bnk)
 	ent.Offset = StreamPos(BT)
 	ent.Storage = Alg	
- 	ent.CompressedSize = BankSize(CBnk)
+ 	ent.CompressedSize = JI_BankSize(CBnk)
 	ent.Author = Author
 	ent.Notes = Notes
 	MapInsert ent.mv,"$__Entry",Ent.FileName
@@ -943,7 +951,7 @@ Type TJCRCreate Extends TJCRDir
 	MapInsert ent.mv,"$__Storage",Ent.Storage
 	MapInsert ent.mv,"$__Author",Ent.Author
 	MapInsert ent.mv,"$__Notes",Ent.Notes
-	WriteBank CBnk,BT,0,BankSize(CBnk)
+	WriteBank CBnk,BT,0,JI_BankSize(CBnk)
 	MapInsert Self.Entries,Entry,Ent
 	Return ent
 	End Method
@@ -1043,14 +1051,14 @@ Type TJCRCreate Extends TJCRDir
 		Return
 		EndIf
 	CBnk = CDRIVE(Algorithm).compress(Bnk)
-	If BankSize(CBnk)>=BankSize(Bnk) ' Store if compression failed.
+	If JI_BankSize(CBnk)>=JI_BankSize(Bnk) ' Store if compression failed.
 		CBnk = Bnk
 		Alg = "Store"
 		EndIf
-	WriteInt BT,BankSize(Bnk)
-	WriteInt BT,BankSize(CBnk)
+	WriteInt BT,JI_BankSize(Bnk)
+	WriteInt BT,JI_BankSize(CBnk)
 	Alt_WriteString BT,Alg
-	WriteBank CBnk,Bt,0,BankSize(CBnk)
+	WriteBank CBnk,Bt,0,JI_BankSize(CBnk)
 	SeekStream BT,oof
 	WriteInt BT,FTPOs	
 	CloseFile BT

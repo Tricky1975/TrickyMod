@@ -86,7 +86,7 @@ Type DRV_TAR Extends DRV_JCRDIR
 	MapInsert e.pvars,"TAR.PREFIX",rs(bt,155)
 	MapInsert e.pvars,"TAR.?????",rs(bt,12) 'Repeat Print "===" Until ReadByte(bt)<>0
 	e.offset = StreamPos(bt)	
-	MapInsert entries,Upper(e.filename),E ' This must come last in case of the ustar extention.
+	If Right(e.filename,1)<>"/" MapInsert entries,Upper(e.filename),E ' This must come last in case of the ustar extention. Filenames ending on "/" are directories in TAR. JCR6 does not  support this, and thus directories will not be added.
 	theend =  e.offset+e.size>=StreamSize(bt)
 	'Print "Next: "+Int(e.offset+e.size)
 	Local c=0 ' debug
