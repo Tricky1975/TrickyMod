@@ -1,8 +1,8 @@
 Rem
   SafeString.bmx
   
-  version: 15.09.02
-  Copyright (C) 2012, 2015 Jeroen P. Broks
+  version: 16.06.12
+  Copyright (C) 2012, 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -16,52 +16,8 @@ Rem
   2. Altered source versions must be plainly marked as such, and must not be
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
-End Rem
-Rem
-/* 
-  Safe String
-
-  Copyright (C) 2012, 2015 Jeroen P. Broks
-
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
-
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-
-  1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
-
-*/
-
-
-
-Version: 15.08.15
-
 End Rem
 Strict
-
-Rem
-Copyright (c) 2011, Jeroen P. Broks
-
-This software is provided 'as-is', without any express or implied warranty. In no event will the authors be held liable for any damages arising from the use of this software.
-
-Permission is granted to anyone to use this software for any purpose, including commercial applications, and to alter it and redistribute it freely, subject to the following restrictions:
-
-1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.
-
-2. Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
-
-3. This notice may not be removed or altered from any source distribution.
-
-end rem
 
 Rem
 -- bbdoc: This module is only a quick way to make strings safe against characters that won't do to well in certain text files. It's been used as the InitFile module caused some errors when strange strings were used, but perhaps you have some use for it otherwise ;)
@@ -80,10 +36,12 @@ End Rem
 ' 12.11.xx - Initial version
 ' 15.02.03 - Adepted for the current module usage in my curent framework
 ' 15.08.06 - Added BS String, for compatibility with languages with the C formatting of strings.
+' 16.06.11 - Removed double license block
+' 16.06.12 - Adapted to NG
 
 Import Tricky_units.MKL_Version
 
-MKL_Version "Tricky's Units - SafeString.bmx","15.09.02"
+MKL_Version "Tricky's Units - SafeString.bmx","16.06.12"
 MKL_Lic     "Tricky's Units - SafeString.bmx","ZLib License"
 
 
@@ -97,7 +55,11 @@ Global SafeChars$
 SafeChars = "1234567890!@#$^&*()-_+=|qwertyuiop[]{}asdfghjkl;:'~qzxcvbnm,.<>/?QWERTYUIOPASDFGHJKLZXCVBNM"
 
 Private
+?Not bmxng
 Function ByteHex$(A:Byte)
+?bmxng
+Function byteHex$(A)
+?
 Return "%"+Right(Hex(A),2)
 End Function
 Public
