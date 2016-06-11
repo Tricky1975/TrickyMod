@@ -131,10 +131,11 @@ For O=EachIn BH.Objects
 	If Not O Print "WARNING! Null found in blackhole object list"
 	?Not bmxng
 	Local Col:Double = (O.Radius/BH.StartRadius)*255
+	Local SC:Double = (O.Radius/BH.StartRadius)
 	?bmxng
 	Local Col:Int = Int((O.Radius/BH.StartRadius)*255)
+	Local SC:Float = Float(O.Radius/BH.StartRadius)
 	?	
-	Local SC:Double = (O.Radius/BH.StartRadius)
 	SetColor Col,Col,Col
 	SetScale SC,SC
 	O.Pos    :+ Double(O.Speed)*.02
