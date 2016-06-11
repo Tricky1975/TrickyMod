@@ -20,8 +20,10 @@ End Rem
 
 ' 14.02.25 - Initial version
 ' 15.01.22 - Adepted to use with JCR6 in stead of JCR5
+' 16.06.11 - Removed dupe license blocks
+'          - NG adaptions
 
-Strict 
+Strict
 Import jcr6.jcr6main
 Import brl.max2d
 Import brl.linkedlist
