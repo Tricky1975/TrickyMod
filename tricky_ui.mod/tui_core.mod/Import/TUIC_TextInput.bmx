@@ -6,13 +6,14 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.02.29
+        Version: 16.06.12
 End Rem
 
 ' 16.02.06 - Initial
 ' 16.02.29 - Fixed bbdoc text and license block
+' 16.06.11 - Adepted to make it work in blitzmax ng
 
-MKL_Version "Tricky's User Interface - TUIC_TextInput.bmx","16.02.29"
+MKL_Version "Tricky's User Interface - TUIC_TextInput.bmx","16.06.12"
 MKL_Lic     "Tricky's User Interface - TUIC_TextInput.bmx","Mozilla Public License 2.0"
 
 
@@ -47,7 +48,11 @@ Type TUI_GDrvUserInput Extends TUI_Gadgetdriver
 	If (T="0" Or T="2" Or T="4" Or T="6" Or T="8") And active And G.Enabled And Enabled Cursor="|"
 	tui_parentcoords G,px,py
 	G.h = TextHeight(G.Text)
+	?bmxng
+	SetAlpha Float(g.alpha
+	?Not bmxng
 	SetAlpha G.alpha
+	?
 	SetColor G.colors[(g.enabled And enabled),0],G.colors[(g.enabled And enabled),1],G.colors[(g.enabled And enabled),2]
 	DrawRect G.x+px,G.y+py,g.w,g.h
 	SetAlpha a
