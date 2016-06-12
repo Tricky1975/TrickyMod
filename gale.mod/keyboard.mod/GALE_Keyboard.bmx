@@ -8,7 +8,7 @@ Rem
 	http://mozilla.org/MPL/2.0/.
         Version: 15.09.02
 End Rem
-Rem
+Rem'
 
 	(c) 2014 Jeroen Petrus Broks.
 	
@@ -27,7 +27,11 @@ Updates
 13.01.07 - Added Code() method to the TL_Keyboard type
 14.03.25 - Updated the flush routine.
 15.04.02 - Deprecated
+16.06.11 - Blocked content for BlitzMax NG. This module is deprecated after all!
+         - Removed dupe license block
 End Rem
+
+?Not bmxng
 
 Import brl.PolledInput
 Import pub.freejoy
@@ -90,3 +94,4 @@ G_LuaRegisterObject New TL_Keyboard,"Key"
 MKL_Version "GALE - GALE_Keyboard.bmx","15.09.02"
 MKL_Lic     "GALE - GALE_Keyboard.bmx","Mozilla Public License 2.0"
 
+?
