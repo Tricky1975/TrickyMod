@@ -264,7 +264,7 @@ Type TKthuraActor Extends TKthuraObject
 	'DebugLog "= Target   X: "+tx+" >> "+Floor(TX/Parent.BlockMapGridW)	
 	'DebugLog "= Target   Y: "+ty+" >> "+Floor(TY/Parent.BlockMapGridH)
 	?bmxng
-	Local p:PathFinderUnit = FindTheWay(Double(Floor(X/Parent.BlockMapGridW))	,Double(Floor(Y/Parent.BlockMapGridH))	,Double(Floor(TX/Parent.BlockMapGridW)),Double(Floor(TY/Parent.BlockMapGridH)))
+	Local p:PathFinderUnit = FindTheWay(Float(Floor(X/Parent.BlockMapGridW))	,Float(Floor(Y/Parent.BlockMapGridH))	,Float(Floor(TX/Parent.BlockMapGridW)),float(Floor(TY/Parent.BlockMapGridH)))
 	?Not bmxng
 	Local p:PathFinderUnit = FindTheWay(Floor(X/Parent.BlockMapGridW)		,Floor(Y/Parent.BlockMapGridH)		,Floor(TX/Parent.BlockMapGridW)		,Floor(TY/Parent.BlockMapGridH)		)
 	?
