@@ -16,6 +16,9 @@ End Rem
 ' 15.09.28 - Added boundary support
 ' 16.01.07 - Scaling support added
 ' 16.01.14 - Fixed an alpha bug that popped up if the last drawn object had an alpha value lower than 1
+' 16.06.05 - Support "Custom" object
+
+ 
 
 Strict
 IMPORT TRICKY_KTHURA.KTHURA_CORE

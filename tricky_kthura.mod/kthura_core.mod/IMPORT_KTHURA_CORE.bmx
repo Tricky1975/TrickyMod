@@ -26,6 +26,7 @@ End Rem
 ' 16.01.10 - Showing / hiding by label now supports the "*ALL*" parameter to handle everything regardless of label.
 ' 16.05.08 - Blockmap grid can now be read from object file. This in order to have better support for multi-maps.
 '          - Reading Blockmap grid is now deprecated for the settings file. I will still leave it in in order not to have to re-save all Star Story maps, but giant remakes of Kthura or ports to other languages will NOT support it.
+' 16.06.11 - Adapted for compatibility with BlitzMax NG
 
 
 Strict
@@ -1119,7 +1120,7 @@ For RL=EachIn Listfile(JCR_B(JCR,prefix+"Objects"))
 						O.Labels = SL[1]
 					Case "COLOR"
 						DL = SL[1].split(",")
-						If Len DL<3
+						If (Len DL)<3
 							KthuraWarning " Invalid color definition in line #"+cl+" >> "+L
 						Else
 							o.r = DL[0].toint()
