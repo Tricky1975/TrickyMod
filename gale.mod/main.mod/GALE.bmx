@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.05.16
+        Version: 16.06.12
 End Rem
 Strict
 
@@ -92,6 +92,7 @@ History:
 16.02.19 - Removal of "USING" (unless the GALE_USING var is set true) did work on single -- @USE, but not on -- @USEDIR. That has now been fixed.
 16.03.13 - Removed some outdated debug shit from the error handler
 16.03.13 - Compilation error in the serializer fixed. (Odd thing is... the Star Story project could NEVER have worked if this bug was for real. Still it popped up in the JCR6 scripting utilities. Do you believe in ghosts? I do now. Well it's fixed, and let's hope my ghost doesn't change it again.
+16.06.12 - Adapted for Brucey's BlitzMax NG (the declaration for new GALE_Sys was not right anyway)
 End Rem
 
 Import brl.map
@@ -125,7 +126,7 @@ Incbin  "Serializer.lua"
 'Info Preset Definitions			' BLD: The next definitions can not be set/unset with DEFINE or UNDEF, but IF and ELSEIF can see them and they can be used there.<p><table><tr><td>$WINDOWS</td><td>Set if running from Windows</td></tr><tr><td>$MAC</td><td>Set if running from MacOS X</td></tr><tr><td>$MACOS</td><td>Alias for $MAC</td></tr><tr><td>$LINUX</td><td>Set if running from Linux</td></tr><tr><td>$DEBUGBUILD</td><td>Set if you happen to use the debug build of the engine</td><tr><td>$RELEASEBUILD</td><td>Set if you use the release build of your engine</td><tr><td>$LITTLEENDIAN</td><td>Set if processor uses LittleEndian</td><tr><td>$BIGENDIAN</td><td>Set if your processor uses BigEndian</td></tr><tr><td>$X86</td><td>Set if you have use and X86 processor (Intel or compatible)</td></tr><tr><td>$PPC</td><td>Set if you use a PowerPC processor</td></tr></table>
 
 
-MKL_Version "GALE - GALE.bmx","16.05.16"
+MKL_Version "GALE - GALE.bmx","16.06.12"
 MKL_Lic     "GALE - GALE.bmx","Mozilla Public License 2.0"
 
 
@@ -1262,7 +1263,7 @@ Rem
 bbdoc: Allows direct access to the Sys object for Lua from BlitzBasic, in case such action is required :)
 End Rem
 Global GALE_Sys:TJBC_Sys = New TJBC_sys
-GALE_Register New GALE_Sys,"Sys"
+GALE_Register GALE_Sys,"Sys"
 'GALE.MaxLua4GALE.G_LuaRegisterObject TJBC_Sys,"Sys"
 
 
