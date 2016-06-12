@@ -262,8 +262,12 @@ Type TKthuraActor Extends TKthuraObject
 	'DebugLog "= Original X: "+ x+" >> "+Floor(X/Parent.BlockMapGridW)	
 	'DebugLog "= Original Y: "+ y+" >> "+Floor(Y/Parent.BlockMapGridH)	
 	'DebugLog "= Target   X: "+tx+" >> "+Floor(TX/Parent.BlockMapGridW)	
-	'DebugLog "= Target   Y: "+ty+" >> "+Floor(TY/Parent.BlockMapGridH)	
+	'DebugLog "= Target   Y: "+ty+" >> "+Floor(TY/Parent.BlockMapGridH)
+	?bmxng
+	Local p:PathFinderUnit = FindTheWay(Double(Floor(X/Parent.BlockMapGridW))	,Double(Floor(Y/Parent.BlockMapGridH))	,Double(Floor(TX/Parent.BlockMapGridW)),Double(Floor(TY/Parent.BlockMapGridH)))
+	?Not bmxng
 	Local p:PathFinderUnit = FindTheWay(Floor(X/Parent.BlockMapGridW)		,Floor(Y/Parent.BlockMapGridH)		,Floor(TX/Parent.BlockMapGridW)		,Floor(TY/Parent.BlockMapGridH)		)
+	?
 	If p.success
 		walkspot=0
 		FoundPath = p
