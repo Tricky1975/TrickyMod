@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.02.29
+        Version: 16.06.12
 End Rem
 
 ' 16.02.29 - Initial (yeah, Feb 29, the day we only have once in the four years, hehe).
@@ -43,7 +43,7 @@ Type TUI_GDrvListbox Extends TUI_Gadgetdriver
 	SetImageFont g.font
 	Local a:Double = GetAlpha()
 	' Box
-	SetAlpha G.alpha
+	SetAlpha Float(G.alpha)
 	SetColor G.colors[(g.enabled And enabled),0],G.colors[(g.enabled And enabled),1],G.colors[(g.enabled And enabled),2]
 	DrawRect G.x+px,G.y+py,g.w,g.h
 	SetAlpha a
