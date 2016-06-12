@@ -3,7 +3,7 @@ Rem
 Module GALE.MaxLua4Gale
 
 Created by: Jeroen P. Broks
-(c) Jeroen P. Broks 2012-2015
+(c) Jeroen P. Broks 2012-2016
 
 Released under the terms of the MOZILLA public license!
 
@@ -21,7 +21,7 @@ ModuleInfo "General: This is just a modified version of MaxLua intended to use i
 ModuleInfo "Copyright: Blitz Research Ltd."
 ModuleInfo "License: zlib/pnglib"
 ModuleInfo "Version: 1.00"
-ModuleInfo "GALE Version: 15.10"
+ModuleInfo "GALE Version: 16.06"
 
 
 

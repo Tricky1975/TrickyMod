@@ -1,74 +1,20 @@
-Rem
-  Modified_MaxLua.bmx
-  Modified MaxLua
-  version: 15.09.02
-  Copyright (C) 2010, 2015 Blitz Research Ltd.
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-  1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
-End Rem'
-Rem
-/*
-	
-	
-	
-	
-	
-	(c) , , All rights reserved
-	
-		This program is free software: you can redistribute it and/or modify
-		it under the terms of the GNU General Public License as published by
-		the Free Software Foundation, either version 3 of the License, or
-		(at your option) any later version.
-		
-		This program is distributed in the hope that it will be useful,
-		but WITHOUT ANY WARRANTY; without even the implied warranty of
-		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-		GNU General Public License for more details.
-		You should have received a copy of the GNU General Public License
-		along with this program.  If not, see <http://www.gnu.org/licenses/>.
-		
-	Exceptions to the standard GNU license are available with Jeroen's written permission given prior 
-	to the project the exceptions are needed for.
-*/
 
-
-Version: 13.12.26
-
-End Rem
-Rem
-
-This is a modified version of MaxLua for full compatibility in GALE.
-Modifications done by Tricky.
-If you want to use this version of MaxLua in stead of the original, be my guest, you can turn it back into a module by replacing all "obboc:" back into "obbdoc" and by removing the ' before all lines starting with 'Module or 'ModuleInfo.
-
-The original copyright remains with Blitz Research Ltd and has been released under the zlib license (which allowed me to pull this "stunt")
-
-end rem
 Strict
 
+'Rem
+'bbdoc: System/Lua scripting
+'End Rem
 Rem
-obbdoc: System/Lua scripting
+Module BRL.MaxLua
+
+ModuleInfo "Version: 1.00"
+ModuleInfo "License: zlib/libpng"
+ModuleInfo "Copyright: Blitz Research Ltd"
+ModuleInfo "Author: Mark Sibly"
+ModuleInfo "Modserver: BRL"
+
+ModuleInfo "History: 1.00"
 End Rem
-'Module BRL.MaxLua
-
-'ModuleInfo "Version: 1.00"
-'ModuleInfo "License: zlib/libpng"
-'ModuleInfo "Copyright: Blitz Research Ltd"
-'ModuleInfo "Author: Mark Sibly"
-'ModuleInfo "Modserver: BRL"
-
-'ModuleInfo "History: 1.00"
 
 Import Pub.Lua
 Import BRL.Reflection
@@ -114,7 +60,8 @@ Private
 
 Function LuaDumpErr()
 	WriteStdout "ERROR~n"
-	JBC_CatchLuaError = lua_tostring( LuaState(),-1 )
+	'WriteStdout lua_tostring( LuaState(),-1 )
+    JBC_CatchLuaError = lua_tostring( LuaState(),-1 )
 	WriteStdout JBC_CatchluaError
 End Function
 
@@ -127,7 +74,7 @@ Function Invoke( L:Byte Ptr )
 		Case IntTypeId, ShortTypeId, ByteTypeId, LongTypeId
 			args[i]=String.FromInt( lua_tointeger( L,i+1 ) )
 		Case FloatTypeId
-			args[i]=String.FromFloat( lua_tonumber( L,i+1 ) )
+			args[i]=String.FromFloat( Float(lua_tonumber( L,i+1 )) )
 		Case DoubleTypeId
 			args[i]=String.FromDouble( lua_tonumber( L,i+1 ) )
 		Case StringTypeId
@@ -201,7 +148,7 @@ Function NewIndex( L:Byte Ptr )
 		Case IntTypeId, ShortTypeId, ByteTypeId, LongTypeId
 			fld.SetInt obj,lua_tointeger( L,3 )
 		Case FloatTypeId
-			fld.SetFloat obj,lua_tonumber( L,3 )
+			fld.SetFloat obj,Float(lua_tonumber( L,3 ))
 		Case DoubleTypeId
 			fld.SetDouble obj,lua_tonumber( L,3 )
 		Case StringTypeId
@@ -303,12 +250,12 @@ Global DummyLuaSuper:TDummyLuaSuper=New TDummyLuaSuper
 Public
 
 Rem
-obbdoc: A Lua 'object'
+bbdoc: A Lua 'object'
 End Rem
 Type TLuaObject
 
 	Rem
-	obbdoc: Initialize the lua object
+	bbdoc: Initialize the lua object
 	about:
 	Sets the object's class and super object.
 	
@@ -357,7 +304,7 @@ Type TLuaObject
 	End Method
 
 	Rem
-	obbdoc: Invoke an object method
+	bbdoc: Invoke an object method
 	about:
 	@name should refer to a function within the object's classes' source code.
 	End Rem
@@ -406,7 +353,7 @@ Type TLuaObject
 	End Method
 	
 	Rem
-	obbdoc: Create a lua object
+	bbdoc: Create a lua object
 	about:
 	Once a lua object has been created, object methods (actually lua functions defined in the 
 	class) can be invoked using the #Invoke method.
@@ -433,7 +380,7 @@ Type TLuaObject
 End Type
 
 Rem
-obbdoc: A Lua 'class'
+bbdoc: A Lua 'class'
 about:
 The TLuaClass type is used to contain lua source code.
 
@@ -444,7 +391,7 @@ End Rem
 Type TLuaClass
 
 	Rem
-	obbdoc: Get source code
+	bbdoc: Get source code
 	returns: The lua source code for the class.
 	End Rem
 	Method SourceCode$()
@@ -452,7 +399,7 @@ Type TLuaClass
 	End Method
 
 	Rem
-	obbdoc: Set source code
+	bbdoc: Set source code
 	about:
 	Sets the class source code.
 
@@ -470,7 +417,7 @@ Type TLuaClass
 	End Method
 
 	Rem
-	obbdoc: Create a lua class
+	bbdoc: Create a lua class
 	returns: A new lua class object.
 	about:
 	The @source parameter must be valid Lua source code, and should contain a series of one or
@@ -487,11 +434,7 @@ Type TLuaClass
 
 		If Not _chunk
 			If luaL_loadstring( L,_source ) 
-			  ' Modification by Tricky
-				JBC_CatchLuaError = "Error loading script :~n" + lua_tostring( L,-1 ) + "~n"
-				WriteStdout JBC_CatchLuaError
-				' End Modification
-			  'WriteStdout "Error loading script :~n" + lua_tostring( L,-1 ) + "~n"
+				WriteStdout "Error loading script :~n" + lua_tostring( L,-1 ) + "~n"
 				lua_pop L,1
 				Return False
 			EndIf
@@ -513,10 +456,10 @@ Type TLuaClass
 End Type
 
 Rem
-obbdoc: Register a global object with Lua
+bbdoc: Register a global object with Lua
 about:
 Once registered, the object can be accessed from within Lua scripts using the @name identifer.
 End Rem
-Function G_LuaRegisterObject( obj:Object,name$ )
+Function LuaRegisterObject( obj:Object,name$ )
 	lua_registerobject LuaState(),obj,name
 End Function
