@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.01.03
+        Version: 16.06.12
 End Rem
 
 ' History
@@ -30,6 +30,7 @@ End Rem
 ' 15.10.16 - Added advanced rectangle support
 ' 15.11.01 - Collision support
 ' 16.01.03 - Just a little code clean up, but no big changes
+' 16.06.12 - Adapted for NG
 
 Strict
 
@@ -48,7 +49,7 @@ Import Gale.M2D
 'Import "../../JCR/UseJCR.bmx"
 
 
-MKL_Version "GALE - GALE_Image.bmx","16.01.03"
+MKL_Version "GALE - GALE_Image.bmx","16.06.12"
 MKL_Lic     "GALE - GALE_Image.bmx","Mozilla Public License 2.0"
 
 Rem
@@ -413,7 +414,7 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
 	End Method
 	
 	Method SetAlpha(Alpha:Double) ' BLD: Sets the alpha value (if the blend is in Alpha setting)
-	BRL.Max2D.SetAlpha Alpha
+	BRL.Max2D.SetAlpha Float(Alpha)
 	End Method
 
 	Method SetAlphaPC(Alpha) ' BLD: Sets the alpha value in a scale from 1 till 100 (floats and doubles are not always carried over from Lua too well, so this function will have to suffice).
