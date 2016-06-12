@@ -18,4 +18,9 @@ Rem
   3. This notice may not be removed or altered from any source distribution.
 End Rem
 ' This file is just the glue file to a modified version of MaxLua
+
+?bmxng
+Import  "Modified_MaxLua_NG.bmx"
+?Not bmxng
 Import  "Modified_MaxLua.bmx"
+?

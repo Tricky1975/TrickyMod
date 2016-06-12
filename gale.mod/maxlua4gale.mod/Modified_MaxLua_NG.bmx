@@ -460,6 +460,6 @@ bbdoc: Register a global object with Lua
 about:
 Once registered, the object can be accessed from within Lua scripts using the @name identifer.
 End Rem
-Function LuaRegisterObject( obj:Object,name$ )
+Function g_LuaRegisterObject( obj:Object,name$ )
 	lua_registerobject LuaState(),obj,name
 End Function
