@@ -419,7 +419,7 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
 
 	Method SetAlphaPC(Alpha) ' BLD: Sets the alpha value in a scale from 1 till 100 (floats and doubles are not always carried over from Lua too well, so this function will have to suffice).
 	Local AlphaP:Double = Double(Alpha) / 100.0
-	BRL.Max2D.SetAlpha AlphaP
+	BRL.Max2D.SetAlpha Float(AlphaP)
 	End Method
 	
 	Method SetAlphaBlend() ' BLD: Set the blend setting to ALPHABLEND
@@ -449,7 +449,7 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
 	Method ScalePC(W,H) ' BLD: Scale based on percent. So 100 is actual size and 50 is half size.<p>This is very handy when working on a project that should work on both PPC and x86, as the scaling was serious trouble there. This is a BlitzMax issue which never got fixed, and from this API it seems to work. Don't ask me why.
 		Local WW:Double = Double(W)/100
 		Local HH:Double = Double(H)/100
-		SetScale WW,HH
+		SetScale Float(WW),Float(HH)
 		End Method
 		
 	Method GrabScreen$(imgid$="") ' BLD: Grab the entire screen and return the image code. If you set the <i>imgid</i> parameter this code will be used.
