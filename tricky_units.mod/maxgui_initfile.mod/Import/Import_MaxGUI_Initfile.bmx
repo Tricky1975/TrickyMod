@@ -1,8 +1,8 @@
 Rem
   MaxGUI_InitFile.bmx
   
-  version: 15.11.19
-  Copyright (C) 2015 Jeroen P. Broks
+  version: 16.06.12
+  Copyright (C) 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -23,7 +23,7 @@ Import tricky_units.MKL_Version
 Import maxgui.drivers
 Import tricky_units.initfile2
 
-MKL_Version "Tricky's Units - MaxGUI_InitFile.bmx","15.11.19"
+MKL_Version "Tricky's Units - MaxGUI_InitFile.bmx","16.06.12"
 MKL_Lic     "Tricky's Units - MaxGUI_InitFile.bmx","ZLib License"
 
 Private
@@ -44,7 +44,7 @@ Function MGIF_GetFromIni(Ini:TIni)
 Local K$,G:TGadget
 Local V$,c
 For K=EachIn MapKeys(gadgetmap)
-	G = tgadget(MapValueForKey(gadgetmap,k))
+	G = TGadget(MapValueForKey(gadgetmap,k))
 	Select GadgetClass(G)
 		Case gadget_button
 			SetButtonState G,Ini.C(K).toint()
@@ -58,9 +58,17 @@ For K=EachIn MapKeys(gadgetmap)
 					Next
 				EndIf
 		Case gadget_slider
+			?bmxng
+			SetSliderValue G,ini.C(K).toint()
+			?Not bmxng
 			SetSliderValue G,ini.C(K).todouble()
+			?
 		Case gadget_progbar
+			?bmxng
+			UpdateProgBar G,ini.C(K).toint()		
+			?Not bmxng
 			UpdateProgBar G,ini.C(K).todouble()		
+			?
 		Default
 			Print "Warning! Cannot handle gadgetclass "+GadgetClass(G)
 		End Select
@@ -84,7 +92,7 @@ Local ret:TIni = New TIni
 Local K$,G:TGadget
 Local V$,c
 For K=EachIn MapKeys(gadgetmap)
-	G = tgadget(MapValueForKey(gadgetmap,k))
+	G = TGadget(MapValueForKey(gadgetmap,k))
 	Select GadgetClass(G)
 		Case gadget_button
 			ret.d K,ButtonState(G)
