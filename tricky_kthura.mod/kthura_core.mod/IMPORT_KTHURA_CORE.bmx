@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.02.18
+        Version: 16.06.12
 End Rem
 
 ' 15.08.15 - First version considered in 'Alpha' (though earlier releases exist, this is where the project has been declared safe enough to use, though keep in mind that stuff may still be subject to change)
@@ -39,7 +39,7 @@ Import tricky_units.HotSpot
 Import tricky_units.Pathfinder
 Import tricky_units.serialtrim
 
-MKL_Version "Kthura Map System - Kthura_Core.bmx","16.02.18"
+MKL_Version "Kthura Map System - Kthura_Core.bmx","16.06.12"
 MKL_Lic     "Kthura Map System - Kthura_Core.bmx","Mozilla Public License 2.0"
 
 
@@ -264,7 +264,7 @@ Type TKthuraActor Extends TKthuraObject
 	'DebugLog "= Target   X: "+tx+" >> "+Floor(TX/Parent.BlockMapGridW)	
 	'DebugLog "= Target   Y: "+ty+" >> "+Floor(TY/Parent.BlockMapGridH)
 	?bmxng
-	Local p:PathFinderUnit = FindTheWay(Float(Floor(X/Parent.BlockMapGridW))	,Float(Floor(Y/Parent.BlockMapGridH))	,Float(Floor(TX/Parent.BlockMapGridW)),float(Floor(TY/Parent.BlockMapGridH)))
+	Local p:PathFinderUnit = FindTheWay(Float(Floor(X/Parent.BlockMapGridW))	,Float(Floor(Y/Parent.BlockMapGridH))	,Int(Floor(TX/Parent.BlockMapGridW)),int(Floor(TY/Parent.BlockMapGridH)))
 	?Not bmxng
 	Local p:PathFinderUnit = FindTheWay(Floor(X/Parent.BlockMapGridW)		,Floor(Y/Parent.BlockMapGridH)		,Floor(TX/Parent.BlockMapGridW)		,Floor(TY/Parent.BlockMapGridH)		)
 	?

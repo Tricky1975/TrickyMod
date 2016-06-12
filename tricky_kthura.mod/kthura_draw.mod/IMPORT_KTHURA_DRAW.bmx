@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.01.14
+        Version: 16.06.12
 End Rem
 
 ' 15.07.12 - First set release
@@ -17,6 +17,7 @@ End Rem
 ' 16.01.07 - Scaling support added
 ' 16.01.14 - Fixed an alpha bug that popped up if the last drawn object had an alpha value lower than 1
 ' 16.06.05 - Support "Custom" object
+' 16.06.11 - NG adeptions
 
  
 
@@ -26,7 +27,7 @@ Import brl.map
 Import brl.max2d
 Import tricky_units.MKL_Version
 
-MKL_Version "Kthura Map System - Kthura_Draw.bmx","16.01.14"
+MKL_Version "Kthura Map System - Kthura_Draw.bmx","16.06.12"
 MKL_Lic     "Kthura Map System - Kthura_Draw.bmx","Mozilla Public License 2.0"
 
 Rem
@@ -138,7 +139,11 @@ Type KTDrawDriver
 	End Method
 	
 	Method OAlpha(O:TKthuraObject)
+	?bmxng
+	SetAlpha Float(o.alpha)
+	?Not bmxng
 	SetAlpha O.alpha
+	?
 	End Method
 	
 	Method OGetTex(O:TKthuraObject)		
