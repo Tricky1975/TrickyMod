@@ -363,7 +363,11 @@ Type KTDrawActor Extends ktdrawdriver
 	If A.Cycle = A.Parent.Cycle Return
 	A.Cycle = A.Parent.Cycle
 	SetRotation A.Rotation
+	?bmxng
+	SetScale A.ScaleX/Float(1000),A.ScaleY/float(1000)
+	?Not bmxng
 	SetScale A.ScaleX/Double(1000),A.ScaleY/Double(1000)
+	?
 	Local I:TImage
 	Local ErrorText$ = "Ok!"
 	Local AcX,AcY
