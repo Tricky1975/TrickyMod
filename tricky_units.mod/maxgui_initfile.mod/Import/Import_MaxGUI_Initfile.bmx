@@ -18,6 +18,9 @@ Rem
   3. This notice may not be removed or altered from any source distribution.
 End Rem
 
+' 15.11.19 - Initial version
+' 16.06.12 - Adepted for BlitzNG
+
 Import brl.map
 Import tricky_units.MKL_Version
 Import maxgui.drivers
