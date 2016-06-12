@@ -49,13 +49,17 @@ Type TUI_GDrvUserInput Extends TUI_Gadgetdriver
 	tui_parentcoords G,px,py
 	G.h = TextHeight(G.Text)
 	?bmxng
-	SetAlpha Float(g.alpha
+	SetAlpha Float(g.alpha)
 	?Not bmxng
 	SetAlpha G.alpha
 	?
 	SetColor G.colors[(g.enabled And enabled),0],G.colors[(g.enabled And enabled),1],G.colors[(g.enabled And enabled),2]
 	DrawRect G.x+px,G.y+py,g.w,g.h
+	?Not bmxng
 	SetAlpha a
+	?bmxng
+	SetAlpha Float(a)
+	?
 	SetColor G.colors[(g.enabled And enabled)+2,0],G.colors[(g.enabled And enabled)+2,1],G.colors[(g.enabled And enabled)+2,2]
 	SetImageFont G.Font
 	g.dtext g.text+Cursor,G.X+PX,G.Y+PY
