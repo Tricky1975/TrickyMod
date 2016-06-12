@@ -16,45 +16,17 @@ Rem
   2. Altered source versions must be plainly marked as such, and must not be
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
-End Rem'
+End Rem
+
 Rem
-/*
-	
-	
-	
-	
-	
-	(c) , , All rights reserved
-	
-		This program is free software: you can redistribute it and/or modify
-		it under the terms of the GNU General Public License as published by
-		the Free Software Foundation, either version 3 of the License, or
-		(at your option) any later version.
-		
-		This program is distributed in the hope that it will be useful,
-		but WITHOUT ANY WARRANTY; without even the implied warranty of
-		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-		GNU General Public License for more details.
-		You should have received a copy of the GNU General Public License
-		along with this program.  If not, see <http://www.gnu.org/licenses/>.
-		
-	Exceptions to the standard GNU license are available with Jeroen's written permission given prior 
-	to the project the exceptions are needed for.
-*/
 
+This is a modified version of MaxLua For full compatibility in GALE.
+Modifications done by Tricky.
+If you want To use this version of MaxLua in stead of the original, be my guest, you can turn it back into a Module by replacing all "obboc:" back into "obbdoc" And by removing the ' before all lines starting with 'Module or 'ModuleInfo.
 
-Version: 13.12.26
+The original copyright remains with Blitz Research Ltd And has been released under the zlib license (which allowed me To pull this "stunt")
 
 End Rem
-Rem
-
-This is a modified version of MaxLua for full compatibility in GALE.
-Modifications done by Tricky.
-If you want to use this version of MaxLua in stead of the original, be my guest, you can turn it back into a module by replacing all "obboc:" back into "obbdoc" and by removing the ' before all lines starting with 'Module or 'ModuleInfo.
-
-The original copyright remains with Blitz Research Ltd and has been released under the zlib license (which allowed me to pull this "stunt")
-
-end rem
 Strict
 
 Rem

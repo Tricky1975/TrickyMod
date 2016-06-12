@@ -17,10 +17,5 @@ Rem
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 End Rem
-
 ' This file is just the glue file to a modified version of MaxLua
-
-?Not bmxng
 Import  "Modified_MaxLua.bmx"
-?bmxng
-Import  "Modified_MaxLua_NG.bmx"
