@@ -10,6 +10,8 @@ Rem
 End Rem
 
 ' 16.02.29 - Initial (yeah, Feb 29, the day we only have once in the four years, hehe).
+' 16.06.12 - Adepted to BlitzMax NG
+'          - Fixed incorrect items declaration
 
 
 Rem
@@ -46,7 +48,7 @@ Type TUI_GDrvListbox Extends TUI_Gadgetdriver
 	SetAlpha Float(G.alpha)
 	SetColor G.colors[(g.enabled And enabled),0],G.colors[(g.enabled And enabled),1],G.colors[(g.enabled And enabled),2]
 	DrawRect G.x+px,G.y+py,g.w,g.h
-	SetAlpha a
+	SetAlpha Float(a)
 	SetColor G.colors[(g.enabled And enabled)+2,0],G.colors[(g.enabled And enabled)+2,1],G.colors[(g.enabled And enabled)+2,2]
 	' Viewport
 	Local ovpx,ovpy,ovpw,ovph,oox#,ooy#
@@ -60,7 +62,7 @@ Type TUI_GDrvListbox Extends TUI_Gadgetdriver
 	Local it$	
 	If Not G.Items
 		Print "WARNING! Item list was Null"
-		G.Items = New G.Items
+		G.Items = New TList ' G.Items (how the hell did the original BlitzMax ever that this?)
 		EndIf	
 	For it = EachIn G.Items
 		ii:+1
