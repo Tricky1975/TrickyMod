@@ -1,37 +1,26 @@
 Rem
         GALE_JCR6API.bmx
-	(c) 2015 Jeroen Petrus Broks.
+	(c) 2015, 2016 Jeroen Petrus Broks.
 	
 	This Source Code Form is subject to the terms of the 
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.02
-End Rem
-Rem
-
-	(c) 2015 Jeroen Petrus Broks.
-	
-	This Source Code Form is subject to the terms of the 
-	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
-	distributed with this file, You can obtain one at 
-	http://mozilla.org/MPL/2.0/.
-
-
-Version: 15.08.05
-
+        Version: 16.06.12
 End Rem
 
 'History:
 '15.04.29 - Intiial version
 '15.07.12 - No problems in Mac, but Windows does not work well. I really hate Microsoft for causing me this trouble. Anyway, I'm trying to get this to work in Windows now.
+'16.06.12 - Removed dupe license block
+'         - NG compatibility
 
 Strict
 Import JCR6.JCR6MAIN
 Import gale.Main
 Import tricky_units.TrickyReadString
 
-MKL_Version "GALE - GALE_JCR6API.bmx","15.09.02"
+MKL_Version "GALE - GALE_JCR6API.bmx","16.06.12"
 MKL_Lic     "GALE - GALE_JCR6API.bmx","Mozilla Public License 2.0"
 
 Rem
@@ -93,7 +82,7 @@ Type TJCR6API ' BLD: Object JCR6\nContains an object for reading JCR6 from Lua i
 		EndIf
 	If Not MJ GALE_Error("JCR6 could not access the JCR file or the requested entry!",["Entry,"+Entry])
 	Local BT:TStream = JCR_ReadFile(MJ,Entry)
-	Local ret$ = ReadString(BT,StreamSize(BT))
+	Local ret$ = ReadString(BT,Int(StreamSize(BT)))
 	CloseStream BT
 	Return ret	
 	End Method
