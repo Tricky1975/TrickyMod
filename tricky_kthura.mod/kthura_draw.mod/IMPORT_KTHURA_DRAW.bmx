@@ -268,7 +268,11 @@ Type ktDrawObstacle Extends ktdrawdriver
 		
 	Method Draw(O:TKthuraObject,x,y)
 	SetRotation O.Rotation
+	?bmxng
+	SetScale O.ScaleX/Float(1000),O.ScaleY/Float(1000)
+	?Not bmxg	
 	SetScale O.ScaleX/Double(1000),O.ScaleY/Double(1000)
+	?
 	If o.FrameSpeed>=0 And o.Frames
 		O.FrameSpeedTicker:+1
 		If O.FrameSpeedTicker>O.Framespeed O.Frame:+1 O.FrameSpeedTicker=0
