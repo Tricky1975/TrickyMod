@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.06.23
+        Version: 16.06.11
 End Rem
 
 ' History:
@@ -45,7 +45,7 @@ Import tricky_units.MD5 ' Will be used for verification purposes. Full support f
 Import "-ldl"
 ?
 
-MKL_Version "JCR6 - JCR6_Main.bmx","16.06.23"
+MKL_Version "JCR6 - JCR6_Main.bmx","16.06.11"
 MKL_Lic     "JCR6 - JCR6_Main.bmx","Mozilla Public License 2.0"
 
 Private
@@ -106,7 +106,7 @@ Function ALT_READSTRING$(BT:TStream)
 Local L = ReadInt(BT)
 'Return ReadString(BT,L)
 Local ret$
-For i=0 Until L ret$=Chr(ReadByte(Bt)) Next
+For Local i=0 Until L ret$=Chr(ReadByte(Bt)) Next
 Return ret
 End Function
 
