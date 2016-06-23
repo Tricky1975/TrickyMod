@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.06.11
+        Version: 16.06.23
 End Rem
 
 ' History:
@@ -45,7 +45,7 @@ Import tricky_units.MD5 ' Will be used for verification purposes. Full support f
 Import "-ldl"
 ?
 
-MKL_Version "JCR6 - JCR6_Main.bmx","16.06.11"
+MKL_Version "JCR6 - JCR6_Main.bmx","16.06.23"
 MKL_Lic     "JCR6 - JCR6_Main.bmx","Mozilla Public License 2.0"
 
 Private
@@ -73,7 +73,7 @@ Global JCR6CheckChange = True
 Private
 Function JI_BankSize(A:TBank) ' NG needs this
 	Return Int(BankSize(A))
-End function
+End Function
 
 Public
  
@@ -104,7 +104,10 @@ Type ConfigMap Extends TMap
 Private
 Function ALT_READSTRING$(BT:TStream)
 Local L = ReadInt(BT)
-Return ReadString(BT,L)
+'Return ReadString(BT,L)
+Local ret$
+For i=0 Until L ret$=Chr(ReadByte(Bt)) Next
+Return ret
 End Function
 
 Function ALT_WRITESTRING(BT:TStream,S$)
@@ -366,7 +369,7 @@ Type DRV_JCR6 Extends DRV_JCRDIR
 	Local Tag$
 	While ttag<>255
 		'Print "typetag = "+ttag
-		Tag = alt_readstring(BT)
+		Tag = operating(BT)
 		'Print "Tag:"+Tag
 		Select ttag
 			Case 1	ret.Config.def("$"+Tag,Alt_readstring(bt))
