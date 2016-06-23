@@ -104,10 +104,16 @@ Type ConfigMap Extends TMap
 Private
 Function ALT_READSTRING$(BT:TStream)
 Local L = ReadInt(BT)
-'Return ReadString(BT,L)
+Return ReadString(BT,L)
+Rem
 Local ret$
-For Local i=0 Until L ret$=Chr(ReadByte(Bt)) Next
+Print "String requested: "+L
+For Local i=0 Until L 
+	Print i+"/"+L+">"+ret
+	ret$=Chr(ReadByte(Bt)) 
+	Next
 Return ret
+End Rem
 End Function
 
 Function ALT_WRITESTRING(BT:TStream,S$)
@@ -369,7 +375,7 @@ Type DRV_JCR6 Extends DRV_JCRDIR
 	Local Tag$
 	While ttag<>255
 		'Print "typetag = "+ttag
-		Tag = readbyte(BT)
+		Tag = ReadString(BT)
 		'Print "Tag:"+Tag
 		Select ttag
 			Case 1	ret.Config.def("$"+Tag,Alt_readstring(bt))
