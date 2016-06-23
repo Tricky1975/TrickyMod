@@ -369,7 +369,7 @@ Type DRV_JCR6 Extends DRV_JCRDIR
 	Local Tag$
 	While ttag<>255
 		'Print "typetag = "+ttag
-		Tag = operating(BT)
+		Tag = readbyte(BT)
 		'Print "Tag:"+Tag
 		Select ttag
 			Case 1	ret.Config.def("$"+Tag,Alt_readstring(bt))
