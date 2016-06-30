@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.06.11
+        Version: 16.06.30
 End Rem
 
 ' History:
@@ -45,7 +45,7 @@ Import tricky_units.MD5 ' Will be used for verification purposes. Full support f
 Import "-ldl"
 ?
 
-MKL_Version "JCR6 - JCR6_Main.bmx","16.06.11"
+MKL_Version "JCR6 - JCR6_Main.bmx","16.06.30"
 MKL_Lic     "JCR6 - JCR6_Main.bmx","Mozilla Public License 2.0"
 
 Private
@@ -375,7 +375,7 @@ Type DRV_JCR6 Extends DRV_JCRDIR
 	Local Tag$
 	While ttag<>255
 		'Print "typetag = "+ttag
-		Tag = ReadString(BT)
+		Tag = alt_ReadString(BT)
 		'Print "Tag:"+Tag
 		Select ttag
 			Case 1	ret.Config.def("$"+Tag,Alt_readstring(bt))
