@@ -1,7 +1,7 @@
 Rem
   BlackHole.bmx
   
-  version: 16.06.12
+  version: 16.07.30
   Copyright (C) 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -105,6 +105,15 @@ ElseIf String(PictureList) Or TMap(PictureList)
 			ListAddLast Lst,LoadImage(JCR_B(MJ,F))
 			EndIf
 		Next
+ElseIf TJCRDir(picturelist)
+	For Local f$ = EachIn MapKeys(TJCRDir(picturelist).entries)
+		Local up$=Upper(path)
+		Local i:TImage
+		If Prefixed(f,up)
+			i = LoadImage(JCR_B(TJCRDir(picturelist),f))
+			If i ListAddLast lst,i
+		EndIf
+	next
 Else
 	Print "WARNING: InitBlackHole got a type for a picturelist that it can't handle."
 	Return
