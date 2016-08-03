@@ -275,7 +275,7 @@ For CL=EachIn Consolelines
 	Next
 Print "DOUBLECONSOLE2>> 1>"+T1+";  2>"+T2
 If ConsoleLogBT
-	WriteLine ConsoleLogBT,"<tr valign=top><td col style='font-family: Courier; color:"+HTMCol(R1,G1,B1)+"'>"+HTMTxt(T1)+"</td><td col style='font-family: Courier; color:"+HTMCol(R2,G2,B2)+"'>"+HTMTxt(T2)+"</td></tr>"
+	WriteLine ConsoleLogBT,"<tr valign=top><td  style='font-family: Courier; color:"+HTMCol(R1,G1,B1)+"'>"+HTMTxt(T1)+"</td><td style='font-family: Courier; color:"+HTMCol(R2,G2,B2)+"'>"+HTMTxt(T2)+"</td></tr>"
 	EndIf
 SetImageFont f	
 End Function
