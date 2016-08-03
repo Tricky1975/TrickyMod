@@ -59,7 +59,7 @@ Type LUA_GameVar  ' BLD: Object Var\n\nThis contains the variables of the game.\
 	End Method
 	
 	Method Key$(i) ' BLD: Returns the key on a specific index (better not to use this function unless you know what you are doing, though it's not likely to cause any harm with this) :)
-	Return varkey(i)
+	Return VarKey(i)
 	End Method
 	
 	Method Got(k$) ' BLD: returns 1 if a var exists 0 if it doesn't.
@@ -102,6 +102,7 @@ Type LUA_GameVar  ' BLD: Object Var\n\nThis contains the variables of the game.\
 				ret:+v[i]
 			Next
 		End Select
+	Return Ret	
 	End Method					
 
 	End Type
