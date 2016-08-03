@@ -1,7 +1,7 @@
 Rem
   Console.bmx
   
-  version: 16.06.11
+  version: 16.08.03
   Copyright (C) 2012, 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -35,7 +35,7 @@ Import tricky_units.MKL_Version
 
 Import "Console/font.bmx"
 
-MKL_Version "Tricky's Units - Console.bmx","16.06.11"
+MKL_Version "Tricky's Units - Console.bmx","16.08.03"
 MKL_Lic     "Tricky's Units - Console.bmx","ZLib License"
 
 ?Not bmxng
@@ -224,7 +224,7 @@ For CL=EachIn Consolelines
 	Next
 Print "DOUBLECONSOLE>>> 1>"+T1+";  2>"+T2
 If ConsoleLogBT
-	WriteLine ConsoleLogBT,"<tr valign=top><td col style='font-family: Courier; color:"+HTMCol(R1,G1,B1)+"'>"+HTMTxt(T1)+"</td><td col style='font-family: Courier; color:"+HTMCol(R2,G2,B2)+"'>"+HTMTxt(T2)+"</td></tr>"
+	WriteLine ConsoleLogBT,"<tr valign=top><td  style='font-family: Courier; color:"+HTMCol(R1,G1,B1)+"'>"+HTMTxt(T1)+"</td><td  style='font-family: Courier; color:"+HTMCol(R2,G2,B2)+"'>"+HTMTxt(T2)+"</td></tr>"
 	EndIf
 SetImageFont f	
 End Function
