@@ -181,6 +181,7 @@ local allowed = "qwertyuiopasdfghjklzxcvbnmmQWERTYUIOPASDFGHJKLZXCVBNM 123456788
 local i
 local safe = true
 local alt = ""
+assert ( type(s)=='string' , "safestring expects a string not a "..type(s) )
 for i=1,len(s) do
     safe = safe and (findstuff(allowed,mid(s,i,1))~=nil)
     alt = alt .."\\"..string.byte(mid(s,i,1),1)
@@ -246,8 +247,8 @@ __serialize_work = __serialize_work or {
                                  end 
                                    
              }    
-local work = __serialize_work                      
-local letsgo = work[type(vvalue)] or function() Sys.Error("Unknown type. Cannot serialize","Variable,"..vname..";Type Value,"..type(vvalue)) end
+--local work = __serialize_work                      
+local letsgo = __serialize_work[type(vvalue)] or function() Sys.Error("Unknown type. Cannot serialize","Variable,"..vname..";Type Value,"..type(vvalue)) end
 local i
 for i=1,tabs or 0 do ret = ret .."       " end
 ret = ret .. vname .." = "..letsgo() 
