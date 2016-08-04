@@ -10,7 +10,7 @@ Rem
 End Rem
 
 
-Strict
+Strict '
 
 
 Rem
