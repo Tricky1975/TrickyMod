@@ -21,6 +21,7 @@ History:
          - Each libary has been put in here as well   
 16.02.25 - Len with 'nil' value will not lead to crashes any more               
 16.03.13 - "then" expected? I wonder how the script worked before if this was an issue all the time? Not possible, but yet it suddenly happened. I believe in ghosts now. Anyway, it's fixed!
+16.08.04 - Optimized Lua script for serializing as it was SLOOOOW!!!
 
 ]]
 
@@ -210,7 +211,7 @@ end
 -- Serializing
 function TRUE_SERIALIZE(vname,vvalue,tabs,noenter)
 local ret = ""
-local work = {
+__serial_work = __serial_work or {
                 ["nil"]        = function() return "nil" end,
                 ["number"]     = function() return vvalue end,
                 ["function"]   = function() Sys.Error("Cannot serialize functions") return "ERROR" end,
@@ -244,7 +245,8 @@ local work = {
                                  return ret  
                                  end 
                                    
-             }             
+             }    
+local work = __serial_work                      
 local letsgo = work[type(vvalue)] or function() Sys.Error("Unknown type. Cannot serialize","Variable,"..vname..";Type Value,"..type(vvalue)) end
 local i
 for i=1,tabs or 0 do ret = ret .."       " end

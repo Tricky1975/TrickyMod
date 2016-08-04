@@ -93,6 +93,7 @@ History:
 16.03.13 - Removed some outdated debug shit from the error handler
 16.03.13 - Compilation error in the serializer fixed. (Odd thing is... the Star Story project could NEVER have worked if this bug was for real. Still it popped up in the JCR6 scripting utilities. Do you believe in ghosts? I do now. Well it's fixed, and let's hope my ghost doesn't change it again.
 16.06.12 - Adapted for Brucey's BlitzMax NG (the declaration for new GALE_Sys was not right anyway)
+16.08.04 - Optimized Lua script for serializing as it was SLOOOOW!!!
 End Rem
 
 Import brl.map
