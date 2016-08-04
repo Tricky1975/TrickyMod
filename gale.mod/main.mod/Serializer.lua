@@ -213,12 +213,12 @@ end
 function TRUE_SERIALIZE(vname,vvalue,tabs,noenter)
 local ret = ""
 __serialize_work = __serialize_work or {
-                ["nil"]        = function() return "nil" end,
-                ["number"]     = function() return vvalue end,
-                ["function"]   = function() Sys.Error("Cannot serialize functions") return "ERROR" end,
-                ["string"]     = function() return "\""..safestring(vvalue).."\"" end,
-                ["boolean"]    = function() return ({[true]="true",[false]="false"})[vvalue] end,
-                ["table"]      = function()
+                ["nil"]        = function(vvalue) return "nil" end,
+                ["number"]     = function(vvalue) return vvalue end,
+                ["function"]   = function(vvalue) Sys.Error("Cannot serialize functions") return "ERROR" end,
+                ["string"]     = function(vvalue) return "\""..safestring(vvalue).."\"" end,
+                ["boolean"]    = function(vvalue) return ({[true]="true",[false]="false"})[vvalue] end,
+                ["table"]      = function(vvalue)
                                  local titype
                                  local tindex = {
                                                    ["number"]     = function(v) return v end,
@@ -248,7 +248,7 @@ __serialize_work = __serialize_work or {
                                    
              }    
 --local work = __serialize_work                      
-local letsgo = __serialize_work[type(vvalue)] or function() Sys.Error("Unknown type. Cannot serialize","Variable,"..vname..";Type Value,"..type(vvalue)) end
+local letsgo = __serialize_work[type(vvalue)] or function(vvalue) Sys.Error("Unknown type. Cannot serialize","Variable,"..vname..";Type Value,"..type(vvalue)) end
 local i
 for i=1,tabs or 0 do ret = ret .."       " end
 ret = ret .. vname .." = "..letsgo() 
