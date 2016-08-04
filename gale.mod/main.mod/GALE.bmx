@@ -8,6 +8,7 @@ Rem
 	http://mozilla.org/MPL/2.0/.
         Version: 16.06.12
 End Rem
+
 Strict
 
 Rem

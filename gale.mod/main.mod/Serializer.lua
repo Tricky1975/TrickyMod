@@ -210,8 +210,6 @@ end
 
 
 -- Serializing
-function TRUE_SERIALIZE(vname,vvalue,tabs,noenter)
-local ret = ""
 __serialize_work = __serialize_work or {
                 ["nil"]        = function(vvalue) return "nil" end,
                 ["number"]     = function(vvalue) return vvalue end,
@@ -247,6 +245,8 @@ __serialize_work = __serialize_work or {
                                  end 
                                    
              }    
+function TRUE_SERIALIZE(vname,vvalue,tabs,noenter)
+local ret = ""
 --local work = __serialize_work                      
 local letsgo = __serialize_work[type(vvalue)] or function(vvalue) Sys.Error("Unknown type. Cannot serialize","Variable,"..vname..";Type Value,"..type(vvalue)) end
 local i
