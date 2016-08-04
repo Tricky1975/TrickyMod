@@ -64,9 +64,10 @@ Type LSounds Extends TMap   ' BLD: Object Audio\nThis object contains all kinds 
 	PlaySound LoadSound(JCR_B(AudioJCR,Sound))
 	End Method
 	
-	Method Load$(Sound$,Assign$="")  ' BLD: Loads and audio file and stores it in slot 'Assign'. If the Assign value is not set the computer will assign it to a slot and return the slot name. When the load is not succesful "*ERROR*" is returned.
+	Method Load$(Sound$,Assign$="",OnlyNew=0)  ' BLD: Loads and audio file and stores it in slot 'Assign'. If the Assign value is not set the computer will assign it to a slot and return the slot name. When the load is not succesful "*ERROR*" is returned. OnlyNew only works if you made an actual assign. In that case the sound is only loaded if nothing was loaded on that address before.
 	Local Ret$=Assign
 	If Not AudioJCR Throw "Audio.QuickSound('"+Sound+"'): Can't extract from empty JCR"
+	If ret And onlynew And MapContains(Self,ret) Return ret
 	If Not Ret 
 		Repeat
 			Ret = "AU"+Rand(0,MilliSecs())
