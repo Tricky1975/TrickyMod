@@ -248,6 +248,7 @@ __serialize_work = __serialize_work or {
 function TRUE_SERIALIZE(vname,vvalue,tabs,noenter)
 local ret = ""
 --local work = __serialize_work   
+--[[
 if type(vvalue=='string') then                   
 	Console.Write('Serialize("'..vname..'","'..vvalue..'",'..(tabs or 0)..')')
 elseif type(vvalue=='number' then
@@ -255,7 +256,7 @@ elseif type(vvalue=='number' then
 else
 	Console.Write('Serialize("'..vname..'",<'..type(vvalue)..'>,'..(tabs or 0)..')')
 endif	
-	
+]]	
 local letsgo = __serialize_work[type(vvalue)] or function(vvalue) Sys.Error("Unknown type. Cannot serialize","Variable,"..vname..";Type Value,"..type(vvalue)) end
 local i
 for i=1,tabs or 0 do ret = ret .."       " end
