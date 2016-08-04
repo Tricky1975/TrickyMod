@@ -252,7 +252,7 @@ Console.Write('Serialize("'..vname..'",<'..type(vvalue)..'>,'..(tabs or 0)..')')
 local letsgo = __serialize_work[type(vvalue)] or function(vvalue) Sys.Error("Unknown type. Cannot serialize","Variable,"..vname..";Type Value,"..type(vvalue)) end
 local i
 for i=1,tabs or 0 do ret = ret .."       " end
-ret = ret .. vname .." = "..letsgo() 
+ret = ret .. vname .." = "..letsgo(vvalue) 
 if not noenter then ret = ret .."\n" end
 return ret
 end
