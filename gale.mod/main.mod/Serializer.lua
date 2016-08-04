@@ -211,7 +211,7 @@ end
 -- Serializing
 function TRUE_SERIALIZE(vname,vvalue,tabs,noenter)
 local ret = ""
-__serial_work = __serial_work or {
+__serialize_work = __serialize_work or {
                 ["nil"]        = function() return "nil" end,
                 ["number"]     = function() return vvalue end,
                 ["function"]   = function() Sys.Error("Cannot serialize functions") return "ERROR" end,
@@ -246,7 +246,7 @@ __serial_work = __serial_work or {
                                  end 
                                    
              }    
-local work = __serial_work                      
+local work = __serialize_work                      
 local letsgo = work[type(vvalue)] or function() Sys.Error("Unknown type. Cannot serialize","Variable,"..vname..";Type Value,"..type(vvalue)) end
 local i
 for i=1,tabs or 0 do ret = ret .."       " end

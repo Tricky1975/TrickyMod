@@ -96,6 +96,7 @@ History:
 16.08.04 - Optimized Lua script for serializing as it was SLOOOOW!!!
 End Rem
 
+
 Import brl.map
 Import brl.retro
 Import brl.system
