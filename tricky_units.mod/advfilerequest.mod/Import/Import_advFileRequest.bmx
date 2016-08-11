@@ -13,6 +13,7 @@ Strict
 
 Import maxgui.drivers
 Import brl.linkedlist
+Import brl.eventqueue
 Import tricky_units.initfile2
 Import tricky_units.Dirry
 Import tricky_units.StringMap
