@@ -23,7 +23,7 @@ End Rem
  
 
 Strict
-IMPORT TRICKY_KTHURA.KTHURA_CORE
+Import TRICKY_KTHURA.KTHURA_CORE
 Import brl.map
 Import brl.max2d
 Import tricky_units.MKL_Version
@@ -207,8 +207,8 @@ Type KTDrawZones Extends ktdrawdriver
 Type KTDrawTiledArea Extends ktdrawdriver
 
 	Method OGetTex(O:TKthuraObject)		
-	Local ts = textures.autoreblockmap
-	texture.autoreblockmap = 0
+	Local ts = o.parent.textures.autoreblockmap
+	o.parent.textures.autoreblockmap = 0
 	If Not O.texturefile
 		If Not O.loadtried KthuraWarning O.kind+" #"+O.IDNum+" has no valid texture file tied to it!"
 		O.loadtried = True
@@ -219,7 +219,7 @@ Type KTDrawTiledArea Extends ktdrawdriver
 	o.Frames = Len(o.textureimage.pixmaps)
 	o.FrameWidth = ImageWidth(o.textureimage)
 	o.Frameheight = ImageHeight(o.textureimage)
-	texture.autoreblockmap = ts
+	o.parent.textures.autoreblockmap = ts
 	End Method
 	
 	Method Draw(O:TKthuraObject,x,y)
