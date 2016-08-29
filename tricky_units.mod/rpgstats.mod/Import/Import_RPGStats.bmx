@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.08.28
+        Version: 16.08.29
 End Rem
 
 Rem
@@ -37,7 +37,7 @@ Import tricky_units.TrickyReadString
 Import tricky_units.jcr6stringmap
 Import brl.max2d
 
-MKL_Version "Tricky's Units - RPGStats.bmx","16.08.28"
+MKL_Version "Tricky's Units - RPGStats.bmx","16.08.29"
 MKL_Lic     "Tricky's Units - RPGStats.bmx","Mozilla Public License 2.0"
 
 Private
@@ -572,14 +572,14 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	If Not separator separator=";"
 	Local ret$
 	Local ch:RPGCharacter = grabchar(char)
-	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.ListHas","char,"+char,"list,"+list,"itemstring,"+itemstring])
+	If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.ListOut","char,"+char,"list,"+list,"separator,"+separator])
 	If Not MapContains(ch.lists,list) Return
 	For Local i$ = EachIn ch.list(list)
 		If ret ret:+";"
 		ret:+i
 	Next
 	Return ret
-	End method		
+	End Method		
 	
 	Method DataFields$(char$) ' BLD: Returns a string with all stringdata fieldnames separated by ";". It is recommended to use a split function to split it (if you don't have one I'm sure you can find some scripts for that if you google for that).
 	Local ret$
