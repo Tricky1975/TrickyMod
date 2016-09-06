@@ -484,6 +484,17 @@ Global OJBC_Lua_Image:TJBC_Lua_Image = New TJBC_Lua_Image
 G_LuaRegisterObject OJBC_Lua_Image,"Image"
 
 
+Type LUA_SCREEN ' BLD: Object Screen Some Screen readout stuff
+	Method Width()	' BLD: Width of the screen
+		Return GraphicsWidth() 
+	End Method
+	Method Height()	 ' BLD: Height of the screen
+		Return GraphicsHeight() 
+	End Method	 
+End Type
+
+G_LuaRegisterObject New LUA_SCREEN,"Screen"
+
 
 
 ' Some internal functions
