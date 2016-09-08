@@ -7,7 +7,7 @@ Rem
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
         Version: 15.09.02
-End Rem
+End Rem '--
 Rem
 
 	(c) 2015 Jeroen Petrus Broks.
@@ -65,7 +65,7 @@ Type TGALEINPUT ' BLD: Object INP\nInput functions. (This only works on engines 
 	Return KD[a]
 	End Method
 	
-	Method KeyH(a) ' BLD: Was the key hit at the mometn of the last grab?
+	Method KeyH(a) ' BLD: Was the key hit at the moment of the last grab?
 	Return KH[a]
 	End Method
 	
@@ -80,6 +80,8 @@ Type TGALEINPUT ' BLD: Object INP\nInput functions. (This only works on engines 
 	Method JoyD(a) ' BLD: was the joypad button held on the moment of the last grab?
 	Return JD[a]
 	End Method
+	
+	Method JoyH(a) ' BLD Was the joypard button pressed on the moment of the last grab?
 	
 	Method MouseX() ' BLD: Mouse X (does not require grab)
 	Return brl.polledinput.MouseX()
