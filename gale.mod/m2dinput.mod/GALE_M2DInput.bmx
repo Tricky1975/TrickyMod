@@ -82,6 +82,8 @@ Type TGALEINPUT ' BLD: Object INP\nInput functions. (This only works on engines 
 	End Method
 	
 	Method JoyH(a) ' BLD Was the joypard button pressed on the moment of the last grab?
+		Return Jh[a]
+	End method
 	
 	Method MouseX() ' BLD: Mouse X (does not require grab)
 	Return brl.polledinput.MouseX()
