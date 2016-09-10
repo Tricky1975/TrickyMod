@@ -272,6 +272,10 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
 		brl.max2d.GetViewport GVP_X,GVP_Y,GVP_W,GVP_H
 	End Method	
 	
+	Method GetAlphaPC() ' BLD: Get the alpha value in %
+		Return GetAlpha()*100
+	End Method
+	
 
 	Method Rotate(D) ' BLD: Set rotation by <i>D</i> degrees. Remains until script is over or another Image.Rotation is called.
 	SetRotation D
