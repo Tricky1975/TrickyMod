@@ -265,6 +265,13 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
 	Local r:RgbColor = HsvToRgb(h)
 	color r.r,r.g,r.b
 	End Method
+	
+	Field GVP_X,GVP_Y,GVP_W,GVP_H
+	
+	Method GetViewport() ' BLD: Gets the Viewport data. The data will be stored in Image.GVP_X, Image.GVP_Y, Image.GVP_W, Image.GVP_H
+		brl.max2d.GetViewport GVP_X,GVP_Y,GVP_W,GVP_H
+	End Method	
+	
 
 	Method Rotate(D) ' BLD: Set rotation by <i>D</i> degrees. Remains until script is over or another Image.Rotation is called.
 	SetRotation D
