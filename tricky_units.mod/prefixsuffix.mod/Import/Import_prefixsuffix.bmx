@@ -72,14 +72,14 @@ Rem
 bbdoc: Returns the string with the prefix removed
 End Rem
 Function RemPrefix$(Fullstring$,Prefix$,caseinsensitive=False)
-	If Prefixed(fullstring,prefix,caseinsensitive) Return Right(fullstring,Len(fullstring)-Len(prefix)) Else fullstring
+	If Prefixed(fullstring,prefix,caseinsensitive) Return Right(fullstring,Len(fullstring)-Len(prefix)) Else Return fullstring
 End Function	
 
 Rem
 bbdoc: Returns the string with the prefix removed
 End Rem
 Function RemSuffix$(Fullstring$,suffix$,caseinsensitive=False)
-	If Prefixed(fullstring,sufix,caseinsensitive) Return Left(fullstring,Len(fullstring)-Len(suffix)) Else fullstring
+	If Prefixed(fullstring,sufix,caseinsensitive) Return Left(fullstring,Len(fullstring)-Len(suffix)) Else Return fullstring
 End Function	
 
 
