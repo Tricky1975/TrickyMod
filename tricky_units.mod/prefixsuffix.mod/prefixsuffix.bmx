@@ -7,7 +7,7 @@ Moduleinfo "NameModule: Tricky's Units - prefixsuffix"
 Moduleinfo "Author: Jeroen Broks aka Tricky"
 ModuleInfo "Copyright: &copy; Jeroen Petrus Broks"
 Moduleinfo "License: zLib license"
-moduleinfo "Last update: 11 Jun 2016"
+moduleinfo "Last update: 16 Sep 2016"
 
 
 

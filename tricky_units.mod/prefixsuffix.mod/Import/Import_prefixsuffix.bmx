@@ -1,7 +1,7 @@
 Rem
   prefixsuffix.bmx
   
-  version: 16.06.11
+  version: 16.09.16
   Copyright (C) 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -68,5 +68,20 @@ Function Suffixed(Fullstring$,Suffix$,caseinsensitive=False)
 Return truecheck(Fullstring,suffix,caseinsensitive,1)
 End Function
 
-MKL_Version "Tricky's Units - prefixsuffix.bmx","16.06.11"
+Rem
+bbdoc: Returns the string with the prefix removed
+End Rem
+Function RemPrefix$(Fullstring$,Prefix$,caseinsensitive=False)
+	If Prefixed(fullstring,prefix,caseinsensitive) Return Right(fullstring,Len(fullstring)-Len(prefix)) Else fullstring
+End Function	
+
+Rem
+bbdoc: Returns the string with the prefix removed
+End Rem
+Function RemSuffix$(Fullstring$,suffix$,caseinsensitive=False)
+	If Prefixed(fullstring,sufix,caseinsensitive) Return Left(fullstring,Len(fullstring)-Len(suffix)) Else fullstring
+End Function	
+
+
+MKL_Version "Tricky's Units - prefixsuffix.bmx","16.09.16"
 MKL_Lic     "Tricky's Units - prefixsuffix.bmx","ZLib License"
