@@ -1,7 +1,7 @@
 Rem
   prefixsuffix.bmx
   
-  version: 16.09.16
+  version: 16.09.24
   Copyright (C) 2015, 2016 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -83,5 +83,5 @@ Function RemSuffix$(Fullstring$,suffix$,caseinsensitive=False)
 End Function	
 
 
-MKL_Version "Tricky's Units - prefixsuffix.bmx","16.09.16"
+MKL_Version "Tricky's Units - prefixsuffix.bmx","16.09.24"
 MKL_Lic     "Tricky's Units - prefixsuffix.bmx","ZLib License"
