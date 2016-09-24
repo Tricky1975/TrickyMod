@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.09.24
+        Version: 16.06.30
 End Rem
 
 ' History:
@@ -45,7 +45,7 @@ Import tricky_units.MD5 ' Will be used for verification purposes. Full support f
 Import "-ldl"
 ?
 
-MKL_Version "JCR6 - JCR6_Main.bmx","16.09.24"
+MKL_Version "JCR6 - JCR6_Main.bmx","16.06.30"
 MKL_Lic     "JCR6 - JCR6_Main.bmx","Mozilla Public License 2.0"
 
 Private
@@ -1003,7 +1003,7 @@ Type TJCRCreate Extends TJCRDir
 	Local FullK$,K$,TK$
 	Local e:TJCREntry
 	For Local EntryName$=EachIn(MapKeys(Self.entries))
-	        If JCRCREATECHAT Print "FAT.WRITEENTRYDATA(~q"+entryName+"~q")"
+	        If JCRCREATECHAT Print "FAT.WRITEENTRYDATA(~q"+entryName+"~q)"
 		WriteByte BTF,1
 		Alt_writestring BTF,"FILE"
 		e = TJCREntry(MapValueForKey(Self.entries,entryname))
