@@ -19,8 +19,7 @@ Rem
 End Rem
 Strict
 Import brl.linkedlist
-Import brl.map
-Import tricky_units.MKL_Version
+Import tricky_units.StringMap
 
 MKL_Version "Tricky's Units - MapListCopy.bmx","16.09.24"
 MKL_Lic     "Tricky's Units - MapListCopy.bmx","ZLib License"
@@ -42,6 +41,13 @@ about: I do know there's a MapCopy() function in the Map itself, but the documen
 End Rem
 Function CopyMapContent:TMap(Map:TMap)
 	Local ret:TMap=New TMap
-	For Local key:Object = EachIn MapKeys(map) MapInsert key,MapValueForKey(map,key) Next
+	For Local key:Object = EachIn MapKeys(map) MapInsert ret,key,MapValueForKey(map,key) Next
+	Return ret
+End Function
+
+
+Function CopyStringMap:StringMap(Map:StringMap)
+	Local ret:StringMap=New StringMap
+	For Local key:Object = EachIn MapKeys(map) MapInsert ret,key,MapValueForKey(map,key) Next
 	Return ret
 End Function
