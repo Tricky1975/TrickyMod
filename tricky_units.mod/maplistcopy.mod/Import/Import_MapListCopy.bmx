@@ -19,8 +19,11 @@ Rem
 End Rem
 Strict
 Import brl.linkedlist
-Import brl.maplist
+Import brl.map
+Import tricky_units.MKL_Version
 
+MKL_Version "Tricky's Units - MapListCopy.bmx","16.09.24"
+MKL_Lic     "Tricky's Units - MapListCopy.bmx","ZLib License"
 
 Rem
 bbdoc: Creates a new Tlist, but with the same elements as the original
@@ -41,4 +44,4 @@ Function CopyMapContent:TMap(Map:TMap)
 	Local ret:TMap=New TMap
 	For Local key:Object = EachIn MapKeys(map) MapInsert key,MapValueForKey(map,key) Next
 	Return ret
-End function
+End Function
