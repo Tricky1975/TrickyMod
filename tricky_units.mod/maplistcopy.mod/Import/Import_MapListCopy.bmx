@@ -30,7 +30,7 @@ End Rem
 Function CopyList:TList(original:TList)
 	Local ret:TList= New TList
 	For Local O:Object=EachIn original
-		ListAddLast ret
+		ListAddLast ret,o
 	Next
 	Return ret
 End Function
