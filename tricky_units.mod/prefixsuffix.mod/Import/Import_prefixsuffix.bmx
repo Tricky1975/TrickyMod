@@ -79,7 +79,7 @@ Rem
 bbdoc: Returns the string with the prefix removed
 End Rem
 Function RemSuffix$(Fullstring$,suffix$,caseinsensitive=False)
-	If Prefixed(fullstring,sufix,caseinsensitive) Return Left(fullstring,Len(fullstring)-Len(suffix)) Else Return fullstring
+	If Prefixed(fullstring,suffix,caseinsensitive) Return Left(fullstring,Len(fullstring)-Len(suffix)) Else Return fullstring
 End Function	
 
 
