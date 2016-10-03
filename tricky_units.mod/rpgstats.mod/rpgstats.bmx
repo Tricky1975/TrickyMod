@@ -7,7 +7,7 @@ Moduleinfo "NameModule: Tricky's Units - RPGStats"
 Moduleinfo "Author: Jeroen Broks aka Tricky"
 ModuleInfo "Copyright: &copy; Jeroen Petrus Broks"
 Moduleinfo "License: Mozilla Public License 2.0"
-moduleinfo "Last update: 29 Aug 2016"
+moduleinfo "Last update: 03 Oct 2016"
 
 
 

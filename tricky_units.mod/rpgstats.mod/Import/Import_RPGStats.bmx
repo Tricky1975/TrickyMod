@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.08.29
+        Version: 16.10.03
 End Rem
 
 Rem
@@ -37,7 +37,7 @@ Import tricky_units.TrickyReadString
 Import tricky_units.jcr6stringmap
 Import brl.max2d
 
-MKL_Version "Tricky's Units - RPGStats.bmx","16.08.29"
+MKL_Version "Tricky's Units - RPGStats.bmx","16.10.03"
 MKL_Lic     "Tricky's Units - RPGStats.bmx","Mozilla Public License 2.0"
 
 Private
@@ -233,7 +233,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Return st.value + (st.modifier * Int(nomod=0))
 	End Method
 	
-	Method SafeStat(Char$,Stat$,nomod=0) ' BLD: Returns the atat value, but would the normal Stat() method crash the game if a character or stat does not exist, this one will then return 0
+	Method SafeStat(Char$,Stat$,nomod=0) ' BLD: Returns the stat value, but would the normal Stat() method crash the game if a character or stat does not exist, this one will then return 0
 	Local ch:RPGCharacter = grabchar(char)
 	If Not ch Return 0
 	If ch.stat(stat) Return Self.Stat(char,stat,nomod) Else Return 0	
@@ -326,7 +326,17 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 		EndIf
 	td.d=str
 	End Method
-	
+
+	Method DataExists(char$,key$) ' BLD: Returns 1 if exists, and 0 if it doesn't
+	Local ch:RPGCharacter = grabchar(char)
+	If Not ch 
+		GALE_Error("Character doesn't exist",["F,RPGChar.SetData","char,"+char])
+		EndIf	
+	'Local td:trpgdata 
+	Return MapContains(ch.strData,key) 
+	End method
+
+		
 	Method NewData(Char$,key$,str$) ' BLD: If a data field does not exist, create it and define it. If it already exists, ignore it! (1 is returned if a definition took place, 0 is returned when no definition is done)
 	Local ch:RPGCharacter = grabchar(char)
 	If Not ch 
