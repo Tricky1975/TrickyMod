@@ -117,6 +117,15 @@ Type TKthuraObject
 	Field ScaleY=1000
 	
 	Rem
+	bbdoc: Sets alpha rate of an object in a scale of 0 to 1000.
+	about: This method has specifically been set up for hooking up Kthura objects to Lua. The communication between BlitzMax and Lua is downright terrible when it comes to non-integer numbers. This method has to end that.
+	End Rem
+	Method SetAlpha(alphavalue)
+		If alphavalue>1000 Then alphavalue=1000 ElseIf alphavalue<0 Then alphavalue=0
+		alpha = Double(alphavalue) / Double(1000)
+	End Method
+	
+	Rem
 	bbdoc: Moves an object.
 	about: You won't have to remap the drawmaps as that will happen automatically, however rebuilding the blockmap can be in order, which will happen here. If you want to make multiple movements you can turn it off, but then it will have to happen after the last change you make or the way the player can or cannot walk to will act very strangely.
 	End Rem
