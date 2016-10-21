@@ -125,6 +125,10 @@ Type TKthuraObject
 		alpha = Double(alphavalue) / Double(1000)
 	End Method
 	
+	Method GetAlpha()
+	       Return Floor(alpha*1000)
+	End method
+	
 	Rem
 	bbdoc: Moves an object.
 	about: You won't have to remap the drawmaps as that will happen automatically, however rebuilding the blockmap can be in order, which will happen here. If you want to make multiple movements you can turn it off, but then it will have to happen after the last change you make or the way the player can or cannot walk to will act very strangely.
