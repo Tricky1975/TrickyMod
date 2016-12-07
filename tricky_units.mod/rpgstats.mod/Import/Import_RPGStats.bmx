@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.11.03
+        Version: 16.12.07
 End Rem
 
 Rem
@@ -37,7 +37,7 @@ Import tricky_units.TrickyReadString
 Import tricky_units.jcr6stringmap
 Import brl.max2d
 
-MKL_Version "Tricky's Units - RPGStats.bmx","16.11.03"
+MKL_Version "Tricky's Units - RPGStats.bmx","16.12.07"
 MKL_Lic     "Tricky's Units - RPGStats.bmx","Mozilla Public License 2.0"
 
 Private
@@ -371,6 +371,13 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Method Data$(c$,k$) Return GetData(C,K) End Method
 	
 	Method DelStat(char$,stat$) ' BLD: Delete a stat in a character
+		Local ch:RPGCharacter = grabchar(char)
+		If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.DelStat","char,"+char,"Stat:"+stat])
+		If Not MapContains(ch.stats,stat) 
+			print "DelStat: WARNING! Character "+char+" does not HAVE a stat named: "+stat
+			Return
+		EndIf
+		MapRemove ch.stats,stat
 	End Method
 	
 	Method DelData(char$,key$) ' BLD: Delete data in a character	
