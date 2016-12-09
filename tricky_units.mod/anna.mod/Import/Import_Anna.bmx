@@ -26,7 +26,7 @@ Public
 
 	Function Anna_Request:StringMap(query$)
 		Local l:TList = Listfile(site+"?"+query)
-		If Not l return
+		If Not l Return
 		Local reading,closed
 		Local ret:StringMap = New StringMap		
 		Local prev$,dta$[],ln$
@@ -54,3 +54,14 @@ Public
 		Return ret
 	End Function
 	
+	
+	Function Anna_RequestPlain$(query$)
+		Local l:TList = Listfile(site+"?"+query)
+		If Not l Return
+		Local ret$ = ""
+		For Local ln$=EachIn l 
+			If ret ret:+"~n"
+			ret:+ln
+		Next
+		Return ret
+	End function	
