@@ -324,7 +324,7 @@ Function afr_RequestFile:String(caption$,dir$="",filter$="",save=False,AllowUnix
 							If FileType(TextFieldText(afr_nme)) Or Confirm("File exists? Overwrite?") 
 								HideGadget afr_win 
 								Return TextFieldText(afr_nme)								
-							endif	
+							EndIf	
 						EndIf	
 					Case afr_adf
 						If ListContains(ini.list("Fav"),wdir)
