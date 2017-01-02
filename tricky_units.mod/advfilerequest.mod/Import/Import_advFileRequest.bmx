@@ -308,7 +308,7 @@ Function afr_RequestFile:String(caption$,dir$="",filter$="",save=False,AllowUnix
 										If Confirm("File exists? Overwrite?") Return TextFieldText(afr_nme)
 									Else	
 										Return TextFieldText(afr_nme)
-									End	
+									Endif
 								Case "D" wdir = wdir+slash+mcont.value(sf)
 								         SetDir wdir,AllowUnixHidden
 							End Select
