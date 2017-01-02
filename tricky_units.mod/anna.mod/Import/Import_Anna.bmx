@@ -64,4 +64,4 @@ Public
 			ret:+ln
 		Next
 		Return ret
-	End function	
+	End Function	

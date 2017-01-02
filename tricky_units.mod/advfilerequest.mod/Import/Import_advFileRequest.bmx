@@ -1,12 +1,12 @@
 Rem
         advFileRequest.bmx
-	(c) 2016 Jeroen Petrus Broks.
+	(c) 2016, 2017 Jeroen Petrus Broks.
 	
 	This Source Code Form is subject to the terms of the 
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.08.11
+        Version: 17.01.02
 End Rem
 Strict
 
@@ -293,21 +293,27 @@ Function afr_RequestFile:String(caption$,dir$="",filter$="",save=False,AllowUnix
 				End Select
 			Case event_gadgetaction
 				Select e_source
-					Case afr_ok
+					'Case afr_ok
 					Case afr_fls,afr_ok
 						If SelectedGadgetItem(afr_fls)=-1
 							SetGadgetText afr_nme,""
-						Else	
+						ElseIf save=0 Or e_source<>afr_ok
 							Local sf$=GadgetItemText(afr_fls,SelectedGadgetItem(afr_fls))
 							Select Chr(sf[0])
 								Case "F" 
 									SetGadgetText afr_nme,wdir+slash+mcont.value(sf); 
 									HideGadget afr_win
 									SaveIni inifile,ini
-									Return TextFieldText(afr_nme)
+									If save And TextFieldText(afr_nme)
+										If Confirm("File exists? Overwrite?") Return TextFieldText(afr_nme)
+									Else	
+										Return TextFieldText(afr_nme)
+									End	
 								Case "D" wdir = wdir+slash+mcont.value(sf)
 								         SetDir wdir,AllowUnixHidden
-							End Select							
+							End Select
+						ElseIf save=1
+							If Confirm("File exists? Overwrite?") Return TextFieldText(afr_nme)								
 						EndIf	
 					Case afr_adf
 						If ListContains(ini.list("Fav"),wdir)

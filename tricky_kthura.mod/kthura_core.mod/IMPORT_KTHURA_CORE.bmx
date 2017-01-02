@@ -117,7 +117,7 @@ Type TKthuraObject
 	Field ScaleX=1000
 	Field ScaleY=1000
 	
-	Method TexS( IS(I:TGadget) )
+	Method TexS( IS(I:TImage) )
 	        Local o:TKthuraObject = Self
 		If Not parent Return -3
 		If Not Texturefile Return -2
