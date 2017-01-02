@@ -296,8 +296,11 @@ Function afr_RequestFile:String(caption$,dir$="",filter$="",save=False,AllowUnix
 					'Case afr_ok
 					Case afr_fls,afr_ok
 						If Save=1 And TextFieldText(afr_nme) And e_source=afr_ok
-							If FileType(TextFieldText(afr_nme)
-								If Confirm("File exists? Overwrite?") HideGadget afr_win Return TextFieldText(afr_nme)
+							If FileType(TextFieldText(afr_nme))
+								If Confirm("File exists? Overwrite?") 
+									HideGadget afr_win 
+									Return TextFieldText(afr_nme)
+								EndIf	
 							EndIf	
 						ElseIf SelectedGadgetItem(afr_fls)=-1
 							SetGadgetText afr_nme,""
@@ -318,9 +321,10 @@ Function afr_RequestFile:String(caption$,dir$="",filter$="",save=False,AllowUnix
 								         SetDir wdir,AllowUnixHidden
 							End Select
 						ElseIf save=1
-							If Confirm("File exists? Overwrite?") 
-							HideGadget afr_win 
-							Return TextFieldText(afr_nme)								
+							If FileType(TextFieldText(afr_nme)) Or Confirm("File exists? Overwrite?") 
+								HideGadget afr_win 
+								Return TextFieldText(afr_nme)								
+							endif	
 						EndIf	
 					Case afr_adf
 						If ListContains(ini.list("Fav"),wdir)
