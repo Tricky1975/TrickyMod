@@ -992,7 +992,7 @@ For CFile = EachIn RunList
 				End Select
 			EndIf		
 			EndIf
-		If Left(Line,11)="-- @USERAW" And Dok
+		If Left(RLine,11)="-- @USERAW" And Dok
 			Local RawFile$ = Trim(Right(RLine,Len(RLine)-11))
 			Rfile = "RAW:"+RawFile
 			addrawfile JCR,RawFile,RFile
