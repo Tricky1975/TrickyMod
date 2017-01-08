@@ -103,12 +103,13 @@ End Rem
 Type TScriptBase ' BLD: Object MS\nThis object contains the manager for the multiscripter
 
      Field Debug = False
+     Field MSReturn$ ' BLD: You can use this value to make MS.Run() return a value as a string.
 
     Rem
 	bbdoc: True is a script is found. False if not.
 	End Rem
-    Method ContainsScript(tag$) ' BLD: Returns 1 if a script is there on that entry, or false if there's not.
-	Return MapContains(map,Upper(tag))
+	Method ContainsScript(tag$) ' BLD: Returns 1 if a script is there on that entry, or false if there's not.
+		Return MapContains(map,Upper(tag))
 	End Method
 	
 	Rem
@@ -145,7 +146,8 @@ Type TScriptBase ' BLD: Object MS\nThis object contains the manager for the mult
 	Rem
 	bbdoc: Runs a script. If the second parameter is not given, it will automatically run the function called "main". The 3rd parameter should contain the function paramters in one string separated by ";". Please note, this function only accepts strings, so if you send numbers be sure you convert them to numbers in your called function! From BlitzMax you may also want to use GALE_MS_Run in stead!
 	End Rem
-	Method Run(Tag$,f$="main",p$="",separator$=";") ' BLD: Runs a script. If the second parameter is not given, it will automatically run the function called "Main". The 3rd parameter should contain the function paramters in one string separated by ";". Please note, this function only accepts strings, so if you send numbers be sure you convert them to numbers in your called function!
+	Method Run:String(Tag$,f$="main",p$="",separator$=";") ' BLD: Runs a script. If the second parameter is not given, it will automatically run the function called "Main". The 3rd parameter should contain the function paramters in one string separated by ";". Please note, this function only accepts strings, so if you send numbers be sure you convert them to numbers in your called function!
+	MSReturn = ""
 	Local fn$=f
 	Local pr:String[]
 	Local sep$ = ";"
@@ -161,15 +163,20 @@ Type TScriptBase ' BLD: Object MS\nThis object contains the manager for the mult
 	Local gs:TLua = GALE_GetScript(Tag)
 	If Not gs GALE_Error "MS.Run(~q"+Tag+"~q,~q"+f+"~q,~q"+p+"~q): Called non-existent script"
 	gs.Run fn,pr
+	Return MSReturn
 	End Method
 	
 	Rem
 	bbdoc: Loads and runs a script, but only if the script has not been loaded before. 
 	about: I set this one up, in order to allow you to load the script on the moment they are first called. My Star Story game took great advantage of this possibility
 	End Rem
-	Method LN_Run(Tag$,File$,f$="main",p$="",separator$=";") ' BLD: Loads and runs a script, but only if the script has not been loaded before. <p>I set this one up, in order to allow you to load the script on the moment they are first called. My Star Story game took great advantage of this possibility
+	Method LN_Run:String(Tag$,File$,f$="main",p$="",separator$=";") ' BLD: Loads and runs a script, but only if the script has not been loaded before. <p>I set this one up, in order to allow you to load the script on the moment they are first called. My Star Story game took great advantage of this possibility
 	LoadNew Tag,File
-	Run tag,f,p,separator
+	Return Run(tag,f,p,separator)
+	End Method
+	
+	Method RunInt(Tag$,f$="main",p$="",separator$=";") ' BLD: Same as MS.Run(), but this routine returns the value in MS.MSReturn as an integer.
+		Return run(tag,f,p,separator).toint()
 	End Method
 	
 	Rem
