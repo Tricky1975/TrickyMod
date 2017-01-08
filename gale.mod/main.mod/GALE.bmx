@@ -652,7 +652,9 @@ For CFile=EachIn Inclist
 				Case "@USE"
 					Ok=False
 				Case "@USERAW"
-					Ok=False	
+					Ok=False
+				Case "@USEDIR"
+					ok=False		
 				Case "@DEFINE"
 					L_Define(Directive[2],1,CFile)
 					Ok=False
@@ -992,7 +994,7 @@ For CFile = EachIn RunList
 				End Select
 			EndIf		
 			EndIf
-		If Left(RLine,11)="-- @USERAW" And Dok
+		If Left(RLine,11)="-- @USERAW " And Dok
 			Local RawFile$ = Trim(Right(RLine,Len(RLine)-11))
 			Rfile = "RAW:"+RawFile
 			AddRaw Mainlist,RawFile,RFile
