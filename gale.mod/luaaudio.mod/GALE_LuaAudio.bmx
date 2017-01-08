@@ -84,6 +84,10 @@ Type LSounds Extends TMap   ' BLD: Object Audio\nThis object contains all kinds 
 		EndIf
 	End Method
 	
+	Method Have(sound$) ' BLD: Returns 1 if a sound effect is loaded to that spot, and returns 0 if not
+		Return MapContains(Self,sound)
+	End Method
+		
 	Method LoadLoop$(Sound$,Assign$="")  ' BLD: Loads and audio file and stores it in slot 'Assign'. When played back the loaded sound will loop. If the Assign value is not set the computer will assign it to a slot and return the slot name.
 	Local Ret$=Assign
 	If Not AudioJCR Throw "Audio.QuickSound('"+Sound+"'): Can't extract from empty JCR"

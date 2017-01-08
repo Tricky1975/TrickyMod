@@ -97,12 +97,14 @@ History:
 16.03.13 - Compilation error in the serializer fixed. (Odd thing is... the Star Story project could NEVER have worked if this bug was for real. Still it popped up in the JCR6 scripting utilities. Do you believe in ghosts? I do now. Well it's fixed, and let's hope my ghost doesn't change it again.
 16.06.12 - Adapted for Brucey's BlitzMax NG (the declaration for new GALE_Sys was not right anyway)
 16.08.04 - Optimized Lua script for serializing as it was SLOOOOW!!!
+17.01.08 - Raw file support
 End Rem
 
 Import brl.map
 Import brl.retro
 Import brl.system
 Import jcr6.jcr6main
+Import jcr6.fileasjcr
 Import tricky_units.MKL_Version
 Import GALE.MaxLua4Gale
 Import tricky_units.Bye
@@ -649,6 +651,8 @@ For CFile=EachIn Inclist
 			Select Upper(Directive[1])
 				Case "@USE"
 					Ok=False
+				Case "@USERAW"
+					Ok=False	
 				Case "@DEFINE"
 					L_Define(Directive[2],1,CFile)
 					Ok=False
@@ -890,7 +894,7 @@ End Function
 
 
 
-'This function makes a list of all files that get included into the source with the '-- @USE' and '-- @USEDIR' directives
+'This function makes a list of all files that get included into the source with the '-- @USE', "-- @USERAW" and '-- @USEDIR' directives
 
 Function GALE_GetIncludes:TList(MainList:TJCRDir,Entry$)
 Local RetList:TList = New TList; ListAddLast RetList,Entry
@@ -988,6 +992,37 @@ For CFile = EachIn RunList
 				End Select
 			EndIf		
 			EndIf
+		If Left($Line,11)="-- @USERAW" And Dok
+			Local RawFile$ = Trim(Right(RLine,Len(RLine)-11))
+			Rfile = "RAW:"+RawFile
+			addrawfile JCR,RawFile,RFile
+			If GALE_USING And (Not GALE_SilentCompile) L_ConsoleWrite "= Using raw file:  "+RawFile		
+			If Not FileType(rawfile)==1 Then 
+				Local LL:TLuaLine = New TLuaLine
+				LO.Line = [LL]
+				LL.Line = RLine
+				LL.File = CFile
+				LL.LineNumber = CntLine
+   			   	GALE_JBC_Error LO,"Project Managine error","File requested by '-- @USERAW' could not be found -- "+RawFile,1
+				Return Null
+			EndIf
+			If (JCR And (Not MapContains(MainList.entries,RFile.ToUpper()))) Or ((Not JCR) And FileType(RFile)<>1)
+				Local LL:TLuaLine = New TLuaLine
+				LO.Line = [LL]
+				LL.Line = RLine
+				LL.File = CFile
+				LL.LineNumber = CntLine
+				GALE_JBC_Error(LO,"Project Managing Error","File requested by '-- @USERAW' could not be properly imported into the resource -- "+RawFile,1)
+				Return Null
+			EndIf
+			If ListContains(CapList,RFile.ToUpper())
+				L_ConsoleWrite "= Duplicate Include - Request ignored (Request done in: "+CFile+")",255,0,0
+			Else
+				ListAddLast TmpList,RFile
+				ListAddLast CapList,RFile.ToUpper()
+				ListAddLast RetList,RFile
+			EndIf
+		EndIf	
 		If Left(RLine,8)="-- @USE " And Dok
 			RFile = Trim(Right(RLine,Len(RLine)-8))
 			If Not ExtractDir(RFile) And LuaUseDir

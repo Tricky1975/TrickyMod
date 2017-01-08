@@ -223,7 +223,7 @@ __serialize_work = __serialize_work or {
                                                    ["boolean"]    = function(v) return ({[true]="true",[false]="false"})[v] end,
                                                    ["string"]     = function(v) return "\""..safestring(v).."\"" end
                                  }
-                                 local wrongindex = function() Sys.Error("Type "..titype.." can not be used as a table in serializing") end
+                                 local wrongindex = function() Sys.Error("Type "..titype.." can not be used as a table index in serializing") end
                                  local ret = "{"
                                  local k,v
                                  local result
