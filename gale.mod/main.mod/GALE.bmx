@@ -997,7 +997,7 @@ For CFile = EachIn RunList
 			Rfile = "RAW:"+RawFile
 			addrawfile JCR,RawFile,RFile
 			If GALE_USING And (Not GALE_SilentCompile) L_ConsoleWrite "= Using raw file:  "+RawFile		
-			If Not FileType(rawfile)==1 Then 
+			If Not FileType(rawfile)=1 Then 
 				Local LL:TLuaLine = New TLuaLine
 				LO.Line = [LL]
 				LL.Line = RLine
