@@ -995,7 +995,7 @@ For CFile = EachIn RunList
 		If Left(RLine,11)="-- @USERAW" And Dok
 			Local RawFile$ = Trim(Right(RLine,Len(RLine)-11))
 			Rfile = "RAW:"+RawFile
-			addrawfile JCR,RawFile,RFile
+			addraw JCR,RawFile,RFile
 			If GALE_USING And (Not GALE_SilentCompile) L_ConsoleWrite "= Using raw file:  "+RawFile		
 			If Not FileType(rawfile)=1 Then 
 				Local LL:TLuaLine = New TLuaLine
