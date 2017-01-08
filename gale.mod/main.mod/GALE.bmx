@@ -996,7 +996,8 @@ For CFile = EachIn RunList
 			Local RawFile$ = Trim(Right(RLine,Len(RLine)-11))
 			Rfile = "RAW:"+RawFile
 			AddRaw Mainlist,RawFile,RFile
-			If GALE_USING And (Not GALE_SilentCompile) L_ConsoleWrite "= Using raw file:  "+RawFile		
+'			If GALE_USING And (Not GALE_SilentCompile) 
+				L_ConsoleWrite "= Using raw file:  "+RawFile		
 			If Not FileType(rawfile)=1 Then 
 				Local LL:TLuaLine = New TLuaLine
 				LO.Line = [LL]
