@@ -1,14 +1,14 @@
 strict
 rem
-bbdoc: Module jcr6.jcr6main
-about:Main Routines
+bbdoc: Module jcr6.jcr6zipstream
+about:
 end rem
-module jcr6.jcr6main
-moduleinfo "Name: jcr6.jcr6main"
+module jcr6.jcr6zipstream
+moduleinfo "Name: jcr6.jcr6zipstream"
 moduleinfo "Author:Jeroen P. Broks"
 moduleinfo "&copy; Copyright 2014-2017 Jeroen P. Broks"
 moduleinfo "License:Mozilla Public License 2.0"
 moduleinfo "Last mod build:11/1/2017"
 
 
-import "JCR6_Main.bmx"
+import "JCR6_JCR6zipstream.bmx"

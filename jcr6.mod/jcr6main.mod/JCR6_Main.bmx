@@ -6,7 +6,7 @@ Rem
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.06.30
+        Version: 16.09.24
 End Rem
 
 ' History:
@@ -39,13 +39,14 @@ Import bah.volumes
 Import tricky_Units.StringMap
 Import tricky_units.MKL_Version
 Import tricky_units.prefixsuffix
+Import tricky_units.Listfile
 Import tricky_units.MD5 ' Will be used for verification purposes. Full support for this comes later.
 
 ?linux
 Import "-ldl"
 ?
 
-MKL_Version "JCR6 - JCR6_Main.bmx","16.06.30"
+MKL_Version "JCR6 - JCR6_Main.bmx","16.09.24"
 MKL_Lic     "JCR6 - JCR6_Main.bmx","Mozilla Public License 2.0"
 
 Private
@@ -276,6 +277,8 @@ Type DRV_JCRDIR
      EndRem
      Method Name$() Abstract
 
+     Method INE$(E$) End Method
+
      Method New()
      ListAddLast DIRDRIVERS,Self
      End Method     
@@ -308,6 +311,10 @@ If Not Driver
 	JCR_JamErr("Tried to put in an emptry driver under name: "+Name,"N/A","N/A","RegisterCompDriver(~q"+Name+"~q,Null)")
 	EndIf
 MapInsert COMPDRIVERS,Name,Driver
+End Function
+
+Function copycompdriver(ori$,tgt$) ' Undocumented. Only for very advanced use.
+	MapInsert COMPDRIVERS,tgt,MapValueForKey(COMPDRIVERS,ori)
 End Function
 
 Rem
@@ -535,6 +542,55 @@ Public
 
 
 Rem
+bbdoc: Reads out a requested index file if it exists. This is mostly done automatically and should not be used in actual applications. Some drivers may take advantage of this routine.
+End Rem
+Function JCR6_ReadIndex(dir:jcrdir,data;Object,res$,AllowEntryCreation=False,AllowSysVarChange=False)
+	Local sysvars$[] = ["__Size","__CSize","__Offset","__Storage"]
+	Local dl:TList = Listfile(data)
+	If Not dl Return
+	Local e:TJCREntry = New TJCREntry ' Object creation prevents crashes, but makes unallocated data get lost.
+	Local L$,SL$[]
+	For l=EachIn dl
+		ls=l.split(":")
+		If Len(ls)>=2 And Left(Trim(L),1)<>"#"
+			Select Trim(ls[0])
+				Case "IMPORT"
+					Local d$=ExtractDir(l2)
+					' This approach is to make dir detection in the main file possible, but this needs further research.
+					JCR_AddPatch dir,d+"/"StripExt(l[2])
+				Case "ENTRY"
+					e = TJCREntry(MapValueForKey(dir.entries,Upper(L[2])))
+					If Not e 
+						e = New JCR_Entry
+						e.md "__Entry",l[2]
+						If allowentrycreation 
+							MapInsert dir.entries,Upper(l[2]),e
+							e.mainfile = INE(l[2])
+						EndIf	
+					EndIf	
+				Default
+					Local allow = True
+					For Local sv$=EachIn sysvar
+						allow = allow And (Trim(ls[0])<>sv Or allowsysvarchange)
+					Next
+					If allow
+ 						e.md(Trim(ls[0]),Trim(ls[1]))
+						E.FileName = E.M("__Entry")
+						E.Size = E.MI("__Size")
+						E.CompressedSize = E.MI("__CSize")
+						E.Offset = E.MI("__Offset")
+						E.Storage = E.M("__Storage")						
+						E.Author = E.M("__Author")
+						E.Notes = E.M("__Notes")
+					EndIf						
+			End Select			
+		EndIf		
+	Next
+End Function	
+
+
+
+Rem
 bbdoc:Returns the type of file as JCR6 recognizes it.
 about:By default JCR6 will only recognize JCR6 files, however if you load the driver for QuakePAK and WAD, then those kind of files will also be recognized.
 returns:The name of the file type as a string. In case the file was not recognized as any kind of file JCR6 can load (either by itself or by the help of drivers) an empty string will be returned.
@@ -582,11 +638,13 @@ For Local DRV:DRV_JCRDIR = EachIn DirDrivers
 		If ret ret.DirDrvName = DRV.Name() Else Return 
 		ret.UpdateMain
 		JCR_Prefix ret,prefix		
+		If DRV.Name()<>"JCR6" And DRV.Name()<>"JCR5" And JCR_Exists(ret,"JCR6/Index") Then JCR_ReadIndex ret,JCR_B("JCR6/Index"),JCRFile
 		Return Ret
 		EndIf		
 	Next
 If DEBUG Print "Not recognized!"
 JCR_JAMERR "File not recognized!",JCRFile,"N/A","JCR_Dir()"
+
 End Function
 
 Rem
@@ -1010,7 +1068,7 @@ Type TJCRCreate Extends TJCRDir
 		For fullk=EachIn MapKeys(e.mv)
 			K = Right(FullK,Len(fullK)-1)
 			TK$ = Left(FullK,1)
-			If jcrcreatechat Print "  "+K+" = "+e.m(fullk)
+			If jcrcreatechat Print "~t"+K+" = "+e.m(fullk)
 			Select TK
 				Case "$"
 					WriteByte btf,1

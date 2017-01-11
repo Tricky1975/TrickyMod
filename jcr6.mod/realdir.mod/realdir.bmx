@@ -6,9 +6,9 @@ end rem
 module jcr6.realdir
 moduleinfo "Name: jcr6.realdir"
 moduleinfo "Author:Jeroen P. Broks"
-moduleinfo "&copy; Copyright 2014-2016 Jeroen P. Broks"
+moduleinfo "&copy; Copyright 2014-2017 Jeroen P. Broks"
 moduleinfo "License:Mozilla Public License 2.0"
-moduleinfo "Last mod build:24/9/2016"
+moduleinfo "Last mod build:11/1/2017"
 
 
 import "JCR6_RealDir.bmx"
