@@ -570,7 +570,7 @@ Function JCR6_ReadIndex(dir:TJCRDir,data:Object,res$,AllowEntryCreation=False,Al
 					EndIf	
 				Default
 					Local allow = True
-					For Local sv$=EachIn sysvar
+					For Local sv$=EachIn sysvars
 						allow = allow And (Trim(ls[0])<>sv Or allowsysvarchange)
 					Next
 					If allow
