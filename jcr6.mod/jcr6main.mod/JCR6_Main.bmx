@@ -547,7 +547,7 @@ Public
 Rem
 bbdoc: Reads out a requested index file if it exists. This is mostly done automatically and should not be used in actual applications. Some drivers may take advantage of this routine.
 End Rem
-Function JCR_ReadIndex(dir:TJCRDir,data:Object,res$,AllowEntryCreation=False,AllowSysVarChange=False,D$="",M$="")
+Function JCR_ReadIndex(dir:TJCRDir,data:Object,res$,AllowEntryCreation=False,AllowSysVarChange=False,D$="",M$="",DStorage$="")
 	Local sysvars$[] = ["__Size","__CSize","__Offset","__Storage"]
 	Local dl:TList = Listfile(data)
 	If Not dl Return
@@ -563,6 +563,7 @@ Function JCR_ReadIndex(dir:TJCRDir,data:Object,res$,AllowEntryCreation=False,All
 					JCR_AddPatch dir,d+"/"StripExt(ls[1])
 				Case "ENTRY"
 					e = TJCREntry(MapValueForKey(dir.entries,Upper(Ls[1])))
+					If allowsysvarchange And DStorage e.md "__Storage",DStorage
 					If Not e 
 						e = New TJCREntry
 						e.md "__Entry",ls[1]

@@ -21,8 +21,8 @@ Type DRV_ZIPSTREAM Extends DRV_JCRDIR
 		
 	Method Dir:TJCRDir(fil$)
 		Local ret:TJCRDir = New TJCRDir
-		JCR_ReadIndex ret,"zip::"+fil+"//JCR6/index",fil,True,True,"PKZIP",fil
-		ret.neutralchangecheck = true
+		JCR_ReadIndex ret,"zip::"+fil+"//JCR6/index",fil,True,True,"PKZIP",fil,"zipped"
+		ret.neutralchangecheck = True
 		Return ret
 	End Method
 	
