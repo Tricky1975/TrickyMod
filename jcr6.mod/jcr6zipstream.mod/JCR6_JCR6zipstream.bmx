@@ -18,7 +18,7 @@ Type DRV_ZIPSTREAM
 		
 	Method Dir:TJCRDir(fil$) Abstract
 		Local ret:TJCRDir = New TJCRDir
-		JCR6_ReadIndex ret,"zip::"+fil+"//JCR6/index",fil,True,True
+		JCR6_ReadIndex ret,"zip::"+fil+"//JCR6/index",fil,True,True,"PKZIP"
 	End Method
 	
 	Method Name$() 
@@ -27,7 +27,7 @@ Type DRV_ZIPSTREAM
 	
 	Method INE$(N$,r$)
 		Return "zip::"+r+"//"+N
-	end
+	End
 
      End Type
 
