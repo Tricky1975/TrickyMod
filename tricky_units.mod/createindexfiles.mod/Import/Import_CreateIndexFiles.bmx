@@ -38,7 +38,7 @@ End Function
 Function CIF_DirData$(dir$)
 	If Not (FileType(dir)=2) Return
 	Local ret$=""
-	For f$ = EachIn ListDir(dir)
+	For Local f$ = EachIn ListDir(dir)
 		If f$<>"JCR6/index" ret:+"ENTRY:"+f+"~n"+CIF_FileData(dir+"/"+f)+"~n"
 	Next
 Return ret
