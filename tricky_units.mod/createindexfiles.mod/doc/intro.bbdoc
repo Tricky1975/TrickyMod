@@ -1,0 +1,8 @@
+This Module is just a quick Module that can help setting up index files For files And folders.<br>
+This Module has been set up To Create these files For "foreign" formats JCR6 will support.<br>
+In the first place only For JCR6's zip module, because the zipstream module can't give the filelists of the zip file, which is required for JCR6 to operate properly.<br>
+My intension is To make "RealDir", "WAD", "Quake Pack" And "TAR" support this in order To make these files also benefit from the advancements JCR6 offers over other formats.
+Please note that in my own BlitzMax projects JCR6 will always be my own primary format. L&Ouml;VE2D will always need zip due To the way it has been written.
+I am experimenting with New languages, but there too JCR6 will be my aim point. Why use this Long way around when JCR6 offers what other formats do Not offer by Default :P
+
+
