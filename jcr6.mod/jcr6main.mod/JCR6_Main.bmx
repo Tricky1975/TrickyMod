@@ -559,10 +559,10 @@ Function JCR6_ReadIndex(dir:TJCRDir,data:Object,res$,AllowEntryCreation=False,Al
 					' This approach is to make dir detection in the main file possible, but this needs further research.
 					JCR_AddPatch dir,d+"/"StripExt(ls[2])
 				Case "ENTRY"
-					e = TJCREntry(MapValueForKey(dir.entries,Upper(sL[2])))
+					e = TJCREntry(MapValueForKey(dir.entries,Upper(Ls[2])))
 					If Not e 
 						e = New JCR_Entry
-						e.md "__Entry",l[2]
+						e.md "__Entry",ls[2]
 						If allowentrycreation 
 							MapInsert dir.entries,Upper(ls[2]),e
 							e.mainfile = INE(ls[2])
