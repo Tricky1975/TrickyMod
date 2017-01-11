@@ -277,7 +277,7 @@ Type DRV_JCRDIR
      EndRem
      Method Name$() Abstract
 
-     Method INE$(E$) End Method
+     Method INE$(E$,R$) End Method
 
      Method New()
      ListAddLast DIRDRIVERS,Self
@@ -544,7 +544,7 @@ Public
 Rem
 bbdoc: Reads out a requested index file if it exists. This is mostly done automatically and should not be used in actual applications. Some drivers may take advantage of this routine.
 End Rem
-Function JCR_ReadIndex(dir:TJCRDir,data:Object,res$,AllowEntryCreation=False,AllowSysVarChange=False,D$="")
+Function JCR_ReadIndex(dir:TJCRDir,data:Object,res$,AllowEntryCreation=False,AllowSysVarChange=False,D$="",M$="")
 	Local sysvars$[] = ["__Size","__CSize","__Offset","__Storage"]
 	Local dl:TList = Listfile(data)
 	If Not dl Return
@@ -567,7 +567,7 @@ Function JCR_ReadIndex(dir:TJCRDir,data:Object,res$,AllowEntryCreation=False,All
 							MapInsert dir.entries,Upper(ls[2]),e
 							If d 
 								For Local drv:DRV_JCRDIR = EachIn DirDrivers
-									If drv.Name()=D e.mainfile = drv.INE(ls[2])
+									If drv.Name()=D e.mainfile = drv.INE(ls[2],M)
 								Next
 							EndIf		
 						EndIf	
