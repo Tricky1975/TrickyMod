@@ -566,10 +566,10 @@ Function JCR6_ReadIndex(dir:TJCRDir,data:Object,res$,AllowEntryCreation=False,Al
 						If allowentrycreation 
 							MapInsert dir.entries,Upper(ls[2]),e
 							If d 
-								For Local drv:DRV_JCRDIR 
+								For Local drv:DRV_JCRDIR = EachIn DirDrivers
 									If drv.Name()=D e.mainfile = drv.INE(ls[2])
 								Next
-							endif		
+							EndIf		
 						EndIf	
 					EndIf	
 				Default
