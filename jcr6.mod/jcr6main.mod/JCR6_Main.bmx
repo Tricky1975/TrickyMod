@@ -642,7 +642,7 @@ For Local DRV:DRV_JCRDIR = EachIn DirDrivers
 		If ret ret.DirDrvName = DRV.Name() Else Return 
 		ret.UpdateMain
 		JCR_Prefix ret,prefix		
-		If DRV.Name()<>"JCR6" And DRV.Name()<>"JCR5" And JCR_Exists(ret,"JCR6/Index") Then JCR_ReadIndex ret,JCR_B("JCR6/Index"),JCRFile
+		If DRV.Name()<>"JCR6" And DRV.Name()<>"JCR5" And JCR_Exists(ret,"JCR6/Index") Then JCR_ReadIndex ret,JCR_B(ret,"JCR6/Index"),JCRFile
 		Return Ret
 		EndIf		
 	Next
