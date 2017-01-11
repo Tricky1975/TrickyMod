@@ -1,12 +1,12 @@
 Rem
         JCR6_Main.bmx
-	(c) 2015, 2016, 2017 Jeroen Petrus Broks.
+	(c) 2015, 2016 Jeroen Petrus Broks.
 	
 	This Source Code Form is subject to the terms of the 
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 17.01.11
+        Version: 16.09.24
 End Rem
 
 ' History:
@@ -46,7 +46,7 @@ Import tricky_units.MD5 ' Will be used for verification purposes. Full support f
 Import "-ldl"
 ?
 
-MKL_Version "JCR6 - JCR6_Main.bmx","17.01.11"
+MKL_Version "JCR6 - JCR6_Main.bmx","16.09.24"
 MKL_Lic     "JCR6 - JCR6_Main.bmx","Mozilla Public License 2.0"
 
 Private
@@ -177,6 +177,7 @@ Type TJCRDir
 	Field FATOffset
 	Field MainFiles:TMap = New TMap
 	Field Multifile = False
+	Field NeutralChangeCheck = False
 	
 	Method EntryData:TJCREntry(fil$)
 	Return TJCREntry(MapValueForKey(entries,Upper(fil)))
@@ -282,6 +283,8 @@ Type DRV_JCRDIR
      Method New()
      ListAddLast DIRDRIVERS,Self
      End Method     
+
+     Field NeutralizeChangeCheck
 
      End Type
 
@@ -1265,6 +1268,7 @@ The next values may be returned:<ul>
 </ul>
 End Rem
 Function JCR_Changed(JCRDIR:TJCRDir)
+If jcrdir.neutralchangecheck Return 0
 Local m$,mf:tjcrmfiles,e:TJCREntry
 Assert JCRDIR Else "JCR_Changed(Null):~nJCR_Changed received a null value in stead of a dir"
 For m=EachIn MapKeys(JCRDIR.MainFiles)
