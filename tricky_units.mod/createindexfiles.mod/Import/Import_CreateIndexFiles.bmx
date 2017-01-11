@@ -28,7 +28,9 @@ Function CIF_FileData$(file$,author$="",notes$="")
 	If Not (FileType(file)=1) Return 
 	Local c$
 	Local ret$=""
-	ret:+"__Size:"+file+"~n"
+	ret:+"__Size:"+FileSize(file)+"~n"
+	ret:+"__CSize:"+FileSize(file)+"~n"
+	ret:+"__Offset:$0~n"
 	c = LoadString(file)
 	ret:+"__Hash_md5:"+MD5(c)+"~n"
 	ret:+"__Author:"+author+"~n__Notes:"+notes
