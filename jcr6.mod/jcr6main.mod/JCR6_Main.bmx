@@ -555,17 +555,17 @@ Function JCR6_ReadIndex(dir:TJCRDir,data:Object,res$,AllowEntryCreation=False,Al
 		If Len(ls)>=2 And Left(Trim(L),1)<>"#"
 			Select Trim(ls[0])
 				Case "IMPORT"
-					Local d$=ExtractDir(l2)
+					Local d$=ExtractDir(ls[2])
 					' This approach is to make dir detection in the main file possible, but this needs further research.
-					JCR_AddPatch dir,d+"/"StripExt(l[2])
+					JCR_AddPatch dir,d+"/"StripExt(ls[2])
 				Case "ENTRY"
-					e = TJCREntry(MapValueForKey(dir.entries,Upper(L[2])))
+					e = TJCREntry(MapValueForKey(dir.entries,Upper(sL[2])))
 					If Not e 
 						e = New JCR_Entry
 						e.md "__Entry",l[2]
 						If allowentrycreation 
-							MapInsert dir.entries,Upper(l[2]),e
-							e.mainfile = INE(l[2])
+							MapInsert dir.entries,Upper(ls[2]),e
+							e.mainfile = INE(ls[2])
 						EndIf	
 					EndIf	
 				Default
