@@ -3,7 +3,7 @@ Strict
 Import jcr6.jcr6main
 Import koriolis.zipstream
 
-
+private
 
 copycompdriver "Store","zipped"
 
@@ -32,4 +32,4 @@ Type DRV_ZIPSTREAM Extends DRV_JCRDIR
 
      End Type
 
-New ZIPSTREAM
+New DRV_ZIPSTREAM
