@@ -35,22 +35,22 @@ Function CIF_FileData$(file$,author$="",notes$="")
 	Return ret
 End Function	
 
-Function CIF_DirData$(dir$,verbose)
+Function CIF_DirData$(dir$,verbose=0)
 	If Not (FileType(dir)=2) Return
 	Local ret$=""
 	For Local f$ = EachIn ListDir(dir)
 		If f$<>"JCR6/index" 
 			ret:+"ENTRY:"+f+"~n"+CIF_FileData(dir+"/"+f)+"~n"
 			If verbose Print "= "+f+" indexed"
-		endif
+		EndIf
 	Next
 Return ret
 End Function
 
-Function CIF_IndexDir(Dir$)
+Function CIF_IndexDir(Dir$,verbose=0)
 	If Not (FileType(dir)=2) Return
 	If Not CreateDir(dir+"/JCR6",1) Return Print("ERROR! I could not creaete: "+dir+"/JCR6")
-	SaveString(CIF_DirData(dir),dir+"/JCR6/index")		
+	SaveString(CIF_DirData(dir,verbose),dir+"/JCR6/index")		
 End Function		
 	
 	
