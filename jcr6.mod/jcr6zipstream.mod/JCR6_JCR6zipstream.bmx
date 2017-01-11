@@ -12,14 +12,14 @@ Type DRV_ZIPSTREAM Extends DRV_JCRDIR
 
 	Method Recognize(fil$)
 		Local Test:TStream = ReadFile("zip::"+fil+"//JCR6/index")
-		Local ret = test<>null
-		CloseFile test
+		Local ret = test<>Null
+		If ret CloseFile test
 		Return ret
 	End Method
 		
 	Method Dir:TJCRDir(fil$)
 		Local ret:TJCRDir = New TJCRDir
-		JCR6_ReadIndex ret,"zip::"+fil+"//JCR6/index",fil,True,True,"PKZIP",fil
+		JCR_ReadIndex ret,"zip::"+fil+"//JCR6/index",fil,True,True,"PKZIP",fil
 	End Method
 	
 	Method Name$() 
