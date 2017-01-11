@@ -544,12 +544,12 @@ Public
 Rem
 bbdoc: Reads out a requested index file if it exists. This is mostly done automatically and should not be used in actual applications. Some drivers may take advantage of this routine.
 End Rem
-Function JCR6_ReadIndex(dir:tjcrdir,data:Object,res$,AllowEntryCreation=False,AllowSysVarChange=False)
+Function JCR6_ReadIndex(dir:TJCRDir,data:Object,res$,AllowEntryCreation=False,AllowSysVarChange=False)
 	Local sysvars$[] = ["__Size","__CSize","__Offset","__Storage"]
 	Local dl:TList = Listfile(data)
 	If Not dl Return
 	Local e:TJCREntry = New TJCREntry ' Object creation prevents crashes, but makes unallocated data get lost.
-	Local L$,SL$[]
+	Local L$,Ls$[]
 	For l=EachIn dl
 		ls=l.split(":")
 		If Len(ls)>=2 And Left(Trim(L),1)<>"#"
