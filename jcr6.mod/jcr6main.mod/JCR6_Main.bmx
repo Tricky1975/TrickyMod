@@ -561,7 +561,7 @@ Function JCR6_ReadIndex(dir:TJCRDir,data:Object,res$,AllowEntryCreation=False,Al
 				Case "ENTRY"
 					e = TJCREntry(MapValueForKey(dir.entries,Upper(Ls[2])))
 					If Not e 
-						e = New JCR_Entry
+						e = New tJCREntry
 						e.md "__Entry",ls[2]
 						If allowentrycreation 
 							MapInsert dir.entries,Upper(ls[2]),e
