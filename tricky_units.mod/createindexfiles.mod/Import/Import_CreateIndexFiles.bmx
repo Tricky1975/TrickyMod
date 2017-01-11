@@ -35,11 +35,14 @@ Function CIF_FileData$(file$,author$="",notes$="")
 	Return ret
 End Function	
 
-Function CIF_DirData$(dir$)
+Function CIF_DirData$(dir$,verbose)
 	If Not (FileType(dir)=2) Return
 	Local ret$=""
 	For Local f$ = EachIn ListDir(dir)
-		If f$<>"JCR6/index" ret:+"ENTRY:"+f+"~n"+CIF_FileData(dir+"/"+f)+"~n"
+		If f$<>"JCR6/index" 
+			ret:+"ENTRY:"+f+"~n"+CIF_FileData(dir+"/"+f)+"~n"
+			If verbose Print "= "+f+" indexed"
+		endif
 	Next
 Return ret
 End Function
