@@ -3,7 +3,7 @@ Strict
 Import jcr6.jcr6main
 Import koriolis.zipstream
 
-private
+Private
 
 copycompdriver "Store","zipped"
 
@@ -12,7 +12,7 @@ Type DRV_ZIPSTREAM Extends DRV_JCRDIR
 
 	Method Recognize(fil$)
 		Local Test:TStream = ReadFile("zip::"+fil+"//JCR6/index")
-		Local ret = test<>nul
+		Local ret = test<>null
 		CloseFile test
 		Return ret
 	End Method
