@@ -8,7 +8,7 @@ Import koriolis.zipstream
 copycompdriver "Store","zipped"
 
 
-Type DRV_ZIPSTREAM
+Type DRV_ZIPSTREAM Extends DRV_jcrdir
 	Method Recognize(fil$)
 		Local Test:TStream = ReadFile("zip::"+fil+"//JCR6/index")
 		Local ret = test<>nul
@@ -23,11 +23,11 @@ Type DRV_ZIPSTREAM
 	
 	Method Name$() 
 		Return "PKZIP"
-	End
+	End Method
 	
 	Method INE$(N$,r$)
 		Return "zip::"+r+"//"+N
-	End
+	End Method
 
      End Type
 
