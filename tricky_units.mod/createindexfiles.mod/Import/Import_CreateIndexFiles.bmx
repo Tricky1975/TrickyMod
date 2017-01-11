@@ -19,7 +19,7 @@ Rem
 End Rem
 Strict
 Import tricky_units.MD5
-Import tricky_units.ListDir
+Import tricky_units.Tree
 
 MKL_Version "Tricky's Units - CreateIndexFiles.bmx","17.01.11"
 MKL_Lic     "Tricky's Units - CreateIndexFiles.bmx","ZLib License"
@@ -38,7 +38,7 @@ End Function
 Function CIF_DirData$(dir$,verbose=0)
 	If Not (FileType(dir)=2) Return
 	Local ret$=""
-	For Local f$ = EachIn ListDir(dir)
+	For Local f$ = EachIn CreateTree(dir,1)
 		If f$<>"JCR6/index" 
 			ret:+"ENTRY:"+f+"~n"+CIF_FileData(dir+"/"+f)+"~n"
 			If verbose Print "= "+f+" indexed"
