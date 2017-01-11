@@ -564,7 +564,6 @@ Function JCR_ReadIndex(dir:TJCRDir,data:Object,res$,AllowEntryCreation=False,All
 					JCR_AddPatch dir,d+"/"StripExt(ls[1])
 				Case "ENTRY"
 					e = TJCREntry(MapValueForKey(dir.entries,Upper(Ls[1])))
-					If allowsysvarchange And DStorage e.md "__Storage",DStorage
 					If Not e 
 						e = New TJCREntry
 						e.md "__Entry",ls[1]
@@ -577,6 +576,7 @@ Function JCR_ReadIndex(dir:TJCRDir,data:Object,res$,AllowEntryCreation=False,All
 							EndIf		
 						EndIf	
 					EndIf	
+					If allowsysvarchange And DStorage e.md "__Storage",DStorage
 				Default
 					Local allow = True
 					For Local sv$=EachIn sysvars
