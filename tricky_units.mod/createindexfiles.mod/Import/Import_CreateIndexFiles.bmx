@@ -31,7 +31,7 @@ Function CIF_FileData$(file$,author$="",notes$="")
 	ret:+"__Size:"+file+"~n"
 	c = LoadString(file)
 	ret:+"__Hash_md5:"+MD5(c)+"~n"
-	ret:+"__Author:"+author"~n__Notes:"+notes
+	ret:+"__Author:"+author+"~n__Notes:"+notes
 	Return ret
 End Function	
 
@@ -48,6 +48,6 @@ Function CIF_IndexDir(Dir$)
 	If Not (FileType(dir)=2) Return
 	If Not CreateDir(dir+"/JCR6",1) Return Print("ERROR! I could not creaete: "+dir+"/JCR6")
 	SaveString(CIF_DirData(dir),dir+"/JCR6/index")		
-End function		
+End Function		
 	
 	
