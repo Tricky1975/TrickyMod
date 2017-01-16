@@ -1,12 +1,12 @@
 Rem
         Kthura_Core.bmx
-	(c) 2015, 2016 Jeroen Petrus Broks.
+	(c) 2015, 2016, 2017 Jeroen Petrus Broks.
 	
 	This Source Code Form is subject to the terms of the 
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.11.25
+        Version: 17.01.16
 End Rem
 
 ' 15.08.15 - First version considered in 'Alpha' (though earlier releases exist, this is where the project has been declared safe enough to use, though keep in mind that stuff may still be subject to change)
@@ -41,7 +41,7 @@ Import tricky_units.HotSpot
 Import tricky_units.Pathfinder
 Import tricky_units.serialtrim
 
-MKL_Version "Kthura Map System - Kthura_Core.bmx","16.11.25"
+MKL_Version "Kthura Map System - Kthura_Core.bmx","17.01.16"
 MKL_Lic     "Kthura Map System - Kthura_Core.bmx","Mozilla Public License 2.0"
 
 
@@ -114,8 +114,22 @@ Type TKthuraObject
 	Field Visible = True
 	Field Data:StringMap = New StringMap
 	Field Parent:TKthura	
+	
+	Rem
+	bbdoc: Scale X factor. 1000 = true size
+	End Rem
+
 	Field ScaleX=1000
+	
+	Rem
+	bbdoc: Scale Y factor. 1000 = true size
+	End Rem
 	Field ScaleY=1000
+	
+	Rem
+	bbdoc: When set to 0 this is ignored, when set to any other number it will use that blend. The same values as SetBlend() takes are accepted here.
+	End Rem
+	Field AltBlend = 0
 	
 	Method TexS( IS(I:TImage) )
 	        Local o:TKthuraObject = Self
@@ -154,6 +168,10 @@ Type TKthuraObject
 		alpha = Double(alphavalue) / Double(1000)
 	End Method
 	
+	Rem
+	bbdoc: Gets the alpha rate of an object in a scale of 0 to 1000
+	about: This method has specifically been set up for hooking up Kthura objects to Lua. The communication between BlitzMax and Lua is downright terrible when it comes to non-integer numbers. This method has to end that.
+	End Rem
 	Method GetAlpha()
 	       Return Floor(alpha*1000)
 	End Method
@@ -1240,6 +1258,8 @@ For RL=EachIn Listfile(JCR_B(JCR,prefix+"Objects"))
 							O.ScaleX = DL[0].toint()
 							O.ScaleY = DL[1].toint()
 							EndIf
+					Case "BLEND"
+						O.altBlend = SL[1].toint()		
 					Default
 						KthuraWarning " Unknown variable "+SL[0]+"! In line #"+CL+". Request ignored >> "+L												
 					End Select
