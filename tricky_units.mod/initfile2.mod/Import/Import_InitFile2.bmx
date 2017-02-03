@@ -1,8 +1,8 @@
 Rem
   InitFile2.bmx
   2012, 2015, Total Revision 2015
-  version: 16.03.21
-  Copyright (C) 2012, 2015, Total Revision 2015, 2016 Jeroen P. Broks
+  version: 17.02.03
+  Copyright (C) 2012, 2015, Total Revision 2015, 2016, 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -22,7 +22,7 @@ Import tricky_units.StringMap
 Import tricky_units.advdatetime
 Import tricky_units.Listfile
 
-MKL_Version "Tricky's Units - InitFile2.bmx","16.03.21"
+MKL_Version "Tricky's Units - InitFile2.bmx","17.02.03"
 MKL_Lic     "Tricky's Units - InitFile2.bmx","ZLib License"
 
 
@@ -304,3 +304,14 @@ For line=EachIn Listfile(File)
 		EndIf		
 	Next
 End Function
+
+Rem
+bbdoc: If LoadIni is too awkward for you to use, you can use this in stead
+returns: The TIni loaded
+End Rem
+Function ReadIni:TIni(file:Object)
+	Local ret:TIni = New TIni
+	LoadIni file,ret
+	Return ret
+End function	
+	
