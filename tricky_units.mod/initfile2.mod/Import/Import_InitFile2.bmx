@@ -1,7 +1,7 @@
 Rem
   InitFile2.bmx
   2012, 2015, Total Revision 2015
-  version: 17.02.03
+  version: 17.02.05
   Copyright (C) 2012, 2015, Total Revision 2015, 2016, 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -22,7 +22,7 @@ Import tricky_units.StringMap
 Import tricky_units.advdatetime
 Import tricky_units.Listfile
 
-MKL_Version "Tricky's Units - InitFile2.bmx","17.02.03"
+MKL_Version "Tricky's Units - InitFile2.bmx","17.02.05"
 MKL_Lic     "Tricky's Units - InitFile2.bmx","ZLib License"
 
 
@@ -57,6 +57,13 @@ End Rem
 Type TIni
 	Field Vars:StringMap = New StringMap
 	Field Lists:TMap = New TMap
+	
+	Rem
+	bbdoc:A list of all vars of use with eachin
+	End Rem
+	Method EachVar:tmapenumerator()
+		Return MapKeys(Vars)
+	End Method
 	
 	Rem
 	bbdoc: Read var from ini
@@ -313,5 +320,5 @@ Function ReadIni:TIni(file:Object)
 	Local ret:TIni = New TIni
 	LoadIni file,ret
 	Return ret
-End function	
+End Function	
 	
