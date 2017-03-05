@@ -1,8 +1,8 @@
 Rem
   AdvDateTime.bmx
   Advanced Date Time
-  version: 16.06.11
-  Copyright (C) 2012, 2015, 2016 Jeroen P. Broks
+  version: 17.03.05
+  Copyright (C) 2012, 2015, 2016, 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -34,7 +34,7 @@ Strict
 Import tricky_units.MKL_Version
 Import brl.map
 
-MKL_Version "Tricky's Units - AdvDateTime.bmx","16.06.11"
+MKL_Version "Tricky's Units - AdvDateTime.bmx","17.03.05"
 MKL_Lic     "Tricky's Units - AdvDateTime.bmx","ZLib License"
 
 Rem
@@ -60,10 +60,19 @@ End Function
 
 
 
+
+Rem
+bbdoc: Day of the week
+returns: 3 letter string like "Mon", "Tue", "Wed", etc.
+End Rem
+Function DayOfTheWeek$(N:TNow=Null)
+	Return Date("%a",N)
+End function	
+
 Rem
 bbdoc: Current time in code form
 about: Useless on it's own, but you can use it with nearly all functions to get readable results from it. Handy if you need to store the current time for later usage.
-end rem
+End Rem
 Function Now:TNow()
 Local T:TNow = New TNow
 	time_(T.Time)
