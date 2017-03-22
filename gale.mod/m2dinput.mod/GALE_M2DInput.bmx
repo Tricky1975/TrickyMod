@@ -1,25 +1,12 @@
 Rem
         GALE_M2DInput.bmx
-	(c) 2015 Jeroen Petrus Broks.
+	(c) 2015, 2017 Jeroen Petrus Broks.
 	
 	This Source Code Form is subject to the terms of the 
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 15.09.02
-End Rem '--
-Rem
-
-	(c) 2015 Jeroen Petrus Broks.
-	
-	This Source Code Form is subject to the terms of the 
-	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
-	distributed with this file, You can obtain one at 
-	http://mozilla.org/MPL/2.0/.
-
-
-Version: 15.08.14
-
+        Version: 17.03.22
 End Rem
 Strict
 
@@ -35,7 +22,7 @@ Import Pub.FreeJoy
 Import gale.Main
 Import tricky_units.MKL_Version
 
-MKL_Version "GALE - GALE_M2DInput.bmx","15.09.02"
+MKL_Version "GALE - GALE_M2DInput.bmx","17.03.22"
 MKL_Lic     "GALE - GALE_M2DInput.bmx","Mozilla Public License 2.0"
 
 

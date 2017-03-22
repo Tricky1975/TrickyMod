@@ -3,7 +3,7 @@ Rem
 Module GALE.M2DInput
 
 Created by: Jeroen P. Broks
-(c) Jeroen P. Broks 2012-2016
+(c) Jeroen P. Broks 2012-2017
 
 Released under the terms of the MOZILLA public license!
 
@@ -20,8 +20,8 @@ ModuleInfo "Name: m2dinput.mod"
 ModuleInfo "Creator: Tricky (Jeroen P. Broks)"
 ModuleInfo "Copyright: Jeroen P. Broks"
 ModuleInfo "License: Mozilla Public License 2.0"
-ModuleInfo "Version: 16.09"
-ModuleInfo "Last update: Thu 08 September 2016; 17:53:47"
+ModuleInfo "Version: 17.03"
+ModuleInfo "Last update: Wed 22 March 2017; 21:10:48"
 ModuleInfo "Module History: Please check the file GALE_M2DInput.bmx for more detailed information on that!"
 
 

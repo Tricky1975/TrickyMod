@@ -1,12 +1,12 @@
 Rem
         GALE_Image.bmx
-	(c) 2012, 2014, 2015, 2016 Jeroen Petrus Broks.
+	(c) 2012, 2014, 2015, 2016, 2017 Jeroen Petrus Broks.
 	
 	This Source Code Form is subject to the terms of the 
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.06.12
+        Version: 17.03.22
 End Rem
 
 ' History
@@ -49,7 +49,7 @@ Import Gale.M2D
 'Import "../../JCR/UseJCR.bmx"
 
 
-MKL_Version "GALE - GALE_Image.bmx","16.06.12"
+MKL_Version "GALE - GALE_Image.bmx","17.03.22"
 MKL_Lic     "GALE - GALE_Image.bmx","Mozilla Public License 2.0"
 
 Rem
