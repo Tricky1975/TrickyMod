@@ -1,6 +1,7 @@
 Strict
 
 Import gale.Main
+Import tricky_units.initfile2
 
 MKL_Lic        "",""
 MKL_Version    "",""

@@ -21,7 +21,7 @@ ModuleInfo "Creator: Tricky (Jeroen P. Broks)"
 ModuleInfo "Copyright: Jeroen P. Broks"
 ModuleInfo "License: Mozilla Public License 2.0"
 ModuleInfo "Version: 17.03"
-ModuleInfo "Last update: Wed 22 March 2017; 21:02:46"
+ModuleInfo "Last update: Wed 22 March 2017; 21:04:51"
 ModuleInfo "Module History: Please check the file GALE_GINI.bmx for more detailed information on that!"
 
 
