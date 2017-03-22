@@ -37,7 +37,7 @@ Private
 		End Method
 		
 		Method JCRLoad(Tag$,Entry$)
-			MapInsert inimap,Upper(tag),ReadIni(JCR_B(JCR_Lua_Ini_PatchMap))
+			MapInsert inimap,Upper(tag),ReadIni(JCR_B(JCR_Lua_Ini_PatchMap,entry))
 		End Method
 		
 		Method RawSave(tag$,File$)
