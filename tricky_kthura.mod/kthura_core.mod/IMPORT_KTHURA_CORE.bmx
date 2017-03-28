@@ -139,7 +139,14 @@ Type TKthuraObject
 		Local I:TImage = o.parent.textures.img(o.kind+":"+o.texturefile)
 		If Not I Return -1
 		Return IS(I)
-	End Method		
+	End Method	
+		
+	Rem
+	bbdoc: Removes the object itself from the object map. Please note that a remap of blockmap and other stuff may be required to have the full effect of this.
+	End Rem
+	Method Remove()
+	   ListRemove parent.fullobjectlist,Self
+	End Method
 	
 	Rem
 	bbdoc: Returns the width of a texture tied to the object
