@@ -1,0 +1,1 @@
+GINI (meaning GINI Is Not Ini) is basically the follow up for the older InitFile and InitFile2 modules.<br>I've decided to rename it to GINI, because the parser does use different rules than your regular ini files, and although most syntax highlighters will not bother the different rule setup but still I wanted to prevent any confusion
