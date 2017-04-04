@@ -20,8 +20,8 @@ ModuleInfo "Name: luaaudio.mod"
 ModuleInfo "Creator: Tricky (Jeroen P. Broks)"
 ModuleInfo "Copyright: Jeroen P. Broks"
 ModuleInfo "License: Mozilla Public License 2.0"
-ModuleInfo "Version: 17.03"
-ModuleInfo "Last update: Wed 22 March 2017; 21:10:48"
+ModuleInfo "Version: 17.04"
+ModuleInfo "Last update: Tue 04 April 2017; 08:39:01"
 ModuleInfo "Module History: Please check the file GALE_LuaAudio.bmx for more detailed information on that!"
 
 

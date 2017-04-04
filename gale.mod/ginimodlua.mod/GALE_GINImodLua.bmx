@@ -1,4 +1,14 @@
 Rem
+        GALE_GINImodLua.bmx
+	(c) 2017 Jeroen Petrus Broks.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 17.04.04
+End Rem
+Rem
         GALE_GINI.bmx
 	(c) 2017 Jeroen Petrus Broks.
 	
@@ -13,8 +23,8 @@ Strict
 Import gale.Main
 Import tricky_units.GINI
 
-MKL_Lic     "GALE - GALE_GINI.bmx","Mozilla Public License 2.0"
-MKL_Version "GALE - GALE_GINI.bmx","17.03.22"
+MKL_Lic     "GALE - GALE_GINImodLua.bmx","Mozilla Public License 2.0"
+MKL_Version "GALE - GALE_GINImodLua.bmx","17.04.04"
 
 
 Private

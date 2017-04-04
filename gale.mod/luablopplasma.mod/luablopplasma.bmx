@@ -3,7 +3,7 @@ Rem
 Module GALE.LuaBlopPlasma
 
 Created by: Jeroen P. Broks
-(c) Jeroen P. Broks 2012-2016
+(c) Jeroen P. Broks 2012-2017
 
 Released under the terms of the MOZILLA public license!
 
@@ -20,8 +20,8 @@ ModuleInfo "Name: luablopplasma.mod"
 ModuleInfo "Creator: Tricky (Jeroen P. Broks)"
 ModuleInfo "Copyright: Jeroen P. Broks"
 ModuleInfo "License: zLib license"
-ModuleInfo "Version: 16.06"
-ModuleInfo "Last update: Sun 12 June 2016; 12:15:19"
+ModuleInfo "Version: 17.04"
+ModuleInfo "Last update: Tue 04 April 2017; 08:39:02"
 ModuleInfo "Module History: Please check the file GALE_LuaBlopPlasma.bmx for more detailed information on that!"
 
 
