@@ -1,9 +1,9 @@
 strict
 Rem
-bbdoc:Module InitFile2 by Tricky
+bbdoc:Module UnitsBuild by Tricky
 end rem
-Module Tricky_Units.InitFile2
-Moduleinfo "NameModule: Tricky's Units - InitFile2"
+Module Tricky_Units.UnitsBuild
+Moduleinfo "NameModule: Tricky's Units - UnitsBuild"
 Moduleinfo "Author: Jeroen Broks aka Tricky"
 ModuleInfo "Copyright: &copy; Jeroen Petrus Broks"
 Moduleinfo "License: zLib license"
@@ -11,4 +11,4 @@ moduleinfo "Last update: 16 Apr 2017"
 
 
 
-Import "Import/Import_InitFile2.bmx"
+Import "Import/Import_UnitsBuild.app.bmx"
