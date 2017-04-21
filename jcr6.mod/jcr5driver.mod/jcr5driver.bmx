@@ -8,7 +8,7 @@ moduleinfo "Name: jcr6.jcr5driver"
 moduleinfo "Author:Jeroen P. Broks"
 moduleinfo "&copy; Copyright 2014-2017 Jeroen P. Broks"
 moduleinfo "License:Mozilla Public License 2.0"
-moduleinfo "Last mod build:11/1/2017"
+moduleinfo "Last mod build:21/4/2017"
 
 
 import "JCR6_JCR5Driver.bmx"

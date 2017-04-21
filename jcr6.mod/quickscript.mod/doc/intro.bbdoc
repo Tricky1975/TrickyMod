@@ -1,0 +1,27 @@
+<!--
+Rem
+-->
+Quickscript is just a plain text file, which can link multiple JCR6 resources together, quickly.
+It was most of all set up for development purposes, but it can also be used to quickly tie multiple JCR6 resources that form one big resource.
+<p>
+All QuickScript files MUST have the line ::JCR6_QUICKSCRIPT:: on the top line (Case Insenstive), Or the file will otherwise not be accepted as a JCR6 quick script.
+<p>
+All lines prefixed with a colon ":" will be recognized as a command. All other lines are simply ignored.<br>
+For basically all commands goes that you Type ":<command> <parameters>", unless specifically noted otherwise.
+
+The next commands are accepted:
+<table>
+	<tr>
+		<td>:J</td><td>JCR Resource. If no pathname is present the same path as the one this script was in will be taken.</td>
+	</tr>	
+	<tr>	
+		<td>:C</td><td>Comment that some JCR6 viewers can show. Please note you can start new lines in commands by typing \n</td>
+	</tr>
+</table>
+More commands may be added over time.		
+
+
+
+<!--
+End Rem
+-->

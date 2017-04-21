@@ -1,14 +1,14 @@
 strict
 rem
-bbdoc: Module jcr6.jcr6webread
-about:web-read module
+bbdoc: Module jcr6.quickscript
+about:Quick Script
 end rem
-module jcr6.jcr6webread
-moduleinfo "Name: jcr6.jcr6webread"
+module jcr6.quickscript
+moduleinfo "Name: jcr6.quickscript"
 moduleinfo "Author:Jeroen P. Broks"
 moduleinfo "&copy; Copyright 2014-2017 Jeroen P. Broks"
 moduleinfo "License:Mozilla Public License 2.0"
 moduleinfo "Last mod build:21/4/2017"
 
 
-import "JCR6_JCR6WebRead.bmx"
+import "JCR6_QuickScript.bmx"
