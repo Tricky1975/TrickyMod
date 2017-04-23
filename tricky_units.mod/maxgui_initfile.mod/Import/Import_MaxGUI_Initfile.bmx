@@ -1,8 +1,8 @@
 Rem
   MaxGUI_InitFile.bmx
   
-  version: 16.06.12
-  Copyright (C) 2015, 2016 Jeroen P. Broks
+  version: 17.04.23
+  Copyright (C) 2015, 2016, 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -20,13 +20,14 @@ End Rem
 
 ' 15.11.19 - Initial version
 ' 16.06.12 - Adepted for BlitzNG
+' 17.04.23 - Replaced InitFile2 by GINI
 
 Import brl.map
 Import tricky_units.MKL_Version
 Import maxgui.drivers
-Import tricky_units.initfile2
+Import tricky_units.GINI
 
-MKL_Version "Tricky's Units - MaxGUI_InitFile.bmx","16.06.12"
+MKL_Version "Tricky's Units - MaxGUI_InitFile.bmx","17.04.23"
 MKL_Lic     "Tricky's Units - MaxGUI_InitFile.bmx","ZLib License"
 
 Private
