@@ -846,9 +846,9 @@ If Bank
 	Local e:TJCREntry = TJCREntry(MapValueForKey(j.entries,Upper(entry)))
 	If Not e Return True
 	If AllPermissions And e.UnixPermissions<=-1 
-		SetFileMode(PermissionsToNum("rwxrwxrwx"))
+		SetFileMode(destfile,PermissionsToNum("rwxrwxrwx"))
 	ElseIf e.UnixPermissions>=0
-		SetFileMode(e.UnixPermissions)
+		SetFileMode(destfile,e.UnixPermissions)
 	EndIf	
 ?	
 Return True
