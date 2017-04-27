@@ -842,7 +842,7 @@ If Bank
 'BT.Close
 ?Not Win32
 	Local j:TJCRDir
-	If TJCRDir(Jcr) j=TJCRDir(jcr) Else j=JCR_Dir(jcr)
+	If TJCRDir(Jcr) j=TJCRDir(jcr) Else j=JCR_Dir(String(jcr))
 	Local e:TJCREntry = TJCREntry(MapValueForKey(j.entries,Upper(entry)))
 	If Not e Return True
 	If AllPermissions And e.UnixPermissions<=-1 
