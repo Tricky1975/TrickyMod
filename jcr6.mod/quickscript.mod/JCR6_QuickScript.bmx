@@ -1,8 +1,18 @@
+Rem
+        JCR6_QuickScript.bmx
+	(c) 2017 Jeroen Petrus Broks.
+	
+	This Source Code Form is subject to the terms of the 
+	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
+	distributed with this file, You can obtain one at 
+	http://mozilla.org/MPL/2.0/.
+        Version: 17.04.27
+End Rem
 Strict
 Import jcr6.jcr6main
 
-MKL_Version "JCR6 - JCR6QS.bmx","15.09.23"
-MKL_Lic     "JCR6 - JCR6QS.bmx","Mozilla Public License 2.0"
+MKL_Version "JCR6 - JCR6_QuickScript.bmx","17.04.27"
+MKL_Lic     "JCR6 - JCR6_QuickScript.bmx","Mozilla Public License 2.0"
 
 Const chkline:String = "::JCR6_QUICKSCRIPT::"
 

@@ -1,12 +1,12 @@
 Rem
         JCR6_RealDir.bmx
-	(c) 2015, 2016 Jeroen Petrus Broks.
+	(c) 2015, 2016, 2017 Jeroen Petrus Broks.
 	
 	This Source Code Form is subject to the terms of the 
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 16.03.12
+        Version: 17.04.27
 End Rem
 Rem
 
@@ -30,7 +30,7 @@ Import tricky_units.MKL_Version
 Import tricky_units.tree
 Import jcr6.jcr6main
 
-MKL_Version "JCR6 - JCR6_RealDir.bmx","16.03.12"
+MKL_Version "JCR6 - JCR6_RealDir.bmx","17.04.27"
 MKL_Lic     "JCR6 - JCR6_RealDir.bmx","Mozilla Public License 2.0"
 
 Private

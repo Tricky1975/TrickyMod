@@ -67,27 +67,28 @@ Type DRV_TAR Extends DRV_JCRDIR
 	Repeat
 	e = New TJCREntry
 	e.mainfile = fil
-	E.PVars = New StringMap ' Must be present, some TAR values will be put in it, but they will not have that much value. ;)
+	E.mv = New TMap ' Must be present, some TAR values will be put in it, but they will not have that much value. ;)
 	E.Storage = "Store"     ' TAR does not support compression, so always deal this as "Store"
 	E.FileName = rs(bt,100); 
-	For Local k$=EachIn(["MODE","UID","GID"])
-		MapInsert E.PVars,"TAR."+k,rs(bt,8)
+	E.UnixPermissions = o2d(rs(bt,8))
+	For Local k$=EachIn(["UID","GID"])
+		MapInsert E.mv,"TAR."+k,rs(bt,8)
 		Next
 	e.size = o2d(rs(bt,12))
 	e.compressedsize = e.size
 	If e.size<0 Return ret
-	MapInsert E.PVars,"TAR.MTIME",rs(bt,12)
-	MapInsert E.PVars,"TAR.CHECKSUM",rs(bt,8)
-	MapInsert E.PVars,"TAR.TYPEFLAG","$"+Right(Hex(ReadByte(Bt)),2)
-	MapInsert E.PVars,"TAR.LINKNAME",rs(bt,100)
-	MapInsert e.pvars,"TAR.MAGIC",rs(bt,6)
-	MapInsert E.PVars,"TAR.VERSION",rs(bt,2)
-	MapInsert e.pvars,"TAR.UNAME",rs(bt,32)
-	MapInsert e.pvars,"TAR.GNAME",rs(bt,32)
-	MapInsert e.pvars,"TAR.DEFMAJOR",rs(bt,8)
-	MapInsert e.pvars,"TAR.DEFMINOR",rs(bt,8)
-	MapInsert e.pvars,"TAR.PREFIX",rs(bt,155)
-	MapInsert e.pvars,"TAR.?????",rs(bt,12) 'Repeat Print "===" Until ReadByte(bt)<>0
+	MapInsert E.mv,"TAR.MTIME",rs(bt,12)
+	MapInsert E.mv,"TAR.CHECKSUM",rs(bt,8)
+	MapInsert E.mv,"TAR.TYPEFLAG","$"+Right(Hex(ReadByte(Bt)),2)
+	MapInsert E.mv,"TAR.LINKNAME",rs(bt,100)
+	MapInsert e.mv,"TAR.MAGIC",rs(bt,6)
+	MapInsert E.mv,"TAR.VERSION",rs(bt,2)
+	MapInsert e.mv,"TAR.UNAME",rs(bt,32)
+	MapInsert e.mv,"TAR.GNAME",rs(bt,32)
+	MapInsert e.mv,"TAR.DEFMAJOR",rs(bt,8)
+	MapInsert e.mv,"TAR.DEFMINOR",rs(bt,8)
+	MapInsert e.mv,"TAR.PREFIX",rs(bt,155)
+	MapInsert e.mv,"TAR.?????",rs(bt,12) 'Repeat Print "===" Until ReadByte(bt)<>0
 	e.offset = StreamPos(bt)	
 	If Right(e.filename,1)<>"/" MapInsert entries,Upper(e.filename),E ' This must come last in case of the ustar extention. Filenames ending on "/" are directories in TAR. JCR6 does not  support this, and thus directories will not be added.
 	theend =  e.offset+e.size>=StreamSize(bt)
