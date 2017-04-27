@@ -1050,7 +1050,7 @@ Type TJCRCreate Extends TJCRDir
 	MapInsert ent.mv,"$__Author",Ent.Author
 	MapInsert ent.mv,"$__Notes",Ent.Notes
 	?Not Win32
-	If String(original) MapInsert ent.mv,"%__UnixPermissions",UnixPermissions ' Only do this with files
+	If String(original) MapInsert ent.mv,"%__UnixPermissions",UnixPermissions+"" ' Only do this with files
 	?
 	WriteBank CBnk,BT,0,JI_BankSize(CBnk)
 	MapInsert Self.Entries,Entry,Ent
