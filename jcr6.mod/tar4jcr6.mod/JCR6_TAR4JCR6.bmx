@@ -68,7 +68,7 @@ Type DRV_TAR Extends DRV_JCRDIR
 	e = New TJCREntry
 	e.mainfile = fil
 	E.mv = New TMap ' Must be present, some TAR values will be put in it, but they will not have that much value. ;)
-	e.pvars = ret.pvars
+	e.pvars = ret.variables
 	E.Storage = "Store"     ' TAR does not support compression, so always deal this as "Store"
 	E.FileName = rs(bt,100); 
 	E.UnixPermissions = o2d(rs(bt,8))
