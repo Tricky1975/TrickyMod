@@ -24,6 +24,8 @@ End Rem
 ' 15.02.01 - Initial version
 ' 15.03.11 - Real dirs always case insensitive
 ' 16.03.12 - All realdir "archives" will have the 'multi-file' tag. The CLI tools need this
+' 17.04.27 - Unix permissions support
+
 Import tricky_units.MKL_Version
 Import tricky_units.tree
 Import jcr6.jcr6main
