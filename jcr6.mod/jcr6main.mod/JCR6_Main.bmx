@@ -24,6 +24,7 @@ End Rem
 ' 16.03.13 - Fixed typo in "unknown"
 ' 16.03.15 - Fixed a bug that would cause a crash if a dir driver returns nothing at all.
 ' 16.06.11 - First setup for NG compatibility
+' 17.04.27 - Unix permissions support
 
 Strict
 
@@ -41,6 +42,7 @@ Import tricky_units.MKL_Version
 Import tricky_units.prefixsuffix
 Import tricky_units.Listfile
 Import tricky_units.MD5 ' Will be used for verification purposes. Full support for this comes later.
+Import tricky_units.UnixPermissionsNumbersAndStrings
 
 ?linux
 Import "-ldl"
@@ -142,6 +144,7 @@ Type TJCREntry
 	Field MV:TMap = New TMap
 	Field Author$
 	Field Notes$
+	Field UnixPermissions=-1
 	Field PVars:StringMap
 	Method M$(T$) Return String(MapValueForKey(MV,T)); End Method
 	Method MI(T$) Return String(MapValueForKey(MV,T)).ToInt(); End Method
@@ -473,6 +476,7 @@ Type DRV_JCR6 Extends DRV_JCRDIR
 						E.Author = E.M("__Author")
 						E.Notes = E.M("__Notes")
 						E.PVars = ret.Variables
+						If MapContains(E.PVars,"%__UnixPermissions") E.UnixPermissions = E.MI("__UnixPermissions")
 						If ret.Config.B("__CaseSensitive") MapInsert ret.Entries,E.FileName,E Else MapInsert ret.entries,Upper(E.filename),E							
 					Case "COMMENT"
 					    Local T$ = alt_readstring(BTF)
@@ -797,9 +801,9 @@ Public
 
 Rem
 bbdoc: Extracts a JCR File to the given location
-about: Please note that Dest$ will normally be considered a folder in which the extract the file to, however when 'DirectDest' is set to 'True' it will be a direct file to write to.
+about: Please note that Dest$ will normally be considered a folder in which the extract the file to, however when 'DirectDest' is set to 'True' it will be a direct file to write to.<br>AllPermissions is ignored in Windows, but on unix it will give a file all permissions UNLESS, different permissions were set inside the file's settings.
 EndRem
-Function JCR_Extract(JCR:Object,Entry:String,Dest$="",DirectDest=False)
+Function JCR_Extract(JCR:Object,Entry:String,Dest$="",DirectDest=False,AllPermissions=True)
 'Local BT:JCR_Stream
 Local DestDir$ = Replace(Dest,"\","/")
 Local O:TStream
@@ -835,7 +839,18 @@ If Bank
 	Else
 	Return False
 	EndIf
-'BT.Close	
+'BT.Close
+?Not Win32
+	Local j:TJCRDir
+	If TJCRDir(Jcr) j=jcr Else j=JCR_Dir(jcr)
+	Local e:TJCREntry = TJCREntry(MapValueForKey(j.entries,Upper(entry)))
+	If Not e Return True
+	If AllPermissions And e.UnixPermissions<=-1 
+		SetFileMode(PermissionsToNum("rwxrwxrwx"))
+	ElseIf e.UnixPermissions>=0
+		SetFileMode(e.UnixPermissions)
+	EndIf	
+?	
 Return True
 End Function
 
@@ -986,6 +1001,9 @@ Type TJCRCreate Extends TJCRDir
 	Local Ent:TJCREntry = New TJCREntry
 	Local EntryName$ = Entry
 	Local NNE
+	?Not win32
+	Local UnixPermissions
+	?
 	If TBank(Original) 
 		Bnk = TBank(Original)
 		OF$ = "<Bank>"
@@ -999,6 +1017,9 @@ Type TJCRCreate Extends TJCRDir
 		OF = String(Original)
 		Bnk = LoadBank(OF)
 		If Not entryname EntryName = OF
+		?Not Win32
+		UnixPermissions = FileMode(OF)
+		?
 	Else
 		JCR_JAMERR("'Original' parameter must be either a string or a TBank!",JCRWriteFIle,"<???>","TJCRCreate.AddEntry")
 		Return
@@ -1028,6 +1049,9 @@ Type TJCRCreate Extends TJCRDir
 	MapInsert ent.mv,"$__Storage",Ent.Storage
 	MapInsert ent.mv,"$__Author",Ent.Author
 	MapInsert ent.mv,"$__Notes",Ent.Notes
+	?Not Win32
+	If String(original) MapInsert ent.mv,"%__UnixPermissions",UnixPermissions ' Only do this with files
+	?
 	WriteBank CBnk,BT,0,JI_BankSize(CBnk)
 	MapInsert Self.Entries,Entry,Ent
 	Return ent
