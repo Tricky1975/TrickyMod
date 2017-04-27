@@ -476,7 +476,7 @@ Type DRV_JCR6 Extends DRV_JCRDIR
 						E.Author = E.M("__Author")
 						E.Notes = E.M("__Notes")
 						E.PVars = ret.Variables
-						If MapContains(E.PVars,"%__UnixPermissions") E.UnixPermissions = E.MI("__UnixPermissions")
+						If MapContains(E.MV,"%__UnixPermissions") E.UnixPermissions = E.MI("__UnixPermissions")
 						If ret.Config.B("__CaseSensitive") MapInsert ret.Entries,E.FileName,E Else MapInsert ret.entries,Upper(E.filename),E							
 					Case "COMMENT"
 					    Local T$ = alt_readstring(BTF)
