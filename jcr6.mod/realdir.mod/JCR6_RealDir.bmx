@@ -63,7 +63,7 @@ Type DRV_REALDIR Extends DRV_JCRDIR
 			E.MainFile = bdir+File
 			E.PVars = New StringMap
 			?Not win32
-			e.unixpermissions = FileMode(file)
+			e.unixpermissions = FileMode(bdir+File)
 			?
 			Next
 		Return ret
