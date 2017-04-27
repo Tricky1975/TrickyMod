@@ -60,6 +60,9 @@ Type DRV_REALDIR Extends DRV_JCRDIR
 			E.Offset = 0
 			E.MainFile = bdir+File
 			E.PVars = New StringMap
+			?Not win32
+			e.unixpermissions = FileMode(file)
+			?
 			Next
 		Return ret
      End Method

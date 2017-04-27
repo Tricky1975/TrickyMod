@@ -1019,6 +1019,7 @@ Type TJCRCreate Extends TJCRDir
 		If Not entryname EntryName = OF
 		?Not Win32
 		UnixPermissions = FileMode(OF)
+		ent.unixpermissions = FileMode(OF)
 		?
 	Else
 		JCR_JAMERR("'Original' parameter must be either a string or a TBank!",JCRWriteFIle,"<???>","TJCRCreate.AddEntry")
@@ -1049,9 +1050,10 @@ Type TJCRCreate Extends TJCRDir
 	MapInsert ent.mv,"$__Storage",Ent.Storage
 	MapInsert ent.mv,"$__Author",Ent.Author
 	MapInsert ent.mv,"$__Notes",Ent.Notes
-	?Not Win32
-	If String(original) MapInsert ent.mv,"%__UnixPermissions",UnixPermissions+"" ' Only do this with files
-	?
+	'?Not Win32
+	'If String(original) 
+	MapInsert ent.mv,"%__UnixPermissions",ent.UnixPermissions+"" 
+	'?
 	WriteBank CBnk,BT,0,JI_BankSize(CBnk)
 	MapInsert Self.Entries,Entry,Ent
 	Return ent
