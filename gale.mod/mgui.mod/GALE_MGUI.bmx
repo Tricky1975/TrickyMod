@@ -26,9 +26,17 @@ Import brl.eventqueue
 Import Gale.Main
 Import tricky_units.MKL_Version
 
+Import BRL.FreeAudioAudio
+Import BRL.DirectSoundAudio
+
 MKL_Version "GALE - GALE_MGUI.bmx","15.09.02"
 MKL_Lic     "GALE - GALE_MGUI.bmx","Mozilla Public License 2.0"
 
+
+Rem
+bbdoc: If an audio sample is assigned to this, it will play when an error happens.
+End Rem
+Global GALE_GUI_ErrorSound:TSound
 
 Rem
 bbdoc: When set to 'null' (default value) all console output requests will be ignored. When a textfield gadget is tied to this variable, a log will be stored in there for the user of your program to see (if that gadget is visible at the time that is).
@@ -82,7 +90,8 @@ Type GALEMainCon Extends GALE_DebugConsole
 	'Cls
 	'ConsoleShow
 	'Flip
-	'WaitKey	
+	'WaitKey
+	If GALE_GUI_ErrorSound PlaySound GALE_GUI_ErrorSound
 	If GALE_ExitGadget 
 		GaleConsoleWrite "Close this window to quit!"
 		For Local G:TGadget = EachIn GALEGUI_HideOnError HideGadget G Next
