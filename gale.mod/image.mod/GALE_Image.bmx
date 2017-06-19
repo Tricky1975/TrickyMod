@@ -190,6 +190,13 @@ Type TJBC_Lua_Image  ' BLD: Object Image\nIn this object you can find all sorts 
 	DrawImage TImage(MapValueForKey(MJBC_Lua_Image,Upper(Image))),X,Y,F
 	End Method
 	
+	
+	Method Image:TImage(Img$)
+ 		Local ret:TImage = TImage(MapValueForKey(MJBC_Lua_Image,Upper(Img)))
+		If Not ret GALE_Error("Image.Image(~q"+Img+"~q): Let's call this a 404!")
+		Return ret
+	End method
+	
 	Method Collision(Image1$,X1,Y1,Image2$,X2,Y2) ' BLD: Returns 1 if the two images collide<br>(Frames are not supported due to Lua's limited range of sending parameters).
 	Local img1:TImage = TImage(MapValueForKey(MJBC_Lua_Image,Upper(Image1)))
 	Local img2:TImage = TImage(MapValueForKey(MJBC_Lua_Image,Upper(Image2)))
