@@ -7,7 +7,7 @@ Moduleinfo "NameModule: Tricky's Units - Dirry"
 Moduleinfo "Author: Jeroen Broks aka Tricky"
 ModuleInfo "Copyright: &copy; Jeroen Petrus Broks"
 Moduleinfo "License: zLib license"
-moduleinfo "Last update: 24 Mar 2016"
+moduleinfo "Last update: 19 Jun 2017"
 
 
 

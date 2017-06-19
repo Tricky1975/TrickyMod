@@ -1,8 +1,8 @@
 Rem
   Dirry.bmx
   
-  version: 16.03.24
-  Copyright (C) 2012, 2015, 2016 Jeroen P. Broks
+  version: 17.06.19
+  Copyright (C) 2012, 2015, 2016, 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -77,5 +77,5 @@ D_Add("$Launch$",LaunchDir)
 
 
 
-MKL_Version "Tricky's Units - Dirry.bmx","16.03.24"
+MKL_Version "Tricky's Units - Dirry.bmx","17.06.19"
 MKL_Lic     "Tricky's Units - Dirry.bmx","ZLib License"
