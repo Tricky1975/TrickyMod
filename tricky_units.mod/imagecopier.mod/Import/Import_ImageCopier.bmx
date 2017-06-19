@@ -17,6 +17,7 @@ Rem
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 End Rem
+
 Strict
 Import tricky_units.MKL_Version
 Import brl.max2d
