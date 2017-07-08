@@ -8,7 +8,7 @@ moduleinfo "Name: jcr6.tar4jcr6"
 moduleinfo "Author:Jeroen P. Broks"
 moduleinfo "&copy; Copyright 2014-2017 Jeroen P. Broks"
 moduleinfo "License:Mozilla Public License 2.0"
-moduleinfo "Last mod build:27/4/2017"
+moduleinfo "Last mod build:8/7/2017"
 
 
 import "JCR6_TAR4JCR6.bmx"
