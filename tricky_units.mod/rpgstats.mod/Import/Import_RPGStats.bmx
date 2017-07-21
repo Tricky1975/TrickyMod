@@ -51,7 +51,9 @@ Global RPGJCRDir$
 Global RPGID$
 Global RPGEngine$
 
+Private
 Function ConsoleWrite(M$,R=255,G=255,B=255) L_ConsoleWrite M,R,G,B End Function
+public
 
 Rem
 bbdoc: If set to 'true' the lua scripts tied to a stat will be ignored. (Most of meant for quick viewers)
