@@ -178,6 +178,16 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 	Return RPGParty[pos]
 	End Method
 	
+	Method ReTag(characterold$,characternew$) ' BLD: The tag of a party member will be changed.<br>If this character is currently in the party, the party will automatically be adapted.<br>Please note, if a character already exists at the new tag, it will be overwritten, so use this with CARE!
+		Local ch:RPGCharacter = grabchar(characterold$)
+		If Not ch Return GALE_Error("Original character doesn't exist",["F,RPGChar.ReTag("+characterold+","+characternew+")"])
+		MapInsert RPGChars,characternew,ch
+		MapRemove RPGChars,characterold
+		For Local i=0 Until Len RPGParty
+			If RPGParty[i]=characterold RPGParty[i]=characternew
+		Next
+	End method	
+	
 	Method SetParty(pos,Tag$) ' BLD: Assign a party member to a slot. Please note depending on the engine there can be a maximum of slots.
 	If pos>=Len(RPGParty) Return
 	RPGParty[pos] = Tag
@@ -374,7 +384,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 		Local ch:RPGCharacter = grabchar(char)
 		If Not ch GALE_Error("Character doesn't exist",["F,RPGChar.DelStat","char,"+char,"Stat:"+stat])
 		If Not MapContains(ch.stats,stat) 
-			print "DelStat: WARNING! Character "+char+" does not HAVE a stat named: "+stat
+			ConsoleWrite "DelStat: WARNING! Character "+char+" does not HAVE a stat named: "+stat
 			Return
 		EndIf
 		MapRemove ch.stats,stat
