@@ -51,6 +51,8 @@ Global RPGJCRDir$
 Global RPGID$
 Global RPGEngine$
 
+Function ConsoleWrite(M$,R,G,B) L_ConsoleWrite M,R,G,B End function
+
 Rem
 bbdoc: If set to 'true' the lua scripts tied to a stat will be ignored. (Most of meant for quick viewers)
 End Rem
@@ -186,7 +188,7 @@ Type RPGLuaAPI ' BLD: Object RPGChar\nThis object contains features you need for
 		For Local i=0 Until Len RPGParty
 			If RPGParty[i]=characterold RPGParty[i]=characternew
 		Next
-	End method	
+	End Method	
 	
 	Method SetParty(pos,Tag$) ' BLD: Assign a party member to a slot. Please note depending on the engine there can be a maximum of slots.
 	If pos>=Len(RPGParty) Return
