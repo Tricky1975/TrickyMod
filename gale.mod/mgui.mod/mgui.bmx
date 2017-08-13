@@ -20,8 +20,8 @@ ModuleInfo "Name: mgui.mod"
 ModuleInfo "Creator: Tricky (Jeroen P. Broks)"
 ModuleInfo "Copyright: Jeroen P. Broks"
 ModuleInfo "License: Mozilla Public License 2.0"
-ModuleInfo "Version: 17.05"
-ModuleInfo "Last update: Thu 04 May 2017; 21:28:12"
+ModuleInfo "Version: 17.08"
+ModuleInfo "Last update: Mon 14 August 2017; 00:17:54"
 ModuleInfo "Module History: Please check the file GALE_MGUI.bmx for more detailed information on that!"
 
 
