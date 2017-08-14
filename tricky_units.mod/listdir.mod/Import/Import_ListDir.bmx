@@ -1,8 +1,8 @@
 Rem
   ListDir.bmx
   
-  version: 16.06.11
-  Copyright (C) 2015, 2016 Jeroen P. Broks
+  version: 17.08.14
+  Copyright (C) 2015, 2016, 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -31,7 +31,7 @@ Import tricky_units.MKL_Version
 Const LISTDIR_FILEONLY = 1
 Const LISTDIR_DIRONLY  = 2
 
-MKL_Version "Tricky's Units - ListDir.bmx","16.06.11"
+MKL_Version "Tricky's Units - ListDir.bmx","17.08.14"
 MKL_Lic     "Tricky's Units - ListDir.bmx","ZLib License"
 
 Rem
@@ -63,5 +63,36 @@ CloseDir BD
 SortList ret
 Return ret
 End Function
+
+Rem
+bbdoc: Similar to ListDir, however here all files are prefixed with the requested path
+End Rem
+Function ListDirFull:TList(dir$=".",t=0,allowunixhidden=False)
+Local d$ = Replace(dir,"\","/")
+Local ret:TList = New TList
+If Right(D,1)<>"/" D:+"/"
+?bmxng
+Local BD:Byte Ptr
+?Not bmxng
+Local BD 
+?
+BD = ReadDir(d)
+If BD=0
+	Print "listdir: Could not access dir: "+dir
+	Return 
+	EndIf
+Local F$
+Repeat
+F = NextFile(BD)
+If Not F Exit
+If (Left(F,1)<>"." Or allowunixhidden) And (t=0 Or FileType(D+F)=t)
+	ListAddLast ret,D+F
+	EndIf
+Forever
+CloseDir BD
+SortList ret
+Return ret
+End Function
+
 
 
