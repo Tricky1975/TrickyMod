@@ -63,7 +63,7 @@ Type UPB_JCR Extends UPB_DRIVER
 		Return r
 	End Method
 	
-	Method hotpots(O:Object,I:TImage)
+	Method hotpots(O:Object,I:TImage,Prefix$)
 		Local J:TJCRDir
 		Local d$=Upper(prefix)
 		Local G:TIni
@@ -98,7 +98,7 @@ Type UPB_JCR Extends UPB_DRIVER
 			Default		hy=g.C("Y").toint()
 		End Select	
 		SetImageHandle I,hx,hy
-	End method
+	End Method
 End Type
 
 New UPB_JCR	

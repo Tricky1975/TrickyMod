@@ -80,7 +80,7 @@ Function GetBundle:TImage(bundle:Object, prefix$="",flags=-1)
 		bundleerror = "Count mismatch. "+cnt+" pixmaps counted, but "+n+" were expected"	
 		Return
 	EndIf
-	drv.HotSpot bundle,ret
+	drv.HotSpot bundle,ret,prefix
 	Return ret
 End Function	
 			
