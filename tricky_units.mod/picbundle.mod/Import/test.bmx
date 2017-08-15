@@ -17,4 +17,27 @@ Rem
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 End Rem
+Strict
 Import "PicBundle.bmx"
+'Import tricky_units.Dirry
+
+
+'Print "Huh?"
+Local d$="../../test/buntest" 'Dirry("$Home$/Pictures")
+
+Print "Let's load: "+d
+Local I:TImage = GetBundle(d)
+
+Print bundleerror
+
+If Not I End
+
+Graphics ImageWidth(i),ImageHeight(i)
+For Local ak=0 Until Len (i.pixmaps)
+	Print "Frame: "+ak
+	DrawImage I,0,0,ak
+	Flip
+	Delay 1500
+Next	
+	
+	
