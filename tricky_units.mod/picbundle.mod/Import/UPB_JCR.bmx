@@ -75,11 +75,11 @@ Type UPB_JCR Extends UPB_DRIVER
 			Return Null
 		EndIf
 		If JCR_Exists(J,Prefix+"/HotSpots.gini")
-			G = ReadIni(JCR+B,J,Prefix+"/HotSpots.gini")
+			G = ReadIni(JCR_B(J,Prefix+"/HotSpots.gini"))
 		ElseIf JCR_Exists(J,Prefix+"HotSpots.gini")
-			G = ReadIni(JCR+B,J,Prefix+"HotSpots.gini")
+			G = ReadIni(JCR_B(J,Prefix+"HotSpots.gini"))
 		ElseIf JCR_Exists(J,"HotSpots.gini")
-			G = ReadIni(JCR+B,J,Prefix+"HotSpots.gini")
+			G = ReadIni(JCR_B(J,Prefix+"HotSpots.gini"))
 		Else
 			Return
 		EndIf
