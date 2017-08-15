@@ -25,6 +25,7 @@ Strict
 
 Import jcr6.realdir
 Import tricky_units.prefixsuffix
+Import tricky_units.gini
 Import "UPB_Core.bmx"
 
 MKL_Version "Tricky's Units - UPB_JCR.bmx","17.08.15"
@@ -62,6 +63,42 @@ Type UPB_JCR Extends UPB_DRIVER
 		Return r
 	End Method
 	
+	Method hotpots(O:Object,I:TImage)
+		Local J:TJCRDir
+		Local d$=Upper(prefix)
+		Local G:TIni
+		If TJCRDir(o)
+			J=TJCRDir(o)
+		ElseIf String(o)
+			J=JCR_Dir(String(O))
+		Else
+			Return Null
+		EndIf
+		If JCR_Exists(J,Prefix+"/HotSpots.gini")
+			G = ReadIni(JCR+B,J,Prefix+"/HotSpots.gini")
+		ElseIf JCR_Exists(J,Prefix+"HotSpots.gini")
+			G = ReadIni(JCR+B,J,Prefix+"HotSpots.gini")
+		ElseIf JCR_Exists(J,"HotSpots.gini")
+			G = ReadIni(JCR+B,J,Prefix+"HotSpots.gini")
+		Else
+			Return
+		EndIf
+		Local hx,hy
+		Select g.C("X").toupper()
+			Case "CENTER"	hx=ImageWidth(I)/2
+			Case "LEFT"		hx=0
+			Case "RIGHT"	hx=ImageWidth(I)
+			Default		hx=g.C("X").toint()
+		End Select	
+		Select g.C("Y").toupper()
+			Case "CENTER"	hy=ImageHeight(I)/2
+			Case "TOP","UP"	hy=0
+			Case "BOTTOM","DOWN"	
+						hy=ImageHeight(I)
+			Default		hy=g.C("Y").toint()
+		End Select	
+		SetImageHandle I,hx,hy
+	End method
 End Type
 
 New UPB_JCR	

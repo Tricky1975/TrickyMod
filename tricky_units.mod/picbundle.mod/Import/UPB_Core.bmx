@@ -32,6 +32,8 @@ Global JCR_Active
 Type UPB_DRIVER
 	Method recognize(A:Object) Abstract
 	Method makelist:TList(A:Object,prefix$="") Abstract
+	Method hotspots(A:Object,I:TImage) End Method
+	
 	
 	Method New() Final
 		ListAddLast UPB_Drivers,Self
