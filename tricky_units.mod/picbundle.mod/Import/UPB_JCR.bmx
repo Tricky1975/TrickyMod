@@ -56,7 +56,7 @@ Type UPB_JCR Extends UPB_DRIVER
 		EndIf
 		For Local K$=EachIn MapKeys(J.entries)
 			If Prefixed(k,d)
-				DebugLog "Including "+k+" to bundle"
+				DebugLog "Including "+k+" to bundle (prefix:"+d+">"+Prefixed(k,d)
 				p = LoadPixmap(JCR_B(J,k))
 				If p ListAddLast r,p
 			EndIf

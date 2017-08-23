@@ -1,7 +1,7 @@
 Rem
   PicBundle.bmx
   
-  version: 17.08.15
+  version: 17.08.24
   Copyright (C) 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -51,12 +51,12 @@ Function GetBundle:TImage(bundle:Object, prefix$="",flags=-1)
 		BundleError = "None of the bundle drivers recognized the bundle you tried to load"
 		Return
 	EndIf
-	Local l:TList = drv.makelist(bundle)
+	Local l:TList = drv.makelist(bundle,prefix)
 	Local P:TPixmap
 	p = TPixmap(l.valueatindex(0))
 	If Not p
 		' this should NEVER be possible, but IF it happens at least there won't be a crash.
-		bundleerror = "NULL pixmap on first value. This is an impossible error. Please report!"
+		BundleError = "NULL pixmap on first value. This is an impossible error. Please report!"
 		Return
 	EndIf
 	Local w=PixmapWidth(p)
@@ -66,18 +66,18 @@ Function GetBundle:TImage(bundle:Object, prefix$="",flags=-1)
 	Local ret:TImage = CreateImage(w,h,n,flags)
 	For p = EachIn l
 		If PixmapWidth(p)<>w And PixmapHeight(p)<>h
-			bundleerror = "Format mismatch "+PixmapWidth(p)+"x"+PixmapHeight(p)+"~nMust be "+w+"x"+h
+			BundleError = "Format mismatch "+PixmapWidth(p)+"x"+PixmapHeight(p)+"~nMust be "+w+"x"+h
 			Return
 		EndIf
 		If cnt>n
-			bundleerror = "Too many pixmaps. "+n+" expcted"
+			BundleError = "Too many pixmaps. "+n+" expcted"
 			Return
 		EndIf
 		ret.pixmaps[cnt]=p
 		cnt:+1
 	Next
 	If cnt<>n
-		bundleerror = "Count mismatch. "+cnt+" pixmaps counted, but "+n+" were expected"	
+		BundleError = "Count mismatch. "+cnt+" pixmaps counted, but "+n+" were expected"	
 		Return
 	EndIf
 	drv.HotSpots bundle,ret,prefix
