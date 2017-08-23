@@ -7,7 +7,7 @@ Moduleinfo "NameModule: Tricky's Units - PicBundle"
 Moduleinfo "Author: Jeroen Broks aka Tricky"
 ModuleInfo "Copyright: &copy; Jeroen Petrus Broks"
 Moduleinfo "License: zLib license"
-moduleinfo "Last update: 15 Aug 2017"
+moduleinfo "Last update: 24 Aug 2017"
 
 
 
