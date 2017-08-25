@@ -1,8 +1,8 @@
 Rem
   StringMap.bmx
   2015
-  version: 16.06.11
-  Copyright (C) 2015, 2016 Jeroen P. Broks
+  version: 17.08.25
+  Copyright (C) 2015, 2016, 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -25,7 +25,7 @@ Strict
 Import brl.map
 Import tricky_units.MKL_Version
 
-MKL_Version "Tricky's Units - StringMap.bmx","16.06.11"
+MKL_Version "Tricky's Units - StringMap.bmx","17.08.25"
 MKL_Lic     "Tricky's Units - StringMap.bmx","ZLib License"
 
 Rem
@@ -52,6 +52,10 @@ Type StringMap Extends TMap
 		Next
 		Return ret
 	End Method
+	
+	Method AddText(key$,Text$)
+		MapInsert Self,key,value(key)+Text
+	End method	
 	
 End Type
 
