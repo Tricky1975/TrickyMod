@@ -32,6 +32,7 @@ Import brl.eventqueue
 Import Tricky_Units.MaxGUI_Input
 Import Tricky_units.Tree
 Import Tricky_Units.MKL_Version
+Import tricky_units.stringmap
 
 MKL_Version "Tricky's Units - FilePicker.bmx","17.10.14"
 MKL_Lic     "Tricky's Units - FilePicker.bmx","ZLib License"
@@ -104,7 +105,7 @@ Forever
 HideGadget FPWin
 If extmode
 	ret = emm.value(ret)
-endif
+EndIf
 Return Ret
 End Function
 
