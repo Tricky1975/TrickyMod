@@ -88,8 +88,8 @@ Rem
 bbdoc: Perform the callback
 returns: Nothing if succesful, when an error occurs the error message is returned.
 End Rem
-Function CallBack$(CB,from:Object)
-	Local cbf:tcallbackfunction = tcallbackfunction(mapvalueforkey(cb.m,from))
+Function CallBack$(CB:tcallback,from:Object)
+	Local cbf:tcallbackfunction = tcallbackfunction(MapValueForKey(cb.m,from))
 	If Not cbf Return "Requested callback function not found!"
 	cbf.f cbf.cfg
 End Function
@@ -97,7 +97,7 @@ End Function
 Rem
 bbdoc: Same as CallBack, but now with the numberic variant
 End Rem
-Function NumCallBack$(CB,From)
+Function NumCallBack$(CB:Tcallback,From)
 	Return CallBack(CB,"$"+Hex(from))
 End Function	
 	
