@@ -104,7 +104,7 @@ Select EventID()
 Forever
 HideGadget FPWin
 If extmode
-	ret = emm.value(ret)
+	If emm.value(ret) ret = emm.value(ret)
 EndIf
 Return Ret
 End Function
