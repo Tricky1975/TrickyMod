@@ -1,8 +1,8 @@
 Rem
   FilePicker.bmx
   
-  version: 16.06.11
-  Copyright (C) 2012, 2015, 2016 Jeroen P. Broks
+  version: 17.10.14
+  Copyright (C) 2012, 2015, 2016, 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -33,7 +33,7 @@ Import Tricky_Units.MaxGUI_Input
 Import Tricky_units.Tree
 Import Tricky_Units.MKL_Version
 
-MKL_Version "Tricky's Units - FilePicker.bmx","16.06.11"
+MKL_Version "Tricky's Units - FilePicker.bmx","17.10.14"
 MKL_Lic     "Tricky's Units - FilePicker.bmx","ZLib License"
 
 Private
@@ -47,7 +47,8 @@ Public
 Rem
 bbdoc: A quick list of files to pick, from the specified folder and only there.
 end rem
-Function FilePicker$(Caption$,Dir$,FType=1,AllowNew=False)
+Function FilePicker$(Caption$,Dir$,FType=1,AllowNew=False,extmode$="")
+Local emm:StringMap = New StringMap
 ClearGadgetItems FPLst
 SetGadgetText FPWin,Caption
 ShowGadget FPWin
@@ -73,6 +74,7 @@ If f="" Then Exit
 If (Left(F,1)<>".") And (FileType(DD+F)=FType Or FType=3) Then 
 	'AddGadgetItem FPLst,F
 	'Print "FilePicker.Add("+F+")"
+	If extmode And ExtractExt(f).toupper()=Upper(extmode) MapInsert StripExt(f),f f=StripExt(f)
 	ListAddLast List,F
 	EndIf
 Forever
@@ -100,6 +102,9 @@ Select EventID()
 	End Select
 Forever
 HideGadget FPWin
+If extmode
+	ret = emm.value(ret)
+endif
 Return Ret
 End Function
 
