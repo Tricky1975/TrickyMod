@@ -71,7 +71,7 @@ Function AddCallBack(CB:TCallBack,From:Object,func(p:StringMap),parameters:Objec
 			MapInsert cbf.cfg,k,v
 		Next
 	ElseIf StringMap(parameters)
-		cbf.cfg = parameters		
+		cbf.cfg = StringMap(parameters		)
 	EndIf	
 	MapInsert cb,from,cbf
 End Function
