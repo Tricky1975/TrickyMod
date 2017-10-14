@@ -58,7 +58,7 @@ Function AddCallBack(CB:TCallBack,From:Object,func(p:StringMap),parameters:Objec
 	cbf.f=func
 	If String(parameters)
 		Local uc=0
-		For Local a$=EachIn String(parameters).split(";")
+		For Local a$=EachIn parameters.split(";")
 			Local p = a.find("=")
 			Local k$,v$
 			If P<=0 
@@ -71,9 +71,9 @@ Function AddCallBack(CB:TCallBack,From:Object,func(p:StringMap),parameters:Objec
 			MapInsert cbf.cfg,k,v
 		Next
 	ElseIf StringMap(parameters)
-		cbf.cfg = StringMap(parameters		)
+		cbf.cfg = StringMap(parameters)
 	EndIf	
-	MapInsert cb,from,cbf
+	MapInsert cb.m,from,cbf
 End Function
 
 Rem 
