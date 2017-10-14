@@ -73,7 +73,7 @@ Function AddCallBack(CB:TCallBack,From:Object,func(p:StringMap),parameters:Objec
 	ElseIf StringMap(parameters)
 		cbf.cfg = StringMap(parameters)
 	EndIf	
-	MapInsert cb,from,cbf
+	MapInsert cb.M,from,cbf
 End Function
 
 Rem 
@@ -89,7 +89,7 @@ bbdoc: Perform the callback
 returns: Nothing if succesful, when an error occurs the error message is returned.
 End Rem
 Function CallBack$(CB,from:Object)
-	Local cbf:tcallbackfunction = tcallbackfunction(mapvaluefromkey(cb.map,from))
+	Local cbf:tcallbackfunction = tcallbackfunction(mapvaluefromkey(cb.m,from))
 	If Not cbf Return "Requested callback function not found!"
 	cbf.f cbf.cfg
 End Function
