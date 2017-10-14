@@ -58,7 +58,7 @@ Function AddCallBack(CB:TCallBack,From:Object,func(p:StringMap),parameters:Objec
 	cbf.f=func
 	If String(parameters)
 		Local uc=0
-		For Local a$=EachIn parameters.split(";")
+		For Local a$=EachIn String(parameters).split(";")
 			Local p = a.find("=")
 			Local k$,v$
 			If P<=0 
