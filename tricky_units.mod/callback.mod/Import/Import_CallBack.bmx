@@ -89,7 +89,7 @@ bbdoc: Perform the callback
 returns: Nothing if succesful, when an error occurs the error message is returned.
 End Rem
 Function CallBack$(CB,from:Object)
-	Local cbf:tcallbackfunction = tcallbackfunction(mapvaluefromkey(cb.m,from))
+	Local cbf:tcallbackfunction = tcallbackfunction(mapvalueforkey(cb.m,from))
 	If Not cbf Return "Requested callback function not found!"
 	cbf.f cbf.cfg
 End Function
