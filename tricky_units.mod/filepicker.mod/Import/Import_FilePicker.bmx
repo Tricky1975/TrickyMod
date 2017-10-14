@@ -32,7 +32,7 @@ Import brl.eventqueue
 Import Tricky_Units.MaxGUI_Input
 Import Tricky_units.Tree
 Import Tricky_Units.MKL_Version
-Import tricky_units.stringmap
+Import tricky_units.StringMap
 
 MKL_Version "Tricky's Units - FilePicker.bmx","17.10.14"
 MKL_Lic     "Tricky's Units - FilePicker.bmx","ZLib License"
@@ -75,7 +75,7 @@ If f="" Then Exit
 If (Left(F,1)<>".") And (FileType(DD+F)=FType Or FType=3) Then 
 	'AddGadgetItem FPLst,F
 	'Print "FilePicker.Add("+F+")"
-	If extmode And ExtractExt(f).toupper()=Upper(extmode) MapInsert StripExt(f),f f=StripExt(f)
+	If extmode And ExtractExt(f).toupper()=Upper(extmode) MapInsert emm,StripExt(f),f f=StripExt(f)
 	ListAddLast List,F
 	EndIf
 Forever
