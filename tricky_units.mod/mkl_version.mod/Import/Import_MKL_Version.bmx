@@ -1,8 +1,8 @@
 Rem
   MKL_Version.bmx
   
-  version: 16.06.11
-  Copyright (C) 2012, 2016 Jeroen P. Broks
+  version: 17.10.15
+  Copyright (C) 2012, 2016, 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -71,6 +71,18 @@ For Local K$=EachIn MapKeys(Sourceversions)
 Return Ret
 End Function
 
+
+Rem
+bbdoc: Will turn the version number into an int. 
+about: For example version 17.08.09 will become the integer 170809
+returns: The int
+End Rem
+Function MKL_VerToNum(A$="")
+	Local V$=A
+	If Not V V=MKL_NewestVersion()
+	Return Replace(V,".","").toint()
+End function
+
 Rem
 bbdoc: Defines a license of the current source.
 about: File$ should basically the name of the source file this definition is set in
@@ -117,5 +129,5 @@ For Local K$=EachIn MapKeys(Sourceversions)
 Return Ret
 End Function
 
-MKL_Version "Tricky's Units - MKL_Version.bmx","16.06.11"
+MKL_Version "Tricky's Units - MKL_Version.bmx","17.10.15"
 MKL_Lic     "Tricky's Units - MKL_Version.bmx","ZLib License"
