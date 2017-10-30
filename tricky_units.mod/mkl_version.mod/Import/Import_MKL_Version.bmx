@@ -1,7 +1,7 @@
 Rem
   MKL_Version.bmx
   
-  version: 17.10.15
+  version: 17.10.31
   Copyright (C) 2012, 2016, 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -129,5 +129,5 @@ For Local K$=EachIn MapKeys(Sourceversions)
 Return Ret
 End Function
 
-MKL_Version "Tricky's Units - MKL_Version.bmx","17.10.15"
+MKL_Version "Tricky's Units - MKL_Version.bmx","17.10.31"
 MKL_Lic     "Tricky's Units - MKL_Version.bmx","ZLib License"
