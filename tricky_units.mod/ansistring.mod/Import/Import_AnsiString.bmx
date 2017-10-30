@@ -17,8 +17,15 @@ Rem
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 End Rem
+Strict
+
+Import tricky_units.MKL_Version
+
+MKL_Version "Tricky's Units - AnsiString.bmx","17.10.31"
+MKL_Lic     "Tricky's Units - AnsiString.bmx","ZLib License"
+
 Rem
-bbdoc: When true ANSI string is used. When false, all ANSI functions return a normal string
+bbdoc: When True ANSI String is used. When False, all ANSI functions Return a normal String
 about: On Windows this is by default false, on Linux and Mac this is by default true.
 End Rem
 Global ANSI_Use 
@@ -52,7 +59,7 @@ returns: The asked string
 End Rem
 Function ANSI_String$(d1,d2,d3,s$)
 	If ANSI_Use
-		Return Chr(26)+"["+d1+";"+d2+";"+d3+s
+		Return Chr(26)+"["+d1+";"+d2+";"+d3+"m"+s+Chr(26)+"[0m"
 	Else
 		Return s
 	EndIf
