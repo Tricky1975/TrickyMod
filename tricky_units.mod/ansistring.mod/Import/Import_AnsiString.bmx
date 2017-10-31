@@ -74,3 +74,15 @@ End Rem
 Function ANSI_Col$( S$, c1=7, c2=0, flags = A_Norm)
 	Return ANSI_String(flags,c1+30,C2+40,s)
 End Function
+
+Rem
+bbdoc: Print with only one color
+returns: The worked out string
+End Rem
+Function ANSI_SCol$(S$,col,flags)
+	If ansi_use
+		Return Chr(27)+"["+flags+";"+Int(col+30)+"m"+s
+	Else
+		Return s
+	EndIf
+End Function
