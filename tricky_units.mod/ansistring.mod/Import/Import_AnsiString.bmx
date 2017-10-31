@@ -72,5 +72,5 @@ about: You can use A_Black, A_Red, A_Green, A_Yellow, A_Blue,A_Magenta,A_Cyan or
 returns: The worked out string
 End Rem	
 Function ANSI_Col$( S$, c1=7, c2=0, flags = A_Norm)
-	Return ANSI_String(c1+30,C2+40,flags,s)
+	Return ANSI_String(flags,c1+30,C2+40,s)
 End Function

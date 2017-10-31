@@ -17,6 +17,7 @@ restriction the public domain offers. (YAY!)
 *********************************************************** 
 Version 17.10.31
 End Rem
+Strict
 Import tricky_units.ansistring
 
 
@@ -24,4 +25,5 @@ MKL_Version "Tricky's Units - Test.bmx","17.10.31"
 MKL_Lic     "Tricky's Units - Test.bmx","Public Domain"
 
 
-Print ANSI_Col("Hello",A_Red)+" "+ANSI_Col("World",A_Blue,A_Yellow,A_Blink)+"!! ("+KEY_ESCAPE+")"
+Print ANSI_Col("Hello",A_Cyan,A_Blue,1)+" "+ANSI_Col("World",A_Blue,A_Yellow,A_Blink)+"!! ("+KEY_ESCAPE+")"
+Print ANSI_Col("Kilo",A_Yellow)+" "+ANSI_Col("Utrecht",A_Cyan)+" "+ANSI_Col("Tango!",A_Magenta)
