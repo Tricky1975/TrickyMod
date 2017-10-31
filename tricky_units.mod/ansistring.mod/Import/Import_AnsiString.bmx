@@ -79,7 +79,7 @@ Rem
 bbdoc: Print with only one color
 returns: The worked out string
 End Rem
-Function ANSI_SCol$(S$,col,flags)
+Function ANSI_SCol$(S$,col,flags=A_Norm)
 	If ansi_use
 		Return Chr(27)+"["+flags+";"+Int(col+30)+"m"+s
 	Else
