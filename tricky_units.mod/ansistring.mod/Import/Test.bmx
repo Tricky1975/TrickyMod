@@ -24,4 +24,4 @@ MKL_Version "Tricky's Units - Test.bmx","17.10.31"
 MKL_Lic     "Tricky's Units - Test.bmx","Public Domain"
 
 
-Print ANSI_Col("Hello",A_Red)+" "+ANSI_Col("World",A_Blue,A_Yellow,A_Blink)+"!!"
+Print ANSI_Col("Hello",A_Red)+" "+ANSI_Col("World",A_Blue,A_Yellow,A_Blink)+"!! ("+KEY_ESCAPE+")"

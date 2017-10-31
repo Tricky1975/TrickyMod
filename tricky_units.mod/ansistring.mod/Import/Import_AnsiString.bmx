@@ -59,7 +59,7 @@ returns: The asked string
 End Rem
 Function ANSI_String$(d1,d2,d3,s$)
 	If ANSI_Use
-		Return Chr(26)+"["+d1+";"+d2+";"+d3+"m"+s+Chr(26)+"[0m"
+		Return Chr(27)+"["+d1+";"+d2+";"+d3+"m"+s+Chr(27)+"[0m"
 	Else
 		Return s
 	EndIf
