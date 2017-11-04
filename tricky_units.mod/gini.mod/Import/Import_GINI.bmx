@@ -1,7 +1,7 @@
 Rem
   GINI.bmx
   2015, 2016
-  version: 17.03.29
+  version: 17.11.04
   Copyright (C) 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -22,9 +22,14 @@ Import tricky_units.StringMap
 Import tricky_units.advdatetime
 Import tricky_units.Listfile
 
-MKL_Version "Tricky's Units - GINI.bmx","17.03.29"
+MKL_Version "Tricky's Units - GINI.bmx","17.11.04"
 MKL_Lic     "Tricky's Units - GINI.bmx","ZLib License"
 
+
+Rem
+bbdoc: When set to "true" the .list method will automatically create a list when it doesn't yet exist
+End Rem
+Global GINI_AUTOCREATELIST = False
 
 Private
 Type tf
@@ -98,9 +103,10 @@ Type TIni
 	bbdoc: Returns a list if it exists as a TLIST. (Please note, this TLIST may ONLY contain strings).
 	End Rem
 	Method List:TList(T$)
-	Local ret:TList = TList(MapValueForKey(lists,Upper(T)))
-	If Not ret Print("WARNING! List "+T+" not found!")
-	Return ret
+		If GINI_AUTOCREATELIST And (Not MapContains(lists,Upper(T))) MapInsert lists,Upper(T),New TList
+		Local ret:TList = TList(MapValueForKey(lists,Upper(T)))
+		If Not ret Print("WARNING! List "+T+" not found!")
+		Return ret
 	End Method
 	
 	Rem
