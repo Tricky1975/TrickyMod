@@ -5,8 +5,8 @@ end rem
 module Tricky_Teddybear.TeddyDraw
 moduleinfo "Module:Tricky_Teddybear.TeddyDraw"
 moduleinfo "Written by:Jeroen Petrus Broks"
-moduleinfo "Version:15.07.29"
-moduleinfo "Copyright:(c) Copyright Jeroen Petrus Broks, 2012-2015"
+moduleinfo "Version:17.11.04"
+moduleinfo "Copyright:(c) Copyright Jeroen Petrus Broks, 2012-2017"
 moduleinfo "License:Mozilla Public License"
 
 
