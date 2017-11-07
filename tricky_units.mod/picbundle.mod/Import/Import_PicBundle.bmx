@@ -99,7 +99,8 @@ Function SaveBundleJCR$(outfile$,Image:TImage,prefix$="",Storage$="Store",Qualit
 	For p=EachIn image.pixmaps
 		SavePixmapPNG p,of,Quality
 		bt.addentry of,Right("000000000"+i,9)+".png",Storage
-	Next
+		i:+1
+	Next	
 	bt.close Storage
 	If Not DeleteFile(of) Return "Could not delete swapfile: "+of
 	Return "Ok"
