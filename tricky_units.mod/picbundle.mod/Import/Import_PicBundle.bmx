@@ -91,7 +91,7 @@ bbdoc: Saves an animated TImage as a picbundle JCR file.
 about: The files will all be in PNG format inside the JCR file.
 returns: "Ok" if nothing went wrong, an error message if something did go wrong
 End Rem
-Function SaveBundleJCR$(outfile$,Image:TImage,prefix$="",Storag$e="Store",Quality=5)
+Function SaveBundleJCR$(outfile$,Image:TImage,prefix$="",Storage$="Store",Quality=5)
 	Local i=0
 	Local p:TPixmap
 	Local bt:TJCRCreate = JCR_Create(outfile); If Not bt Return "Could not create file: "+outfile
@@ -103,4 +103,4 @@ Function SaveBundleJCR$(outfile$,Image:TImage,prefix$="",Storag$e="Store",Qualit
 	bt.close Storage
 	If Not DeleteFile(of) Return "Could not delete swapfile: "+of
 	Return "Ok"
-End function
+End Function
