@@ -1,7 +1,7 @@
 Rem
   jcr_filepicker.bmx
   
-  version: 17.11.04
+  version: 17.11.07
   Copyright (C) 2015, 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages

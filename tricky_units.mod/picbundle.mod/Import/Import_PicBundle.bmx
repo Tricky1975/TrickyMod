@@ -1,7 +1,7 @@
 Rem
   PicBundle.bmx
   
-  version: 17.08.24
+  version: 17.11.07
   Copyright (C) 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -18,6 +18,8 @@ Rem
   3. This notice may not be removed or altered from any source distribution.
 End Rem
 Strict
+
+Import brl.pngloader
 
 Import "UPB_JCR.bmx"
 Import "UPB_TList.bmx"
@@ -83,4 +85,22 @@ Function GetBundle:TImage(bundle:Object, prefix$="",flags=-1)
 	drv.HotSpots bundle,ret,prefix
 	Return ret
 End Function	
-			
+
+Rem
+bbdoc: Saves an animated TImage as a picbundle JCR file.
+about: The files will all be in PNG format inside the JCR file.
+returns: "Ok" if nothing went wrong, an error message if something did go wrong
+End Rem
+Function SaveBundleJCR$(outfile$,Image:TImage,prefix$="",Storag$e="Store",Quality=5)
+	Local i=0
+	Local p:TPixmap
+	Local bt:TJCRCreate = JCR_Create(outfile); If Not bt Return "Could not create file: "+outfile
+	Local of$ = outfile+"__TEMP__.png"
+	For p=EachIn image.pixmaps
+		SavePixmapPNG p,of,Quality
+		bt.addfile of,Right("000000000"+i,9)+".png"),Storage
+	Next
+	bt.close Storage
+	If Not DeleteFile(of) Return "Could not delete swapfile: "+of
+	Return "Ok"
+End function

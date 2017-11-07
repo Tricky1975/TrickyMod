@@ -1,7 +1,7 @@
 Rem
   GINI.bmx
   2015, 2016
-  version: 17.11.04
+  version: 17.11.07
   Copyright (C) 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -22,7 +22,7 @@ Import tricky_units.StringMap
 Import tricky_units.advdatetime
 Import tricky_units.Listfile
 
-MKL_Version "Tricky's Units - GINI.bmx","17.11.04"
+MKL_Version "Tricky's Units - GINI.bmx","17.11.07"
 MKL_Lic     "Tricky's Units - GINI.bmx","ZLib License"
 
 

@@ -1,7 +1,7 @@
 Rem
   UPB_JCR.bmx
   
-  version: 17.08.24
+  version: 17.11.07
   Copyright (C) 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -28,7 +28,7 @@ Import tricky_units.prefixsuffix
 Import tricky_units.gini
 Import "UPB_Core.bmx"
 
-MKL_Version "Tricky's Units - UPB_JCR.bmx","17.08.24"
+MKL_Version "Tricky's Units - UPB_JCR.bmx","17.11.07"
 MKL_Lic     "Tricky's Units - UPB_JCR.bmx","ZLib License"
 
 
