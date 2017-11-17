@@ -25,14 +25,14 @@ MKL_Lic     "Tricky's Units - QHS.bmx","ZLib License"
 
 
 Function QHD$(A$,factor=1)
-	Local ret$=A
+	Local ret
 	Local h,t
 	For Local i=0 Until Len A
 		h = i * factor
 		t = a[i] + h
 		While t>255 t=t-256 Wend
 		While t<  0 t=t+256 Wend
-		ret[i]=t
+		ret:+Chr(t)
 	Next
 	Return ret
 End Function
