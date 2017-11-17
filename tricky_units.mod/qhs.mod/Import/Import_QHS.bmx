@@ -18,7 +18,7 @@ Rem
   3. This notice may not be removed or altered from any source distribution.
 End Rem
 Strict
-Import tricky_unts.mkl_version
+Import tricky_units.MKL_Version
 MKL_Version "Tricky's Units - QHS.bmx","17.11.17"
 MKL_Lic     "Tricky's Units - QHS.bmx","ZLib License"
 
