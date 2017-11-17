@@ -25,7 +25,7 @@ MKL_Lic     "Tricky's Units - QHS.bmx","ZLib License"
 
 
 Function QHD$(A$,factor=1)
-	Local ret
+	Local ret$
 	Local h,t
 	For Local i=0 Until Len A
 		h = i * factor
