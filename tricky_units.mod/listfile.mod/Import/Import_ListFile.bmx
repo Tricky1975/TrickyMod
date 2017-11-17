@@ -1,8 +1,8 @@
 Rem
   ListFile.bmx
   
-  version: 16.03.09
-  Copyright (C) 2015, 2016 Jeroen P. Broks
+  version: 17.11.17
+  Copyright (C) 2015, 2016, 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -28,7 +28,7 @@ Import tricky_units.MKL_Version
 Import brl.stream
 Import brl.linkedlist
 
-MKL_Version "Tricky's Units - ListFile.bmx","16.03.09"
+MKL_Version "Tricky's Units - ListFile.bmx","17.11.17"
 MKL_Lic     "Tricky's Units - ListFile.bmx","ZLib License"
 
 Rem
@@ -37,7 +37,7 @@ End Rem
 Function Listfile:TList(file:Object)
 Local BT:TStream = ReadStream(file)
 Assert bt Else "File "+String(file)+" could not be read!"
-If Not bt Return
+If Not bt Print "File could not be read!" Return Null
 Local ret:TList = New TList
 While Not Eof(BT)
 	ListAddLast ret,ReadLine(BT)
