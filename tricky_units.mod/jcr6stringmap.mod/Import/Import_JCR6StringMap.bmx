@@ -59,7 +59,7 @@ Else
 	EndIf
 Assert JCR Else "Could not identify JCR object"
 Local BT:TStream = JCR_ReadFile(JCR,Entry)
-Local tag,key$,Value$
+Local tag,key$,Value$,factor
 While Not Eof(BT)
 	tag = ReadByte(BT)
 	If tag=255 Exit
