@@ -7,7 +7,7 @@ Moduleinfo "NameModule: Tricky's Units - GINI"
 Moduleinfo "Author: Jeroen Broks aka Tricky"
 ModuleInfo "Copyright: &copy; Jeroen Petrus Broks"
 Moduleinfo "License: zLib license"
-moduleinfo "Last update: 07 Nov 2017"
+moduleinfo "Last update: 05 Dec 2017"
 
 
 

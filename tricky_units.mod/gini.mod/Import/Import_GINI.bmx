@@ -1,7 +1,7 @@
 Rem
   GINI.bmx
   2015, 2016
-  version: 17.11.07
+  version: 17.12.05
   Copyright (C) 2017 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -22,7 +22,7 @@ Import tricky_units.StringMap
 Import tricky_units.advdatetime
 Import tricky_units.Listfile
 
-MKL_Version "Tricky's Units - GINI.bmx","17.11.07"
+MKL_Version "Tricky's Units - GINI.bmx","17.12.05"
 MKL_Lic     "Tricky's Units - GINI.bmx","ZLib License"
 
 
@@ -217,6 +217,9 @@ For line=EachIn Listfile(File)
 	If line Then
 		If Left(Trim(line),1)="[" And Right(Trim(line),1)="]" 
 			wTag = Mid(Trim(line),2,Len(Trim(line))-2)
+			If Upper(wTag)="OLD"
+				Print "WARNING! The [old] tag has been deprecated and will be removed in future versions!"
+			EndIf
 			tagsplit=wTag.split(":")
 			tag = tagsplit[0].toupper()
 			If Upper(Tagsplit[0])="LIST"
@@ -243,6 +246,7 @@ For line=EachIn Listfile(File)
 									tagsplit[1]:+":"+tagsplit[i]
 									Next
 								EndIf
+							Print "WARNING! The [old] system has been deprecated and will be removed in future versions! -- "+line
 							Select tagsplit[0]
 								Case "Var"
 									tagparam = tagsplit[1].split("=")
