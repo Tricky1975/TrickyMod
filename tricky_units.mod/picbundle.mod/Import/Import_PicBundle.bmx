@@ -1,8 +1,8 @@
 Rem
   PicBundle.bmx
   
-  version: 17.11.07
-  Copyright (C) 2017 Jeroen P. Broks
+  version: 18.01.12
+  Copyright (C) 2017, 2018 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -91,17 +91,24 @@ bbdoc: Saves an animated TImage as a picbundle JCR file.
 about: The files will all be in PNG format inside the JCR file.
 returns: "Ok" if nothing went wrong, an error message if something did go wrong
 End Rem
-Function SaveBundleJCR$(outfile$,Image:TImage,prefix$="",Storage$="Store",Quality=5)
+Function SaveBundleJCR$(output:Object,Image:TImage,prefix$="",Storage$="Store",Quality=5)
+      Local outfile=".BUNDLECREATION_" If String(output) outfile=String(output)
 	Local i=0
 	Local p:TPixmap
-	Local bt:TJCRCreate = JCR_Create(outfile); If Not bt Return "Could not create file: "+outfile
+	Local bt:TJCRCreate 
 	Local of$ = outfile+"__TEMP__.png"
+	If TJCRCreate(output) Then 
+	   bt=TJCRCreate(output)
+	Else
+	   bt=JCR_Create(outfile)
+	   If Not bt Return "Could not create file: "+outfile
+	EndIf
 	For p=EachIn image.pixmaps
 		SavePixmapPNG p,of,Quality
 		bt.addentry of,Right("000000000"+i,9)+".png",Storage
 		i:+1
 	Next	
-	bt.close Storage
+	If String(output) bt.close Storage
 	If Not DeleteFile(of) Return "Could not delete swapfile: "+of
 	Return "Ok"
 End Function
