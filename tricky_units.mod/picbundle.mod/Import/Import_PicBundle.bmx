@@ -92,7 +92,7 @@ about: The files will all be in PNG format inside the JCR file.
 returns: "Ok" if nothing went wrong, an error message if something did go wrong
 End Rem
 Function SaveBundleJCR$(output:Object,Image:TImage,prefix$="",Storage$="Store",Quality=5)
-      Local outfile=".BUNDLECREATION_" If String(output) outfile=String(output)
+      Local outfile$=".BUNDLECREATION_" If String(output) outfile=String(output)
 	Local i=0
 	Local p:TPixmap
 	Local bt:TJCRCreate 
