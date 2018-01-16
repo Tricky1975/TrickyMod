@@ -700,11 +700,11 @@ For F=EachIn LChars
 	bt = JCR_ReadFile(LoadFrom,D+"Character/"+F+"/Stats")
 	While Not Eof(BT)
 		tag = ReadByte(Bt)
-		Print tag
+		'Print tag
 		Select tag
 			Case 1
 				TN = TrickyReadString(BT)
-				Print TN
+				'Print TN
 				sv = New RPGStat
 				MapInsert ch.Stats,TN,sv
 			Case 2
