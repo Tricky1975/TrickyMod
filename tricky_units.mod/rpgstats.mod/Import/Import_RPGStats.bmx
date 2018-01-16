@@ -704,6 +704,7 @@ For F=EachIn LChars
 		Select tag
 			Case 1
 				TN = TrickyReadString(BT)
+				Print TN
 				sv = New RPGStat
 				MapInsert ch.Stats,TN,sv
 			Case 2
