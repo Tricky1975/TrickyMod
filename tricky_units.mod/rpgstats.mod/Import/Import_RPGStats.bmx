@@ -1,12 +1,12 @@
 Rem
         RPGStats.bmx
-	(c) 2015, 2016, 2017 Jeroen Petrus Broks.
+	(c) 2015, 2016, 2017, 2018 Jeroen Petrus Broks.
 	
 	This Source Code Form is subject to the terms of the 
 	Mozilla Public License, v. 2.0. If a copy of the MPL was not 
 	distributed with this file, You can obtain one at 
 	http://mozilla.org/MPL/2.0/.
-        Version: 17.08.13
+        Version: 18.01.16
 End Rem
 
 Rem
@@ -37,7 +37,7 @@ Import tricky_units.TrickyReadString
 Import tricky_units.jcr6stringmap
 Import brl.max2d
 
-MKL_Version "Tricky's Units - RPGStats.bmx","17.08.13"
+MKL_Version "Tricky's Units - RPGStats.bmx","18.01.16"
 MKL_Lic     "Tricky's Units - RPGStats.bmx","Mozilla Public License 2.0"
 
 Private
@@ -700,6 +700,7 @@ For F=EachIn LChars
 	bt = JCR_ReadFile(LoadFrom,D+"Character/"+F+"/Stats")
 	While Not Eof(BT)
 		tag = ReadByte(Bt)
+		Print tag
 		Select tag
 			Case 1
 				TN = TrickyReadString(BT)
