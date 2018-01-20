@@ -36,7 +36,7 @@ End Rem
 Rem
 bbdoc: When set true debug information can be shown on the output
 End Rem
-Global BundleChat = false
+Global BundleChat = False
 
 Rem
 bbdoc: If something went wrong while trying to load a bundle, this variable will contain the error
@@ -60,6 +60,10 @@ Function GetBundle:TImage(bundle:Object, prefix$="",flags=-1)
 		Return
 	EndIf
 	Local l:TList = drv.makelist(bundle,prefix)
+	If CountList(l)=0 Then
+		BundleError = "Received an empty list from the bundle reader ("+drv.Name()+")"
+		Return
+	endif
 	Local P:TPixmap
 	p = TPixmap(l.valueatindex(0))
 	If Not p
