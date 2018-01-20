@@ -1,8 +1,8 @@
 Rem
   UPB_JCR.bmx
   
-  version: 17.11.07
-  Copyright (C) 2017 Jeroen P. Broks
+  version: 18.01.20
+  Copyright (C) 2017, 2018 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -28,13 +28,15 @@ Import tricky_units.prefixsuffix
 Import tricky_units.gini
 Import "UPB_Core.bmx"
 
-MKL_Version "Tricky's Units - UPB_JCR.bmx","17.11.07"
+MKL_Version "Tricky's Units - UPB_JCR.bmx","18.01.20"
 MKL_Lic     "Tricky's Units - UPB_JCR.bmx","ZLib License"
 
 
 JCR_Active = True
 
 Type UPB_JCR Extends UPB_DRIVER
+
+	Method name$() Return "JCR6" End Method
 
 	Method recognize(O:Object)
 		If TJCRDir(o) Return True

@@ -1,8 +1,8 @@
 Rem
   UPB_Dir.bmx
   
-  version: 17.08.15
-  Copyright (C) 2017 Jeroen P. Broks
+  version: 18.01.20
+  Copyright (C) 2017, 2018 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -49,6 +49,8 @@ Type UPB_Dir Extends UPB_DRIVER
 		Next
 		Return rl
 	End Method
+	
+	Method name$() Return "Real directory" End Method
 	
 End Type
 

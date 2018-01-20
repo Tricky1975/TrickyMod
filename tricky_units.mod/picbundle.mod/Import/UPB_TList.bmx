@@ -1,8 +1,8 @@
 Rem
   UPB_TList.bmx
   
-  version: 17.08.15
-  Copyright (C) 2017 Jeroen P. Broks
+  version: 18.01.20
+  Copyright (C) 2017, 2018 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -19,11 +19,12 @@ Rem
 End Rem
 Import "UPB_Core.bmx"
 
-MKL_Version "Tricky's Units - UPB_TList.bmx","17.08.15"
+MKL_Version "Tricky's Units - UPB_TList.bmx","18.01.20"
 MKL_Lic     "Tricky's Units - UPB_TList.bmx","ZLib License"
 
 Type UPB_TList Extends UPB_DRIVER
 
+	Method name$() Return "BlitzMax Linked List" End Method
 
 	Method Recognize(O:Object)
 		Return TList(O)<>Null

@@ -1,8 +1,8 @@
 Rem
   UPB_Core.bmx
   
-  version: 17.08.15
-  Copyright (C) 2017 Jeroen P. Broks
+  version: 18.01.20
+  Copyright (C) 2017, 2018 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
   arising from the use of this software.
@@ -22,7 +22,7 @@ Strict
 Import tricky_units.MKL_Version
 Import brl.max2d
 
-MKL_Version "Tricky's Units - UPB_Core.bmx","17.08.15"
+MKL_Version "Tricky's Units - UPB_Core.bmx","18.01.20"
 MKL_Lic     "Tricky's Units - UPB_Core.bmx","ZLib License"
 
 Global UPB_DRIVERS:TList = New TList
@@ -33,6 +33,7 @@ Type UPB_DRIVER
 	Method recognize(A:Object) Abstract
 	Method makelist:TList(A:Object,prefix$="") Abstract
 	Method hotspots(A:Object,I:TImage,Prefix$) End Method
+	Method name$() abstract
 	
 	
 	Method New() Final

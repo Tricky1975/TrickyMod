@@ -1,7 +1,7 @@
 Rem
   PicBundle.bmx
   
-  version: 18.01.12
+  version: 18.01.20
   Copyright (C) 2017, 2018 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -31,6 +31,12 @@ Rem
 	The import for dir is only valuable if JCR6 is not loaded, as it has been set not to operate to prevent conflicts.
 	Plaese note, when you want to use this module in combination with Kthura, you MUST have JCR in it or Kthura will NOT work!
 End Rem
+
+
+Rem
+bbdoc: When set true debug information can be shown on the output
+End Rem
+Global BundleChat = false
 
 Rem
 bbdoc: If something went wrong while trying to load a bundle, this variable will contain the error
