@@ -1,7 +1,7 @@
 Rem
   PicBundle.bmx
   
-  version: 18.01.20
+  version: 18.05.04
   Copyright (C) 2017, 2018 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -63,7 +63,7 @@ Function GetBundle:TImage(bundle:Object, prefix$="",flags=-1)
 	If CountList(l)=0 Then
 		BundleError = "Received an empty list from the bundle reader ("+drv.Name()+")"
 		Return
-	endif
+	EndIf
 	Local P:TPixmap
 	p = TPixmap(l.valueatindex(0))
 	If Not p
@@ -82,7 +82,7 @@ Function GetBundle:TImage(bundle:Object, prefix$="",flags=-1)
 			Return
 		EndIf
 		If cnt>n
-			BundleError = "Too many pixmaps. "+n+" expcted"
+			BundleError = "Too many pixmaps. "+n+" expected"
 			Return
 		EndIf
 		ret.pixmaps[cnt]=p

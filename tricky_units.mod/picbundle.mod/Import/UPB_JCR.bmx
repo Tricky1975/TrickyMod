@@ -1,7 +1,7 @@
 Rem
   UPB_JCR.bmx
   
-  version: 18.01.20
+  version: 18.05.04
   Copyright (C) 2017, 2018 Jeroen P. Broks
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -28,7 +28,7 @@ Import tricky_units.prefixsuffix
 Import tricky_units.gini
 Import "UPB_Core.bmx"
 
-MKL_Version "Tricky's Units - UPB_JCR.bmx","18.01.20"
+MKL_Version "Tricky's Units - UPB_JCR.bmx","18.05.04"
 MKL_Lic     "Tricky's Units - UPB_JCR.bmx","ZLib License"
 
 
@@ -86,6 +86,7 @@ Type UPB_JCR Extends UPB_DRIVER
 		Else
 			Return
 		EndIf
+		Print "Hotspots" ' debug line
 		Local hx,hy
 		Select g.C("X").toupper()
 			Case "CENTER"	hx=ImageWidth(I)/2
