@@ -86,7 +86,7 @@ Type UPB_JCR Extends UPB_DRIVER
 		Else
 			Return
 		EndIf
-		Print "Hotspots" ' debug line
+		DebugLog "Setting Hotspots" ' debug line
 		Local hx,hy
 		Select g.C("X").toupper()
 			Case "CENTER"	hx=ImageWidth(I)/2
@@ -101,6 +101,7 @@ Type UPB_JCR Extends UPB_DRIVER
 						hy=ImageHeight(I)
 			Default		hy=g.C("Y").toint()
 		End Select	
+		DebugLog "Hotspots set to: ("+hx+","+hy+")"
 		SetImageHandle I,hx,hy
 	End Method
 End Type
