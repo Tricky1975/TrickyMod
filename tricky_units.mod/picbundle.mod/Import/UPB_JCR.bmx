@@ -60,7 +60,7 @@ Type UPB_JCR Extends UPB_DRIVER
 			If Prefixed(k,d)
 				DebugLog "Including "+k+" to bundle (prefix:"+d+">"+Prefixed(k,d)
 				p = LoadPixmap(JCR_B(J,k))
-				If p ListAddLast r,p DebugLog "Added" Else DebugLog "Nothing usefull added"
+				If p ListAddLast r,p DebugLog "Added succesfully" Else DebugLog "Nothing usefull added"
 			EndIf
 		Next
 		Return r
