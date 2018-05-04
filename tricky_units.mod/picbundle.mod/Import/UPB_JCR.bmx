@@ -75,6 +75,7 @@ Type UPB_JCR Extends UPB_DRIVER
 		ElseIf String(o)
 			J=JCR_Dir(String(O))
 		Else
+			DebugLog "No proper stuff given to hotspot!"
 			Return Null
 		EndIf
 		If JCR_Exists(J,Prefix+"/HotSpots.gini")
