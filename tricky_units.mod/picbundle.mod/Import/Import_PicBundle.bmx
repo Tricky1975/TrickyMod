@@ -85,6 +85,7 @@ Function GetBundle:TImage(bundle:Object, prefix$="",flags=-1)
 			BundleError = "Too many pixmaps. "+n+" expected"
 			Return
 		EndIf
+		DebugLog "Pixmap #"+cnt+" brought to image"
 		ret.pixmaps[cnt]=p
 		cnt:+1
 	Next
@@ -92,6 +93,7 @@ Function GetBundle:TImage(bundle:Object, prefix$="",flags=-1)
 		BundleError = "Count mismatch. "+cnt+" pixmaps counted, but "+n+" were expected"	
 		Return
 	EndIf
+	DebugLog "Time to do the hotspots in "+drv.Name()
 	drv.HotSpots bundle,ret,prefix
 	Return ret
 End Function	
