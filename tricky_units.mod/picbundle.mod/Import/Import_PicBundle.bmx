@@ -61,7 +61,7 @@ Function GetBundle:TImage(bundle:Object, prefix$="",flags=-1)
 	EndIf
 	Local l:TList = drv.makelist(bundle,prefix)
 	If CountList(l)=0 Then
-		BundleError = "Received an empty list from the bundle reader ("+drv.Name()+")"
+		BundleError = "Received an empty list from the bundle reader ("+drv.name()+")"
 		Return
 	EndIf
 	Local P:TPixmap
