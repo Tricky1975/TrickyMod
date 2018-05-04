@@ -33,7 +33,12 @@ Type UPB_DRIVER
 	Method recognize(A:Object) Abstract
 	Method makelist:TList(A:Object,prefix$="") Abstract
 	Method name$() Abstract
-	Method hotspots(A:Object,I:TImage,Prefix$) End Method
+	Method hotspots(A:Object,I:TImage,Prefix$) 
+		?debug
+			Print "WARNING!"+Chr(7)
+			Print "There is no proper HotSpot routine in driver: "+name()
+		?	
+	End Method
 	
 	
 	Method New() Final

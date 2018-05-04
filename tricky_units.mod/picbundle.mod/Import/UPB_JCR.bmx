@@ -66,10 +66,11 @@ Type UPB_JCR Extends UPB_DRIVER
 		Return r
 	End Method
 	
-	Method hotpots(O:Object,I:TImage,Prefix$)
+	Method hotspots(O:Object,I:TImage,Prefix$)
 		Local J:TJCRDir
 		Local d$=Upper(prefix)
 		Local G:TIni
+
 		If TJCRDir(o)
 			J=TJCRDir(o)
 			DebugLog "Hotspotting from JCR resource object"
