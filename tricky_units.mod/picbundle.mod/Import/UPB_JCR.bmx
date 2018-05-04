@@ -60,7 +60,7 @@ Type UPB_JCR Extends UPB_DRIVER
 			If Prefixed(k,d)
 				DebugLog "Including "+k+" to bundle (prefix:"+d+">"+Prefixed(k,d)
 				p = LoadPixmap(JCR_B(J,k))
-				If p ListAddLast r,p Else DebugLog "Nothing usefull added"
+				If p ListAddLast r,p DebugLog "Added" Else DebugLog "Nothing usefull added"
 			EndIf
 		Next
 		Return r
@@ -72,7 +72,9 @@ Type UPB_JCR Extends UPB_DRIVER
 		Local G:TIni
 		If TJCRDir(o)
 			J=TJCRDir(o)
+			DebugLog "Hotspotting from JCR resource object"
 		ElseIf String(o)
+			DebugLog "Hotspotting from JCR: "+String(o)
 			J=JCR_Dir(String(O))
 		Else
 			DebugLog "No proper stuff given to hotspot!"
