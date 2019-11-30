@@ -1,3 +1,9 @@
+# Discontinuation
+
+I didn't want to do this, but BlitzMax appears to be dead... The original compiler refuses to work on all three platforms, and BlitzMax NG refuses to create code the GCC linker likes. I've moved on to C# for most of my work, as I cannot compile any of these anymore. If you hsee interesting stuff here... Feel free to fork it if you wanna continue these, the license terms remain the same as they were.
+
+I'm sorry about this, but given the circumstances I've no more choice but to go this way...
+
 # Tricky's modules for BlitzMax
 
 I wrote these modules for my own benefit, however if you have use for them, go ahead, use them as you please, however before you do, please read the license terms which should be included in each module.
